@@ -20,9 +20,15 @@ export const SmallButton = styled.button`
       color: ${buttonColor[color][1]};
       border: 1px solid ${buttonColor[color][2]};
     `}
+<<<<<<< HEAD
     ${({width}) => css`
       width: ${width}px;
     `}
+=======
+  ${({ width }) => css`
+    width: ${width}px;
+  `}  
+>>>>>>> master
 `;
 
 export const MidButton = styled.button`

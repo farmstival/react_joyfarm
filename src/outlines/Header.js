@@ -83,7 +83,7 @@ const Header = () => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
-    cookies.remove('token', {path: '/' });
+    cookies.remove("token", { path: '/' });
   },[setIsLogin, setIsAdmin,setUserInfo]);
 
   return (
@@ -113,6 +113,13 @@ const Header = () => {
               <SmallButton color="secondary" width={150} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
+              {/*
+              <NavLink
+                to="/member/logout"
+                className={({ isActive }) => classNames({ on: isActive })}
+              >
+                {t('로그아웃')}
+              </NavLink> */}
             </>
           ) : (
             <>
