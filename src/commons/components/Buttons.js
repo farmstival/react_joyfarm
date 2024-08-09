@@ -8,6 +8,23 @@ const commonStyle = css`
   cursor: pointer;
 `;
 
+export const SmallButton = styled.button`
+  font-size: ${normal};
+  height: 30px;
+  ${commonStyle}
+
+  ${({ color }) =>
+    buttonColor[color] &&
+    css`
+      background: ${buttonColor[color][0]};
+      color: ${buttonColor[color][1]};
+      border: 1px solid ${buttonColor[color][2]};
+    `}
+  ${({ width }) => css`
+    width: ${width}px;
+  `}
+`;
+
 export const MidButton = styled.button`
   font-size: ${medium};
   height: 40px;

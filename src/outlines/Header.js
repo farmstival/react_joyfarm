@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
+import cookies form 'react-cookies';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +12,7 @@ import { color } from '../styles/color';
 import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
+import { SmallButton } from '../commons/components/Buttons';
 
 const { primary, dark, light } = color;
 
@@ -74,7 +76,14 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
+
+  const onLogout = useCallback(() => {
+    setIsLogin(false);
+    setIsAdmin(false);
+    setUserInfo(null);
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   return (
     <HeaderBox>
@@ -100,12 +109,9 @@ const Header = () => {
                   {t('사이트_관리')}
                 </NavLink>
               )}
-              <NavLink
-                to="/member/logout"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
+              <SmallButton color="secondary">
                 {t('로그아웃')}
-              </NavLink>
+              </SmallButton>
             </>
           ) : (
             <>
