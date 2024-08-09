@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
-const { big, medium } = fontSize;
+const { big, medium, normal } = fontSize;
 const commonStyle = css`
   width: 100%;
   border-radius: 3px;
@@ -22,7 +22,7 @@ export const SmallButton = styled.button`
     `}
   ${({ width }) => css`
     width: ${width}px;
-  `}
+  `}  
 `;
 
 export const MidButton = styled.button`

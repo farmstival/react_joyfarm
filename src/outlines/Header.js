@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from 'react';
-import cookies form 'react-cookies';
+import cookies from 'react-cookies';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -76,14 +76,15 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
-    actions: { setIsLogin, setIsAdmin, setUserInfo },
+    actions: {setIsLogin, setIsAdmin, setUserInfo},
   } = useContext(UserInfoContext);
 
   const onLogout = useCallback(() => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
-  }, [setIsLogin, setIsAdmin, setUserInfo]);
+    cookies.remove("token", { path: '/' });
+  },[setIsLogin, setIsAdmin,setUserInfo]);
 
   return (
     <HeaderBox>
@@ -109,9 +110,16 @@ const Header = () => {
                   {t('사이트_관리')}
                 </NavLink>
               )}
-              <SmallButton color="secondary">
+              <SmallButton color="secondary" width={150} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
+              {/*
+              <NavLink
+                to="/member/logout"
+                className={({ isActive }) => classNames({ on: isActive })}
+              >
+                {t('로그아웃')}
+              </NavLink> */}
             </>
           ) : (
             <>
