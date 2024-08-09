@@ -3,40 +3,42 @@ import KakaoMap from '../../map/KakaoMap';
 
 const markers = [
   {
-    lat: 37.579617,
-    lng: 126.977041,
-    info: {content: '<h1>output</h1>', removable: true},
-    //removable: 상단에 x 버튼으로 인포 지우기 가능
-    //content가 있으면 노출
+    lat: 37.579617, 
+    lng: 126.977041, 
+    info: { content: '<h1>바로 노출되는 인포윈도우</h1>', removable: true }, // 인포윈도우 바로 노출
   },
   {
     lat: 37.5814696,
     lng: 126.9849519,
-    //특정 마커 이미지 설정
+    // 마커 이미지 바꾸는 용도(전체 url 주소로 나와야 함!)
     image:
       'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-    info: { content: '<h1>output2</h1>',
-    clickable: true}, //클릭 시 토글 형태로 인포윈도우 노출
+    info: {
+      content: '<h1>클릭시 토글 형태로 나오는 인포윈도우</h1>',
+      clickable: true,
+    }, // 클릭시 토글 형태로 인포윈도우 노출
   },
   { lat: 37.5758772, lng: 126.9768121 },
 ];
 
 const options = {
-  currentLocation: true, //현재 위치 기준
-  //address: "서울 종로구 사직로 161", //주소로 장소 찾기
-  center: { 
+  // currentLocation: true, // 현재 위치 기반 (주소 기반을 위해 지금은 주석처리)
+  // address: '경기도 용인시 에버랜드로 199',
+  center: {
+    // DB에 있는 값 가지고 와서 출력할때는 이거 사용하세요~
     lat: 37.579617, 
     lng: 126.977041, 
-  }, //가운데 위치 기준값
-
-  zoom: 4,
-  marker: markers, //주소 기반으로 마커 표기하도록 수정할 예정
+  },
+  zoom: 3,
+  // marker: markers, -> 마커가 있으면 마커 기준으로 나오므로 주석처리함!
+  // 어떠한 지역에서 여러개 마커 표시를 할때는 이것을 사용함
+  // 전체 마커 동일한 이미지
   markerImage:
     'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-}; //마커 전체의 공통 이미지
+};
 
 const Main = () => {
-  return <KakaoMap {...options} />; //비구조 할당으로 추가 옵션 주입
+  return <KakaoMap {...options} />; // 리턴으로 KakaoMap으로 보냄
 };
 
 export default React.memo(Main);
