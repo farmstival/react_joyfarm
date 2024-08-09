@@ -17,22 +17,8 @@ const KakaoMap = ({
   currentLocation, // 위치 기반
   address, // 주소 기반
 }) => {
-  const [_center, setCenter] = useState(center);
-  const [mkrs, setMarkers] = useState(marker);
-
+  const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
-
-  /* center 마커, 인포 윈도우 처리 S */
-  useEffect(() => {
-    if (center) {
-      setMarkers((markers) => {
-        const _markers = markers;
-        if (!Array.isArray(markers)) _markers = [markers];
-        _markers.unshift(center);
-        return [..._markers];
-      });
-    }
-  }, [center]);
 
   /* 현재 위치 기반 S */
   useEffect(() => {
@@ -74,7 +60,7 @@ const KakaoMap = ({
     /* 지도 가운데 배치 E */
 
     /* 마커 출력 S */
-    if (mkrs) {
+    if (marker) {
       let _markers = marker;
       if (!Array.isArray(marker)) _markers = [marker];
 
@@ -88,7 +74,6 @@ const KakaoMap = ({
         /* 마커 이미지 처리 S */
         const mi = image ? image : markerImage;
         if (mi) {
-          // 마커 이미지가 정의되어 있다면!
           const mIcon = new kakao.maps.MarkerImage(
             mi,
             new kakao.maps.Size(64, 69),
@@ -135,7 +120,7 @@ const KakaoMap = ({
       });
     }
     /* 마커 출력 E */
-  }, [mapRef, _center, zoom, marker, markerImage, mkrs]);
+  }, [mapRef, _center, zoom, marker, markerImage]);
 
   return <MapArea ref={mapRef} width={width} height={height} />;
 };
