@@ -30,11 +30,11 @@ const options = {
     lng: 126.977041, 
   },
   zoom: 3,
-  // marker: markers, -> 마커가 있으면 마커 기준으로 나오므로 주석처리함!
+  marker: markers, //-> 마커가 있으면 마커 기준으로 나오므로 주석처리함!
   // 어떠한 지역에서 여러개 마커 표시를 할때는 이것을 사용함
   // 전체 마커 동일한 이미지
   markerImage:
-    'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
+    'https://i.ibb.co/1QpqxhP/gps.png" alt="gps" border="0"',
 };
 
 const Main = () => {
