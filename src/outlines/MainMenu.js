@@ -40,6 +40,30 @@ const MainMenu = () => {
         >
           {t('뉴스')}
         </NavLink>
+        <NavLink
+          to="/reservation"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('농촌체험 예약')}
+        </NavLink>
+        <NavLink
+          to="/travel_festival"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('조이팜의 추천')}
+        </NavLink>
+        <NavLink
+          to="/my_reservation"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('나의 예약현황')}
+        </NavLink>
+        <NavLink
+          to="/community"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('커뮤니티')}
+        </NavLink>
       </div>
     </MenuBox>
   );
