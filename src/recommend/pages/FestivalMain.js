@@ -13,10 +13,10 @@ const TravelMain = () => {
     return (
         <>
             <Helmet>
-                <title>{t('조이팜의 추천여행')}</title>
+                <title>{t('지역별 축제 정보')}</title>
             </Helmet>
             <OuterBox className="layout-width">
-                <h1>여행, 축제 페이지</h1>
+                <h1>지역별 축제 정보</h1>
             </OuterBox>
         </>      
     );

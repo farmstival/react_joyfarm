@@ -26,8 +26,12 @@ const ReservationMain = loadable(() =>
 /* 농촌체험 예약 페이지 E */
 
 /* 여행 추천 페이지 S */
-const TravelMain = loadable(() => import('./travel_festival/pages/TravelMain'));
+const TravelMain = loadable(() => import('./recommend/pages/TravelMain'));
 /* 여행 추천 페이지 E */
+
+/* 지역별 축제 정보 페이지 S */
+const FestivalMain = loadable(() => import('./recommend/pages/FestivalMain'));
+/* 지역별 축제 정보 페이지 E */
 
 /* 나의 예약현황 페이지 S */
 const MyReservationMain = loadable(() =>
@@ -66,8 +70,12 @@ const App = () => {
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
-        <Route path="travel_festival">
+        <Route path="recommend">
           <Route path=":category?" element={<TravelMain />} />
+        </Route>
+        {/* 지역별 축제 페이지 */}
+        <Route path="festival">
+          <Route path=":category?" element={<FestivalMain></FestivalMain>} />
         </Route>
         {/* 여행 추천 페이지 E */}
         {/* 나의 예약현황 페이지 S */}

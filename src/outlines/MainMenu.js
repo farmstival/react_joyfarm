@@ -47,7 +47,7 @@ const MainMenu = () => {
           {t('농촌체험 예약')}
         </NavLink>
         <NavLink
-          to="/travel_festival"
+          to="/recommend"
           className={({ isActive }) => classNames({ on: isActive })}
         >
           {t('조이팜의 추천')}
