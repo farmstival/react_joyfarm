@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import styled from 'styled-components';
+import { SearchBar } from '../components/SearchBar';
 
 const OuterBox = styled.div`
   margin-bottom: 150px;
@@ -56,6 +57,9 @@ const ReservationMain = () => {
             </PageTitle>
           </PageNavSubWrap>
         </PageNavWrap>
+        <SearchBar>
+          
+        </SearchBar>
         <ContentBox>
           <h2>지역별 체험활동 리스트 출력</h2>
         </ContentBox>
