@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 
-const { dark, primary, light } = color;
+const { dark, light, midGreen } = color;
 
 const MenuBox = styled.nav`
   background: ${light};
@@ -23,7 +23,7 @@ const MenuBox = styled.nav`
       font-weight: bold;
 
       &.on {
-        background: ${primary};
+        background: ${midGreen};
       }
     }
   }
@@ -52,7 +52,8 @@ const MainMenu = () => {
       <div className="layout-width">
         <div className="left-menu">
           <NavLink
-            to="/reservation"
+
+to="/reservation"
             className={({ isActive }) => classNames({ on: isActive })}
           >
             {t('농촌체험 예약')}
