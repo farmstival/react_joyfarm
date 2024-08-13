@@ -64,10 +64,11 @@ const LoginContainer = () => {
           cookies.save('token', token, { path: '/' });
 
           (async () => {
+            //토큰을 쿠키에 저장->요청 보낼 때마다 실어서 보내기 위함
             try {
               // 로그인 처리
               const user = await apiUser();
-              
+
               setIsLogin(true); // 로그인 상태
 
               setUserInfo(user);
