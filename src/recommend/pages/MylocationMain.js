@@ -59,7 +59,7 @@ const TravelMain = () => {
             <PageTitle>
             <h1>주변 농촌 체험 정보</h1>
                 {/* 아직 options 못 넣음...! */}
-                
+
             </PageTitle>
           </PageNavSubWrap>
         </PageNavWrap>
