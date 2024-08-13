@@ -49,10 +49,8 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
-// 관리자 URL
-const adminUrl =
-  process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
-console.log(adminUrl);
+
+  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
 
   return (
     <HeaderBox>
@@ -65,7 +63,7 @@ console.log(adminUrl);
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span> */}
               {isAdmin && (
-                  <a href={adminUrl} target="_blank">
+                <a href={adminUrl} target="_blank">
                   <GrUserManager />
                   {t('사이트_관리')}
                 </a>

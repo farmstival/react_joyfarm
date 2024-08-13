@@ -47,6 +47,11 @@ const MyReservationMain = loadable(() =>
 const CommunityMain = loadable(() => import('./community/pages/CommunityMain'));
 /* 게시판 페이지 E */
 
+/* 축제 페이지 S */
+const FestivalList = loadable(() => import("./recommend/Festival/pages/FestivalList"));
+const FestivalView = loadable(() => import("./recommend/Festival/pages/FestivalView"));
+/* 축제 페이지 E */
+
 const App = () => {
   return (
     <Routes>
@@ -94,6 +99,10 @@ const App = () => {
           <Route path=":category?" element={<CommunityMain />} />
         </Route>
         {/* 게시판 페이지 E */}
+        <Route path="/festival" >
+            <Route index element={<FestivalList/>} />
+            <Route path=":id" element={<FestivalView/>}/>
+        </Route>
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
     </Routes>
