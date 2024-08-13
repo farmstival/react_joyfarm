@@ -1,25 +1,21 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-
-import { FaSearch } from 'react-icons/fa';
-
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
-import { SmallButton } from '../commons/components/Buttons';
+import { GrUserManager } from 'react-icons/gr';
+import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
 
-const { primary, dark, light } = color;
+const { midGreen } = color;
 
 const HeaderBox = styled.header`
   .site-top {
-    background: #f8f8f8;
-    border-bottom: 1px solid #d5d5d5;
+    background: #fff;
     height: 35px;
 
     div {
@@ -28,44 +24,11 @@ const HeaderBox = styled.header`
       a {
         display: inline-block;
         line-height: 34px;
-        margin-left: 10px;
+        margin: 0 10px;
         font-size: ${fontSize.normal};
 
         &.on {
-          color: ${primary};
-        }
-      }
-    }
-  }
-
-  .logo-search {
-    div {
-      display: flex;
-      justify-content: space-between;
-      height: 150px;
-      align-items: center;
-
-      form {
-        display: flex;
-        height: 45px;
-        width: 380px;
-
-        button {
-          width: 45px;
-          background: ${dark};
-          border: 0;
-          cursor: pointer;
-
-          svg {
-            color: ${light};
-            font-size: 1.75rem;
-          }
-        }
-
-        input[type='text'] {
-          flex-grow: 1;
-          border: 5px solid ${dark};
-          padding: 0 10px;
+          color: ${midGreen};
         }
       }
     }
@@ -76,15 +39,15 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
-    actions: {setIsLogin, setIsAdmin, setUserInfo},
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
 
   const onLogout = useCallback(() => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
-    cookies.remove("token", { path: '/' });
-  },[setIsLogin, setIsAdmin,setUserInfo]);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   return (
     <HeaderBox>
@@ -93,26 +56,29 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-              <span>
+              {/* <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span>
-              <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
+              </span> */}
               {isAdmin && (
                 <NavLink
                   to="/admin"
                   className={({ isActive }) => classNames({ on: isActive })}
                 >
+                  <GrUserManager />
                   {t('사이트_관리')}
                 </NavLink>
               )}
-              <SmallButton color="secondary" width={150} onClick={onLogout}>
+              <NavLink
+                to="/mypage"
+                className={({ isActive }) => classNames({ on: isActive })}
+              >
+                <BiWinkSmile />
+                {t('마이페이지')}
+              </NavLink>
+              <NavLink onClick={onLogout}>
+                <BiLockOpen />
                 {t('로그아웃')}
-              </SmallButton>
+              </NavLink>
               {/*
               <NavLink
                 to="/member/logout"
@@ -128,30 +94,18 @@ const Header = () => {
                 to="/member/join"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
+                <BiUserPlus />
                 {t('회원가입')}
               </NavLink>
               <NavLink
                 to="/member/login"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
+                <BiLock />
                 {t('로그인')}
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo-search">
-        <div className="layout-width">
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
-
-          <form autoComplete="off">
-            <input type="text" />
-            <button type="submit">
-              <FaSearch />
-            </button>
-          </form>
         </div>
       </section>
       <MainMenu />

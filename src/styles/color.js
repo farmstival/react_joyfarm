@@ -5,8 +5,11 @@ export const color = {
   danger: '#dc3545',
   warning: '#ffc107',
   info: '#17a2b8',
-  light: '#f8f9fa',
+  light: '#fff',
   dark: '#343a40',
+  darkGreen: '#2A4840',
+  midGreen: '#39AE48',
+  rightGreen: '#90DB7C',
 };
 
 export const buttonColor = {
@@ -18,4 +21,7 @@ export const buttonColor = {
   info: [color.info, '#fff', color.info],
   light: [color.light, '#212529', '#212529'],
   dark: [color.dark, '#fff', color.dark],
+  darkGreen: [color.darkGreen, '#fff', color.darkGreen],
+  midGreen: [color.midGreen, '#fff', color.midGreen],
+  rightGreen: [color.rightGreen, '#fff', color.rightGreen],
 };

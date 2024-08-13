@@ -15,10 +15,6 @@ const Login = loadable(() => import('./member/pages/Login'));
 const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 마이페이지 E */
 
-/* 뉴스 페이지 S */
-const News = loadable(() => import('./news/pages/News'));
-/* 뉴스 페이지 E */
-
 /* 농촌체험 예약 페이지 S */
 const ReservationMain = loadable(() =>
   import('./reservation/pages/ReservationMain'),
@@ -26,8 +22,16 @@ const ReservationMain = loadable(() =>
 /* 농촌체험 예약 페이지 E */
 
 /* 여행 추천 페이지 S */
-const TravelMain = loadable(() => import('./travel_festival/pages/TravelMain'));
+const TravelMain = loadable(() => import('./recommend/pages/TravelMain'));
 /* 여행 추천 페이지 E */
+
+/* 지역별 축제 정보 페이지 S */
+const FestivalMain = loadable(() => import('./recommend/pages/FestivalMain'));
+/* 지역별 축제 정보 페이지 E */
+
+/* 주변 농촌 체험 정보 S */
+const MylocationMain = loadable(() => import('./recommend/pages/MylocationMain'));
+/* 주변 농촌 체험 정보 E */
 
 /* 나의 예약현황 페이지 S */
 const MyReservationMain = loadable(() =>
@@ -55,19 +59,22 @@ const App = () => {
           <Route index element={<MypageMain />} />
         </Route>
         {/* 마이페이지 E */}
-        {/* 뉴스 페이지 S */}
-        <Route path="news">
-          <Route path=":category?" element={<News />} />
-        </Route>
-        {/* 뉴스 페이지 E */}
         {/* 농촌체험 예약 페이지 S */}
         <Route path="reservation">
           <Route path=":category?" element={<ReservationMain />} />
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
-        <Route path="travel_festival">
+        <Route path="recommend/travel">
           <Route path=":category?" element={<TravelMain />} />
+        </Route>
+        {/* 지역별 축제 페이지 */}
+        <Route path="recommend/festival">
+          <Route path=":category?" element={<FestivalMain></FestivalMain>} />
+        </Route>
+        {/* 주변 농촌 체험 정보 */}
+        <Route path="recommend/mylocation">
+          <Route path=":category?" element={<MylocationMain></MylocationMain>} />
         </Route>
         {/* 여행 추천 페이지 E */}
         {/* 나의 예약현황 페이지 S */}

@@ -16,7 +16,7 @@ const TravelMain = () => {
                 <title>{t('조이팜의 추천여행')}</title>
             </Helmet>
             <OuterBox className="layout-width">
-                <h1>여행, 축제 페이지</h1>
+                <h1>여행 페이지</h1>
             </OuterBox>
         </>      
     );
