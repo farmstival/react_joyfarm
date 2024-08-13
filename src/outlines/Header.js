@@ -15,8 +15,8 @@ const { primary } = color;
 
 const HeaderBox = styled.header`
   .site-top {
-    background: #f8f8f8;
-    border-bottom: 1px solid #d5d5d5;
+    background: {white};
+    
     height: 35px;
 
     div {
@@ -121,13 +121,6 @@ const Header = () => {
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo">
-        <div className="layout-width">
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
         </div>
       </section>
       <MainMenu />
