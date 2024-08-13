@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import KakaoMap from '../../map/KakaoMap';
 
 const OuterBox = styled.div`
   margin-bottom: 150px;
@@ -37,12 +38,17 @@ const ContentBox = styled.div`
   border: solid 1.5px rgb(221, 221, 221);
 `;
 
+const options = {
+    currentLocation: true,
+    zoom: 3,
+  };
+
 const TravelMain = () => {
   const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>{t('지역별 축제 정보')}</title>
+        <title>{t('주변 농촌 체험 정보')}</title>
       </Helmet>
       <OuterBox>
         <PageNavWrap>
@@ -51,12 +57,14 @@ const TravelMain = () => {
               <h3>이동 / 이동 / 이동</h3>
             </PageNav>
             <PageTitle>
-              <h1>지역별 축제 정보</h1>
+            <h1>주변 농촌 체험 정보</h1>
+                {/* 아직 options 못 넣음...! */}
+                
             </PageTitle>
           </PageNavSubWrap>
         </PageNavWrap>
         <ContentBox>
-          <h2>지도 클릭하면 지역별 축제를 검색합니다.</h2>
+          <KakaoMap {...options} />;
         </ContentBox>
       </OuterBox>
     </>
