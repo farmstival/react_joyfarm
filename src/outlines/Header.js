@@ -49,6 +49,10 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
+  //관리자 url, 환경 변수로 추가함
+  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
+  console.log(adminUrl);
+
   return (
     <HeaderBox>
       <section className="site-top">
@@ -60,13 +64,10 @@ const Header = () => {
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span> */}
               {isAdmin && (
-                <NavLink
-                  to="/admin"
-                  className={({ isActive }) => classNames({ on: isActive })}
-                >
-                  <GrUserManager />
+                <a href={adminUrl} target="_blank">
                   {t('사이트_관리')}
-                </NavLink>
+                </a>
+                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
               )}
               <NavLink
                 to="/mypage"

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
+import Reservation from './routes/Reservation';
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
@@ -16,9 +17,10 @@ const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 마이페이지 E */
 
 /* 농촌체험 예약 페이지 S */
-const ReservationMain = loadable(() =>
-  import('./reservation/pages/ReservationMain'),
-);
+const ReservationMain = loadable(() => //지연로딩, 페이지 접근 시 로딩
+  import('./reservation/pages/ReservationMain'));
+const ReservationView = loadable(() =>
+  import('./reservation/pages/ReservationView'));
 /* 농촌체험 예약 페이지 E */
 
 /* 여행 추천 페이지 S */
@@ -61,7 +63,8 @@ const App = () => {
         {/* 마이페이지 E */}
         {/* 농촌체험 예약 페이지 S */}
         <Route path="reservation">
-          <Route path=":category?" element={<ReservationMain />} />
+          <Route index element={<ReservationMain />}/>
+          <Route path=":category?" element={<ReservationView />} />
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
