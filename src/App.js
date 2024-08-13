@@ -65,15 +65,15 @@ const App = () => {
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
-        <Route path="recommend">
+        <Route path="recommend/travel">
           <Route path=":category?" element={<TravelMain />} />
         </Route>
         {/* 지역별 축제 페이지 */}
-        <Route path="festival">
+        <Route path="recommend/festival">
           <Route path=":category?" element={<FestivalMain></FestivalMain>} />
         </Route>
         {/* 주변 농촌 체험 정보 */}
-        <Route path="mylocation">
+        <Route path="recommend/mylocation">
           <Route path=":category?" element={<MylocationMain></MylocationMain>} />
         </Route>
         {/* 여행 추천 페이지 E */}
