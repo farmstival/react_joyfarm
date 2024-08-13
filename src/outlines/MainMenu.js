@@ -7,7 +7,7 @@ import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 import logo from '../images/JoyFarm.png';
 
-const { dark, light, midGreen, white } = color;
+const { dark, light, midGreen, white, lightGreen } = color;
 
 const MenuBox = styled.nav`
   background: ${light};
@@ -18,12 +18,10 @@ const MenuBox = styled.nav`
 
      a {
       color: ${dark};
-      width:20%;
-      line-height: 100px;
+      line-height: 50px;
       padding: 0 20px; /* 적절한 패딩 설정 */
       font-size: ${fontSize.medium};
       font-weight: bold;
-      position: relative; /* 드롭다운 메뉴를 위한 상대 위치 */
       text-align: center; /* 텍스트 중앙 정렬 */
       flex-grow: 1; /* 메뉴 항목이 flex 컨테이너의 가용 공간을 채우도록 설정 */
 
@@ -34,31 +32,9 @@ const MenuBox = styled.nav`
         color: ${midGreen};
       }
 
-      &:hover .dropdown {
-        display: block; /* 마우스를 올렸을 때 드롭다운 메뉴 표시 */
-      }
-    }
-  }
-
-  .dropdown {
-    display: none;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 100%; /* 부모 요소의 너비를 따름 */
-    background: ${light};
-    z-index: 1;
-
-    a {
-      display: block;
-      padding: 10px 50px;
-      line-height: normal;
-      font-size: ${fontSize.small};
-      color: ${dark};
-
-      &:hover {
-        background: ${white};
-      }
+    &:hover .sub-menu {
+    display: flex;
+      } 
     }
   }
 
@@ -77,24 +53,61 @@ const MenuBox = styled.nav`
   }
 `;
 
+const MenuItem = styled.div`
+  position: relative;
+  display: inline-block;
+  margin: 0 px;
+
+  &:hover .sub-menu {
+    display: flex;
+  }
+`;
+
+const SubMenu = styled.div`
+  position: absolute;
+  top: 50px;
+  display: none;
+
+  background: ${lightGreen};
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  z-index: 1000;
+
+  a {
+    padding: 10px 20px;
+    color: ${light};
+    font-size: ${fontSize.small};
+    text-decoration: none;
+
+    &:hover {
+      background: ${lightGreen};
+    }
+  }
+`;
+
 const MainMenu = () => {
   const { t } = useTranslation();
 
   return (
     <MenuBox>
       <div className="layout-width">
-        <NavLink
-          to="/reservation"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('농촌체험 예약')}
-        </NavLink>
-        <NavLink
-          to="/my_reservation"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('나의 예약현황')}
-        </NavLink>
+        <MenuItem>
+          <NavLink
+            to="/reservation"
+            className={({ isActive }) => classNames({ on: isActive })}
+          >
+            {t('농촌체험 예약')}
+          </NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink
+            to="/my_reservation"
+            className={({ isActive }) => classNames({ on: isActive })}
+          >
+            {t('나의 예약현황')}
+          </NavLink>
+        </MenuItem>
 
         <section className="logo">
           <Link to="/">
@@ -102,18 +115,30 @@ const MainMenu = () => {
           </Link>
         </section>
 
-        <NavLink
-          to="/recommend"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('조이팜의 추천')}
-        </NavLink>
-        <NavLink
-          to="/community"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('커뮤니티')}
-        </NavLink>
+        <MenuItem>
+          <NavLink
+            to="/recommend"
+            className={({ isActive }) => classNames({ on: isActive })}
+          >
+            {t('조이팜의 추천')}
+          </NavLink>
+          <SubMenu className="sub-menu">
+            <NavLink to="/recommend/sub1">{t('추천 서브메뉴 1')}</NavLink>
+            <NavLink to="/recommend/sub2">{t('추천 서브메뉴 2')}</NavLink>
+          </SubMenu>
+        </MenuItem>
+        <MenuItem>
+          <NavLink
+            to="/community"
+            className={({ isActive }) => classNames({ on: isActive })}
+          >
+            {t('커뮤니티')}
+          </NavLink>
+          <SubMenu className="sub-menu">
+            <NavLink to="/community/sub1">{t('커뮤니티 서브메뉴 1')}</NavLink>
+            <NavLink to="/community/sub2">{t('커뮤니티 서브메뉴 2')}</NavLink>
+          </SubMenu>
+        </MenuItem>
       </div>
     </MenuBox>
   );
