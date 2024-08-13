@@ -7,7 +7,7 @@ import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 import logo from '../images/JoyFarm.png';
 
-const { dark, light, midGreen } = color;
+const { dark, light, midGreen, white } = color;
 
 const MenuBox = styled.nav`
   background: ${light};
@@ -16,12 +16,49 @@ const MenuBox = styled.nav`
     display: flex;
     height: 50px;
 
-    a {
+     a {
       color: ${dark};
-      line-height: 50px;
-      padding: 0 20px;
+      width:20%;
+      line-height: 100px;
+      padding: 0 20px; /* 적절한 패딩 설정 */
       font-size: ${fontSize.medium};
       font-weight: bold;
+      position: relative; /* 드롭다운 메뉴를 위한 상대 위치 */
+      text-align: center; /* 텍스트 중앙 정렬 */
+      flex-grow: 1; /* 메뉴 항목이 flex 컨테이너의 가용 공간을 채우도록 설정 */
+
+     &:hover {
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 10px;
+        color: ${midGreen};
+      }
+
+      &:hover .dropdown {
+        display: block; /* 마우스를 올렸을 때 드롭다운 메뉴 표시 */
+      }
+    }
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%; /* 부모 요소의 너비를 따름 */
+    background: ${light};
+    z-index: 1;
+
+    a {
+      display: block;
+      padding: 10px 50px;
+      line-height: normal;
+      font-size: ${fontSize.small};
+      color: ${dark};
+
+      &:hover {
+        background: ${white};
+      }
     }
   }
 
