@@ -1,12 +1,11 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/JoyFarm.png';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -15,8 +14,7 @@ const { primary } = color;
 
 const HeaderBox = styled.header`
   .site-top {
-    background: #f8f8f8;
-    border-bottom: 1px solid #d5d5d5;
+    background: #fff;
     height: 35px;
 
     div {
@@ -76,22 +74,16 @@ const Header = () => {
                   to="/admin"
                   className={({ isActive }) => classNames({ on: isActive })}
                 >
-                  <SmallButton color="darkGreen" width={150}>
                     {t('사이트_관리')}
-                  </SmallButton>
                 </NavLink>
               )}
               <NavLink
                 to="/mypage"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <SmallButton color="midGreen" width={150}>
                   {t('마이페이지')}
-                </SmallButton>
               </NavLink>
-              <SmallButton color="rightGreen" width={150} onClick={onLogout}>
                 {t('로그아웃')}
-              </SmallButton>
               {/*
               <NavLink
                 to="/member/logout"
@@ -107,27 +99,16 @@ const Header = () => {
                 to="/member/join"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <SmallButton color="midGreen" width={150}>
                   {t('회원가입')}
-                </SmallButton>
               </NavLink>
               <NavLink
                 to="/member/login"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <SmallButton color="rightGreen" width={150} onClick={onLogout}>
                   {t('로그인')}
-                </SmallButton>
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo">
-        <div className="layout-width">
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
         </div>
       </section>
       <MainMenu />
