@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
@@ -7,166 +7,129 @@ import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 import logo from '../images/logo.png';
 
-
-
 const { dark, light, midGreen, white } = color;
 
 const MenuBox = styled.nav`
   background: ${white};
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  font-size: ${fontSize.medium};
+  font-weight: bold;
+  align-items: center;
+  height: 100px; /* Adjust the height as needed */
+`;
 
-  
-  .logobox {
-    width: 1440/5px;
+const MenuItem = styled.div`
+  position: relative;
+  display: inline-block;
+  margin: 0 10px;
 
-    img {
-      max-width: 100%; /* 이미지의 너비를 최대 100px로 설정 */
-      height: 100%; /* 높이는 자동으로 조절 */
-      display: block;
-      margin: 0 auto; /* 이미지가 박스 안에서 가운데 정렬되도록 설정 */
+  a {
+    color: ${dark};
+    line-height: 60px; /* Adjust line-height to match height of MenuBox */
+    padding: 0 20px;
+    font-size: ${fontSize.medium};
+    text-decoration: none;
+    display: block;
+
+    &.on {
+      background: ${white};
+    }
+
+    &:hover {
+      background: ${white};
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 10px;
+      color: ${midGreen};
     }
   }
 
-  div {
+  &:hover .sub-menu {
     display: flex;
-    height: 100px;
-    position: relative; /* 드롭다운 메뉴를 위한 상대 위치 */
-
-    a {
-      color: ${dark};
-      width: 20%;
-      line-height: 100px;
-      padding: 0 20px; /* 적절한 패딩 설정 */
-      font-size: ${fontSize.medium};
-      font-weight: bold;
-      position: relative; /* 드롭다운 메뉴를 위한 상대 위치 */
-      text-align: center; /* 텍스트 중앙 정렬 */
-      flex-grow: 1; /* 메뉴 항목이 flex 컨테이너의 가용 공간을 채우도록 설정 */
-
-      &.on, &:hover {
-        text-decoration-line: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 10px;
-        color: ${midGreen};
-      }
-
-      &:hover .dropdown {
-        display: block; /* 마우스를 올렸을 때 드롭다운 메뉴 표시 */
-      }
-    }
   }
+`;
 
-  .dropdown {
-    display: none;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 100%; /* 부모 요소의 너비를 따름 */
-    background: ${light};
-    z-index: 1;
+const SubMenu = styled.div`
+  position: absolute;
+  top: 60px; /* Adjust top value to align below the parent menu item */
+  left: 0;
+  background: ${white};
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  z-index: 1000;
 
-    a {
-      display: block;
-      padding: 10px 50px;
-      line-height: normal;
-      font-size: ${fontSize.small};
-      color: ${dark};
+  a {
+    padding: 10px 20px;
+    color: ${dark};
+    font-size: ${fontSize.small};
+    text-decoration: none;
 
-      &:hover {
-        background: ${white};
-      }
-    }
-  }
-
-  .layout-width {
-    display: flex;
-    justify-content: space-between;
-
-    img {
-      width: 150px;
-      align-items: center;
-      margin: 0 40px;
+    &:hover {
+      background: ${white};
     }
   }
 `;
 
+const Logo = styled.section`
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+
+  img {
+    width: 100px; /* Adjust the width of the logo as needed */
+    height: auto; /* Keep aspect ratio */
+  }
+`;
 
 const MainMenu = () => {
   const { t } = useTranslation();
-  const [dropdown, setDropdown] = useState(null);
-
-  const handleMouseEnter = (menu) => {
-    setDropdown(menu);
-  };
-
-  const handleMouseLeave = () => {
-    setDropdown(null);
-  };
 
   return (
     <MenuBox>
-      <div className="layout-width">
-        <NavLink
-          to="/reservation"
-          className={({ isActive }) => classNames({ on: isActive })}
-          onMouseEnter={() => handleMouseEnter('reservation')}
-          onMouseLeave={handleMouseLeave}
-        >
+      <MenuItem>
+        <NavLink to="/reservation" className={({ isActive }) => isActive ? 'on' : ''}>
           {t('농촌체험 예약')}
-          {dropdown === 'reservation' && (
-            <div className="dropdown">
-              <NavLink to="/reservation/menu1">{t('메뉴1')}</NavLink>
-              <NavLink to="/reservation/menu2">{t('메뉴2')}</NavLink>
-            </div>
-          )}
         </NavLink>
-        <NavLink
-          to="/my_reservation"
-          className={({ isActive }) => classNames({ on: isActive })}
-          onMouseEnter={() => handleMouseEnter('my_reservation')}
-          onMouseLeave={handleMouseLeave}
-        >
-          {t('나의 예약현황')}
-          {dropdown === 'my_reservation' && (
-            <div className="dropdown">
-              <NavLink to="/my_reservation/menu1">{t('메뉴1')}</NavLink>
-              <NavLink to="/my_reservation/menu2">{t('메뉴2')}</NavLink>
-            </div>
-          )}
-        </NavLink>
-        <section className="logo">
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
-        </section>
-        <NavLink
-          to="/recommend"
-          className={({ isActive }) => classNames({ on: isActive })}
-          onMouseEnter={() => handleMouseEnter('recommend')}
-          onMouseLeave={handleMouseLeave}
-        >
+        <SubMenu className="sub-menu">
+          <NavLink to="/reservation/sub1">{t('예약 서브메뉴 1')}</NavLink>
+          <NavLink to="/reservation/sub2">{t('예약 서브메뉴 2')}</NavLink>
+        </SubMenu>
+      </MenuItem>
+      <MenuItem>
+        <NavLink to="/recommend" className={({ isActive }) => isActive ? 'on' : ''}>
           {t('조이팜의 추천')}
-          {dropdown === 'recommend' && (
-            <div className="dropdown">
-              <NavLink to="/recommend/menu1">{t('메뉴1')}</NavLink>
-              <NavLink to="/recommend/menu2">{t('메뉴2')}</NavLink>
-            </div>
-          )}
         </NavLink>
-        <NavLink
-          to="/community"
-          className={({ isActive }) => classNames({ on: isActive })}
-          onMouseEnter={() => handleMouseEnter('community')}
-          onMouseLeave={handleMouseLeave}
-        >
+        <SubMenu className="sub-menu">
+          <NavLink to="/recommend/sub1">{t('추천 서브메뉴 1')}</NavLink>
+          <NavLink to="/recommend/sub2">{t('추천 서브메뉴 2')}</NavLink>
+        </SubMenu>
+      </MenuItem>
+      <Logo>
+        <Link to="/">
+          <img src={logo} alt={t('로고')} />
+        </Link>
+      </Logo>
+      <MenuItem>
+        <NavLink to="/my_reservation" className={({ isActive }) => isActive ? 'on' : ''}>
+          {t('나의 예약현황')}
+        </NavLink>
+        <SubMenu className="sub-menu">
+          <NavLink to="/my_reservation/sub1">{t('예약현황 서브메뉴 1')}</NavLink>
+          <NavLink to="/my_reservation/sub2">{t('예약현황 서브메뉴 2')}</NavLink>
+        </SubMenu>
+      </MenuItem>
+      <MenuItem>
+        <NavLink to="/community" className={({ isActive }) => isActive ? 'on' : ''}>
           {t('커뮤니티')}
-          {dropdown === 'community' && (
-            <div className="dropdown">
-              <NavLink to="/community/menu1">{t('메뉴1')}</NavLink>
-              <NavLink to="/community/menu2">{t('메뉴2')}</NavLink>
-            </div>
-          )}
         </NavLink>
-      </div>
+        <SubMenu className="sub-menu">
+          <NavLink to="/community/sub1">{t('커뮤니티 서브메뉴 1')}</NavLink>
+          <NavLink to="/community/sub2">{t('커뮤니티 서브메뉴 2')}</NavLink>
+        </SubMenu>
+      </MenuItem>
     </MenuBox>
   );
 };
