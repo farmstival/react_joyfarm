@@ -9,7 +9,7 @@ import { FaSearch } from 'react-icons/fa';
 
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
+import logo from '../images/JoyFarm.png';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -45,6 +45,10 @@ const HeaderBox = styled.header`
       height: 150px;
       align-items: center;
 
+      img {
+        width: 250px;
+      }
+
       form {
         display: flex;
         height: 45px;
@@ -76,15 +80,15 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
-    actions: {setIsLogin, setIsAdmin, setUserInfo},
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
 
   const onLogout = useCallback(() => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
-    cookies.remove("token", { path: '/' });
-  },[setIsLogin, setIsAdmin,setUserInfo]);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   return (
     <HeaderBox>
