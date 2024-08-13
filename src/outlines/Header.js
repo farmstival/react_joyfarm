@@ -8,7 +8,6 @@ import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
-import { SmallButton } from '../commons/components/Buttons';
 
 const { primary } = color;
 
