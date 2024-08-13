@@ -35,11 +35,14 @@ const ContentBox = styled.div`
   padding: 0 20px 50px 20px;
   margin: 0 auto;
   border: solid 1.5px rgb(221, 221, 221);
+<<<<<<< HEAD
   text-align: center;
   align-item: center;
   img {
     width: 50%;
   }
+=======
+>>>>>>> 6a8c4bf156d5869fac1e6a3b4b5f9bccc9974f5e
 `;
 
 const TravelMain = () => {
@@ -62,7 +65,10 @@ const TravelMain = () => {
         </PageNavWrap>
         <ContentBox>
           <h2>지도 클릭하면 지역별 축제를 검색합니다.</h2>
+<<<<<<< HEAD
           <img src={process.env.PUBLIC_URL + '/무색.png'}/>
+=======
+>>>>>>> 6a8c4bf156d5869fac1e6a3b4b5f9bccc9974f5e
         </ContentBox>
       </OuterBox>
     </>
