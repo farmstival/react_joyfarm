@@ -22,8 +22,8 @@ export const SmallButton = styled.button`
     `}
 
   ${({ width }) => css`
-    width: ${width}px;
-  `}  
+    width: ${width && '100px'};
+  `}
 `;
 
 export const MidButton = styled.button`
