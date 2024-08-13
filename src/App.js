@@ -22,15 +22,19 @@ const ReservationMain = loadable(() =>
 /* 농촌체험 예약 페이지 E */
 
 /* 여행 추천 페이지 S */
-const TravelMain = loadable(() => import('./recommend/pages/TravelMain'));
+const TravelMain = loadable(() => import('./recommend/tour/pages/TravelMain'));
 /* 여행 추천 페이지 E */
 
 /* 지역별 축제 정보 페이지 S */
 const FestivalMain = loadable(() => import('./recommend/pages/FestivalMain'));
+const TourList = loadable(() => import('./recommend/tour/pages/TourList'));
+const TourView = loadable(() => import('./recommend/tour/pages/TourView'));
 /* 지역별 축제 정보 페이지 E */
 
 /* 주변 농촌 체험 정보 S */
-const MylocationMain = loadable(() => import('./recommend/pages/MylocationMain'));
+const MylocationMain = loadable(() =>
+  import('./recommend/pages/MylocationMain'),
+);
 /* 주변 농촌 체험 정보 E */
 
 /* 나의 예약현황 페이지 S */
@@ -74,7 +78,10 @@ const App = () => {
         </Route>
         {/* 주변 농촌 체험 정보 */}
         <Route path="recommend/mylocation">
-          <Route path=":category?" element={<MylocationMain></MylocationMain>} />
+          <Route
+            path=":category?"
+            element={<MylocationMain></MylocationMain>}
+          />
         </Route>
         {/* 여행 추천 페이지 E */}
         {/* 나의 예약현황 페이지 S */}
