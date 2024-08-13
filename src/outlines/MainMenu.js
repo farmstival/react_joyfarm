@@ -123,8 +123,9 @@ const MainMenu = () => {
             {t('조이팜의 추천')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/recommend/sub1">{t('추천 서브메뉴 1')}</NavLink>
-            <NavLink to="/recommend/sub2">{t('추천 서브메뉴 2')}</NavLink>
+            <NavLink to="/recommend/travel">{t('추천 여행지')}</NavLink>
+            <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
+            <NavLink to="/recommend/mylocation">{t('내 위치 주변 여행지')}</NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
