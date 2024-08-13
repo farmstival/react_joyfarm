@@ -76,15 +76,15 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
-    actions: {setIsLogin, setIsAdmin, setUserInfo},
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
 
   const onLogout = useCallback(() => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
-    cookies.remove("token", { path: '/' });
-  },[setIsLogin, setIsAdmin,setUserInfo]);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   return (
     <HeaderBox>
