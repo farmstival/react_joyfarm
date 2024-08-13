@@ -35,6 +35,11 @@ const ContentBox = styled.div`
   padding: 0 20px 50px 20px;
   margin: 0 auto;
   border: solid 1.5px rgb(221, 221, 221);
+  text-align: center;
+  align-item: center;
+  img {
+    width: 50%;
+  }
 `;
 
 const TravelMain = () => {
@@ -57,6 +62,7 @@ const TravelMain = () => {
         </PageNavWrap>
         <ContentBox>
           <h2>지도 클릭하면 지역별 축제를 검색합니다.</h2>
+          <img src={process.env.PUBLIC_URL + '/무색.png'}/>
         </ContentBox>
       </OuterBox>
     </>
