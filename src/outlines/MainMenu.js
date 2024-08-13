@@ -51,8 +51,6 @@ const MenuItem = styled.div`
 
   &:hover .sub-menu {
     display: flex;
-    opacity: 1;
-    transform: translateY(0);
   }
 `;
 
@@ -60,15 +58,12 @@ const SubMenu = styled.div`
   position: absolute;
   top: 80px;
   // left: 10px;
-  background: ${white};
+  background: ${light};
   display: none;
   flex-direction: column;
   width: 200px;
   height: auto;
   z-index: 1000;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
 
   a {
     padding: 0 20px;
