@@ -22,10 +22,6 @@ const MenuBox = styled.nav`
       padding: 0 20px;
       font-size: ${fontSize.medium};
       font-weight: bold;
-
-      &.on {
-        background: ${midGreen};
-      }
     }
   }
 

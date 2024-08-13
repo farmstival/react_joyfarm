@@ -8,8 +8,10 @@ import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
+import { GrUserManager } from 'react-icons/gr';
+import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
 
-const { primary } = color;
+const { midGreen } = color;
 
 const HeaderBox = styled.header`
   .site-top {
@@ -22,26 +24,15 @@ const HeaderBox = styled.header`
       a {
         display: inline-block;
         line-height: 34px;
+        margin: 0 10px;
         font-size: ${fontSize.normal};
 
         &.on {
-          color: ${primary};
+          color: ${midGreen};
         }
       }
     }
   }
-
-  .logo {
-    div {
-      display: flex;
-      justify-content: center;
-      height: 150px;
-      align-items: center;
-
-      img {
-        width: 250px;
-      }
-    }
 `;
 
 const Header = () => {
@@ -73,16 +64,21 @@ const Header = () => {
                   to="/admin"
                   className={({ isActive }) => classNames({ on: isActive })}
                 >
-                    {t('사이트_관리')}
+                  <GrUserManager />
+                  {t('사이트_관리')}
                 </NavLink>
               )}
               <NavLink
                 to="/mypage"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                  {t('마이페이지')}
+                <BiWinkSmile />
+                {t('마이페이지')}
               </NavLink>
+              <NavLink onClick={onLogout}>
+                <BiLockOpen />
                 {t('로그아웃')}
+              </NavLink>
               {/*
               <NavLink
                 to="/member/logout"
@@ -98,13 +94,15 @@ const Header = () => {
                 to="/member/join"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                  {t('회원가입')}
+                <BiUserPlus />
+                {t('회원가입')}
               </NavLink>
               <NavLink
                 to="/member/login"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                  {t('로그인')}
+                <BiLock />
+                {t('로그인')}
               </NavLink>
             </>
           )}
