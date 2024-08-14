@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 // 로그인 처리
 export const apiLogin = (form) =>
   new Promise((resolve, reject) => {
-    cookies.remove('token', { path: '/' });
+    cookies.remove('token', { path: '/' }); //로그인 하기 전에는 토큰 필요없음 -> 제거
     apiRequest('/account/token', 'POST', form)
       .then((res) => {
         if (!res.data.success) {
@@ -28,6 +28,7 @@ export const apiUser = () =>
           //200이 아닐 경우 실패
           reject(res.data);
           cookies.remove('token', { path: '/' });
+          //응답코드 200 아니면, 토큰 제거
           return;
         }
         resolve(res.data.data); //성공

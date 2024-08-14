@@ -1,6 +1,6 @@
-import requestData from '../../../commons/libs/requestData';
+import requestData from "../../../commons/libs/requestData";
 
-/* 목록 조회 */
+// 목록 조회
 export const apiList = (search) => {
   search = search ?? {};
   const qs = [];
@@ -14,7 +14,5 @@ export const apiList = (search) => {
   return requestData(url);
 };
 
-/* 상세 조회 */
-export const apiGet = (seq) => {
-  requestData(`/tour/info/${seq}`);
-};
+// 상세 조회
+export const apiGet = (seq) => requestData(`/tour/info/${seq}`);
