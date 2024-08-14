@@ -30,7 +30,9 @@ const FestivalMain = loadable(() => import('./recommend/pages/FestivalMain'));
 /* 지역별 축제 정보 페이지 E */
 
 /* 주변 농촌 체험 정보 S */
-const MylocationMain = loadable(() => import('./recommend/pages/MylocationMain'));
+const MylocationMain = loadable(() =>
+  import('./recommend/pages/MylocationMain'),
+);
 /* 주변 농촌 체험 정보 E */
 
 /* 나의 예약현황 페이지 S */
@@ -42,6 +44,11 @@ const MyReservationMain = loadable(() =>
 /* 게시판 페이지 S */
 const CommunityMain = loadable(() => import('./community/pages/CommunityMain'));
 /* 게시판 페이지 E */
+
+/* 축제 페이지 S */
+const FestivalList = loadable(() => import("./recommend/Festival/pages/FestivalList"));
+const FestivalView = loadable(() => import("./recommend/Festival/pages/FestivalView"));
+/* 축제 페이지 E */
 
 const App = () => {
   return (
@@ -74,7 +81,10 @@ const App = () => {
         </Route>
         {/* 주변 농촌 체험 정보 */}
         <Route path="recommend/mylocation">
-          <Route path=":category?" element={<MylocationMain></MylocationMain>} />
+          <Route
+            path=":category?"
+            element={<MylocationMain></MylocationMain>}
+          />
         </Route>
         {/* 여행 추천 페이지 E */}
         {/* 나의 예약현황 페이지 S */}
@@ -87,6 +97,10 @@ const App = () => {
           <Route path=":category?" element={<CommunityMain />} />
         </Route>
         {/* 게시판 페이지 E */}
+        <Route path="/festival" >
+            <Route index element={<FestivalList/>} />
+            <Route path=":id" element={<FestivalView/>}/>
+        </Route>
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
     </Routes>

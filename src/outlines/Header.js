@@ -49,6 +49,9 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
+
+  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
+
   return (
     <HeaderBox>
       <section className="site-top">
@@ -60,13 +63,10 @@ const Header = () => {
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span> */}
               {isAdmin && (
-                <NavLink
-                  to="/admin"
-                  className={({ isActive }) => classNames({ on: isActive })}
-                >
+                <a href={adminUrl} target="_blank">
                   <GrUserManager />
                   {t('사이트_관리')}
-                </NavLink>
+                </a>
               )}
               <NavLink
                 to="/mypage"
