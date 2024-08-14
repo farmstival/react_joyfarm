@@ -4,17 +4,14 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-
-import { FaSearch } from 'react-icons/fa';
-
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
+import logo from '../images/JoyFarm.png';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
 
-const { primary, dark, light } = color;
+const { primary } = color;
 
 const HeaderBox = styled.header`
   .site-top {
@@ -28,7 +25,6 @@ const HeaderBox = styled.header`
       a {
         display: inline-block;
         line-height: 34px;
-        margin-left: 10px;
         font-size: ${fontSize.normal};
 
         &.on {
@@ -38,38 +34,17 @@ const HeaderBox = styled.header`
     }
   }
 
-  .logo-search {
+  .logo {
     div {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       height: 150px;
       align-items: center;
 
-      form {
-        display: flex;
-        height: 45px;
-        width: 380px;
-
-        button {
-          width: 45px;
-          background: ${dark};
-          border: 0;
-          cursor: pointer;
-
-          svg {
-            color: ${light};
-            font-size: 1.75rem;
-          }
-        }
-
-        input[type='text'] {
-          flex-grow: 1;
-          border: 5px solid ${dark};
-          padding: 0 10px;
-        }
+      img {
+        width: 250px;
       }
     }
-  }
 `;
 
 const Header = () => {
@@ -93,24 +68,28 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-              <span>
+              {/* <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span>
-              <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
+              </span> */}
               {isAdmin && (
                 <NavLink
                   to="/admin"
                   className={({ isActive }) => classNames({ on: isActive })}
                 >
-                  {t('사이트_관리')}
+                  <SmallButton color="darkGreen" width={150}>
+                    {t('사이트_관리')}
+                  </SmallButton>
                 </NavLink>
               )}
-              <SmallButton color="secondary" width={150} onClick={onLogout}>
+              <NavLink
+                to="/mypage"
+                className={({ isActive }) => classNames({ on: isActive })}
+              >
+                <SmallButton color="midGreen" width={150}>
+                  {t('마이페이지')}
+                </SmallButton>
+              </NavLink>
+              <SmallButton color="rightGreen" width={150} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
               {/*
@@ -128,30 +107,27 @@ const Header = () => {
                 to="/member/join"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                {t('회원가입')}
+                <SmallButton color="midGreen" width={150}>
+                  {t('회원가입')}
+                </SmallButton>
               </NavLink>
               <NavLink
                 to="/member/login"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                {t('로그인')}
+                <SmallButton color="rightGreen" width={150} onClick={onLogout}>
+                  {t('로그인')}
+                </SmallButton>
               </NavLink>
             </>
           )}
         </div>
       </section>
-      <section className="logo-search">
+      <section className="logo">
         <div className="layout-width">
           <Link to="/">
             <img src={logo} alt={t('로고')} />
           </Link>
-
-          <form autoComplete="off">
-            <input type="text" />
-            <button type="submit">
-              <FaSearch />
-            </button>
-          </form>
         </div>
       </section>
       <MainMenu />
