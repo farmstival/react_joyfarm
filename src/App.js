@@ -1,7 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
-import Reservation from './routes/Reservation';
-
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
