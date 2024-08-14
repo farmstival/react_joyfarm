@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import loadable from '@loadable/component';
 import FestivalMain from '../recommend/pages/FestivalMain';
-import { MdMyLocation } from 'react-icons/md';
 import MylocationMain from '../recommend/pages/MylocationMain';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
