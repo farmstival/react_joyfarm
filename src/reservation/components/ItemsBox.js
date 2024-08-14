@@ -2,24 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ItemBox = ({item, className}) => {
-    const { images, seq, activityName } = item;
+    const { townImage, townName } = item;
   return (
     <li className={className}>
-      {images && images.length > 0 && (
+      {townImage && townImage.length > 0 && (
         <div className="photo">
-          <img src={images[0]} alt={seq} />
+          <img src={townImage} alt={townImage} />
         </div>
       )}
+      <div className="townName">{townName}</div>
     </li>
   );
 };
 
 const ItemsBox = ({ items }) => {
+  console.log('items', items);
     return (
       items && (
         <ul>
           {items.map((item) => (
-            <ItemBox key={item.rstrId} item={item} />
+            <ItemBox key={item.seq} item={item} />
           ))}
         </ul>
       )
