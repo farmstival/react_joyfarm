@@ -1,6 +1,7 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import Reservation from './routes/Reservation';
+
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
@@ -17,14 +18,18 @@ const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 마이페이지 E */
 
 /* 농촌체험 예약 페이지 S */
-const ReservationMain = loadable(() => //지연로딩, 페이지 접근 시 로딩
-  import('./reservation/pages/ReservationMain'));
+const ReservationMain = loadable(() =>
+  //지연로딩, 페이지 접근 시 로딩
+  import('./reservation/pages/ReservationMain'),
+);
 const ReservationView = loadable(() =>
-  import('./reservation/pages/ReservationView'));
+  import('./reservation/pages/ReservationView'),
+);
 /* 농촌체험 예약 페이지 E */
 
 /* 여행 추천 페이지 S */
-const TravelMain = loadable(() => import('./recommend/pages/TravelMain'));
+const Tour = loadable(() => import('./recommend/tour/pages/Tour'));
+const TourView = loadable(() => import('./recommend/tour/pages/TourView'));
 /* 여행 추천 페이지 E */
 
 /* 지역별 축제 정보 페이지 S */
@@ -48,11 +53,19 @@ const CommunityMain = loadable(() => import('./community/pages/CommunityMain'));
 /* 게시판 페이지 E */
 
 /* 축제 페이지 S */
-const FestivalList = loadable(() => import("./recommend/Festival/pages/FestivalList"));
-const FestivalView = loadable(() => import("./recommend/Festival/pages/FestivalView"));
+const FestivalList = loadable(() =>
+  import('./recommend/Festival/pages/FestivalList'),
+);
+const FestivalView = loadable(() =>
+  import('./recommend/Festival/pages/FestivalView'),
+);
 /* 축제 페이지 E */
 
+const routeUrlPaths = ['member', 'mypage', 'reservation', 'recommand'];
+
+//컴포넌트 형태로 라우터 구성, 주소 구분 편의성 위함
 const App = () => {
+  const location = useLocation();
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -70,13 +83,14 @@ const App = () => {
         {/* 마이페이지 E */}
         {/* 농촌체험 예약 페이지 S */}
         <Route path="reservation">
-          <Route index element={<ReservationMain />}/>
+          <Route index element={<ReservationMain />} />
           <Route path=":category?" element={<ReservationView />} />
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
-        <Route path="recommend/travel">
-          <Route path=":category?" element={<TravelMain />} />
+        <Route path="recommend/tour">
+        <Route index element={<Tour />} />
+          <Route path=":category?" element={<TourView />} />
         </Route>
         {/* 지역별 축제 페이지 */}
         <Route path="recommend/festival">
@@ -100,9 +114,9 @@ const App = () => {
           <Route path=":category?" element={<CommunityMain />} />
         </Route>
         {/* 게시판 페이지 E */}
-        <Route path="/festival" >
-            <Route index element={<FestivalList/>} />
-            <Route path=":id" element={<FestivalView/>}/>
+        <Route path="/festival">
+          <Route index element={<FestivalList />} />
+          <Route path=":id" element={<FestivalView />} />
         </Route>
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
