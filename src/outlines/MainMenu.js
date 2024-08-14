@@ -9,7 +9,6 @@ import logo from '../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen } = color;
 
-
 const MenuBox = styled.nav`
   background: ${white};
   border-bottom: 1px solid ${midGreen};
@@ -19,7 +18,6 @@ const MenuBox = styled.nav`
 `;
 
 const MenuItem = styled.div`
-  
   position: relative;
   display: inline-block;
   margin: 0 10px;
@@ -88,7 +86,6 @@ const Logo = styled.div`
   }
 `;
 
-
 const MainMenu = () => {
   const { t } = useTranslation();
 
@@ -96,34 +93,48 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <MenuItem>
-          <NavLink to="/reservation" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink
+            to="/reservation"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
             {t('농촌체험 예약')}
           </NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/recommend" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink
+            to="/my_reservation"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
             {t('나의 예약현황')}
           </NavLink>
         </MenuItem>
         <MenuItem>
-        <Logo>
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
-        </Logo>
+          <Logo>
+            <Link to="/">
+              <img src={logo} alt={t('로고')} />
+            </Link>
+          </Logo>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/my_reservation" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink
+            to="/recommend"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
             {t('조이팜의 추천')}
           </NavLink>
           <SubMenu className="sub-menu">
             <NavLink to="/recommend/tour">{t('추천 여행지')}</NavLink>
             <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
-            <NavLink to="/recommend/mylocation">{t('내 위치 주변 여행지')}</NavLink>
+            <NavLink to="/recommend/mylocation">
+              {t('내 위치 주변 여행지')}
+            </NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/community" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink
+            to="/community"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">

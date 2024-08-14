@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import loadable from '@loadable/component';
-import ReservationMain from '../reservation/pages/ReservationMain';
+import MyReservationMain from '../my_reservation/pages/MyReservationMain';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
@@ -9,14 +9,14 @@ const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
 /* 예약 관련 페이지 E */
 
-const Reservation = () => {
+const MyReservation = () => {
   return (
     <Routes>
-      <Route path="/reservation" element={<MainLayout />}>
-        <Route path="/reservation" element={<ReservationMain />} />
+      <Route path="/my_reservation" element={<MainLayout />}>
+        <Route index element={<MyReservationMain />} />
       </Route>
     </Routes>
   );
 };
 
-export default React.memo(Reservation);
+export default React.memo(MyReservation);
