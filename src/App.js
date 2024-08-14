@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
@@ -11,9 +11,13 @@ const Join = loadable(() => import('./member/pages/Join'));
 const Login = loadable(() => import('./member/pages/Login'));
 /* 회원 페이지 E */
 
-/* 마이페이지 S */
+/* 마이 페이지 S */
 const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
-/* 마이페이지 E */
+/* 마이 페이지 E */
+
+/* 추천 페이지 S */
+const Recommend = loadable(() => import('./routes/Recommend'));
+/* 추천 페이지 E */
 
 /* 농촌체험 예약 페이지 S */
 const ReservationMain = loadable(() =>
@@ -27,8 +31,6 @@ const TravelMain = loadable(() => import('./recommend/tour/pages/TravelMain'));
 
 /* 지역별 축제 정보 페이지 S */
 const FestivalMain = loadable(() => import('./recommend/pages/FestivalMain'));
-const TourList = loadable(() => import('./recommend/tour/pages/TourList'));
-const TourView = loadable(() => import('./recommend/tour/pages/TourView'));
 /* 지역별 축제 정보 페이지 E */
 
 /* 주변 농촌 체험 정보 S */
@@ -48,12 +50,28 @@ const CommunityMain = loadable(() => import('./community/pages/CommunityMain'));
 /* 게시판 페이지 E */
 
 /* 축제 페이지 S */
-const FestivalList = loadable(() => import("./recommend/Festival/pages/FestivalList"));
-const FestivalView = loadable(() => import("./recommend/Festival/pages/FestivalView"));
+const FestivalList = loadable(() =>
+  import('./recommend/Festival/pages/FestivalList'),
+);
+const FestivalView = loadable(() =>
+  import('./recommend/Festival/pages/FestivalView'),
+);
 /* 축제 페이지 E */
 
+const routeUrlPaths = [
+  'member',
+  'mypage',
+  'festival',
+  'recommend',
+];
+
 const App = () => {
-  return (
+  const location = useLocation();
+  return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
+    <>
+      <Recommend />
+    </>
+  ) : (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} /> {/* 메인 페이지 */}
@@ -99,9 +117,9 @@ const App = () => {
           <Route path=":category?" element={<CommunityMain />} />
         </Route>
         {/* 게시판 페이지 E */}
-        <Route path="/festival" >
-            <Route index element={<FestivalList/>} />
-            <Route path=":id" element={<FestivalView/>}/>
+        <Route path="/festival">
+          <Route index element={<FestivalList />} />
+          <Route path=":id" element={<FestivalView />} />
         </Route>
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>

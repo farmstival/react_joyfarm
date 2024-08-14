@@ -4,6 +4,7 @@ import cookies from 'react-cookies';
 // 로그인 처리
 export const apiLogin = (form) =>
   new Promise((resolve, reject) => {
+    cookies.remove('token', { path: '/' });
     apiRequest('/account/token', 'POST', form)
       .then((res) => {
         if (!res.data.success) {
@@ -21,13 +22,18 @@ export const apiLogin = (form) =>
 // 로그인 한 회원정보 조회
 export const apiUser = () =>
   new Promise((resolve, reject) => {
-  apiRequest('/account') //기본값은 GET방식
-    .then(res => {
-      if (res.status !== 200) { //200이 아닐 경우 실패
-        reject(res.data)
-        return;
-      }
-      resolve(res.data.data); //성공
-    })
-    .catch(err => console.log("err",err));
-});
+    apiRequest('/account') //기본값은 GET방식
+      .then((res) => {
+        if (res.status !== 200) {
+          //200이 아닐 경우 실패
+          reject(res.data);
+          cookies.remove('token', { path: '/' });
+          return;
+        }
+        resolve(res.data.data); //성공
+      })
+      .catch((err) => {
+        cookies.remove('token', { path: '/' });
+        reject(err);
+      });
+  });

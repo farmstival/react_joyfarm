@@ -1,26 +1,20 @@
-import apiRequest from '../../../commons/libs/apiRequest';
+import requestData from '../../../commons/libs/requestData';
 
+/* 목록 조회 */
 export const apiList = (search) => {
-    search = search ?? {};
-  
-    const qs = [];
-    for ([k, v] of Object.entries(search)) {
-      qs.push(`${k}=${v}`);
-    }  
+  search = search ?? {};
+  const qs = [];
+  for (const [k, v] of Object.entries(search)) {
+    qs.push(`${k}=${v}`);
+  }
 
   let url = '/tour/list';
-  if (qs.length > 0) url += `?${qs}`;
+  if (qs.length > 0) url += `?${qs.join('&')}`;
 
-  return new Promise((resolve, reject) => {
-    apiRequest(url)
-      .then((res) => {
-        if (res.status === 200) {
-          resolve(res.data.data);
-          return;
-        }
+  return requestData(url);
+};
 
-        reject(res.data);
-      })
-      .catch((err) => reject(err));
-  });
+/* 상세 조회 */
+export const apiGet = (seq) => {
+  requestData(`/tour/info/${seq}`);
 };
