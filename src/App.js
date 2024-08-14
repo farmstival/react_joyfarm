@@ -17,11 +17,9 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판
 const Community = loadable(() => import('./routes/Community'));
 
-
 const routeUrlPaths = [
   'member',
   'mypage',
-  'festival',
   'recommend',
   'community'
 ];
