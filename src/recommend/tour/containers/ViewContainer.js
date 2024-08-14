@@ -10,6 +10,8 @@ import ItemDescription from '../components/ItemDescription';
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 15px;
+  max-width: 900px;
+  margin: 0 auto;
 `;
 
 const ViewContainer = ({ setPageTitle }) => {
@@ -54,7 +56,9 @@ const ViewContainer = ({ setPageTitle }) => {
         )}
         <ItemDescription item={item} />
       </Wrapper>
-      <KakaoMap {...mapOptions} />
+      <Wrapper>
+        <KakaoMap {...mapOptions} />
+      </Wrapper>
     </>
   );
 };

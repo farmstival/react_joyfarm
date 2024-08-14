@@ -13,6 +13,8 @@ const TourView = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
+        {' '}
+        // css 스타일 에밥마
         <MainTitle>{pageTitle}</MainTitle>
         <ViewContainer setPageTitle={setPageTitle} />
       </OuterBox>

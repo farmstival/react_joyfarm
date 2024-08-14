@@ -19,9 +19,9 @@ const Recommend = () => {
     <Routes>
       <Route path="/recommend" element={<MainLayout />}>
         <Route path="tour" element={<TourPage />} />
-        <Route path="tour/:seq" element={<TourViewPage />}/>
-        <Route path="festival" element={<FestivalMain />}/>
-        <Route path="festival/:seq"/>
+        <Route path="tour/:seq" element={<TourViewPage />} />
+        <Route path="festival" element={<FestivalMain />} />
+        <Route path="festival/:seq" />
         <Route path="mylocation" element={<MylocationMain />} />
       </Route>
     </Routes>
