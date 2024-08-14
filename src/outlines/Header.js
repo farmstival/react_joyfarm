@@ -65,6 +65,7 @@ const Header = () => {
               </span> */}
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
+                  <GrUserManager />
                   {t('사이트_관리')}
                 </a>
                 //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
