@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 import KakaoMap from '../../map/KakaoMap';
 import { OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox } from '../../commons/components/LayoutBox';
 
@@ -10,7 +9,7 @@ const options = {
     zoom: 3,
   };
 
-const TravelMain = () => {
+const MylocationMain = () => {
   const { t } = useTranslation();
   return (
     <>
@@ -35,4 +34,4 @@ const TravelMain = () => {
   );
 };
 
-export default React.memo(TravelMain);
+export default React.memo(MylocationMain);
