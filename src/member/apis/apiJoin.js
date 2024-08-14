@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 export const apiJoin = (form) =>
   new Promise((resolve, reject) => {
     cookies.remove('token', { path: '/' });
-    
+
     apiRequest('/account', 'POST', form)
       .then((res) => {
         if (res.status !== 201) {

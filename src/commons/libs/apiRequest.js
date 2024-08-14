@@ -25,7 +25,7 @@ export default function apiRequest(url, method = 'GET', data, headers) {
     options.data = data;
   }
 
-  const token = cookies.load("token"); //토큰이 있으면 토큰도 담아서 보냄
+  const token = cookies.load('token');
   if (token && token.trim()) {
     headers = headers ?? {};
     headers.Authorization = `Bearer ${token}`;

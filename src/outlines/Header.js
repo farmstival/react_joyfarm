@@ -49,8 +49,8 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
-
-  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
+  const adminUrl =
+    process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
 
   return (
     <HeaderBox>

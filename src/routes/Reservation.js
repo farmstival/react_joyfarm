@@ -5,15 +5,16 @@ import ReservationMain from '../reservation/pages/ReservationMain';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
-/* 예약 관련 페이지 S - 필요할 때만 로딩하도록 지연로딩 */
-
-/* 예약 관련 페이지 E */
-
+const ApplyPage = loadable(() => import('../reservation/pages/Apply'));
+const CompletionPage = loadable(() =>
+  import('../reservation/pages/Completion'),
+);
 const Reservation = () => {
   return (
     <Routes>
       <Route path="/reservation" element={<MainLayout />}>
-        <Route path="/reservation" element={<ReservationMain />} />
+        <Route path="complete" element={<CompletionPage />} />
+        <Route path=":seq" element={<ApplyPage />} />
       </Route>
     </Routes>
   );

@@ -1,4 +1,4 @@
-import requestData from "../../../commons/libs/requestData";
+import requestData from '../../../commons/libs/requestData';
 
 // 목록 조회
 export const apiList = (search) => {
