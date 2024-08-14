@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import styled from 'styled-components';
+import KakaoMap from '../../map/KakaoMap';
 
 const OuterBox = styled.div`
   margin-bottom: 150px;
@@ -36,19 +36,19 @@ const ContentBox = styled.div`
   padding: 0 20px 50px 20px;
   margin: 0 auto;
   border: solid 1.5px rgb(221, 221, 221);
-  text-align: center;
-  align-item: center;
-  img {
-    width: 50%;
-  }
 `;
 
-const ReservationMain = () => {
+const options = {
+    currentLocation: true,
+    zoom: 3,
+  };
+
+const TravelMain = () => {
   const { t } = useTranslation();
   return (
     <>
       <Helmet>
-      <title>{t('농촌체험 예약')}</title>
+        <title>{t('주변 농촌 체험 정보')}</title>
       </Helmet>
       <OuterBox>
         <PageNavWrap>
@@ -57,17 +57,17 @@ const ReservationMain = () => {
               <h3>이동 / 이동 / 이동</h3>
             </PageNav>
             <PageTitle>
-            <h1>농촌체험 예약</h1>
+            <h1>주변 농촌 체험 정보</h1>
+                {/* 아직 options 못 넣음...! */}
             </PageTitle>
           </PageNavSubWrap>
         </PageNavWrap>
         <ContentBox>
-          <h2>지도 클릭하면 지역별 축제를 검색합니다.</h2>
-          <img src={process.env.PUBLIC_URL + '/무색.png'}/>
+          <KakaoMap {...options} />;
         </ContentBox>
       </OuterBox>
     </>
   );
 };
 
-export default React.memo(ReservationMain);
+export default React.memo(TravelMain);
