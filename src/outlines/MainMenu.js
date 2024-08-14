@@ -5,58 +5,49 @@ import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
-import logo from '../images/JoyFarm.png';
+import logo from '../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen } = color;
 
+
 const MenuBox = styled.nav`
-  background: ${light};
-
-  div {
-    display: flex;
-    height: 50px;
-
-     a {
-      color: ${dark};
-      line-height: 50px;
-      padding: 0 20px; /* 적절한 패딩 설정 */
-      font-size: ${fontSize.medium};
-      font-weight: bold;
-      text-align: center; /* 텍스트 중앙 정렬 */
-      flex-grow: 1; /* 메뉴 항목이 flex 컨테이너의 가용 공간을 채우도록 설정 */
-
-     &:hover {
-        text-decoration-line: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 10px;
-        color: ${midGreen};
-      }
-
-    &:hover .sub-menu {
-    display: flex;
-      } 
-    }
-  }
-
-  .layout-width {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-
-      img {
-        width: 150px;
-        display: flex;
-        align-items: center;
-      }
-    }
-  }
+  background: ${white};
+  border-bottom: 1px solid ${midGreen};
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
 `;
 
 const MenuItem = styled.div`
+  
   position: relative;
   display: inline-block;
-  margin: 0 px;
+  margin: 0 10px;
+
+  a {
+    color: ${dark};
+    line-height: 80px;
+    width: 200px;
+    padding: 0 20px;
+    font-size: ${fontSize.medium};
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    font-size: ${fontSize.medium};
+    font-weight: bold;
+
+    &.on {
+      background: ${white};
+    }
+
+    &:hover {
+      background: ${white};
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 10px;
+      color: ${midGreen};
+    }
+  }
 
   &:hover .sub-menu {
     display: flex;
@@ -65,19 +56,19 @@ const MenuItem = styled.div`
 
 const SubMenu = styled.div`
   position: absolute;
-  top: 50px;
-  display: none;
-
-  background: ${lightGreen};
+  top: 80px;
+  // left: 10px;
+  background: ${light};
   display: none;
   flex-direction: column;
   width: 200px;
+  height: auto;
   z-index: 1000;
 
   a {
-    padding: 10px 20px;
-    color: ${light};
-    font-size: ${fontSize.small};
+    padding: 0 20px;
+    color: ${dark};
+    font-size: 14px;
     text-decoration: none;
 
     &:hover {
@@ -86,6 +77,18 @@ const SubMenu = styled.div`
   }
 `;
 
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+
+  img {
+    width: 150px;
+    height: auto;
+  }
+`;
+
+
 const MainMenu = () => {
   const { t } = useTranslation();
 
@@ -93,51 +96,40 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <MenuItem>
-          <NavLink
-            to="/reservation"
-            className={({ isActive }) => classNames({ on: isActive })}
-          >
+          <NavLink to="/reservation" className={({ isActive }) => isActive ? 'on' : ''}>
             {t('농촌체험 예약')}
           </NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink
-            to="/my_reservation"
-            className={({ isActive }) => classNames({ on: isActive })}
-          >
+          <NavLink to="/recommend" className={({ isActive }) => isActive ? 'on' : ''}>
             {t('나의 예약현황')}
           </NavLink>
         </MenuItem>
-
-        <section className="logo">
+        <MenuItem>
+        <Logo>
           <Link to="/">
             <img src={logo} alt={t('로고')} />
           </Link>
-        </section>
-
+        </Logo>
+        </MenuItem>
         <MenuItem>
-          <NavLink
-            to="/recommend"
-            className={({ isActive }) => classNames({ on: isActive })}
-          >
+          <NavLink to="/my_reservation" className={({ isActive }) => isActive ? 'on' : ''}>
             {t('조이팜의 추천')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/recommend/travel">{t('추천 여행지')}</NavLink>
+            <NavLink to="/recommend/tour">{t('추천 여행지')}</NavLink>
             <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
             <NavLink to="/recommend/mylocation">{t('내 위치 주변 여행지')}</NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
-          <NavLink
-            to="/community"
-            className={({ isActive }) => classNames({ on: isActive })}
-          >
+          <NavLink to="/community" className={({ isActive }) => isActive ? 'on' : ''}>
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/sub1">{t('커뮤니티 서브메뉴 1')}</NavLink>
-            <NavLink to="/community/sub2">{t('커뮤니티 서브메뉴 2')}</NavLink>
+            <NavLink to="/community/sub1">{t('여행후기')}</NavLink>
+            <NavLink to="/community/sub2">{t('공지사항')}</NavLink>
+            <NavLink to="/community/sub2">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>
