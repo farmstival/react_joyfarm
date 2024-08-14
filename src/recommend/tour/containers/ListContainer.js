@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { apiList } from '../apis/apiInfo';
-import SearchBox from '../components/SearchBox';
 import ItemsBox from '../components/ItemsBox';
+import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
+import KakaoMap from '../../../map/KakaoMap';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -30,7 +31,7 @@ const ListContainer = () => {
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
-      setLoading(false); //로딩끝나면 로딩이미지X
+      setLoading(false);
     });
   }, [search]);
 
@@ -52,7 +53,7 @@ const ListContainer = () => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
 
-  // 로딩 처리
+  /* 로딩 처리 */
   if (loading) {
     return <Loading />;
   }

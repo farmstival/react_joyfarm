@@ -4,24 +4,23 @@ import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
 
 const ItemBox = ({ item, className }) => {
-  const { seq, title, photoUrl1, location, content, startDate, endDate } = item;
-  const url = `/recommend/festival/${seq}`;
+  const { seq, title, photoUrl, address, description } = item;
+  const url = `/recommend/tour/${seq}`;
   return (
     <li className={className}>
       <Link to={url}>
-        {photoUrl1 && (
+        {photoUrl && (
           <ImageBgBox
             className="photo"
-            url={photoUrl1}
+            url={photoUrl}
             width="150px"
             height="150px"
           />
         )}
         <div className="item-content">
-          <div className="title">축제명 | {title}</div>
-          <div className="location">축제 장소 | {location}</div>
-          <div className="content">축제 소개 | {content}</div>
-          <div className="Date">축제 일정 | {startDate}~{endDate}</div>
+          <div className="title">{title}</div>
+          <div className="address">{address}</div>
+          <div className="description">{description}</div>
         </div>
       </Link>
     </li>
@@ -43,19 +42,13 @@ const ItemStyledBox = styled(ItemBox)`
     }
 
     .item-content {
-      width: calc(100% - 160px;)
+      width: calc(100% - 160px);
       word-break: break-all;
-      font-size: 1.2rem;
-    }
-
-    .item-content .title{
-      font-size: 1.5rem;
     }
   }
 `;
 
 const ItemsBox = ({ items }) => {
-  console.log('items', items);
   return (
     items.length > 0 &&
     items.map((item) => <ItemStyledBox key={item.seq} item={item} />)

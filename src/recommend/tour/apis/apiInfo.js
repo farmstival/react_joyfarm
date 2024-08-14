@@ -8,11 +8,11 @@ export const apiList = (search) => {
     qs.push(`${k}=${v}`);
   }
 
-  let url = '/festival/list';
+  let url = '/tour/list';
   if (qs.length > 0) url += `?${qs.join('&')}`;
 
   return requestData(url);
 };
 
 // 상세 조회
-export const apiGet = (seq) => requestData(`/festival/info/${seq}`);
+export const apiGet = (seq) => requestData(`/tour/info/${seq}`);
