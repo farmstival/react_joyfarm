@@ -42,7 +42,7 @@ const ItemStyledBox = styled(ItemBox)`
     }
 
     .item-content {
-      width: calc(100% - 160px;)
+      width: calc(100% - 160px);
       word-break: break-all;
     }
   }

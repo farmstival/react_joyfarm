@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
 
 const FormBox = styled.form``;
@@ -18,12 +18,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="ADDRESS">{t('주소')}</option>
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
-        <input
-          type="text"
-          name="skey"
-          value={form.skey}
-          onChange={onChange}
-        />
+        <input type="text" name="skey" value={form.skey} onChange={onChange} />
       </div>
       <div>
         <select name="sido" onChange={onChange}>
@@ -33,7 +28,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option>- {t('시군구_선택')} -</option>
         </select>
       </div>
-      <MidButton color="primary">검색하기</MidButton>
+      <MidButton color="midGreen">{t('검색하기')}</MidButton>
     </FormBox>
   );
 };

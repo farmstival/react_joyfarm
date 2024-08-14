@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import classNames from 'classnames'; // 조건부 활성화 기능
-import { MdFirstPage, MdLastPage, MdNavigateNext, MdNavigateBefore } from "react-icons/md";
+import classNames from 'classnames';
+
+import {
+  MdFirstPage,
+  MdLastPage,
+  MdNavigateNext,
+  MdNavigateBefore,
+} from 'react-icons/md';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +27,6 @@ const Wrapper = styled.div`
     border-radius: 3px;
     cursor: pointer;
   }
-
   .page + .page {
     margin-left: 3px;
   }
@@ -34,32 +39,38 @@ const Wrapper = styled.div`
 
 const Pagination = ({ pagination, onClick }) => {
   const { page, pages, prevRangePage, nextRangePage, totalPages } = pagination;
-  //console.log(pagination);
+
   return (
     pages.length > 0 && (
       <Wrapper>
         {prevRangePage > 0 && (
           <>
-          <MdFirstPage onClick={() => onClick(1)}
-            className="page"/>
-          <MdNavigateBefore onClick={() => onClick(Number(prevRangePage))}
-            className="page"/>
+            <MdFirstPage onClick={() => onClick(1)} className="page" />
+            <MdNavigateBefore
+              onClick={() => onClick(Number(prevRangePage))}
+              className="page"
+            />
           </>
         )}
         {pages.map((p) => (
-          <div 
-          key={'page' + p[0]} 
-          onClick={() => onClick(Number(p[0]))} 
-          className={'page' + classNames({ ' on': Number(p[0]) === page})}>
+          <div
+            key={'page' + p[0]}
+            onClick={() => onClick(Number(p[0]))}
+            className={'page' + classNames({ ' on': Number(p[0]) === page })}
+          >
             {p[0]}
           </div>
         ))}
         {nextRangePage > 0 && (
           <>
-            <MdNavigateNext onClick={() => onClick(Number(nextRangePage))}
-              className="page"/>
-            <MdLastPage onClick={() => onClick(Number(totalPages))}
-            className="page" />
+            <MdNavigateNext
+              onClick={() => onClick(Number(nextRangePage))}
+              className="page"
+            />
+            <MdLastPage
+              onClick={() => onClick(Number(totalPages))}
+              className="page"
+            />
           </>
         )}
       </Wrapper>
