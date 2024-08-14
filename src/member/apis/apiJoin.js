@@ -1,7 +1,9 @@
 import apiRequest from '../../commons/libs/apiRequest';
+import cookies from 'react-cookies';
 
 export const apiJoin = (form) =>
   new Promise((resolve, reject) => {
+    cookies.remove('token', { path: '/' }); // 회원가입시 토큰제거
     apiRequest('/account', 'POST', form)
       .then((res) => {
         if (res.status !== 201) {
