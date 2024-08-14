@@ -31,9 +31,7 @@ const ListContainer = () => {
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
-      setTimeout(function () {
-        setLoading(false);
-      }, 500);
+      setLoading(false);
     });
   }, [search]);
 
