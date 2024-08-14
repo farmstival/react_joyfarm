@@ -92,7 +92,7 @@ const App = () => {
         </Route>
         {/* 농촌체험 예약 페이지 E */}
         {/* 여행 추천 페이지 S */}
-        <Route path="recommend/travel">
+        <Route path="recommend/tour">
           <Route path=":category?" element={<TravelMain />} />
         </Route>
         {/* 지역별 축제 페이지 */}
