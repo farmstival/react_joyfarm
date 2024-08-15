@@ -17,11 +17,15 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판
 const Community = loadable(() => import('./routes/Community'));
 
+//예약
+const Reservation = loadable(() => import('./routes/Reservation')) 
+
 const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
-  'community'
+  'community',
+  'reservation'
 ];
 
 const App = () => {
@@ -32,6 +36,7 @@ const App = () => {
       <Mypage />
       <Recommend />
       <Community />
+      <Reservation/>
     </>
   ) : (
     <Routes>

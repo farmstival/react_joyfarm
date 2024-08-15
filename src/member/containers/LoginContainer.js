@@ -68,7 +68,7 @@ const LoginContainer = () => {
             try {
               // 로그인 처리
               const user = await apiUser();
-
+              
               setIsLogin(true); // 로그인 상태
 
               setUserInfo(user);
@@ -96,7 +96,7 @@ const LoginContainer = () => {
           setErrors({ ..._errors });
         });
     },
-    [t, form, searchParams, navigate, setIsLogin, setUserInfo],
+    [t, form, searchParams, navigate, setIsLogin, setIsAdmin, setUserInfo],
   );
 
   const onChange = useCallback((e) => {
