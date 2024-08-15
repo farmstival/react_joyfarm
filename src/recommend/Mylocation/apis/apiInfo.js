@@ -1,5 +1,7 @@
 import requestData from "../../../commons/libs/requestData";
 
+/* 데이터가 없어서 임의로 축제 정보를 넣은 상태!!!! */
+
 // 목록 조회
 export const apiList = (search) => {
   search = search ?? {};
