@@ -7,10 +7,14 @@ export const color = {
   info: '#17a2b8',
   light: '#E2E2E2',
   dark: '#343a40',
-  darkGreen: '#2A4840',
+  darkGreen: '#428C4C',
   midGreen: '#39AE48',
+  
   rightGreen: '#90DB7C',
-  white: '#ffffff'
+  white: '#ffffff',
+  dark_gray: '#333333',
+  mid_gray: '#767676',
+  
 };
 
 export const buttonColor = {

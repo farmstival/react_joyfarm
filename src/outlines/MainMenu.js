@@ -9,7 +9,6 @@ import logo from '../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen } = color;
 
-
 const MenuBox = styled.nav`
   background: ${white};
   border-bottom: 1px solid ${midGreen};
