@@ -13,24 +13,24 @@ const MainBannerWrapper = styled.nav`
 
 const BannerImage = styled.img`
   width: 100%;
-  height: 400px; /* 이미지 비율을 유지하며 배너의 너비에 맞게 조정 */
+  height: 400px; 
   display: block; /* 이미지가 inline-block 처럼 보이지 않도록 */
 `;
 
 const InfoBar = styled.nav`
-  height: 130px; /* InfoBar 높이 조정 */
-  color: ${white}; /* 텍스트 색상 */
-  background-color: ${darkGreen}; /* 배경 색상 */
+  height: 130px; 
+  color: ${white}; 
+  background-color: ${darkGreen}; 
   display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
-  justify-content: space-between; /* 양 끝 정렬 */
-  padding: 0 40px; /* 양쪽 패딩 추가 */
-  font-size: 1.2em; /* 텍스트 크기 */
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 0 40px; 
+  font-size: 1.2em; 
 `;
 
 const InfoBox = styled.div`
   display: block;
-  text-align: right; /* 텍스트 오른쪽 정렬 */
+  text-align: right; 
 `;
 
 const InfoText = styled.div`

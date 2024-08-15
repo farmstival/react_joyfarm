@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import MainBanner from './components/MainBanner'; // 컴포넌트를 default import
+import MainBanner from './components/MainBanner';
+import MainLocation from './components/MainLocation'
 
-const MainLocation = styled.nav``;
 const MainRecommend = styled.nav``;
 const MainReview = styled.nav``;
 const MainBoard = styled.nav``;
@@ -18,7 +18,7 @@ const Main = () => {
   return (
     <>
       <MainBanner onButtonClick={handleButtonClick} />
-      <MainLocation>{/* Location 관련 콘텐츠 */}</MainLocation>
+      <MainLocation onButtonClick={handleButtonClick}/>
       <MainRecommend>{/* Recommend 관련 콘텐츠 */}</MainRecommend>
       <MainReview>{/* Review 관련 콘텐츠 */}</MainReview>
       <MainBoard>{/* Board 관련 콘텐츠 */}</MainBoard>
