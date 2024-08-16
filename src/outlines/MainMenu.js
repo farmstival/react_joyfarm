@@ -110,11 +110,6 @@ const MainMenu = () => {
               <img src={logo} alt={t('로고')} />
             </Link>
           </Logo>
-          <Logo>
-            <Link to="/">
-              <img src={logo} alt={t('로고')} />
-            </Link>
-          </Logo>
         </MenuItem>
         <MenuItem>
           <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
