@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { MainTitle } from '../../commons/components/TitleBox';
+import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import { OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox } from '../../commons/components/LayoutBox';
 import ReserveListContainer from '../containers/ReserveListContainer';
 
@@ -23,7 +23,9 @@ const ReservationList = () => {
             </PageTitle>
         </PageNavWrap>
         <ContentBox>
-          <PageTitle>{t('체험활동_목록')}</PageTitle>
+          <PageTitle>
+            <SubTitle>{t('체험활동_목록')}</SubTitle>
+            </PageTitle>
           <ReserveListContainer />
         </ContentBox>
       </OuterBox>
