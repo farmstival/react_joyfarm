@@ -4,9 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { MainTitle } from '../../../commons/components/TitleBox';
 import ListContainer from '../containers/ListContainer';
 import {
-  PageNavWrap,
-  ContentBox,
-  OuterBox,
+  OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox
 } from '../../../commons/components/LayoutBox';
 
 const Tour = () => {
@@ -18,9 +16,15 @@ const Tour = () => {
       </Helmet>
       <OuterBox>
         <PageNavWrap>
-          <MainTitle>{t('추천_여행지')}</MainTitle>
+        <PageNav>
+              <h3>이동 / 이동 / 이동</h3>
+            </PageNav>
+            <PageTitle>
+              <h1>추천 여행지</h1>
+            </PageTitle>
         </PageNavWrap>
         <ContentBox>
+        <PageTitle>{t('추천_여행지')}</PageTitle>
           <ListContainer />
         </ContentBox>
       </OuterBox>
