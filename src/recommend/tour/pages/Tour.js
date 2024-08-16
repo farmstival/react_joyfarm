@@ -25,7 +25,7 @@ const Tour = () => {
         </PageNavWrap>
         <ContentBox>
         <PageTitle>{t('추천_여행지')}</PageTitle>
-          <ListContainer />
+          <TourListContainer />
         </ContentBox>
       </OuterBox>
     </>
