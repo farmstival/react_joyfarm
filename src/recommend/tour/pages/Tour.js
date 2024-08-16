@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { MainTitle } from '../../../commons/components/TitleBox';
 import ListContainer from '../containers/ListContainer';
+import { IoMdHome } from "react-icons/io";
 import {
   OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox
 } from '../../../commons/components/LayoutBox';
@@ -17,7 +18,7 @@ const Tour = () => {
       <OuterBox>
         <PageNavWrap>
         <PageNav>
-              <h3>이동 / 이동 / 이동</h3>
+              <h3><IoMdHome /> &gt; 조이팜의 추천 &gt; 추천 여행지</h3>
             </PageNav>
             <PageTitle>
               <h1>추천 여행지</h1>
