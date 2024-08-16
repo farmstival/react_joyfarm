@@ -1,12 +1,13 @@
 import React from 'react';
-import image from '../../images/loading.webp';
+import image from '../../images/loading.gif';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   position: fixed;
   top: calc(50% - 75px);
+  left: 45%;
   width: 200px;
-  height: 150px;
+  height: 30px;
   z-index: 100;
 
   img {

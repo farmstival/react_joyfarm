@@ -111,33 +111,32 @@ const MainMenu = () => {
               <img src={logo} alt={t('로고')} />
             </Link>
           </Logo>
+          <Logo>
+            <Link to="/">
+              <img src={logo} alt={t('로고')} />
+            </Link>
+          </Logo>
         </MenuItem>
         <MenuItem>
-          <NavLink
-            to="/my_reservation"
-            className={({ isActive }) => (isActive ? 'on' : '')}
-          >
-            {t('조이팜의 추천')}
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
+            {t('조이팜의_추천')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/recommend/tour">{t('추천 여행지')}</NavLink>
-            <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
+            <NavLink to="/recommend/tour">{t('추천_여행지')}</NavLink>
+            <NavLink to="/recommend/festival">{t('지역별_축제정보')}</NavLink>
             <NavLink to="/recommend/mylocation">
-              {t('내 위치 주변 여행지')}
+              {t('내_위치_주변_여행지')}
             </NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
-          <NavLink
-            to="/community"
-            className={({ isActive }) => (isActive ? 'on' : '')}
-          >
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/sub1">{t('여행후기')}</NavLink>
-            <NavLink to="/community/sub2">{t('공지사항')}</NavLink>
-            <NavLink to="/community/sub2">{t('QnA')}</NavLink>
+            <NavLink to="/community/review">{t('여행후기')}</NavLink>
+            <NavLink to="/community/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/community/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>
