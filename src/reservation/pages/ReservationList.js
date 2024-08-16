@@ -11,7 +11,7 @@ const ReservationList = () => {
   return (
     <>
       <Helmet>
-        <title>{t('지역별_축제_정보')}</title>
+        <title>{t('농촌체험활동_예약')}</title>
       </Helmet>
       <OuterBox>
         <PageNavWrap>

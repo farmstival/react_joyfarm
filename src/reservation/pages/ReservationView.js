@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 import {
   OuterBox,
   PageNav,
@@ -7,9 +8,11 @@ import {
   PageTitle,
   ContentBox,
 } from '../../commons/components/LayoutBox';
+import { MainTitle } from '../../commons/components/TitleBox';
 import ReserveViewContainer from '../containers/ReserveViewContainer';
 
 const ReservationView = () => {
+  const { t } = useTranslation();
   const [pageTitle, setPageTitle] = useState('');
 
   return (
@@ -23,7 +26,7 @@ const ReservationView = () => {
             <h3>이동 / 이동</h3>
           </PageNav>
           <PageTitle>
-            <h1>체험활동_예약</h1>
+            <MainTitle>{t('농촌체험활동_예약')}</MainTitle>
           </PageTitle>
         </PageNavWrap>
         <ContentBox>
