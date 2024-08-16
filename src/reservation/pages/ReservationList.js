@@ -25,7 +25,7 @@ const ReservationList = () => {
         <ContentBox>
           <PageTitle>
             <SubTitle>{t('체험활동_목록')}</SubTitle>
-            </PageTitle>
+          </PageTitle>
           <ReserveListContainer />
         </ContentBox>
       </OuterBox>

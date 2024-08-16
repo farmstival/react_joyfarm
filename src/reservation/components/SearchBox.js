@@ -6,12 +6,27 @@ import { MidButton } from '../../commons/components/Buttons';
 const FormBox = styled.form`
   .select_box, .input_part {
     height: 30px;
-    text-align: center;
+    items-align: center;
     justify-content: center;
     display: flex;
     margin-bottom: 10px;
   }
+
+  input {
+  width: 350px;
+  }
+
+  .rsv_searchBar {
+    justify-content: center;
+    align-content: center;
+    display: flex;
+  }
+  
+  .rsv_btn {
+   width: 700px;
+   }
 `;
+
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -30,9 +45,10 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="TOWNNAME">{t('체험마을명')}</option>
         </select>
         <input type="text" name="skey" value={form.skey} onChange={onChange} />
-
       </div>
-      <MidButton color="midGreen">{t('검색하기')}</MidButton>
+      <div className='rsv_searchBar'>
+        <MidButton color="midGreen" className='rsv_btn'>{t('검색하기')}</MidButton>
+      </div>
     </FormBox>
   );
 };
