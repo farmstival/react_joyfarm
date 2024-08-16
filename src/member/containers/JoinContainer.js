@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { apiJoin } from '../apis/apiJoin';
 import JoinForm from '../components/JoinForm';
+import apiRequest from '../../commons/libs/apiRequest';
 
 const JoinContainer = () => {
   // 양식 데이터
@@ -113,6 +114,40 @@ const JoinContainer = () => {
 
   const onReset = useCallback(() => setForm({ agree: false }), []);
 
+  // 파일 업로드 콜백 처리
+  const fileUploadCallback = useCallback((files) => {
+    // 프로필 파일 정보 업데이트
+    if (files.length === 0) return;
+    setForm((form) => ({ ...form, profile: files[0] }));
+  }, []);
+
+  const fileDeleteCallback = useCallback(
+    (seq) => {
+      if (!window.confirm(t('정말_삭제하시겠습니까?'))) {
+        return;
+      }
+
+      (async () => {
+        try {
+          const res = await apiRequest(`/file/delete/${seq}`, 'DELETE');
+          if (res.status === 200 && res.data.success) {
+            setForm((form) => ({ ...form, profile: null }));
+            return;
+          }
+
+          if (res.data.message) {
+            setErrors({ global: [res.data.message] });
+          }
+        } catch (err) {
+          setErrors({ global: [err.message] });
+          console.error(err);
+        }
+      })();
+    },
+    [t],
+  );
+
+
   return (
     <JoinForm
       form={form}
@@ -121,6 +156,8 @@ const JoinContainer = () => {
       onChange={onChange}
       onToggle={onToggle}
       onReset={onReset}
+      fileUploadCallback={fileUploadCallback}
+      fileDeleteCallback={fileDeleteCallback}
     />
   );
 };

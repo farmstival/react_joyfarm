@@ -10,7 +10,7 @@ export const apiList = (search) => {
         qs.push(`${k}=${v}`);
     }
     
-    let url = '/restaurant/list';
+    let url = '/reservation/list';
     if(qs.length > 0) url += `?${qs}`; //검색 조건이 있을 때 
 
     return new Promise((resolve, reject) => {
@@ -25,3 +25,7 @@ export const apiList = (search) => {
         .catch((err) => reject(err));
     })
 };
+
+
+// 상세 조회
+export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);
