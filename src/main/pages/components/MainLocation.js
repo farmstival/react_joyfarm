@@ -12,7 +12,7 @@ const MainLocationWrapper = styled.div`
   background: linear-gradient(to bottom, ${lightGreen}, ${white});
   padding: 50px;
   height: 800px; 
-  position: relative; /* 초록색 상자를 오른쪽 끝까지 이어지게 하기 위해 relative 위치 지정 */
+  position: relative; 
 `;
 
 const MapImage = styled.img`
@@ -29,7 +29,7 @@ const ContentWrapper = styled.div`
   margin-left: 100px;
   display: flex;
   flex-direction: column;
-  width: 60%; /* ContentWrapper가 MainLocationWrapper의 60%를 차지하도록 설정 */
+  width: 60%; 
 `;
 
 const LogoImage = styled.img`
@@ -47,14 +47,14 @@ const HighlightBox = styled.div`
   font-size: 1.2em;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  margin-right: 0; /* 오른쪽 마진 제거 */
+  margin-right: 0; 
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 30px; /* 버튼 간격 */
-  width: 70%; /* 버튼 컨테이너 너비를 100%로 설정 */
+  gap: 30px; 
+  width: 70%; 
 `;
 
 const Button = styled.button`
@@ -64,15 +64,18 @@ const Button = styled.button`
   width: 150px;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 1em;
+  font-size: 1.2em;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
   border: none; 
   &:hover {
-    color: ${darkGreen};
-    background-color: ${white};
-    border: none;
+      border: none;
+     text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 10px;
+      color: ${midGreen};
+      transform: scale(1.07);
   }
 `;
 
@@ -85,7 +88,7 @@ const MainLocation = ({ onButtonClick }) => {
         <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
         <ButtonContainer>
           <Button onClick={onButtonClick}>서울</Button>
-          <Button onClick={onButtonClick}>경기 인천</Button>
+          <Button onClick={onButtonClick}>경기•인천</Button>
           <Button onClick={onButtonClick}>충청도</Button>
           <Button onClick={onButtonClick}>강원도</Button>
           <Button onClick={onButtonClick}>전라도</Button>

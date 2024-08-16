@@ -49,7 +49,7 @@ const Button = styled.button`
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* 트랜지션 추가 */
+  transition: background-color 0.3s ease, color 0.3s ease;
   &:hover {
     color: ${darkGreen};
     border: 1px solid ${white};
