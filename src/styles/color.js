@@ -1,4 +1,5 @@
 export const color = {
+  blue: '#6CC0FF',
   primary: '#007bff',
   secondary: '#6c757d',
   success: '#28a745',
@@ -25,4 +26,7 @@ export const buttonColor = {
   darkGreen: [color.darkGreen, '#fff', color.darkGreen],
   midGreen: [color.midGreen, '#fff', color.midGreen],
   rightGreen: [color.rightGreen, '#fff', color.rightGreen],
+  blue: [color.blue, '#FFFFFF', color.blue],
+
+
 };
