@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Wrapper = styled.div`
   flex-grow: 1;
   margin-right: 10px;
@@ -7,6 +8,7 @@ const Wrapper = styled.div`
   height: 500px;
   overflow: hidden;
 `;
+
 const ImageBox = styled.div`
   background: url('${({ image }) => image}') no-repeat center center;
   background-color: cover;

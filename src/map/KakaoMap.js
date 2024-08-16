@@ -24,7 +24,7 @@ const KakaoMap = ({
     setCenter(center);
   }, [center]);
 
-  // 현재 위치 기반 S
+  /* 현재 위치 기반 S */
   useEffect(() => {
     if (currentLocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
@@ -53,8 +53,8 @@ const KakaoMap = ({
     const mapEl = mapRef.current;
     // 지도 가운데 배치 S
     const position = new kakao.maps.LatLng(
-      _center?.lat ?? 37.557756188912954,
-      _center?.lng ?? 126.94062742683245,
+      _center?.lat ?? 37.579617,
+      _center?.lng ?? 126.977041,
     );
 
     const map = new kakao.maps.Map(mapEl, {

@@ -64,7 +64,7 @@ const ItemDescription = ({ item }) => {
       )}
 
       <Link to="/reservation/1">
-        <MidButton color="primary">{t('예약하기')}</MidButton>
+      <MidButton color='midGreen'>{t('예약하기')}</MidButton>
       </Link>
     </Wrapper>
   );

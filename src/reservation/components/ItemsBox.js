@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 
-const ItemBox = ({item, className}) => {
-    const { seq, townImage, townName, address } = item;
-    const url = `/reservation/view/${seq}`;
+const ItemBox = ({ item, className }) => {
+  const { seq, townImage, townName, address } = item;
+  const url = `/reservation/view/${seq}`;
   return (
     <li className={className}>
       <Link to={url}>
@@ -48,17 +48,10 @@ const ItemStyledBox = styled(ItemBox)`
 `;
 
 const ItemsBox = ({ items }) => {
-  console.log('items', items);
-    return (
-      items && (
-        <ul>
-          {items.map((item) => (
-            <ItemBox key={item.seq} item={item} />
-          ))}
-        </ul>
-      )
-    );
-  };
-
+  return (
+    items.length > 0 &&
+    items.map((item) => <ItemStyledBox key={item.seq} item={item} />)
+  );
+};
 
 export default React.memo(ItemsBox);
