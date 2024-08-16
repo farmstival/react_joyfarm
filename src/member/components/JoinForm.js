@@ -5,6 +5,8 @@ import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
+import FileUpload from '../../commons/components/FileUpload';
+import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload'; 
 
 
@@ -63,7 +65,16 @@ background-color: #FFFFDE; /* 부드러운 배경색 추가 */
     
 `;
 
-const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
+const JoinForm = ({ form, 
+  onSubmit, 
+  onChange, 
+  onToggle, 
+  onReset, 
+  errors,
+  fileUploadCallback,
+  fileDeleteCallback,
+
+}) => {
   const { t } = useTranslation();
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
@@ -130,9 +141,31 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
       <dl>
         <dt>{t('프로필_이미지')}</dt>
         <dd>
+         {form.profile && (
+          <ProfileImage
+             items={form.profile}
+             width="250px"
+             height="250px"
+             radius="5px"
+             onDelete={fileDeleteCallback}
+             />
+         )}
+         <FileUpload
+            width={150}
+            color="primary"
+            gid={form.gid}
+            imageOnly={true}
+            callback={fileUploadCallback}
+            >
+              {t('이미지_업로드')}
+            </FileUpload>
+        </dd>
+        </dl>
+
+        <dd>
           <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
         </dd>
-      </dl>
+      
       <div className="terms-agree" onClick={onToggle}>
         {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
         {t('회원가입_약관에_동의합니다.')}
