@@ -123,13 +123,13 @@ const MainMenu = () => {
           </SubMenu>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/community" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink className={({ isActive }) => isActive ? 'on' : ''}>
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/sub1">{t('여행후기')}</NavLink>
-            <NavLink to="/community/sub2">{t('공지사항')}</NavLink>
-            <NavLink to="/community/sub2">{t('QnA')}</NavLink>
+            <NavLink to="/community/review">{t('여행후기')}</NavLink>
+            <NavLink to="/community/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/community/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>
