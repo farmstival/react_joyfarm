@@ -25,7 +25,7 @@ const HeaderBox = styled.header`
         display: inline-block;
         line-height: 34px;
         margin: 0 10px;
-        font-size: ${fontSize.normal};
+        font-size: ${fontSize.medium};
 
         &.on {
           color: ${midGreen};

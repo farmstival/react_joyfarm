@@ -3,34 +3,34 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import { OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox } from '../../commons/components/LayoutBox';
-import ReserveListContainer from '../containers/ReserveListContainer';
+import MyReserveListContainer from '../containers/MyReserveListContainer';
 
-const ReservationList = () => {
+const MyReservList = () => {
   const { t } = useTranslation();
 
   return (
     <>
       <Helmet>
-        <title>{t('농촌체험활동_예약')}</title>
+        <title>{t('나의_예약_현황')}</title>
       </Helmet>
       <OuterBox>
         <PageNavWrap>
             <PageNav>
-              <a>예약</a>
+              <a>예약 현황 조회</a>
             </PageNav>
             <PageTitle>
-              <MainTitle>{t('농촌체험활동_예약')}</MainTitle>
+              <MainTitle>{t('나의_예약_현황')}</MainTitle>
             </PageTitle>
         </PageNavWrap>
         <ContentBox>
           <PageTitle>
-            <SubTitle>{t('체험활동_리스트')}</SubTitle>
+            <SubTitle>{t('예약_현황_리스트')}</SubTitle>
           </PageTitle>
-          <ReserveListContainer />
+          <MyReserveListContainer />
         </ContentBox>
       </OuterBox>
     </>
   );
 };
 
-export default React.memo(ReservationList);
+export default React.memo(MyReservList);

@@ -98,10 +98,10 @@ const MainMenu = () => {
         </MenuItem>
         <MenuItem>
           <NavLink
-            to="/recommend"
+            to="/myreservation/list"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
-            {t('나의 예약현황')}
+            {t('나의_예약_현황')}
           </NavLink>
         </MenuItem>
         <MenuItem>

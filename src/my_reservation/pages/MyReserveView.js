@@ -9,9 +9,9 @@ import {
   ContentBox,
 } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import ReserveViewContainer from '../containers/ReserveViewContainer';
+import MyReserveViewContainer from '../containers/MyReserveViewContainer';
 
-const ReservationView = () => {
+const MyReserveView = () => {
   const { t } = useTranslation();
   const [pageTitle, setPageTitle] = useState('');
 
@@ -23,18 +23,18 @@ const ReservationView = () => {
       <OuterBox>
         <PageNavWrap>
           <PageNav>
-            <h3>예약 / 상세보기</h3>
+            <h3>예약 현황 조회 / 상세보기</h3>
           </PageNav>
           <PageTitle>
-            <MainTitle>{t('체험활동_상세')}</MainTitle>
+            <MainTitle>{t('예약내역_상세')}</MainTitle>
           </PageTitle>
         </PageNavWrap>
         <ContentBox>
-          <ReserveViewContainer setPageTitle={setPageTitle} />
+          <MyReserveViewContainer setPageTitle={setPageTitle} />
         </ContentBox>
       </OuterBox>
     </>
   );
 };
 
-export default React.memo(ReservationView);
+export default React.memo(MyReserveView);
