@@ -28,7 +28,11 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option>- {t('시군구_선택')} -</option>
         </select>
       </div>
+
       <MidButton color="primary">{t('검색하기')}</MidButton>
+
+      <MidButton color="midGreen">{t('검색하기')}</MidButton>
+
     </FormBox>
   );
 };

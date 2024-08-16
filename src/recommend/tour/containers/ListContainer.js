@@ -4,6 +4,8 @@ import { apiList } from '../apis/apiInfo';
 import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
+import Loading from '../../../commons/components/Loading';
+import KakaoMap from '../../../map/KakaoMap';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -15,6 +17,7 @@ function getQueryString(searchParams) {
   return qs;
 }
 
+
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
 
@@ -22,11 +25,14 @@ const ListContainer = () => {
   const [search, setSearch] = useState(() => getQueryString(searchParams));
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
+      setLoading(false);
     });
   }, [search]);
 
@@ -47,6 +53,14 @@ const ListContainer = () => {
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
+
+
+
+  /* 로딩 처리 */
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <SearchBox

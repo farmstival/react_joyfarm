@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
-import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 15px;
 `;
 
-const ViewContainer = ({ setPageTitle }) => {
+const ViewContainer = ({ setSubPageTitle }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
@@ -23,24 +23,24 @@ const ViewContainer = ({ setPageTitle }) => {
     setLoading(true);
 
     apiGet(seq).then((item) => {
-      setPageTitle(item.title);
+      setSubPageTitle(item.title);
       setItem(item);
+
       const position = { lat: item.latitude, lng: item.longitude };
       setMapOptions((opt) => {
         const options = item.latitude
           ? { ...opt, center: position, marker: position }
           : { ...opt, address: item.address };
-
         return options;
       });
     });
 
     setLoading(false);
-  }, [seq, setPageTitle]);
+  }, [seq, setSubPageTitle]);
 
-  const onShowImage = useCallback((imageUrl) => {
-    console.log('이미지 주소', imageUrl);
-  });
+  const onShowImage = useCallback((imageUrl1) => {
+    console.log("이미지 주소", imageUrl1);
+  }, []);
 
   if (loading || !item) {
     return <Loading />;
@@ -49,9 +49,7 @@ const ViewContainer = ({ setPageTitle }) => {
   return (
     <>
       <Wrapper>
-        {item.photoUrl && (
-          <ItemImage images={item.photoUrl} onClick={onShowImage} />
-        )}
+        {item.photoUrl1 && <ItemImage images={item.photoUrl1} onClick={onShowImage} />}
         <ItemDescription item={item} />
       </Wrapper>
       <KakaoMap {...mapOptions} />

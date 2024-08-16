@@ -4718,7 +4718,11 @@ execa@^5.0.0:
 
 exenv@^1.2.0:
   version "1.2.2"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/exenv/-/exenv-1.2.2.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+>>>>>>> 030266eebe7a7d6507b79a325259157b7642729e
   integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
 
 exit@^0.1.2:
@@ -8228,12 +8232,20 @@ react-is@^18.0.0:
 
 react-lifecycles-compat@^3.0.0:
   version "3.0.4"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+>>>>>>> 030266eebe7a7d6507b79a325259157b7642729e
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
 react-modal@^3.16.1:
   version "3.16.1"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/react-modal/-/react-modal-3.16.1.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.16.1.tgz#34018528fc206561b1a5467fc3beeaddafb39b2b"
+>>>>>>> 030266eebe7a7d6507b79a325259157b7642729e
   integrity sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==
   dependencies:
     exenv "^1.2.0"
@@ -8241,7 +8253,11 @@ react-modal@^3.16.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+<<<<<<< HEAD
 react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
+=======
+react-refresh@^0.11.0:
+>>>>>>> 030266eebe7a7d6507b79a325259157b7642729e
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
@@ -9775,7 +9791,11 @@ walker@^1.0.7:
 
 warning@^4.0.3:
   version "4.0.3"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/warning/-/warning-4.0.3.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+>>>>>>> 030266eebe7a7d6507b79a325259157b7642729e
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"

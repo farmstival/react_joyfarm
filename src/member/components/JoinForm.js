@@ -7,6 +7,8 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import ImageUpload from '../../commons/components/ImageUpload'; 
 
+
+
 const FormBox = styled.form`
 background-color: #FFFFDE; /* 부드러운 배경색 추가 */
   padding: 25px;
