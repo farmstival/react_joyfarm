@@ -17,14 +17,17 @@ export const PageNavWrap = styled.div`
 
 export const PageNav = styled.div`
   line-height: normal;
+  color: #767676;
+  font-size: 13px;
+  word-spacing: 0.3rem;
 `;
 
 export const PageTitle = styled.div`
   margin-top: 20px;
+  font-size: 20px;
 `;
 
 export const ContentBox = styled.div`
-  
   box-sizing: border-box;
   width: 1200px;
   min-height: 700px;

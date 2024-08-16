@@ -32,6 +32,7 @@ const ItemStyledBox = styled(ItemBox)`
   margin-bottom: 15px;
   box-shadow: 2px 2px 5px #818181;
   border-radius: 5px;
+  width: 300px;
 
   a {
     display: flex;
