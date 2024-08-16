@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import MainBanner from './components/MainBanner';
 import MainLocation from './components/MainLocation'
-
-const MainRecommend = styled.nav``;
-const MainReview = styled.nav``;
-const MainBoard = styled.nav``;
+import MainRecommend from './components/MainRecommend';
+import MainReview from './components/MainReview';
+import MainBoard from './components/MainBoard';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -19,9 +18,9 @@ const Main = () => {
     <>
       <MainBanner onButtonClick={handleButtonClick} />
       <MainLocation onButtonClick={handleButtonClick}/>
-      <MainRecommend>{/* Recommend 관련 콘텐츠 */}</MainRecommend>
-      <MainReview>{/* Review 관련 콘텐츠 */}</MainReview>
-      <MainBoard>{/* Board 관련 콘텐츠 */}</MainBoard>
+      <MainRecommend onButtonClick={handleButtonClick}/>
+      <MainReview onButtonClick={handleButtonClick}/>
+      <MainBoard onButtonClick={handleButtonClick}/>
     </>
   );
 };

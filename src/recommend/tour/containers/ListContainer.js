@@ -31,7 +31,10 @@ const ListContainer = () => {
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
-      setLoading(false);
+      setTimeout(function () {
+        setLoading(false);
+      }, 500);
+      // setLoading(false); -> setTimeout 하지 않을 때는 주석 해제!
     });
   }, [search]);
 

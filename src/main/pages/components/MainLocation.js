@@ -11,7 +11,7 @@ const MainLocationWrapper = styled.div`
   align-items: flex-start;
   background: linear-gradient(to bottom, ${lightGreen}, ${white});
   padding: 50px;
-  height: 800px; 
+  height: 700px; 
   position: relative; 
 `;
 
@@ -41,10 +41,11 @@ const HighlightBox = styled.div`
   background-color: ${darkGreen};
   color: ${white};
   padding: 15px;
-  width: calc(100% - 20px); /* 오른쪽 마진을 없애기 위해 계산된 너비 사용 */
+  width: calc(100% - 20px); 
   margin-bottom: 20px; 
   display: flex;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  font-weight: bold;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   margin-right: 0; 
