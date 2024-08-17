@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../images/Loading.webp';
+import image from '../../images/loading.webp';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
