@@ -5,38 +5,76 @@ import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
-import ImageUpload from '../../commons/components/ImageUpload';
+import FileUpload from '../../commons/components/FileUpload';
+import ProfileImage from './ProfileImage';
+import ImageUpload from '../../commons/components/ImageUpload'; 
+
+
 
 const FormBox = styled.form`
+background-color: #FFFFDE; /* 부드러운 배경색 추가 */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+  max-width: 500px; /* 최대 너비 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+ 
+ 
   dl {
     display: flex;
     align-items: center;
 
     dt {
       width: 120px;
+      font-weight: bold; /* 폰트 굵게 */
+      color: #333; /* 텍스트 색상 변경 */
     }
 
+    
     dd {
       flex-grow: 1;
+      input {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #ccc;
+        border-radius: 11px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #007bff; /* 포커스 시 색상 변경 */
+        }
+      }
     }
   }
 
   dl + dl {
-    margin-top: 5px;
+    margin-top: 8px;
   }
 
   .terms-agree {
     text-align: center;
-    margin: 15px 0;
+    margin: 20px 0;
 
     svg {
       font-size: 1.5rem;
       vertical-align: middle;
+      color: #007bff; /* 아이콘 색상 변경 */
     }
   }
+    
 `;
 
-const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
+const JoinForm = ({ form, 
+  onSubmit, 
+  onChange, 
+  onToggle, 
+  onReset, 
+  errors,
+  fileUploadCallback,
+  fileDeleteCallback,
+
+}) => {
   const { t } = useTranslation();
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
@@ -103,9 +141,31 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
       <dl>
         <dt>{t('프로필_이미지')}</dt>
         <dd>
+         {form.profile && (
+          <ProfileImage
+             items={form.profile}
+             width="250px"
+             height="250px"
+             radius="5px"
+             onDelete={fileDeleteCallback}
+             />
+         )}
+         <FileUpload
+            width={150}
+            color="primary"
+            gid={form.gid}
+            imageOnly={true}
+            callback={fileUploadCallback}
+            >
+              {t('이미지_업로드')}
+            </FileUpload>
+        </dd>
+        </dl>
+
+        <dd>
           <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
         </dd>
-      </dl>
+      
       <div className="terms-agree" onClick={onToggle}>
         {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
         {t('회원가입_약관에_동의합니다.')}
@@ -114,10 +174,10 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
       </div>
 
       <ButtonGroup width={450}>
-        <BigButton type="button" color="light" onClick={onReset}>
+        <BigButton type="button" color="midGreen" onClick={onReset}>
           {t('다시입력')}
         </BigButton>
-        <BigButton type="submit" color="dark">
+        <BigButton type="submit" color="darkGreen">
           {t('가입하기')}
         </BigButton>
       </ButtonGroup>
