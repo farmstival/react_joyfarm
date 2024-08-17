@@ -53,6 +53,7 @@ const ListContainer = () => {
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
+    window.location.hash = '#root';
   }, []);
 
   // 로딩 처리

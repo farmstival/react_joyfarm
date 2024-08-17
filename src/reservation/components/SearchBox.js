@@ -6,11 +6,11 @@ import { MidButton } from '../../commons/components/Buttons';
 const FormBox = styled.form`
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 
   .select_box,
   .input_part {
-    height: 35px;
+    height: 40px;
     items-align: center;
     justify-content: center;
     display: flex;
@@ -19,6 +19,10 @@ const FormBox = styled.form`
 
   input {
     width: 400px;
+  }
+
+  select {
+   width: 110px;
   }
 
   .rsv_searchBar {

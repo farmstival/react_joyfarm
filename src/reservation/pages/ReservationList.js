@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import { OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox } from '../../commons/components/LayoutBox';
 import ReserveListContainer from '../containers/ReserveListContainer';
+import { Link } from 'react-router-dom';
 
 const ReservationList = () => {
   const { t } = useTranslation();
@@ -16,10 +17,10 @@ const ReservationList = () => {
       <OuterBox>
         <PageNavWrap>
             <PageNav>
-              <a>예약</a>
+              <Link to=''>체험활동 조회</Link>
             </PageNav>
             <PageTitle>
-              <MainTitle>{t('농촌체험활동_예약')}</MainTitle>
+              <MainTitle>{t('농촌체험_예약')}</MainTitle>
             </PageTitle>
         </PageNavWrap>
         <ContentBox>
