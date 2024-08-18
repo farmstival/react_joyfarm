@@ -11,23 +11,27 @@ import ImageUpload from '../../commons/components/ImageUpload';
 
 
 
+
 const FormBox = styled.form`
 background-color: #FFFFDE; /* 부드러운 배경색 추가 */
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
-  max-width: 500px; /* 최대 너비 설정 */
-  margin: 0 auto; /* 중앙 정렬 */
- 
- 
+padding: 25px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+max-width: 500px; /* 최대 너비 설정 */
+margin: 60px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
+transition: all 0.3s ease;
+
+
   dl {
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
 
     dt {
       width: 120px;
       font-weight: bold; /* 폰트 굵게 */
       color: #333; /* 텍스트 색상 변경 */
+      font-size: 1.1rem;
     }
 
     
@@ -39,10 +43,11 @@ background-color: #FFFFDE; /* 부드러운 배경색 추가 */
         border: 1px solid #ccc;
         border-radius: 11px;
         font-size: 1rem;
-        transition: border-color 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
         &:focus {
           border-color: #007bff; /* 포커스 시 색상 변경 */
+          box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
         }
       }
     }
@@ -55,14 +60,30 @@ background-color: #FFFFDE; /* 부드러운 배경색 추가 */
   .terms-agree {
     text-align: center;
     margin: 20px 0;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
 
     svg {
       font-size: 1.5rem;
       vertical-align: middle;
       color: #007bff; /* 아이콘 색상 변경 */
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      color: #007bff;
+      svg {
+        color: #0056b3;
+      }
     }
   }
     
+  
+
+  
+  }
 `;
 
 const JoinForm = ({ form, 
