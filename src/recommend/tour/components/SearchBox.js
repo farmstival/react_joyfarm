@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+width: 1300px;`;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
