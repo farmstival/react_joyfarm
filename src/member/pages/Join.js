@@ -17,24 +17,28 @@ const Join = () => {
       </Helmet>
       <OuterBox>
         <div
-          style={{ display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            marginTop: '20px', 
-            position: 'relative' }}
-             >
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '20px',
+            position: 'relative',
+          }}
+        >
           <img
             src={Image}
             alt="join.png"
             style={{
               width: '35px',
               position: 'absolute', // 절대 위치 지정
-              left: 'calc(50% - 70px)', // 이미지의 가운데 위치를 조정 
+              left: 'calc(50% - 70px)', // 이미지의 가운데 위치를 조정
               transform: 'translateX(-50%)',
               marginBottom: '10px',
             }}
           />
-          <MainTitle style={{ marginLeft: '10px', marginBottom: '-10px' }}>{t('회원가입')}</MainTitle>
+          <MainTitle style={{ marginLeft: '10px', marginBottom: '-10px' }}>
+            {t('회원가입')}
+          </MainTitle>
         </div>
         <JoinContainer />
       </OuterBox>
