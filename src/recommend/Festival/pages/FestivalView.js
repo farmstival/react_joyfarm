@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import {
   OuterBox,
@@ -8,6 +9,7 @@ import {
   PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
+import { DetailImgBox, DetailTitle } from '../../../commons/components/DetailBox';
 import ViewContainer from '../containers/ViewContainer';
 
 const FestivalView = () => {
@@ -29,8 +31,12 @@ const FestivalView = () => {
           </PageTitle>
         </PageNavWrap>
         <ContentBox>
-          <h1>{SubPageTitle}</h1>
-          <ViewContainer setSubPageTitle={setSubPageTitle} />
+          <DetailImgBox>
+            <DetailTitle>
+              <h1>{SubPageTitle}</h1>
+            </DetailTitle>
+            <ViewContainer setSubPageTitle={setSubPageTitle} />
+          </DetailImgBox>
         </ContentBox>
       </OuterBox>
     </>
