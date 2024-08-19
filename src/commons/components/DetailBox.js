@@ -7,6 +7,7 @@ export const DetailImgBox = styled.div`
   margin-top: 50px;
   margin-bottom: 60px;
   max-width: 1200px;
+  border-radius: 8px;
 `;
 
 export const DetailTitle = styled.div`

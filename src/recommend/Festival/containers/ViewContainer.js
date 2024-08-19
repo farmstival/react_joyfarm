@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { apiGet } from '../apis/apiInfo';
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const ViewContainer = ({ setSubPageTitle }) => {
+  const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
@@ -57,6 +59,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
           )}
           <ItemDescription item={item} />
         </Wrapper>
+        <h1>{t('길찾기')}</h1>
         <KakaoMap {...mapOptions} />
     </>
   );

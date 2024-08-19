@@ -88,7 +88,6 @@ const ItemDescription = ({ item }) => {
         <dl>
           <dt>
             <FcElectricity />
-
             {t('주소')}
           </dt>
           <dd>{address}</dd>
