@@ -8,7 +8,7 @@ import Loading from '../../../commons/components/Loading';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
-  const qs = {};
+  const qs = { limit: 9 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
