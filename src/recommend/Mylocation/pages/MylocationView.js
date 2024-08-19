@@ -9,7 +9,10 @@ import {
   PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
-import ViewContainer from '../containers/ViewContainer';
+import {
+  DetailImgBox,
+  DetailTitle,
+} from '../../../commons/components/DetailBox';
 
 const options = {
   currentLocation: true,
@@ -34,8 +37,12 @@ const MylocationView = () => {
           </PageTitle>
         </PageNavWrap>
         <ContentBox>
-          <h1>{SubPageTitle}</h1>
-          <KakaoMap {...options} />;
+          <DetailImgBox>
+            <DetailTitle>
+              <h1>{SubPageTitle}</h1>
+            </DetailTitle>
+            <KakaoMap {...options} />;
+          </DetailImgBox>
         </ContentBox>
       </OuterBox>
     </>
