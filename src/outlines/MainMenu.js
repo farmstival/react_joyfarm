@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
@@ -8,7 +7,6 @@ import fontSize from '../styles/fontSize';
 import logo from '../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen } = color;
-
 
 const MenuBox = styled.nav`
   background: ${white};
@@ -19,7 +17,6 @@ const MenuBox = styled.nav`
 `;
 
 const MenuItem = styled.div`
-  
   position: relative;
   display: inline-block;
   margin: 0 10px;
@@ -88,7 +85,6 @@ const Logo = styled.div`
   }
 `;
 
-
 const MainMenu = () => {
   const { t } = useTranslation();
 
@@ -96,40 +92,48 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <MenuItem>
-          <NavLink to="/reservation" className={({ isActive }) => isActive ? 'on' : ''}>
-            {t('농촌체험 예약')}
+          <NavLink
+            to="/reservation"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
+            {t('농촌체험_예약')}
           </NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/recommend" className={({ isActive }) => isActive ? 'on' : ''}>
-            {t('나의 예약현황')}
+          <NavLink
+            to="/recommend"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
+            {t('나의_예약현황')}
           </NavLink>
         </MenuItem>
         <MenuItem>
-        <Logo>
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
-        </Logo>
+          <Logo>
+            <Link to="/">
+              <img src={logo} alt={t('로고')} />
+            </Link>
+          </Logo>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/my_reservation" className={({ isActive }) => isActive ? 'on' : ''}>
-            {t('조이팜의 추천')}
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
+            {t('조이팜의_추천')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/recommend/tour">{t('추천 여행지')}</NavLink>
-            <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
-            <NavLink to="/recommend/mylocation">{t('내 위치 주변 여행지')}</NavLink>
+            <NavLink to="/recommend/tour">{t('추천_여행지')}</NavLink>
+            <NavLink to="/recommend/festival">{t('지역별_축제정보')}</NavLink>
+            <NavLink to="/recommend/mylocation">
+              {t('내_위치_주변_여행지')}
+            </NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/community" className={({ isActive }) => isActive ? 'on' : ''}>
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/sub1">{t('여행후기')}</NavLink>
-            <NavLink to="/community/sub2">{t('공지사항')}</NavLink>
-            <NavLink to="/community/sub2">{t('QnA')}</NavLink>
+            <NavLink to="/community/review">{t('여행후기')}</NavLink>
+            <NavLink to="/community/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/community/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>

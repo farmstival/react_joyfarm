@@ -10,7 +10,7 @@ export const color = {
   dark: '#343a40',
   darkGreen: '#2A4840',
   midGreen: '#39AE48',
-  rightGreen: '#90DB7C',
+  lightGreen: '#90DB7C',
   white: '#ffffff'
 };
 
@@ -26,7 +26,4 @@ export const buttonColor = {
   darkGreen: [color.darkGreen, '#fff', color.darkGreen],
   midGreen: [color.midGreen, '#fff', color.midGreen],
   rightGreen: [color.rightGreen, '#fff', color.rightGreen],
-  blue: [color.blue, '#FFFFFF', color.blue],
-
-
 };
