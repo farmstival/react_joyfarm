@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
+import moment from 'moment';
 import {
   FcCalendar,
   FcAbout,
@@ -62,6 +63,8 @@ const ItemDescription = ({ item }) => {
     pageLink,
     content,
   } = item;
+  const startformattedDate = moment({startDate}).format('YYYY년 MM월 DD일');
+  const endformattedDate = moment({endDate}).format('YYYY년 MM월 DD일');
   return (
     <Wrapper>
       {startDate && endDate && (
@@ -71,7 +74,7 @@ const ItemDescription = ({ item }) => {
             {t('행사기간 ')}
           </dt>
           <dd>
-            {startDate}~{endDate}
+          {startformattedDate}~{endformattedDate}
           </dd>
         </dl>
       )}
@@ -142,4 +145,6 @@ const ItemDescription = ({ item }) => {
   );
 };
 
-export default ItemDescription; //메모 지우니까 오류 사라짐.. 왜일까?
+
+
+export default React.memo(ItemDescription);
