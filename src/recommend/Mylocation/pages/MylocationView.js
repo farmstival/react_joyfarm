@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import KakaoMap from '../../../map/KakaoMap';
 import {
   OuterBox,
   ContentBox,
@@ -11,10 +10,8 @@ import {
   DetailTitle,
 } from '../../../commons/components/DetailBox';
 import Header from '../../layouts/Header';
-const options = {
-  currentLocation: true,
-  zoom: 3,
-};
+import ViewContainer from '../containers/ViewContainer';
+
 
 const MylocationView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');
@@ -31,7 +28,7 @@ const MylocationView = () => {
             <DetailTitle>
               <h1>{SubPageTitle}</h1>
             </DetailTitle>
-            <KakaoMap {...options} />;
+            <ViewContainer />
           </DetailImgBox>
         </ContentBox>
       </OuterBox>
