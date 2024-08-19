@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
@@ -19,8 +20,11 @@ const ItemBox = ({ item, className }) => {
         )}
         <div className="item-content">
           <div className="title">{title}</div>
-          <div className="address">{address}</div>
           <div className="description">{description}</div>
+          <div className="address">
+            <FaMapMarkerAlt />
+            {address}
+          </div>
         </div>
       </Link>
     </li>
@@ -28,18 +32,16 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-  margin-bottom: 60px;
   border: 1px solid #ada493;
   border-radius: 5px;
-  width: 95%;
-  height: 500px;
+  width: 100%;
+  height: 450px;
 
   a {
     display: flex;
     flex-direction: column;
 
     .photo {
-      margin-right: 10px;
       width: 100%;
       border-radius: 5px 5px 0px 0px;
     }
@@ -47,7 +49,33 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: 100%;
       word-break: break-all;
-      font-size: 15px;
+      padding: 20px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .title {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        height: 30%;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        font-size: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 40%;
+      }
+
+      .address {
+        font-size: 15px;
+        color: #767676;
+        height: 30%;
+        padding-top: 20px;
+      }
     }
   }
 `;

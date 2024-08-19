@@ -11,9 +11,9 @@ import {
 
 const Wrapper = styled.div`
   display: flex;
-  max-width: 450px;
+  max-width: 500px;
   min-width: 100px;
-  margin: 10px auto;
+  margin: 60px auto 0;
   align-items: center;
 
   .page {
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     text-align: center;
     flex-grow: 1;
     font-size: 1.15rem;
-    border: 1px solid #000;
+    border: 1px solid #ada493;
     border-radius: 3px;
     cursor: pointer;
   }
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   }
 
   .page.on {
-    background: #000;
+    background: #8d90a1;
     color: #fff;
   }
 `;
