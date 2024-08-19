@@ -4,16 +4,13 @@ import { useTranslation } from 'react-i18next';
 import KakaoMap from '../../../map/KakaoMap';
 import {
   OuterBox,
-  PageNav,
-  PageNavWrap,
-  PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
 import {
   DetailImgBox,
   DetailTitle,
 } from '../../../commons/components/DetailBox';
-
+import Header from '../../layouts/Header';
 const options = {
   currentLocation: true,
   zoom: 3,
@@ -28,14 +25,7 @@ const MylocationView = () => {
         <title>{SubPageTitle}</title>
       </Helmet>
       <OuterBox>
-        <PageNavWrap>
-          <PageNav>
-            <h3>이동 / 이동 / 이동</h3>
-          </PageNav>
-          <PageTitle>
-            <h1>내 위치 주변 농촌 체험</h1>
-          </PageTitle>
-        </PageNavWrap>
+        <Header />
         <ContentBox>
           <DetailImgBox>
             <DetailTitle>
