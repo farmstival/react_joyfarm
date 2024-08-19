@@ -13,12 +13,12 @@ const MainBannerWrapper = styled.nav`
 
 const BannerImage = styled.img`
   width: 100%;
-  height: 400px; 
+  height: 600px; 
   display: block; /* 이미지가 inline-block 처럼 보이지 않도록 */
 `;
 
 const InfoBar = styled.nav`
-  height: 130px; 
+  height: 150px; 
   color: ${white}; 
   background-color: ${darkGreen}; 
   display: flex;

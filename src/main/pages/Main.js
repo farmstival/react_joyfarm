@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import MainBanner from './components/MainBanner';
@@ -53,45 +53,6 @@ const Main = () => {
         break;
     }
   };
-
-  const handleScroll = (e) => {
-    e.preventDefault(); // 스크롤 이벤트 기본 동작 방지
-    const delta = e.deltaY;
-
-    if (delta > 0) {
-      // Scrolling down
-      if (window.scrollY < locationRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(locationRef);
-      } else if (window.scrollY < recommendRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(recommendRef);
-      } else if (window.scrollY < reviewRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(reviewRef);
-      } else if (window.scrollY < boardRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(boardRef);
-      }
-    } else {
-      // Scrolling up
-      if (window.scrollY < locationRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(top);
-      } else if (window.scrollY < recommendRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(locationRef);
-      } else if (window.scrollY < reviewRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(recommendRef);
-      } else if (window.scrollY < boardRef.current.offsetTop - HEADER_HEIGHT) {
-        scrollToSection(reviewRef);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const handleScrollDebounced = (e) => {
-      window.requestAnimationFrame(() => handleScroll(e));
-    };
-    window.addEventListener('wheel', handleScrollDebounced, { passive: false });
-    return () => {
-      window.removeEventListener('wheel', handleScrollDebounced);
-    };
-  }, []);
 
   return (
     <>
