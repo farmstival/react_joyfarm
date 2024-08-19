@@ -3,25 +3,29 @@ import styled, { keyframes } from 'styled-components';
 import { color } from '../../../styles/color';
 import MainReviewImage from '../../../images/banner1.jpg'; // 예시 이미지 경로
 
-const { darkGreen, white, dark, midGreen, lightGreen } = color;
+const { darkGreen, white, dark, midGreen, whiteGreen } = color;
 
 const MainReviewWrapper = styled.div`
-  background: ${lightGreen};
+  background: ${whiteGreen};
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
+  justify-content: center; 
   height: 950px;
 `;
 
 const InnerContentWrapper = styled.div`
-  max-width: 1440px; /* 최대 너비 제한 */
-  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
+ padding: 0 20px;
+  max-width: 1440px; 
+  width: 100%; 
   display: flex;
+  justify-content: center;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-top: 250px;
+  padding: 0 40px;
 `;
 
 const scrollUp = keyframes`
@@ -55,8 +59,9 @@ const RightSection = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 640px; 
+  height: 950px; 
   width: 300px;
+  margin-right: 200px;
 `;
 
 const ImageBoxContainer = styled.div`
@@ -76,11 +81,21 @@ const ImageBox = styled.div`
 `;
 
 const ImageBox1 = styled(ImageBoxContainer)`
-  animation: ${scrollUp} 15s linear infinite;
+  animation: ${scrollUp} 20s linear infinite;
 `;
 
 const ImageBox2 = styled(ImageBoxContainer)`
-  animation: ${scrollDown} 15s linear infinite;
+  animation: ${scrollUp} 20s linear infinite;
+  animation-delay: 3.2s;
+`;
+
+const ImageBox3 = styled(ImageBoxContainer)`
+  animation: ${scrollDown} 20s linear infinite;
+`;
+
+const ImageBox4 = styled(ImageBoxContainer)`
+  animation: ${scrollDown} 20s linear infinite;
+  animation-delay: 3.2s;
 `;
 
 const ReviewImage = styled.img`
@@ -90,24 +105,27 @@ const ReviewImage = styled.img`
 `;
 
 const Title = styled.h2`
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 20px;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin-bottom: 30px;
   line-height: 1.4;
+  margin
 `;
 
 const Button = styled.button`
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 20px 20px;
+  font-size: 1.3em;
+  font-weight:bold;
   color: ${midGreen};
   background: ${white};
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
   &:hover {
     background: ${darkGreen};
     color: ${white};
@@ -155,7 +173,7 @@ const MainReview = ({ onButtonClick }) => {
           </ImageBox2>
         </LeftSection>
         <RightSection>
-          <ImageBoxContainer>
+          <ImageBox3>
             <ImageBox>
               <ReviewImage src={MainReviewImage} alt="Review 1" />
             </ImageBox>
@@ -171,7 +189,24 @@ const MainReview = ({ onButtonClick }) => {
             <ImageBox>
               <ReviewImage src={MainReviewImage} alt="Review 5" />
             </ImageBox>
-          </ImageBoxContainer>
+          </ImageBox3>
+          <ImageBox4>
+            <ImageBox>
+              <ReviewImage src={MainReviewImage} alt="Review 1" />
+            </ImageBox>
+            <ImageBox>
+              <ReviewImage src={MainReviewImage} alt="Review 2" />
+            </ImageBox>
+            <ImageBox>
+              <ReviewImage src={MainReviewImage} alt="Review 3" />
+            </ImageBox>
+            <ImageBox>
+              <ReviewImage src={MainReviewImage} alt="Review 4" />
+            </ImageBox>
+            <ImageBox>
+              <ReviewImage src={MainReviewImage} alt="Review 5" />
+            </ImageBox>
+          </ImageBox4>
         </RightSection>
         <ContentWrapper>
           <Title>특별했던 순간을 공유하세요!</Title>
