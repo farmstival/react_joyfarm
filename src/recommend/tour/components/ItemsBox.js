@@ -86,11 +86,15 @@ const ItemStyledBox = styled(ItemBox)`
         font-size: 15px;
         margin-bottom: 10px;
         width: 100%;
-        height: 40%;
+        height: 30%;
         display: flex;
         align-items: center;
         text-align: justify;
         line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        display: -webkit-box; 
       }
 
       .address {

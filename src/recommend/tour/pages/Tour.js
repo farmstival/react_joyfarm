@@ -10,6 +10,7 @@ import {
   PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
+import Header from '../../layouts/Header';
 
 const Tour = () => {
   const { t } = useTranslation();
@@ -19,16 +20,7 @@ const Tour = () => {
         <title>{t('추천_여행지')}</title>
       </Helmet>
       <OuterBox>
-        <PageNavWrap>
-          <PageNav>
-            <h3>
-              <IoMdHome /> &gt; 조이팜의 추천 &gt; 추천 여행지
-            </h3>
-          </PageNav>
-          <PageTitle>
-            <h1>추천 여행지</h1>
-          </PageTitle>
-        </PageNavWrap>
+        <Header />
         <ContentBox>
           <ListContainer />
         </ContentBox>
