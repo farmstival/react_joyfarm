@@ -7,8 +7,21 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import FileUpload from '../../commons/components/FileUpload';
 import ProfileImage from './ProfileImage';
+import fontSize from '../../styles/fontSize';
+
+const {medium, big} = fontSize;
 
 const FormBox = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: ${medium};
+
+  .form_box {
+    width: 700px;
+    margin-top: 70px;
+  }
+
   dl {
     display: flex;
     align-items: center;
@@ -23,7 +36,7 @@ const FormBox = styled.form`
   }
 
   dl + dl {
-    margin-top: 5px;
+    margin-top: 10px;
   }
 
   .terms-agree {
@@ -78,6 +91,7 @@ const JoinForm = ({
   const { t } = useTranslation();
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
+      <div className='form_box'>
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
@@ -216,6 +230,7 @@ const JoinForm = ({
           {t('가입하기')}
         </BigButton>
       </ButtonGroup>
+      </div>
     </FormBox>
   );
 };
