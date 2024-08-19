@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { color } from '../../../styles/color';
+
+const { white } = color;
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
@@ -37,19 +40,30 @@ const ItemStyledBox = styled(ItemBox)`
   width: 100%;
   height: 450px;
 
+  &:hover {
+    border: 1px solid #4ab0b0;
+  }
+
+  &:hover .title {
+    background: #4ab0b0;
+    color: ${white};
+    text-shadow: 2px 2px gray;
+  }
+
   a {
     display: flex;
     flex-direction: column;
 
     .photo {
       width: 100%;
+      height: 250px;
       border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 20px;
+      padding: 5px 20px;
       height: 200px;
       display: flex;
       flex-direction: column;
@@ -61,6 +75,11 @@ const ItemStyledBox = styled(ItemBox)`
         text-align: center;
         height: 30%;
         margin-bottom: 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, color 0.2s, text-shadow 0.2s;
       }
 
       .description {
@@ -68,6 +87,10 @@ const ItemStyledBox = styled(ItemBox)`
         margin-bottom: 10px;
         width: 100%;
         height: 40%;
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        line-height: 20px;
       }
 
       .address {

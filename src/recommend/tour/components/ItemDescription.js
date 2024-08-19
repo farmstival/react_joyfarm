@@ -3,66 +3,87 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
+import moment from 'moment';
+import {
+  FcCalendar,
+  FcAbout,
+  FcAutomotive,
+  FcContacts,
+  FcElectricity,
+  FcPlus,
+} from 'react-icons/fc';
 
 const Wrapper = styled.div`
-  width: 350px;
-  word-break: break-all;
+  position: relative;
+  flex: 1;
+  padding-left: 52px;
 
   dl {
+    padding-top: 10px;
+    margin: 16px 0;
     display: flex;
-
-    padding: 10px 15px;
+    align-items: center;
+    flex-wrap: wrap;
 
     dt {
-      width: 100px;
+      padding-left: 15px;
+      font-size: 1.5rem;
+      font-weight: 650;
+      line-height: 29px;
     }
 
     dd {
-      width: calc(100% - 100px);
+      padding-left: 15px;
+      font-size: 1.3rem;
     }
   }
 
+  dl dt svg {
+    margin-right: 8px;
+  }
+
   dl + dl {
-    border-top: 1px dashed #818181;
+    border-top: 1px solid #f8f9fa;
   }
 `;
 
 const ItemDescription = ({ item }) => {
   const { t } = useTranslation();
   const { period, title, address, tel, course, description } = item;
+  const periodformattedDate = moment({period}).format('YYYY년 MM월');
   return (
     <Wrapper>
-      {period && (
+         {period && (
         <dl>
-          <dt>{t('추천_여행기간')}</dt>
-          <dd>{period}</dd>
+          <dt><FcCalendar />{t('추천_여행기간')}</dt>
+          <dd>{periodformattedDate}</dd>
         </dl>
       )}
       <dl>
-        <dt>{t('여행지_명')}</dt>
+        <dt><FcAbout />{t('추천_여행지')}</dt>
         <dd>{title}</dd>
       </dl>
       <dl>
-        <dt>{t('여행장소')}</dt>
+        <dt><FcAutomotive />{t('여행장소')}</dt>
         <dd>{address}</dd>
       </dl>
       <dl>
-        <dt>{t('문의처')}</dt>
+        <dt><FcContacts />{t('문의처')}</dt>
         <dd>{tel}</dd>
       </dl>
       {course && (
         <dl>
-          <dt>{t('여행코스')}</dt>
+          <dt><FcElectricity />{t('여행코스')}</dt>
           <dd>{course}</dd>
         </dl>
       )}
       {description && (
         <dl>
-          <dt>{t('여행설명')}</dt>
+          <dt><FcPlus />{t('여행지_설명')}</dt>
           <dd>{description}</dd>
         </dl>
       )}
-      <MidButton color='midGreen'>{t('여행지_찜하기')}</MidButton>
+      <MidButton color="midGreen">{t('여행지_찜하기')}</MidButton>
     </Wrapper>
   );
 };

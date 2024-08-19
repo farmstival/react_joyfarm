@@ -1,23 +1,42 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PageNavWrap, ContentBox, OuterBox } from '../../../commons/components/LayoutBox';
-import { MainTitle } from '../../../commons/components/TitleBox';
+import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
+import {
+  OuterBox,
+  PageNav,
+  PageNavWrap,
+  PageTitle,
+  ContentBox,
+} from '../../../commons/components/LayoutBox';
+import { DetailImgBox, DetailTitle } from '../../../commons/components/DetailBox';
 import ViewContainer from '../containers/ViewContainer';
 
 const TourView = () => {
-  const [pageTitle, setPageTitle] = useState('');
+  const [SubPageTitle, setSubPageTitle] = useState('');
+  const { t } = useTranslation();
 
   return (
     <>
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{SubPageTitle}</title>
       </Helmet>
       <OuterBox>
-      <PageNavWrap>
-        <MainTitle>{pageTitle}</MainTitle>
+        <PageNavWrap>
+          <PageNav>
+            <h3>이동 / 이동 / 이동</h3>
+          </PageNav>
+          <PageTitle>
+            <h1>추천 여행지</h1>
+          </PageTitle>
         </PageNavWrap>
         <ContentBox>
-        <ViewContainer setPageTitle={setPageTitle} />
+          <DetailImgBox>
+            <DetailTitle>
+              <h1>{SubPageTitle}</h1>
+            </DetailTitle>
+            <ViewContainer setSubPageTitle={setSubPageTitle} />
+          </DetailImgBox>
         </ContentBox>
       </OuterBox>
     </>
