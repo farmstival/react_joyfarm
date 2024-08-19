@@ -3,29 +3,52 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
+import moment from 'moment';
+import {
+  FcCalendar,
+  FcAbout,
+  FcBookmark,
+  FcLibrary,
+  FcContacts,
+  FcHome,
+  FcElectricity,
+  FcPlus
+} from 'react-icons/fc';
 
 const Wrapper = styled.div`
-  width: 350px;
-  word-break: break-all;
+  position: relative;
+  flex: 1;
+  padding-left: 52px;
 
   dl {
+    padding-top: 10px;
+    margin: 16px 0;
     display: flex;
-
-    padding: 10px 15px;
+    align-items: center;
+    flex-wrap: wrap;
 
     dt {
-      width: 100px;
+      padding-left: 15px;
+      font-size: 1.5rem;
+      font-weight: 650;
+      line-height: 29px;
     }
 
     dd {
-      width: calc(100% - 100px);
+      padding-left: 15px;
+      font-size: 1.3rem;
     }
   }
 
+  dl dt svg {
+    margin-right: 8px;
+  }
+
   dl + dl {
-    border-top: 1px dashed #818181;
+    border-top: 1px solid #f8f9fa;
   }
 `;
+
 const ItemDescription = ({ item }) => {
   const { t } = useTranslation();
   const {
@@ -40,57 +63,88 @@ const ItemDescription = ({ item }) => {
     pageLink,
     content,
   } = item;
+  const startformattedDate = moment({startDate}).format('YYYY년 MM월 DD일');
+  const endformattedDate = moment({endDate}).format('YYYY년 MM월 DD일');
   return (
     <Wrapper>
       {startDate && endDate && (
         <dl>
-          <dt>{t('행사기간')}</dt>
+          <dt>
+            <FcCalendar />
+            {t('행사기간 ')}
+          </dt>
           <dd>
-            {startDate}~{endDate}
+          {startformattedDate}~{endformattedDate}
           </dd>
         </dl>
       )}
       <dl>
-        <dt>{t('행사명')}</dt>
+        <dt>
+          <FcAbout />
+          {t('행사명')}
+        </dt>
         <dd>{title}</dd>
       </dl>
       {address && (
         <dl>
-          <dt>{t('주소')}</dt>
+          <dt>
+            <FcElectricity />
+            {t('주소')}
+          </dt>
           <dd>{address}</dd>
         </dl>
       )}
       {location && (
         <dl>
-          <dt>{t('행사장소')}</dt>
+          <dt>
+            <FcBookmark />
+            {t('행사장소')}
+          </dt>
           <dd>{location}</dd>
         </dl>
       )}
       {hostMain && (
         <dl>
-          <dt>{t('주최기관')}</dt>
+          <dt>
+            <FcLibrary />
+            {t('주최기관')}
+          </dt>
           <dd>{hostMain}</dd>
         </dl>
       )}
       <dl>
-        <dt>{t('주관기관')}</dt>
+        <dt>
+          <FcLibrary />
+          {t('주관기관')}
+        </dt>
         <dd>{hostSub}</dd>
       </dl>
       <dl>
-        <dt>{t('문의처')}</dt>
+        <dt>
+          <FcContacts />
+          {t('문의처')}
+        </dt>
         <dd>{tel}</dd>
       </dl>
       <dl>
-        <dt>{t('홈페이지_주소')}</dt>
+        <dt>
+          <FcHome />
+          {t('홈페이지_주소')}
+        </dt>
         <dd>{pageLink}</dd>
       </dl>
       <dl>
-        <dt>{t('행사내용')}</dt>
+        <dt>
+          <FcPlus />
+          {t('행사내용')}
+        </dt>
         <dd>{content}</dd>
       </dl>
       <MidButton>{t('찜하기')}</MidButton>
     </Wrapper>
   );
 };
+
+
 
 export default React.memo(ItemDescription);
