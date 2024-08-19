@@ -2,7 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
+import Layout from "../../layouts/Layout";
+import { ContentBox } from "../../../commons/components/LayoutBox";
 
 const OuterBox = styled.div`
   margin-bottom: 150px;
@@ -11,14 +12,16 @@ const OuterBox = styled.div`
 const ReviewMain = () => {
     const { t } = useTranslation();
     return (
-        <>
+        <Layout>
             <Helmet>
                 <title>{t('여행후기')}</title>
             </Helmet>
             <OuterBox className="layout-width">
-                <h1>여행후기</h1>
+                <ContentBox>
+                <h1>contentbox로 감싸는거 이상하면 제거하기</h1>
+                </ContentBox>
             </OuterBox>
-        </>
+        </Layout>
     );
 };
 
