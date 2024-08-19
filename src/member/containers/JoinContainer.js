@@ -5,10 +5,10 @@ import { apiJoin } from '../apis/apiJoin';
 import JoinForm from '../components/JoinForm';
 import apiRequest from '../../commons/libs/apiRequest';
 
-
 const JoinContainer = () => {
   // 양식 데이터
   const [form, setForm] = useState({
+    gid: '' + Date.now(),
     agree: false,
   });
 
@@ -115,11 +115,11 @@ const JoinContainer = () => {
 
   const onReset = useCallback(() => setForm({ agree: false }), []);
 
-  //파일 업로드 콜백 처리 
+  //파일 업로드 콜백 처리
   const fileUploadCallback = useCallback((files) => {
-  // 프로필 파일 정보 업데이트 
-  if (files.length === 0) return;
-  setForm((form) => ({ ... form, profile: files[0] }));
+    // 프로필 파일 정보 업데이트
+    if (files.length === 0) return;
+    setForm((form) => ({ ...form, profile: files[0] }));
   }, []);
 
   const fileDeleteCallback = useCallback(
@@ -130,21 +130,21 @@ const JoinContainer = () => {
 
       (async () => {
         try {
-          const res = await apiRequest(` /file/delete/${seq}`, 'DELETE');
-          if (res.status === 200 && res.success) {
-            setForm((form) => ({ ...form, profile: null}));
+          const res = await apiRequest(`/file/delete/${seq}`, 'DELETE');
+
+          if (res.status === 200 && res.data.success) {
+            setForm((form) => ({ ...form, profile: null }));
             return;
           }
 
           if (res.data.message) {
             setErrors({ global: [res.data.message] });
           }
-
-        }catch (err) {
+        } catch (err) {
           setErrors({ global: [err.message] });
           console.error(err);
         }
-      }) ();
+      })();
     },
     [t],
   );

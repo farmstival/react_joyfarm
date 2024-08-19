@@ -7,18 +7,15 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import FileUpload from '../../commons/components/FileUpload';
 import ProfileImage from './ProfileImage';
-import ImageUpload from '../../commons/components/ImageUpload'; 
-
-
-
+import ImageUpload from '../../commons/components/ImageUpload';
 
 const FormBox = styled.form`
-background-color: #FFFFDE; /* 부드러운 배경색 추가 */
+background-color: #FFFFBA; /* 부드러운 배경색 추가 */
 padding: 25px;
 border-radius: 8px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
 max-width: 500px; /* 최대 너비 설정 */
-margin: 60px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
+margin: 10px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
 transition: all 0.3s ease;
 
 
@@ -86,15 +83,15 @@ transition: all 0.3s ease;
   }
 `;
 
-const JoinForm = ({ form, 
-  onSubmit, 
-  onChange, 
-  onToggle, 
-  onReset, 
+const JoinForm = ({
+  form,
+  onSubmit,
+  onChange,
+  onToggle,
+  onReset,
   errors,
   fileUploadCallback,
   fileDeleteCallback,
-
 }) => {
   const { t } = useTranslation();
   return (
@@ -162,31 +159,32 @@ const JoinForm = ({ form,
       <dl>
         <dt>{t('프로필_이미지')}</dt>
         <dd>
-         {form.profile && (
-          <ProfileImage
-             items={form.profile}
-             width="250px"
-             height="250px"
-             radius="5px"
-             onDelete={fileDeleteCallback}
-             />
-         )}
-         <FileUpload
+          {form.profile && (
+            <ProfileImage
+              items={form.profile}
+              width="250px"
+              height="250px"
+              radius="5px"
+              onDelete={fileDeleteCallback}
+            />
+          )}
+
+          <FileUpload
             width={150}
             color="primary"
             gid={form.gid}
             imageOnly={true}
             callback={fileUploadCallback}
-            >
-              {t('이미지_업로드')}
-            </FileUpload>
+          >
+            {t('🖼️업로드')}
+          </FileUpload>
         </dd>
-        </dl>
+      </dl>
 
-        <dd>
-          <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
-        </dd>
-      
+      <dd>
+        <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
+      </dd>
+
       <div className="terms-agree" onClick={onToggle}>
         {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
         {t('회원가입_약관에_동의합니다.')}
