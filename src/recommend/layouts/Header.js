@@ -25,13 +25,14 @@ const Header = () => {
 
   let linkText = '';
   let linkHref = '#';
-  let pattern = new RegExp("\d+$");
+  let pattern = new RegExp('d+$');
 
   if (currentPath === '/recommend/tour' || currentPath.concat(pattern)) {
     linkText = '추천 여행지';
     linkHref = '/recommend/tour';
   } else if (
-    currentPath === '/recommend/festival/' || currentPath.concat(pattern)
+    currentPath === '/recommend/festival/' ||
+    currentPath.concat(pattern)
   ) {
     linkText = '지역별 축제 정보';
     linkHref = '/recommend/festival';
@@ -46,7 +47,9 @@ const Header = () => {
   return (
     <HeaderBox>
       <PageNavWrap>
-        <StyledLink href="/"><IoMdHome /> HOME</StyledLink>
+        <StyledLink href="/">
+          <IoMdHome /> HOME
+        </StyledLink>
         &nbsp;&nbsp; &gt; &nbsp;&nbsp;
         <StyledLink href={linkHref}>{linkText}</StyledLink>
         <PageTitle>
