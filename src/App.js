@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
+import VisitorInfo from './visitors/VisitorInfo';
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
@@ -35,7 +36,7 @@ const App = () => {
     </>
   ) : (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<><MainLayout /><VisitorInfo/></>}>
         <Route index element={<Main />} /> {/* 메인 페이지 */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
