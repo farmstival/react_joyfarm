@@ -5,9 +5,11 @@ import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
+import KakaoMap from '../../../map/KakaoMap';
+import { ImageListBox } from '../../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
-  const qs = {};
+  const qs = { limit: 9 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
@@ -68,7 +70,9 @@ const ListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-      <ItemsBox items={items} />
+      <ImageListBox className="List-box">
+        <ItemsBox items={items} />
+      </ImageListBox>
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}

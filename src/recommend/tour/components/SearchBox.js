@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../../commons/components/Buttons';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+width: 1300px;`;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -13,9 +14,9 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
       <div>
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
-          <option value="TITLE">{t('여행지')}</option>
-          <option value="TEL">{t('연락처')}</option>
-          <option value="ADDRESS">{t('주소')}</option>
+          <option value="TITLE">{t('여행지_명')}</option>
+          <option value="TEL">{t('여행지_연락처')}</option>
+          <option value="ADDRESS">{t('여행지_주소')}</option>
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
         <input type="text" name="skey" value={form.skey} onChange={onChange} />

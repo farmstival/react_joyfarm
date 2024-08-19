@@ -34,16 +34,16 @@ const ItemDescription = ({ item }) => {
     <Wrapper>
       {period && (
         <dl>
-          <dt>{t('행사기간')}</dt>
+          <dt>{t('추천_여행기간')}</dt>
           <dd>{period}</dd>
         </dl>
       )}
       <dl>
-        <dt>{t('행사명')}</dt>
+        <dt>{t('여행지_명')}</dt>
         <dd>{title}</dd>
       </dl>
       <dl>
-        <dt>{t('행사장소')}</dt>
+        <dt>{t('여행장소')}</dt>
         <dd>{address}</dd>
       </dl>
       <dl>
@@ -58,14 +58,11 @@ const ItemDescription = ({ item }) => {
       )}
       {description && (
         <dl>
-          <dt>{t('행사내용')}</dt>
+          <dt>{t('여행설명')}</dt>
           <dd>{description}</dd>
         </dl>
       )}
-
-      <Link to="/reservation/1">
-      <MidButton color='midGreen'>{t('예약하기')}</MidButton>
-      </Link>
+      <MidButton color='midGreen'>{t('여행지_찜하기')}</MidButton>
     </Wrapper>
   );
 };
