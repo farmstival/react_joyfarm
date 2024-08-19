@@ -13,7 +13,7 @@ const MainBannerWrapper = styled.nav`
 
 const BannerImage = styled.img`
   width: 100%;
-  height: 600px; 
+  height: 650px; 
   display: block; /* 이미지가 inline-block 처럼 보이지 않도록 */
 `;
 

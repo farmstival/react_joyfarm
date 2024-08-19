@@ -12,7 +12,7 @@ const LogoImage = styled.img`
   opacity: 0.1;
   position: absolute;
   top: 620px; 
-  left: 1700px;
+  left: 1670px;
   transform: translateX(-50%);
 `;
 
@@ -39,6 +39,7 @@ const InnerContentWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -69,7 +70,7 @@ const LeftSection = styled.div`
   flex-direction: column;
   overflow: hidden;
   height: 1000px; 
-  width: 250px;
+  width: 270px;
   margin-right: 40px;
 `;
 
@@ -78,7 +79,7 @@ const RightSection = styled.div`
   flex-direction: column;
   overflow: hidden;
   height: 1000px; 
-  width: 250px;
+  width: 270px;
   margin-right: 100px;
 `;
 
@@ -89,7 +90,7 @@ const ImageBoxContainer = styled.div`
 `;
 
 const ImageBox = styled.div`
-  width: 250px;
+  width: 270px;
   height: 190px;
   background: ${dark};
   margin-bottom: 30px;
@@ -105,7 +106,7 @@ const ImageBox1 = styled(ImageBoxContainer)`
 
 const ImageBox2 = styled(ImageBoxContainer)`
   animation: ${scrollUp} 20s linear infinite;
-  animation-delay: 2s;
+    animation-delay: 1s;
 `;
 
 const ImageBox3 = styled(ImageBoxContainer)`
@@ -114,7 +115,7 @@ const ImageBox3 = styled(ImageBoxContainer)`
 
 const ImageBox4 = styled(ImageBoxContainer)`
   animation: ${scrollDown} 20s linear infinite;
-  animation-delay: 2s;
+  animation-delay: 1s;
 `;
 
 const ReviewImage = styled.img`
