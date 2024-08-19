@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { MidButton } from '../../../commons/components/Buttons';
 
 const FormBox = styled.form`
-
+  width: 1300px;
 `;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {

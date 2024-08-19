@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { PageNavWrap, PageTitle } from '../../commons/components/LayoutBox';
+import { IoMdHome } from 'react-icons/io';
 
 const HeaderBox = styled.header`
   /* 헤더 스타일 */
@@ -25,11 +26,11 @@ const Header = () => {
   let linkText = '';
   let linkHref = '#';
 
-  if (currentPath === '/recommend/tour' || '/recommend/tour/{seq}') {
+  if (currentPath === '/recommend/tour' || currentPath === '/recommend/tour/{seq}') {
     linkText = '추천 여행지';
     linkHref = '/recommend/tour';
   } else if (
-    currentPath === '/recommend/festival' ||
+    currentPath === '/recommend/festival' || currentPath === 
     '/recommend/festival/{seq}'
   ) {
     linkText = '지역별 축제 정보';
@@ -45,8 +46,8 @@ const Header = () => {
   return (
     <HeaderBox>
       <PageNavWrap>
-        <StyledLink href="/">HOME</StyledLink>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <StyledLink href="/"><IoMdHome /> HOME</StyledLink>
+        &nbsp;&nbsp; &gt; &nbsp;&nbsp;
         <StyledLink href={linkHref}>{linkText}</StyledLink>
         <PageTitle>
           <h1>{linkText}</h1>

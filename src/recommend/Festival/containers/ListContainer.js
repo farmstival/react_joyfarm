@@ -5,6 +5,7 @@ import SearchBox from '../components/SearchBox';
 import ItemsBox from '../components/ItemsBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
+import { ImageListBox } from '../../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -64,7 +65,9 @@ const ListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-      <ItemsBox items={items} />
+      <ImageListBox className="List-box">
+        <ItemsBox items={items} />
+      </ImageListBox>
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}
