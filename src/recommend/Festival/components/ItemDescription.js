@@ -10,11 +10,9 @@ import {
   FcLibrary,
   FcContacts,
   FcHome,
-  FcLikePlaceholder,
   FcElectricity,
   FcPlus
 } from 'react-icons/fc';
-import { IoIosNavigate } from 'react-icons/io';
 
 const Wrapper = styled.div`
   position: relative;
