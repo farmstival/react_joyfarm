@@ -359,7 +359,7 @@ const JoinForm = ({
         ㈜🍀JOY_FARM / 주임 이메일 : jeongh119@joyfarm.com 12. 고지의 의무 현
         '개인정보처리방침'의 내용에 추가, 삭제 및 수정이 있을 시에는 회사의
         홈페이지 첫 화면의 '공지사항' 또는 별도의 창을 통해 고지합니다. 공고
-        일자 : 2019년 6월 19일 시행 일자 : 2019년 7월 19일
+        일자 : 2024년 9월 1일  시행 일자 : 2024년 8월 1일
       </textarea>
 
       <div className="terms-agree" onClick={onToggle}>
