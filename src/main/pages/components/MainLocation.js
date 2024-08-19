@@ -8,11 +8,18 @@ const { dark, light, midGreen, white, lightGreen, darkGreen } = color;
 
 const MainLocationWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
   background: linear-gradient(to bottom, ${lightGreen}, ${white});
-  padding: 50px;
-  height: 700px; 
-  position: relative; 
+  padding: 50px 0; 
+  min-height: 700px; 
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  max-width: 1440px; 
+  width: 100%; 
+  padding: 0 20px;
 `;
 
 const MapImage = styled.img`
@@ -23,8 +30,7 @@ const MapImage = styled.img`
   margin-bottom: 20px; 
 `;
 
-const ContentWrapper = styled.div`
-
+const InnerContentWrapper = styled.div`
   margin-top: 100px;
   margin-left: 100px;
   display: flex;
@@ -83,18 +89,20 @@ const Button = styled.button`
 const MainLocation = ({ onButtonClick }) => {
   return (
     <MainLocationWrapper>
-      <MapImage src={mapImage} alt="Map" />
       <ContentWrapper>
-        <LogoImage src={logoImage} alt="Logo" />
-        <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
-        <ButtonContainer>
-          <Button onClick={onButtonClick}>서울</Button>
-          <Button onClick={onButtonClick}>경기•인천</Button>
-          <Button onClick={onButtonClick}>충청도</Button>
-          <Button onClick={onButtonClick}>강원도</Button>
-          <Button onClick={onButtonClick}>전라도</Button>
-          <Button onClick={onButtonClick}>경상도</Button>
-        </ButtonContainer>
+        <MapImage src={mapImage} alt="Map" />
+        <InnerContentWrapper>
+          <LogoImage src={logoImage} alt="Logo" />
+          <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
+          <ButtonContainer>
+            <Button onClick={onButtonClick}>서울</Button>
+            <Button onClick={onButtonClick}>경기•인천</Button>
+            <Button onClick={onButtonClick}>충청도</Button>
+            <Button onClick={onButtonClick}>강원도</Button>
+            <Button onClick={onButtonClick}>전라도</Button>
+            <Button onClick={onButtonClick}>경상도</Button>
+          </ButtonContainer>
+        </InnerContentWrapper>
       </ContentWrapper>
     </MainLocationWrapper>
   );

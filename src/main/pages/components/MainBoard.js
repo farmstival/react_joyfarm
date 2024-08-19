@@ -6,8 +6,15 @@ import MainReviewImage from '../../../images/banner1.jpg'; // Example image path
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray } = color;
 
 const MainBoardWrapper = styled.div`
-  padding: 50px;
+  padding: 50px 20px; /* 좌우 padding 추가 */
   background: ${white};
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+`;
+
+const InnerContentWrapper = styled.div`
+  max-width: 1440px; /* 최대 너비 제한 */
+  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
 `;
 
 const Header = styled.div`
@@ -99,29 +106,31 @@ const NoticeContent = styled.p`
 const MainBoard = ({ onButtonClick }) => {
   return (
     <MainBoardWrapper>
-      <Header>
-        <Title>조이팜이 전하는 소식들</Title>
-        <MoreLink onClick={onButtonClick}>더보기</MoreLink>
-      </Header>
-      <ContentWrapper>
-        <LeftSection>
-          <ImageBox>
-            <Image src={MainReviewImage} alt="Notice" />
-          </ImageBox>
-          <TextContainer>
-            <DateText>2024.04.12</DateText>
-            <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeText>
-          </TextContainer>
-        </LeftSection>
-        <RightSection>
-          {[1, 2, 3].map(index => (
-            <NoticeItem key={index}>
-              <NoticeDate>2024.04.12</NoticeDate>
-              <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
-            </NoticeItem>
-          ))}
-        </RightSection>
-      </ContentWrapper>
+      <InnerContentWrapper>
+        <Header>
+          <Title>조이팜이 전하는 소식들</Title>
+          <MoreLink onClick={onButtonClick}>더보기</MoreLink>
+        </Header>
+        <ContentWrapper>
+          <LeftSection>
+            <ImageBox>
+              <Image src={MainReviewImage} alt="Notice" />
+            </ImageBox>
+            <TextContainer>
+              <DateText>2024.04.12</DateText>
+              <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeText>
+            </TextContainer>
+          </LeftSection>
+          <RightSection>
+            {[1, 2, 3].map(index => (
+              <NoticeItem key={index}>
+                <NoticeDate>2024.04.12</NoticeDate>
+                <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
+              </NoticeItem>
+            ))}
+          </RightSection>
+        </ContentWrapper>
+      </InnerContentWrapper>
     </MainBoardWrapper>
   );
 };

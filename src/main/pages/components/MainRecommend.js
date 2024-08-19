@@ -6,9 +6,16 @@ import MainRecommendImage from '../../../images/banner1.jpg';
 const { darkGreen, white, dark, mid_gray, midGreen } = color;
 
 const MainRecommendWrapper = styled.div`
-  padding: 100px;
+  padding: 100px 20px; /* 좌우 padding 추가 */
   background: ${white};
   margin-bottom: 100px;
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 1440px; /* 최대 너비 제한 */
+  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
 `;
 
 const Header = styled.div`
@@ -94,60 +101,62 @@ const handleItemClick = (url) => {
 const MainRecommend = ({ onButtonClick }) => {
   return (
     <MainRecommendWrapper>
-      <Header>
-        <Title>이런 여행지는 어떠세요?</Title>
-        <MoreLink onClick={onButtonClick}>더보기</MoreLink>
-      </Header>
-      <Grid>
-        <Item onClick={() => handleItemClick('path_to_destination1')}>
-          <Image src={MainRecommendImage} alt="Travel Destination 1" />
-          <InfoBox>
-            <Description>소 젖먹이기 체험</Description>
-            <ExtraInfo>
-              젖소 먹이주기 체험, 치즈만들기 체험,<br />
-              소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
-              많이들 참가해서 좋은 추억을 만드세요.
-            </ExtraInfo>
-            <Address>경기도 군포시 산본로 142 52-11</Address>
-          </InfoBox>
-        </Item>
-        <Item onClick={() => handleItemClick('path_to_destination2')}>
-          <Image src={MainRecommendImage} alt="Travel Destination 2" />
-          <InfoBox>
-            <Description>소 젖먹이기 체험</Description>
-            <ExtraInfo>
-              젖소 먹이주기 체험, 치즈만들기 체험,<br />
-              소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
-              많이들 참가해서 좋은 추억을 만드세요.
-            </ExtraInfo>
-            <Address>경기도 군포시 산본로 142 52-11</Address>
-          </InfoBox>
-        </Item>
-        <Item onClick={() => handleItemClick('path_to_destination3')}>
-          <Image src={MainRecommendImage} alt="Travel Destination 3" />
-          <InfoBox>
-            <Description>소 젖먹이기 체험</Description>
-            <ExtraInfo>
-              젖소 먹이주기 체험, 치즈만들기 체험,<br />
-              소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
-              많이들 참가해서 좋은 추억을 만드세요.
-            </ExtraInfo>
-            <Address>경기도 군포시 산본로 142 52-11</Address>
-          </InfoBox>
-        </Item>
-        <Item onClick={() => handleItemClick('path_to_destination4')}>
-          <Image src={MainRecommendImage} alt="Travel Destination 4" />
-          <InfoBox>
-            <Description>소 젖먹이기 체험</Description>
-            <ExtraInfo>
-              젖소 먹이주기 체험, 치즈만들기 체험,<br />
-              소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
-              많이들 참가해서 좋은 추억을 만드세요.
-            </ExtraInfo>
-            <Address>경기도 군포시 산본로 142 52-11</Address>
-          </InfoBox>
-        </Item>
-      </Grid>
+      <ContentWrapper>
+        <Header>
+          <Title>이런 여행지는 어떠세요?</Title>
+          <MoreLink onClick={onButtonClick}>더보기</MoreLink>
+        </Header>
+        <Grid>
+          <Item onClick={() => handleItemClick('path_to_destination1')}>
+            <Image src={MainRecommendImage} alt="Travel Destination 1" />
+            <InfoBox>
+              <Description>소 젖먹이기 체험</Description>
+              <ExtraInfo>
+                젖소 먹이주기 체험, 치즈만들기 체험,<br />
+                소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
+                많이들 참가해서 좋은 추억을 만드세요.
+              </ExtraInfo>
+              <Address>경기도 군포시 산본로 142 52-11</Address>
+            </InfoBox>
+          </Item>
+          <Item onClick={() => handleItemClick('path_to_destination2')}>
+            <Image src={MainRecommendImage} alt="Travel Destination 2" />
+            <InfoBox>
+              <Description>소 젖먹이기 체험</Description>
+              <ExtraInfo>
+                젖소 먹이주기 체험, 치즈만들기 체험,<br />
+                소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
+                많이들 참가해서 좋은 추억을 만드세요.
+              </ExtraInfo>
+              <Address>경기도 군포시 산본로 142 52-11</Address>
+            </InfoBox>
+          </Item>
+          <Item onClick={() => handleItemClick('path_to_destination3')}>
+            <Image src={MainRecommendImage} alt="Travel Destination 3" />
+            <InfoBox>
+              <Description>소 젖먹이기 체험</Description>
+              <ExtraInfo>
+                젖소 먹이주기 체험, 치즈만들기 체험,<br />
+                소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
+                많이들 참가해서 좋은 추억을 만드세요.
+              </ExtraInfo>
+              <Address>경기도 군포시 산본로 142 52-11</Address>
+            </InfoBox>
+          </Item>
+          <Item onClick={() => handleItemClick('path_to_destination4')}>
+            <Image src={MainRecommendImage} alt="Travel Destination 4" />
+            <InfoBox>
+              <Description>소 젖먹이기 체험</Description>
+              <ExtraInfo>
+                젖소 먹이주기 체험, 치즈만들기 체험,<br />
+                소고기 구워먹기 등등 많은 체험들이 있습니다.<br />
+                많이들 참가해서 좋은 추억을 만드세요.
+              </ExtraInfo>
+              <Address>경기도 군포시 산본로 142 52-11</Address>
+            </InfoBox>
+          </Item>
+        </Grid>
+      </ContentWrapper>
     </MainRecommendWrapper>
   );
 };
