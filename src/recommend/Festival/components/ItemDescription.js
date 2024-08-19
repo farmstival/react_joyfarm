@@ -140,7 +140,7 @@ const ItemDescription = ({ item }) => {
         </dt>
         <dd>{content}</dd>
       </dl>
-      <MidButton>{t('찜하기')}</MidButton>
+      <MidButton color='midGreen'>{t('찜하기')}</MidButton>
     </Wrapper>
   );
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { MidButton } from '../../../commons/components/Buttons';
 
 const FormBox = styled.form`
-
+  width: 1300px;
 `;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
@@ -27,7 +27,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           onChange={onChange}
         />
       </div>
-      <MidButton color="primary">검색하기</MidButton>
+      <MidButton color="midGreen">검색하기</MidButton>
     </FormBox>
   );
 };
