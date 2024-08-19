@@ -13,8 +13,8 @@ const ItemBox = ({ item, className }) => {
           <ImageBgBox
             className="photo"
             url={photoUrl}
-            width="150px"
-            height="150px"
+            width="100%"
+            height="250px"
           />
         )}
         <div className="item-content">
@@ -28,23 +28,26 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 2px 2px 5px #818181;
+  margin-bottom: 60px;
+  border: 1px solid #ada493;
   border-radius: 5px;
-  width: 300px;
+  width: 95%;
+  height: 500px;
 
   a {
     display: flex;
+    flex-direction: column;
 
     .photo {
       margin-right: 10px;
-      border-radius: 5px;
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
-      width: calc(100% - 160px);
+      width: 100%;
       word-break: break-all;
+      font-size: 15px;
     }
   }
 `;
