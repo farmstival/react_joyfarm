@@ -9,7 +9,10 @@ import ItemDescription from '../components/ItemDescription';
 
 const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 15px;
+  position: relative;
+  padding: 48px 0;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e6e6eb;
 `;
 
 const ViewContainer = ({ setSubPageTitle }) => {
@@ -39,7 +42,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
   }, [seq, setSubPageTitle]);
 
   const onShowImage = useCallback((imageUrl1) => {
-    console.log("이미지 주소", imageUrl1);
+    console.log('이미지 주소', imageUrl1);
   }, []);
 
   if (loading || !item) {
@@ -48,11 +51,13 @@ const ViewContainer = ({ setSubPageTitle }) => {
 
   return (
     <>
-      <Wrapper>
-        {item.photoUrl1 && <ItemImage images={item.photoUrl1} onClick={onShowImage} />}
-        <ItemDescription item={item} />
-      </Wrapper>
-      <KakaoMap {...mapOptions} />
+        <Wrapper>
+          {item.photoUrl1 && (
+            <ItemImage images={item.photoUrl1} onClick={onShowImage} />
+          )}
+          <ItemDescription item={item} />
+        </Wrapper>
+        <KakaoMap {...mapOptions} />
     </>
   );
 };
