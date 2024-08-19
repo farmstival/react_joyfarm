@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
 import moment from 'moment';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import logo from '../../../images/logo.png';
+import { useTranslation } from 'react-i18next';
 
 const ItemBox = ({ item, className }) => {
+  const { t } = useTranslation();
   const { seq, title, photoUrl1, address, content, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
   const startformattedDate = moment({ startDate }).format('YYYY/MM/DD');
@@ -13,12 +16,20 @@ const ItemBox = ({ item, className }) => {
   return (
     <li className={className}>
       <Link to={url}>
-        {photoUrl1 && (
+        {photoUrl1 ? (
           <ImageBgBox
             className="photo"
             url={photoUrl1}
             width="100%"
             height="250px"
+          />
+        ) : (
+          <ImageBgBox
+            className="logo"
+            url={logo}
+            width="100%"
+            height="250px"
+            alt={t('로고')}
           />
         )}
         <div className="item-content">
@@ -38,7 +49,7 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-border: 1px solid #ada493;
+  border: 1px solid #ada493;
   border-radius: 5px;
   width: 100%;
   height: 450px;
