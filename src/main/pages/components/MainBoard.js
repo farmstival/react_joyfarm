@@ -15,6 +15,7 @@ const MainBoardWrapper = styled.div`
 const InnerContentWrapper = styled.div`
   max-width: 1440px; /* 최대 너비 제한 */
   width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
+  margin-bottom: 50px;
 `;
 
 const Header = styled.div`
