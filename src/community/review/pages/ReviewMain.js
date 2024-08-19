@@ -18,7 +18,7 @@ const ReviewMain = () => {
             </Helmet>
             <OuterBox className="layout-width">
                 <ContentBox>
-                <h1>contentbox로 감싸는거 이상하면 제거하기</h1>
+                <h1>리뷰..</h1>
                 </ContentBox>
             </OuterBox>
         </Layout>
