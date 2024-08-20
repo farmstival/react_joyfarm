@@ -25,14 +25,14 @@ const Header = () => {
 
   let linkText = '';
   let linkHref = '#';
-  let pattern = new RegExp('d+$');
+  let pattern = new RegExp('/d+$');
 
-  if (currentPath === '/recommend/tour' || currentPath.concat(pattern)) {
+  if (currentPath === '/recommend/tour' || '/recommend/tour'.concat(pattern)) {
     linkText = '추천 여행지';
     linkHref = '/recommend/tour';
   } else if (
     currentPath === '/recommend/festival/' ||
-    currentPath.concat(pattern)
+    '/recommend/festival/'.concat(pattern)
   ) {
     linkText = '지역별 축제 정보';
     linkHref = '/recommend/festival';

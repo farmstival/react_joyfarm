@@ -20,7 +20,7 @@ const TourView = () => {
         <ContentBox>
           <DetailImgBox>
             <DetailTitle>
-              <h1>{SubPageTitle}</h1>
+              <h1>[ {SubPageTitle} ]</h1>
             </DetailTitle>
             <ViewContainer setSubPageTitle={setSubPageTitle} />
           </DetailImgBox>

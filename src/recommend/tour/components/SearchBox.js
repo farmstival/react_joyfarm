@@ -94,7 +94,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
         <input type="text" name="skey" value={form.skey} onChange={onChange} placeholder="검색어를 입력하세요"/>
-        <Button color="midGreen">{t('검색')}</Button>
+        <Button>{t('검색')}</Button>
         </div>
     </FormBox>
   );

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../../commons/components/Buttons';
 import moment from 'moment';
+import { color } from '../../../styles/color';
 import {
   FcCalendar,
   FcAbout,
@@ -13,7 +13,22 @@ import {
   FcPlus,
 } from 'react-icons/fc';
 
+const { midGreen, white } = color;
+
+const Button = styled.button`
+  font-size: 1.3em;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  background-color: ${midGreen};
+  color: ${white};
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+`;
+
 const Wrapper = styled.div`
+
   position: relative;
   flex: 1;
   padding-left: 52px;
@@ -44,6 +59,12 @@ const Wrapper = styled.div`
 
   dl + dl {
     border-top: 1px solid #f8f9fa;
+  }
+
+  .button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 30px 0 0;
   }
 `;
 
@@ -83,7 +104,9 @@ const ItemDescription = ({ item }) => {
           <dd>{description}</dd>
         </dl>
       )}
-      <MidButton color="midGreen">{t('여행지_찜하기')}</MidButton>
+      <div className='button'>
+      <Button>{t('여행지_찜하기')}</Button>
+      </div>
     </Wrapper>
   );
 };
