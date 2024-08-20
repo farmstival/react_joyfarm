@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 //import { useLocation } from 'react-router-dom';
-import { PageNavWrap, PageTitle } from '../../commons/components/LayoutBox';
+import { PageNavWrap, PageTitle } from '../commons/components/LayoutBox';
 import { IoMdHome } from 'react-icons/io';
-import RecommendContext from '../../commons/modules/RecommendContext';
+import RecommendContext from '../commons/modules/RecommendContext';
 
 const HeaderBox = styled.header`
   /* 헤더 스타일 */
