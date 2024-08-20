@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import Layout from '../layouts/Layout';
 
 
 const Update = () => {
@@ -15,14 +14,14 @@ const Update = () => {
     const { t } = useTranslation();
 
     return (
-        <Layout>
+        <>
             <Helmet>
                 <title>{t(bName)}</title>
             </Helmet>
             <OuterBox className="layout-width">
                 <MainTitle>{t(bName)}</MainTitle>
             </OuterBox>
-        </Layout>
+        </>
     )
  };
 

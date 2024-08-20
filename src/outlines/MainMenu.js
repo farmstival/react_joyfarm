@@ -131,9 +131,9 @@ const MainMenu = () => {
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/board/review">{t('여행후기')}</NavLink>
-            <NavLink to="/board/notice">{t('공지사항')}</NavLink>
-            <NavLink to="/board/qna">{t('QnA')}</NavLink>
+            <NavLink to="/board/list/review">{t('여행후기')}</NavLink>
+            <NavLink to="/board/list/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/board/list/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>

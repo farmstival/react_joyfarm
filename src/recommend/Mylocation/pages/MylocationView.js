@@ -9,8 +9,9 @@ import {
   DetailImgBox,
   DetailTitle,
 } from '../../../commons/components/DetailBox';
-import Header from '../../layouts/Header';
+
 import ViewContainer from '../containers/ViewContainer';
+import Header from '../../../layouts/Header';
 
 
 const MylocationView = () => {

@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
 import RecommendContext from '../../modules/RecommendContext';
 import ListContainer from '../containers/ListContainer';
-import Header from '../../layouts/Header';
+
 import { PiLeafDuotone } from 'react-icons/pi';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import SubTitleLink from '../../commons/SubTitleLink';
+import SubTitleLink from '../../../commons/SubTitleLink';
+import Header from '../../../layouts/Header';
 const { midGreen } = color;
 
 const Wrapper = styled.div`
