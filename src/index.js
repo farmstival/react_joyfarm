@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorPage from './commons/pages/Error';
 import { UserInfoProvider } from './member/modules/UserInfoContext';
-import { RecommendProvider } from './recommend/modules/RecommendContext';
+import { RecommendProvider } from './commons/modules/RecommendContext';
 
 import './i18n';
 

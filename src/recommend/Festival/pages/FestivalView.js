@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
 import Header from '../../layouts/Header';
-import SubTitleLink from '../../commons/SubTitleLink';
+import SubTitleLink from '../../../commons/SubTitleLink';
 import {
   DetailImgBox,
   DetailTitle,

@@ -7,7 +7,7 @@ import Header from '../../layouts/Header';
 import { PiLeafDuotone } from 'react-icons/pi';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import SubTitleLink from '../../commons/SubTitleLink';
+import SubTitleLink from '../../../commons/SubTitleLink';
 const { midGreen } = color;
 
 const Wrapper = styled.div`

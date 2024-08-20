@@ -5,7 +5,7 @@ import {
   OuterBox,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
-import SubTitleLink from '../../commons/SubTitleLink';
+import SubTitleLink from '../../../commons/SubTitleLink';
 import {
   DetailImgBox,
   DetailTitle,
