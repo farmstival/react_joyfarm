@@ -10,8 +10,8 @@ import {
   PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
-import Header from '../../layouts/Header';
-import SubTitleLink from '../../commons/SubTitleLink';
+import Header from '../../../layouts/Header';
+import SubTitleLink from '../../../commons/SubTitleLink';
 
 const Tour = () => {
   const { t } = useTranslation();
