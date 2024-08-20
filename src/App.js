@@ -17,11 +17,15 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판
 const Community = loadable(() => import('./routes/Community'));
 
+// 수업 게시판
+const Board = loadable (() => import('./routes/Board'));
+
 const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
-  'community'
+  'community',
+  'board',
 ];
 
 const App = () => {
@@ -32,6 +36,7 @@ const App = () => {
       <Mypage />
       <Recommend />
       <Community />
+      <Board />
     </>
   ) : (
     <Routes>
