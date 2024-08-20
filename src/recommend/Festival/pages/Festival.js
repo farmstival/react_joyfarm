@@ -1,27 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import {
-  OuterBox,
-  PageTitle,
-  ContentBox,
-} from '../../../commons/components/LayoutBox';
+import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
+import RecommendContext from '../../modules/RecommendContext';
 import ListContainer from '../containers/ListContainer';
 import Header from '../../layouts/Header';
+import { PiLeafDuotone } from 'react-icons/pi';
+import styled from 'styled-components';
+import { color } from '../../../styles/color';
+import SubTitleLink from '../../commons/SubTitleLink';
+const { midGreen } = color;
+
+const Wrapper = styled.div`
+  display: flex;
+  font-size: 1.23rem;
+  margin: 0 8px;
+
+  .icon {
+    color: ${midGreen};
+  }
+`;
 
 const Festival = () => {
   const { t } = useTranslation();
+
   return (
     <>
+      <SubTitleLink text={t('지역별_축제_정보')} href="/recommend/festival" />
       <Helmet>
         <title>{t('지역별_축제_정보')}</title>
       </Helmet>
       <OuterBox>
         <Header />
         <ContentBox>
-          <h2>지도 클릭하면 지역별 축제를 검색합니다.</h2>
-          <img src={process.env.PUBLIC_URL + '/무색.png'} width={'300px'} /> {/* 임의로 지도 이미지 넣은 것! */}
-          <PageTitle><h2>{t('축제_목록')}</h2></PageTitle>
+          <Wrapper>
+            <h2>
+              <PiLeafDuotone className="icon" /> 지도를 클릭하면 지역별 축제를
+              검색합니다.
+            </h2>
+          </Wrapper>
           <ListContainer />
         </ContentBox>
       </OuterBox>

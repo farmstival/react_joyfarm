@@ -6,6 +6,12 @@ import ItemsBox from '../components/ItemsBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
+import SearchMap from '../../../commons/components/SearchMap';
+import styled from 'styled-components';
+
+const StyledMap = styled.div`
+  text-align: center;
+`;
 
 function getQueryString(searchParams) {
   const qs = { limit: 9 };
@@ -15,7 +21,7 @@ function getQueryString(searchParams) {
     }
   }
   return qs;
-}
+}//
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
@@ -35,7 +41,7 @@ const ListContainer = () => {
     });
   }, [search]);
 
-  /* 검색 관련 함수 */
+  /* 검색 관련 함수S */
   const onChangeSearch = useCallback((e) => {
     setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
   }, []);
@@ -60,6 +66,9 @@ const ListContainer = () => {
 
   return (
     <>
+      <StyledMap>
+      <SearchMap />
+      </StyledMap>
       <SearchBox
         form={form}
         onChange={onChangeSearch}
