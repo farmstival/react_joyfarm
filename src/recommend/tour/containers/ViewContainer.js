@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   margin-bottom: 15px;
 `;
 
-const TourViewContainer = ({ setPageTitle }) => {
+const ViewContainer = ({ setPageTitle }) => {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
     const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
@@ -59,4 +59,4 @@ const TourViewContainer = ({ setPageTitle }) => {
     );
   };
   
-  export default React.memo(TourViewContainer);
+  export default React.memo(ViewContainer);

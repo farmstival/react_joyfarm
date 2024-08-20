@@ -23,6 +23,9 @@ const Reservation = loadable(() => import('./routes/Reservation'));
 //예약현황 페이지
 const MyReservation = loadable(() => import('./routes/MyReservation'));
 
+//게시판 페이지
+const Board = loadable(() => import('./routes/Board'));
+
 const routeUrlPaths = [
   'member',
   'mypage',
@@ -30,6 +33,7 @@ const routeUrlPaths = [
   'community',
   'reservation',
   'myreservation',
+  'board',
 ];
 
 //컴포넌트 형태로 라우터 구성, 주소 구분 편의성 위함
@@ -44,6 +48,7 @@ const App = () => {
       <Reservation />
 
       <MyReservation />
+      <Board/>
     </>
   ) : (
     <Routes>

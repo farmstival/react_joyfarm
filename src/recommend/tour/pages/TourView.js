@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageNavWrap, ContentBox, OuterBox } from '../../../commons/components/LayoutBox';
 import { MainTitle } from '../../../commons/components/TitleBox';
-import TourViewContainer from '../containers/TourViewContainer';
+import ViewContainer from '../containers/ViewContainer';
 
 const TourView = () => {
   const [pageTitle, setPageTitle] = useState('');
@@ -17,7 +17,7 @@ const TourView = () => {
         <MainTitle>{pageTitle}</MainTitle>
         </PageNavWrap>
         <ContentBox>
-        <TourViewContainer setPageTitle={setPageTitle} />
+        <ViewContainer setPageTitle={setPageTitle} />
         </ContentBox>
       </OuterBox>
     </>
