@@ -32,7 +32,6 @@ const routeUrlPaths = [
   'board',
   'reservation',
   'myreservation',
-  'board',
 ];
 
 //컴포넌트 형태로 라우터 구성, 주소 구분 편의성 위함
