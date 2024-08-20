@@ -17,7 +17,6 @@ const Layout = ({children}) => {
         <LayoutWrapper className='layout-width'>
             <Header />
             {children}
-            <Footer />
         </LayoutWrapper>
     )
 }

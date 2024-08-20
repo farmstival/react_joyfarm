@@ -4,7 +4,7 @@ import loadable from '@loadable/component';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
-const QnaPage = loadable(() => import('../community/qna/pages/QnaMain'));
+const QnaPage = loadable(() => import('../board/qna/pages/QnaMain'));
 
 const QnA = () => {
     return (

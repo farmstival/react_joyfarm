@@ -25,15 +25,15 @@ const Header = () => {
     let linkText = '';
     let linkHref = '#';
 
-    if (currentPath === '/community/notice') {
+    if (currentPath === '/board/notice' || '/baord/write/notice') {
         linkText = '공지사항';
-        linkHref = '/community/notice';
-    } else if (currentPath === '/community/qna') {
+        linkHref = '/board/notice';
+    } else if (currentPath === '/board/qna') {
         linkText = '질문과답변';
-        linkHref = '/community/qna';
-    } else if (currentPath === '/community/review') {
+        linkHref = '/board/qna';
+    } else if (currentPath === '/board/review') {
         linkText = '여행후기';
-        linkHref = '/community/review';
+        linkHref = '/board/review';
     } else {
         linkText = 'HOME';
         linkHref = '/';

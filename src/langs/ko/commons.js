@@ -30,6 +30,7 @@ const commons = {
   여행후기: '여행후기',
   공지사항: '공지사항',
   QnA: 'QnA',
+  공지글로_등록하기: '공지글로 등록하기'
 };
 
 export default commons;
