@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
-import Header from '../../layouts/Header';
+
 import {
   DetailImgBox,
   DetailTitle,
 } from '../../../commons/components/DetailBox';
 import ViewContainer from '../containers/ViewContainer';
+import Header from '../../../layouts/Header';
 
 const FestivalView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');

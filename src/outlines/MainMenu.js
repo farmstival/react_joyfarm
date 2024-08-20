@@ -120,7 +120,7 @@ const MainMenu = () => {
           </NavLink>
           <SubMenu className="sub-menu">
             <NavLink to="/recommend/tour">{t('추천_여행지')}</NavLink>
-            <NavLink to="/recommend/festival">{t('지역별_축제정보')}</NavLink>
+            <NavLink to="/recommend/festival">{t('지역별_축제_정보')}</NavLink>
             <NavLink to="/recommend/mylocation">
               {t('내_위치_주변_여행지')}
             </NavLink>
@@ -131,9 +131,9 @@ const MainMenu = () => {
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/review">{t('여행후기')}</NavLink>
-            <NavLink to="/community/notice">{t('공지사항')}</NavLink>
-            <NavLink to="/community/qna">{t('QnA')}</NavLink>
+            <NavLink to="/board/list/review">{t('여행후기')}</NavLink>
+            <NavLink to="/board/list/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/board/list/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>

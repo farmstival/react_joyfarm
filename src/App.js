@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
+import VisitorInfo from './visitors/VisitorInfo';
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
@@ -14,8 +15,8 @@ const Mypage = loadable(() => import('./routes/Mypage'));
 // 추천 페이지
 const Recommend = loadable(() => import('./routes/Recommend'));
 
-// 게시판
-const Community = loadable(() => import('./routes/Community'));
+// 게시판 페이지
+const Board = loadable(() => import('./routes/Board'));
 
 //예약 페이지
 const Reservation = loadable(() => import('./routes/Reservation'));
@@ -27,9 +28,10 @@ const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
-  'community',
+
   'reservation',
   'myreservation',
+  'board',
 ];
 
 const App = () => {
@@ -39,13 +41,21 @@ const App = () => {
       <Member />
       <Mypage />
       <Recommend />
-      <Community />
       <Reservation />
       <MyReservation />
+      <Board />
     </>
   ) : (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route
+        path="/"
+        element={
+          <>
+            <MainLayout />
+            <VisitorInfo />
+          </>
+        }
+      >
         <Route index element={<Main />} /> {/* 메인 페이지 */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
