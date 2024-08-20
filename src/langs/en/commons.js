@@ -4,6 +4,7 @@ const commons = {
   확인: 'Confirm',
   추천_여행지: 'Recommended TourPlace',
   검색하기: 'Search',
+  검색: 'Search',
   시군구_선택: 'Si Gun Gu',
   시도_선택: 'Si Do',
   여행지_설명: 'TourPlace description',

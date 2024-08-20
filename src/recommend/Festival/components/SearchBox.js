@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MidButton } from '../../../commons/components/Buttons';
+import { ImSearch } from "react-icons/im";
 import { color } from '../../../styles/color';
 const {white, midGreen} = color;
 
@@ -42,6 +42,8 @@ const Button = styled.button`
   background: ${midGreen};
   border: none;
   cursor: pointer;
+  padding-top: 5px;
+  font-size: 2rem;
 `;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
@@ -64,7 +66,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           onChange={onChange}
           placeholder={t('검색어를_입력하세요')}
         />
-      <Button>검색하기</Button>
+      <Button><ImSearch /></Button>
       </div>
     </FormBox>
   );

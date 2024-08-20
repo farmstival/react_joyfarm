@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+//import { useLocation } from 'react-router-dom';
 import { PageNavWrap, PageTitle } from '../../commons/components/LayoutBox';
 import { IoMdHome } from 'react-icons/io';
+import RecommendContext from '../modules/RecommendContext';
 
 const HeaderBox = styled.header`
   /* 헤더 스타일 */
@@ -18,6 +19,10 @@ const StyledLink = styled.a`
 `;
 
 const Header = () => {
+  const {
+    states: { linkHref, linkText },
+  } = useContext(RecommendContext);
+  /*
   const location = useLocation();
 
   // 현재 페이지 URL경로
@@ -25,13 +30,14 @@ const Header = () => {
 
   let linkText = '';
   let linkHref = '#';
-  let pattern = new RegExp("\/\d+$");
+  let pattern = new RegExp('/d+$');
 
   if (currentPath === '/recommend/tour' || currentPath.concat(pattern)) {
     linkText = '추천 여행지';
     linkHref = '/recommend/tour';
   } else if (
-    currentPath === '/recommend/festival' || currentPath.concat(pattern)
+    currentPath === '/recommend/festival' ||
+    currentPath.concat(pattern)
   ) {
     linkText = '지역별 축제 정보';
     linkHref = '/recommend/festival';
@@ -42,11 +48,14 @@ const Header = () => {
     linkText = 'HOME';
     linkHref = '/';
   }
+  */
 
   return (
     <HeaderBox>
       <PageNavWrap>
-        <StyledLink href="/"><IoMdHome /> HOME</StyledLink>
+        <StyledLink href="/">
+          <IoMdHome /> HOME
+        </StyledLink>
         &nbsp;&nbsp; &gt; &nbsp;&nbsp;
         <StyledLink href={linkHref}>{linkText}</StyledLink>
         <PageTitle>

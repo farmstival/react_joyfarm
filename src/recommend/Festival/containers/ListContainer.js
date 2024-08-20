@@ -21,7 +21,7 @@ function getQueryString(searchParams) {
     }
   }
   return qs;
-}
+}//
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
@@ -41,7 +41,7 @@ const ListContainer = () => {
     });
   }, [search]);
 
-  /* 검색 관련 함수 */
+  /* 검색 관련 함수S */
   const onChangeSearch = useCallback((e) => {
     setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
   }, []);
