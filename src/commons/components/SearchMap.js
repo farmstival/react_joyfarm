@@ -44,7 +44,6 @@ function getImage(location) {
 const SearchMap = () => {
   const [searchParams] = useSearchParams();
   const sido = searchParams.get('sido');
-
   const [image, setImage] = useState(() => getImage(sido));
   const onChange = useCallback((location) => {
     setImage(() => getImage(location));

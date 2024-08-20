@@ -7,6 +7,11 @@ import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
 import SearchMap from '../../../commons/components/SearchMap';
+import styled from 'styled-components';
+
+const StyledMap = styled.div`
+  text-align: center;
+`;
 
 function getQueryString(searchParams) {
   const qs = { limit: 9 };
@@ -61,7 +66,9 @@ const ListContainer = () => {
 
   return (
     <>
+      <StyledMap>
       <SearchMap />
+      </StyledMap>
       <SearchBox
         form={form}
         onChange={onChangeSearch}
