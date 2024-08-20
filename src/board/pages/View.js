@@ -4,24 +4,25 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 
+
 const View = () => {
-  const [board, setBoard] = useState({
-    bName: '여행후기',
-  });
+    const [board, setBoard] = useState({
+        bName: '여행후기',
+    });
 
-  const { bName } = board;
-  const { t } = useTranslation();
+    const { bName } = board;
+    const { t } = useTranslation();
 
-  return (
-    <>
-      <Helmet>
-        <title>{t(bName)}</title>
-      </Helmet>
-      <OuterBox>
-        <MainTitle>{t(bName)}</MainTitle>
-      </OuterBox>
-    </>
-  );
-};
+    return (
+        <>
+            <Helmet>
+                <title>{t(bName)}</title>
+            </Helmet>
+            <OuterBox>
+                <MainTitle>{t(bName)}</MainTitle>
+            </OuterBox>
+        </>
+    )
+ };
 
 export default React.memo(View);

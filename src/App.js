@@ -18,24 +18,18 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판 페이지
 const Board = loadable(() => import('./routes/Board'));
 
-// 게시판
-const Community = loadable(() => import('./routes/Community'));
-
 //예약 페이지
 const Reservation = loadable(() => import('./routes/Reservation'));
 
 //예약현황 페이지
 const MyReservation = loadable(() => import('./routes/MyReservation'));
 
-//게시판 페이지
-const Board = loadable(() => import('./routes/Board'));
 
 const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
-  'board'
-  'community',
+  'board',
   'reservation',
   'myreservation',
   'board',
@@ -50,7 +44,6 @@ const App = () => {
       <Mypage />
       <Recommend />
       <Board />
-      <Community />
       <Reservation />
 
       <MyReservation />

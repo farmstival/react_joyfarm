@@ -4,14 +4,13 @@ import loadable from '@loadable/component';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
-const WritePage = loadable(() => import("../board/pages/Write"))
+const WritePage = loadable(() => import('../board/pages/Write'));
 
-const UpdatePage = loadable(() => import("../board/pages/Update"))
+const UpdatePage = loadable(() => import('../board/pages/Update'));
 
-const ListPage = loadable(() => import("../board/pages/List"))
+const ListPage = loadable(() => import('../board/pages/List'));
 
-const ViewPage = loadable(() => import("../board/pages/View"))
-
+const ViewPage = loadable(() => import('../board/pages/View'));
 
 const board = () => {
   return (
