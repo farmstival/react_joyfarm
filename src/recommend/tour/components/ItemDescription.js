@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { color } from '../../../styles/color';
+import { ZzimButton } from '../../../commons/components/Buttons';
 import {
   FcCalendar,
   FcAbout,
@@ -12,24 +13,6 @@ import {
   FcElectricity,
   FcPlus,
 } from 'react-icons/fc';
-
-const { midGreen, white, darkGreen, lightGreen } = color;
-
-const Button = styled.button`
-  font-size: 1.3em;
-  font-weight: 700;
-  width: 200px;
-  height: 50px;
-  background-color: ${midGreen};
-  color: ${white};
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-`;
 
 const Wrapper = styled.div`
 
@@ -110,7 +93,7 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
       <div className='button'>
-      <Button>{t('여행지_찜하기')}</Button>
+      <ZzimButton>{t('여행지_찜하기')}</ZzimButton>
       </div>
     </Wrapper>
   );

@@ -1,12 +1,17 @@
 import styled, { css } from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
+import { color } from '../../styles/color';
+
 const { big, medium, normal } = fontSize;
+
 const commonStyle = css`
   width: 100%;
   border-radius: 3px;
   cursor: pointer;
 `;
+
+const { midGreen, white } = color;
 
 export const SmallButton = styled.button`
   font-size: ${normal};
@@ -66,5 +71,25 @@ export const ButtonGroup = styled.div`
 
   button + button {
     margin-left: 5px;
+  }
+`;
+
+export const ZzimButton = styled.div`
+  font-size: 1.3em;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  background-color: ${midGreen};
+  color: ${white};
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 `;
