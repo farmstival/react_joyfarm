@@ -2,26 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
+import moment from 'moment';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import logo from '../../../images/logo.png';
+import { useTranslation } from 'react-i18next';
 
 const ItemBox = ({ item, className }) => {
-  const { seq, title, photoUrl1, location, content, startDate, endDate } = item;
+  const { t } = useTranslation();
+  const { seq, title, photoUrl1, address, content, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
+  const startformattedDate = moment({ startDate }).format('YYYY/MM/DD');
+  const endformattedDate = moment({ endDate }).format('YYYY/MM/DD');
   return (
     <li className={className}>
       <Link to={url}>
-        {photoUrl1 && (
+        {photoUrl1 ? (
           <ImageBgBox
             className="photo"
             url={photoUrl1}
-            width="150px"
-            height="150px"
+            width="100%"
+            height="250px"
+          />
+        ) : (
+          <ImageBgBox
+            className="logo"
+            url={logo}
+            width="100%"
+            height="250px"
+            alt={t('로고')}
           />
         )}
         <div className="item-content">
-          <div className="title">축제명 | {title}</div>
-          <div className="location">축제 장소 | {location}</div>
-          <div className="content">축제 소개 | {content}</div>
-          <div className="Date">축제 일정 | {startDate}~{endDate}</div>
+          <div className="title">{title}</div>
+          <div className="Date">
+            축제 진행 기간 : {startformattedDate} ~ {endformattedDate}
+          </div>
+          <div className="address">
+            <FaMapMarkerAlt />
+            {address}
+          </div>
         </div>
       </Link>
     </li>
@@ -29,27 +48,50 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 2px 2px 5px #818181;
+  border: 1px solid #ada493;
   border-radius: 5px;
+  width: 100%;
+  height: 450px;
 
   a {
     display: flex;
+    flex-direction: column;
 
     .photo {
-      margin-right: 10px;
-      border-radius: 5px;
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
-      width: calc(100% - 160px;)
+      width: 100%;
       word-break: break-all;
-      font-size: 1.2rem;
-    }
+      padding: 20px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-    .item-content .title{
-      font-size: 1.5rem;
+      .title {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        height: 30%;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        font-size: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 40%;
+      }
+
+      .address {
+        font-size: 15px;
+        color: #767676;
+        height: 30%;
+        padding-top: 20px;
+      }
     }
   }
 `;

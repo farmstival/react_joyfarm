@@ -6,20 +6,20 @@ import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
 
 function skinRoute(skin, props) {
-  const WriteMain = loadable(() =>
-    import(`../components/skins/${skin}/WriteMain`),
+  const ListMain = loadable(() =>
+    import(`../components/skins/${skin}/ListMain`),
   );
 
-  return <WriteMain {...props} />;
+  return <ListMain {...props} />;
 }
 
-const WriteContainer = ({ setPageTitle }) => {
+const ListContainer = ({ setPageTitle }) => {
   const { bid } = useParams();
-
+ 
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    mode: 'write',
+    mode: 'list',
     notice: false,
   });
   const [editor, setEditor] = useState();
@@ -43,19 +43,6 @@ const WriteContainer = ({ setPageTitle }) => {
     })();
   }, [bid, setPageTitle]);
 
-  const onFormChange = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value.trim() }));
-  }, []);
-
-  const onToggleNotice = useCallback(
-    () => setForm((form) => ({ ...form, notice: !form.notice })),
-    [],
-  );
-
-  const onSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
-
   if (loading || !board) {
     return <Loading />;
   }
@@ -66,11 +53,8 @@ const WriteContainer = ({ setPageTitle }) => {
     board,
     form,
     setEditor,
-    onFormChange,
-    onSubmit,
-    onToggleNotice,
     errors,
   });
 };
 
-export default React.memo(WriteContainer);
+export default React.memo(ListContainer);

@@ -5,12 +5,13 @@ import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 
 const View = () => {
-  const { t } = useTranslation();
   const [board, setBoard] = useState({
-    bName: '공지사항',
+    bName: '여행후기',
   });
 
   const { bName } = board;
+  const { t } = useTranslation();
+
   return (
     <>
       <Helmet>
