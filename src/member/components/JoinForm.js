@@ -12,7 +12,7 @@ import ImageUpload from '../../commons/components/ImageUpload';
 const FormBox = styled.form`
 background-color: #FFFFBA; /* 부드러운 배경색 추가 */
 padding: 25px;
-border-radius: 8px;
+border-radius: 40px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
 max-width: 500px; /* 최대 너비 설정 */
 margin: 10px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
@@ -93,12 +93,42 @@ transition: all 0.3s ease;
   }
 `;
 
+const EmailVerificationBox = styled.div`
+ .rows {
+ display: flex;
+ align-items: center;
+ button {
+   width: 160px;
+   height: 40px;
+
+  } 
+ }
+
+ .rows:last-of-type {
+  span {
+    width: 100px;
+    text-align: center;
+  }
+    button {
+     width: 80px;
+    }
+
+    button + button {
+      margin-left: 5px;
+    }
+ }
+
+`;
+
 const JoinForm = ({
   form,
   onSubmit,
   onChange,
   onToggle,
   onReset,
+  onSendAuthCode,
+  onReSendAuthCode,
+  onVerifyAuthCode,
   errors,
   fileUploadCallback,
   fileDeleteCallback,
@@ -109,15 +139,56 @@ const JoinForm = ({
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
+         <EmailVerificationBox>
+         <div className="rows">
           <InputBox
             type="text"
             name="email"
             value={form.email ?? ''}
             onChange={onChange}
+            readOnly={
+              form.emailVerified ||
+              (form.authCount > 0 && form.authCount < 180)
+            }
           />
-          <MessageBox messages={errors.email} color="danger" />
-        </dd>
-      </dl>
+          {!form.emailVerified && form.authCount > 0 && (
+           <button
+             type="button"
+             onClick={onSendAuthCode}
+             disabled={form.authCount < 180 && form.authCount > 0}
+             >
+                 {t('인증코드_전송')}
+                  </button>
+          )}
+           </div>
+            {form.emailVerified ? (
+             <MessageBox color="primary">
+              {t('확인된_이메일_입니다.')}
+             </MessageBox>
+            ):(
+            <div className="rows">
+              {form.authCount > 0 && (
+               <InputBox
+                 type="text"
+                 name="authNum"
+                 placeholder={t('인증코드_입력')}
+                 onChange={onChange}
+              />
+              )}
+              <span>{form.authCountMin}</span>
+              <button type="button" onClick={onVerifyAuthCode}>
+                {t('확인')}
+              </button>
+             <button type="button" onClick={onReSendAuthCode}>
+              {t('재전송')}
+             </button>
+            </div>
+            )}
+     </EmailVerificationBox>
+      <MessageBox messages={errors.email} color="danger" />
+     </dd>
+     </dl>
+
       <dl>
         <dt>{t('비밀번호')}</dt>
         <dd>
@@ -359,7 +430,7 @@ const JoinForm = ({
         ㈜🍀JOY_FARM / 주임 이메일 : jeongh119@joyfarm.com 12. 고지의 의무 현
         '개인정보처리방침'의 내용에 추가, 삭제 및 수정이 있을 시에는 회사의
         홈페이지 첫 화면의 '공지사항' 또는 별도의 창을 통해 고지합니다. 공고
-        일자 : 2024년 9월 1일  시행 일자 : 2024년 8월 1일
+        일자 : 2024년 9월 1일 시행 일자 : 2024년 8월 1일
       </textarea>
 
       <div className="terms-agree" onClick={onToggle}>
@@ -377,8 +448,8 @@ const JoinForm = ({
           {t('가입하기')}
         </BigButton>
       </ButtonGroup>
+    
     </FormBox>
-  );
-};
+)};
 
 export default React.memo(JoinForm);
