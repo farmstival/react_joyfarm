@@ -20,7 +20,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
+  const [mapOptions, setMapOptions] = useState({ height: '600px', zoom: 3 });
 
   const { seq } = useParams();
 

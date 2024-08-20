@@ -5,16 +5,23 @@ import SearchBox from '../components/SearchBox';
 import ItemsBox from '../components/ItemsBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
+import { ImageListBox } from '../../../commons/components/ImageListBox';
+import SearchMap from '../../../commons/components/SearchMap';
+import styled from 'styled-components';
+
+const StyledMap = styled.div`
+  text-align: center;
+`;
 
 function getQueryString(searchParams) {
-  const qs = {};
+  const qs = { limit: 9 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
     }
   }
   return qs;
-}
+}//
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
@@ -34,7 +41,7 @@ const ListContainer = () => {
     });
   }, [search]);
 
-  /* 검색 관련 함수 */
+  /* 검색 관련 함수S */
   const onChangeSearch = useCallback((e) => {
     setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
   }, []);
@@ -59,12 +66,17 @@ const ListContainer = () => {
 
   return (
     <>
+      <StyledMap>
+      <SearchMap />
+      </StyledMap>
       <SearchBox
         form={form}
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-      <ItemsBox items={items} />
+      <ImageListBox className="List-box">
+        <ItemsBox items={items} />
+      </ImageListBox>
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}
