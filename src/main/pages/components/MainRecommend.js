@@ -64,7 +64,7 @@ const Image = styled.img`
   &:hover {
     opacity: 1; 
   }
-  margin-bottom: 0; /* 이미지와 InfoBox 사이의 공백 제거 */
+  margin-bottom: 0; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
@@ -101,7 +101,7 @@ const Address = styled.p`
 `;
 
 const handleItemClick = (url) => {
-  window.location.href = url; // 클릭 시 경로로 이동
+  window.location.href = url; 
 };
 
 const MainRecommend = ({ onButtonClick }) => {

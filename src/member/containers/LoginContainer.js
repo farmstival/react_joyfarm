@@ -29,6 +29,7 @@ const LoginContainer = () => {
    * 3. 후속 처리 : 회원 전용 서비스 URL로 이동
    *
    */
+
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -82,6 +83,7 @@ const LoginContainer = () => {
                * 예) /member/login?redirectURL=로그인 이후 이동할 경로
                *
                */
+
               const redirectURL = searchParams.get('redirectUrl') || '/';
               navigate(redirectURL, { replace: true });
             } catch (err) {

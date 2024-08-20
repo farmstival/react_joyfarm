@@ -7,10 +7,9 @@ import MainLocation from './components/MainLocation';
 import MainRecommend from './components/MainRecommend';
 import MainReview from './components/MainReview';
 import MainBoard from './components/MainBoard';
-import Sidebar from './components/SideBar'; // 사이드바 임포트
+import Sidebar from './components/SideBar'; 
 
-// 헤더 높이 변수 설정
-const HEADER_HEIGHT = 60; // 헤더의 높이, 실제 높이로 조정 필요
+const HEADER_HEIGHT = 60; 
 
 const Main = () => {
   const navigate = useNavigate();
@@ -21,8 +20,24 @@ const Main = () => {
   const reviewRef = useRef(null);
   const boardRef = useRef(null);
 
-  const handleButtonClick = () => {
-    navigate('/reservation'); // 원하는 경로로 변경
+  const handleButtonReservation = () => {
+    navigate('/reservation'); 
+  };
+
+  const handleButtonLocation = () => {
+    navigate('/recommend/festival'); 
+  };
+
+  const handleButotnReview = () => {
+    navigate('/community/review'); 
+  };
+
+  const handleButtonRecommend = () => {
+    navigate('/recommend/tour'); 
+  };
+
+  const handleButtonBoard = () => {
+    navigate('/community/notice'); 
   };
 
   const scrollToSection = (ref) => {
@@ -58,19 +73,19 @@ const Main = () => {
   return (
     <>
       <div ref={top}>
-        <MainBanner onButtonClick={handleButtonClick} />
+        <MainBanner onButtonClick={handleButtonReservation} />
       </div>
       <div ref={locationRef}>
-        <MainLocation onButtonClick={handleButtonClick} />
+        <MainLocation onButtonClick={handleButtonLocation} />
       </div>
       <div ref={recommendRef}>
-        <MainRecommend onButtonClick={handleButtonClick} />
+        <MainRecommend onButtonClick={handleButtonRecommend} />
       </div>
       <div ref={reviewRef}>
-        <MainReview onButtonClick={handleButtonClick} />
+        <MainReview onButtonClick={handleButotnReview} />
       </div>
       <div ref={boardRef}>
-        <MainBoard onButtonClick={handleButtonClick} />
+        <MainBoard onButtonClick={handleButtonBoard} />
       </div>
       <Sidebar onLinkClick={handleLinkClick} /> {/* 사이드바 추가 */}
     </>

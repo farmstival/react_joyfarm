@@ -6,15 +6,15 @@ import MainReviewImage from '../../../images/banner1.jpg'; // Example image path
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray } = color;
 
 const MainBoardWrapper = styled.div`
-  padding: 50px 20px; /* 좌우 padding 추가 */
+  padding: 50px 20px;
   background: ${white};
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
+  justify-content: center; 
 `;
 
 const InnerContentWrapper = styled.div`
-  max-width: 1440px; /* 최대 너비 제한 */
-  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
+  max-width: 1440px; 
+  width: 100%; 
   margin-bottom: 50px;
 `;
 

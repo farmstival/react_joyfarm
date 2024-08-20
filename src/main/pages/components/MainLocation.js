@@ -89,6 +89,10 @@ const Button = styled.button`
   }
 `;
 
+const handleItemClick = (url) => {
+  window.location.href = url; // 클릭 시 경로로 이동
+};
+
 const MainLocation = ({ onButtonClick }) => {
   return (
     <MainLocationWrapper>
@@ -98,12 +102,12 @@ const MainLocation = ({ onButtonClick }) => {
           <LogoImage src={logoImage} alt="Logo" />
           <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
           <ButtonContainer>
-            <Button onClick={onButtonClick}>서울</Button>
-            <Button onClick={onButtonClick}>경기•인천</Button>
-            <Button onClick={onButtonClick}>충청도</Button>
-            <Button onClick={onButtonClick}>강원도</Button>
-            <Button onClick={onButtonClick}>전라도</Button>
-            <Button onClick={onButtonClick}>경상도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/seoul')}>서울</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/GyeongIn')}>경기•인천</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/Chung')}>충청도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/Gang')}>강원도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/Jun')}>전라도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/Gyeong')}>경상도</Button>
           </ButtonContainer>
         </InnerContentWrapper>
       </ContentWrapper>

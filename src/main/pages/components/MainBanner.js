@@ -1,36 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
-import bannerImage from '../../../images/banner1.jpg';
 import { color } from '../../../styles/color';
+import bannerImage from '../../../images/banner1.jpg';
 
-const { dark, light, midGreen, white, darkGreen } = color;
+const { darkGreen, white } = color;
 
-const MainBannerWrapper = styled.nav`
-  position: relative; /* 이미지의 절대 위치를 조정할 수 있도록 설정 */
-  overflow: hidden; /* 배너 영역을 벗어난 이미지는 숨김 */
-  background-color: ${midGreen};
+const MainBannerWrapper = styled.div`
+  position: relative; 
+  overflow: hidden; 
+  background-color: ${darkGreen}; 
 `;
 
 const BannerImage = styled.img`
   width: 100%;
   height: 650px; 
-  display: block; /* 이미지가 inline-block 처럼 보이지 않도록 */
+  display: block; 
+  object-fit: cover; 
 `;
 
 const InfoBar = styled.nav`
-  height: 150px; 
-  color: ${white}; 
-  background-color: ${darkGreen}; 
+  height: 150px;
+  color: ${white};
+  width: 500px;
+  #background-color: ${darkGreen} ;
+  background-color: rgba(0, 51, 0, 0.9);
   display: flex;
-  align-items: center; 
-  justify-content: space-between; 
-  padding: 0 40px; 
-  font-size: 1.2em; 
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  font-size: 1.2em;
+  max-width: 1440px; 
+  width: 100%; 
+  position: absolute; 
+  bottom: 0; 
+  box-sizing: border-box;
+  left: 50%;
+  transform: translateX(-50%); 
 `;
 
 const InfoBox = styled.div`
   display: block;
-  text-align: right; 
+  text-align: right;
 `;
 
 const InfoText = styled.div`
