@@ -5,7 +5,7 @@ import { ImageBgBox } from '../../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../../styles/color';
 
-const { white } = color;
+const { white, midGreen, dark } = color;
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
@@ -25,7 +25,7 @@ const ItemBox = ({ item, className }) => {
           <div className="title">{title}</div>
           <div className="description">{description}</div>
           <div className="address">
-            <FaMapMarkerAlt className='icon'/>
+            <FaMapMarkerAlt className="icon" />
             {address}
           </div>
         </div>
@@ -41,13 +41,16 @@ const ItemStyledBox = styled(ItemBox)`
   height: 450px;
 
   &:hover {
-    border: 1px solid #4ab0b0;
+    border: 1px solid ${midGreen};
   }
 
   &:hover .title {
-    background: #4ab0b0;
-    color: ${white};
-    text-shadow: 2px 2px gray;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 10px;
+    transition: 0.3s;
+    transform: scale(1.08);
+    color: ${midGreen};
   }
 
   a {
@@ -68,18 +71,16 @@ const ItemStyledBox = styled(ItemBox)`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      
+
       .title {
         font-size: 18px;
         font-weight: bold;
         text-align: center;
         height: 30%;
         margin-bottom: 10px;
-        border-radius: 0 20px 0 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.2s, color 0.2s, text-shadow 0.2s;
       }
 
       .description {
@@ -94,7 +95,7 @@ const ItemStyledBox = styled(ItemBox)`
         overflow: hidden;
         text-overflow: ellipsis;
         -webkit-line-clamp: 3;
-        display: -webkit-box; 
+        display: -webkit-box;
       }
 
       .address {
@@ -103,11 +104,11 @@ const ItemStyledBox = styled(ItemBox)`
         height: 30%;
         padding-top: 20px;
 
-        .icon{
-        color: #FF5E00; 
-        position: relative;
-        top: 3px;
-        margin-right: 5px;
+        .icon {
+          color: #ff5e00;
+          position: relative;
+          top: 3px;
+          margin-right: 5px;
         }
       }
     }
