@@ -13,7 +13,7 @@ import {
   FcPlus,
 } from 'react-icons/fc';
 
-const { midGreen, white } = color;
+const { midGreen, white, darkGreen, lightGreen } = color;
 
 const Button = styled.button`
   font-size: 1.3em;
@@ -25,6 +25,10 @@ const Button = styled.button`
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const Wrapper = styled.div`
@@ -50,6 +54,7 @@ const Wrapper = styled.div`
     dd {
       padding-left: 15px;
       font-size: 1.3rem;
+      line-height: 1.8rem;
     }
   }
 
