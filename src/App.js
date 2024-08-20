@@ -18,6 +18,8 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판 페이지
 const Board = loadable(() => import('./routes/Board'));
 
+
+
 const routeUrlPaths = [
   'member',
   'mypage',

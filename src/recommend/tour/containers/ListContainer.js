@@ -18,6 +18,7 @@ function getQueryString(searchParams) {
   return qs;
 }
 
+
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
 
@@ -56,6 +57,8 @@ const ListContainer = () => {
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
+
+
 
   /* 로딩 처리 */
   if (loading) {
