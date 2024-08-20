@@ -25,7 +25,7 @@ const ItemBox = ({ item, className }) => {
           <div className="title">{title}</div>
           <div className="description">{description}</div>
           <div className="address">
-            <FaMapMarkerAlt />
+            <FaMapMarkerAlt className='icon'/>
             {address}
           </div>
         </div>
@@ -68,7 +68,7 @@ const ItemStyledBox = styled(ItemBox)`
       display: flex;
       flex-direction: column;
       justify-content: center;
-
+      
       .title {
         font-size: 18px;
         font-weight: bold;
@@ -102,6 +102,13 @@ const ItemStyledBox = styled(ItemBox)`
         color: #767676;
         height: 30%;
         padding-top: 20px;
+
+        .icon{
+        color: #FF5E00; 
+        position: relative;
+        top: 3px;
+        margin-right: 5px;
+        }
       }
     }
   }
