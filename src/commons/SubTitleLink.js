@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import RecommendContext from '../recommend/modules/RecommendContext';
+import RecommendContext from './modules/RecommendContext';
 
 const SubTitleLink = ({ text, href }) => {
   const {

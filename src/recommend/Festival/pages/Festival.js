@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
-import RecommendContext from '../../modules/RecommendContext';
+import RecommendContext from '../../../commons/modules/RecommendContext';
 import ListContainer from '../containers/ListContainer';
 
 import { PiLeafDuotone } from 'react-icons/pi';
