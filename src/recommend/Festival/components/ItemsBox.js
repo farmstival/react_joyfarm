@@ -34,7 +34,6 @@ const ItemBox = ({ item, className }) => {
         )}
         <div className="item-content">
           <div className="title">{title}</div>
-          <div className="content">{content}</div>
           <div className="Date">
             축제 진행 기간 : {startformattedDate} ~ {endformattedDate}
           </div>
