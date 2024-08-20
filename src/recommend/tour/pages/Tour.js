@@ -11,11 +11,13 @@ import {
   ContentBox,
 } from '../../../commons/components/LayoutBox';
 import Header from '../../layouts/Header';
+import SubTitleLink from '../../commons/SubTitleLink';
 
 const Tour = () => {
   const { t } = useTranslation();
   return (
     <>
+       <SubTitleLink text={t('추천_여행지')} href="/recommend/tour" />
       <Helmet>
         <title>{t('추천_여행지')}</title>
       </Helmet>

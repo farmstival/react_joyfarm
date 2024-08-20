@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { color } from '../../../styles/color';
+import { ImSearch } from "react-icons/im";
 
 const { white } = color;
 
@@ -43,6 +44,8 @@ const Button = styled.button`
   background: #384863;
   border: none;
   cursor: pointer;
+  padding-top: 5px;
+  font-size: 2rem;
 `;
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
@@ -94,7 +97,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
         <input type="text" name="skey" value={form.skey} onChange={onChange} placeholder="검색어를 입력하세요"/>
-        <Button>{t('검색')}</Button>
+        <Button><ImSearch /></Button>
         </div>
     </FormBox>
   );

@@ -75,7 +75,7 @@ const ItemStyledBox = styled(ItemBox)`
         text-align: center;
         height: 30%;
         margin-bottom: 10px;
-        border-radius: 10px;
+        border-radius: 0 20px 0 20px;
         display: flex;
         align-items: center;
         justify-content: center;
