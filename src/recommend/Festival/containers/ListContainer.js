@@ -6,6 +6,7 @@ import ItemsBox from '../components/ItemsBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
+import SearchMap from '../../../commons/components/SearchMap';
 
 function getQueryString(searchParams) {
   const qs = { limit: 9 };
@@ -60,6 +61,7 @@ const ListContainer = () => {
 
   return (
     <>
+      <SearchMap />
       <SearchBox
         form={form}
         onChange={onChangeSearch}
