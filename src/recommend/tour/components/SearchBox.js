@@ -9,7 +9,7 @@ const { white } = color;
 const FormBox = styled.form`
   width: 1300px;
 
-  .tour-sreach {
+  .tour-search {
     display: flex;
     gap: 5px;
     justify-content: flex-end;
@@ -74,7 +74,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
-      <div className="tour-sreach">
+      <div className="tour-search">
         <select name="sido" onChange={onChange} value={form.sido}>
           <option value="ALL">{t('시도_선택')}</option>
           {sidoOptions.map((option) => (
