@@ -24,7 +24,11 @@ const KakaoMap = ({
     setCenter(center);
   }, [center]);
 
+<<<<<<< HEAD
   // 현재 위치 기반 S
+=======
+  /* 현재 위치 기반 S */
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
   useEffect(() => {
     if (currentLocation) {
       navigator.geolocation.getCurrentPosition((pos) => {

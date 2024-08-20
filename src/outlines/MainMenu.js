@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
@@ -97,15 +96,26 @@ const MainMenu = () => {
             to="/reservation"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
+<<<<<<< HEAD
             {t('농촌체험 예약')}
+=======
+            {t('농촌체험_예약')}
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
           </NavLink>
         </MenuItem>
         <MenuItem>
           <NavLink
+<<<<<<< HEAD
             to="/my_reservation"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
             {t('나의 예약현황')}
+=======
+            to="/recommend"
+            className={({ isActive }) => (isActive ? 'on' : '')}
+          >
+            {t('나의_예약현황')}
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
           </NavLink>
         </MenuItem>
         <MenuItem>
@@ -116,6 +126,7 @@ const MainMenu = () => {
           </Logo>
         </MenuItem>
         <MenuItem>
+<<<<<<< HEAD
           <NavLink
             to="/recommend"
             className={({ isActive }) => (isActive ? 'on' : '')}
@@ -127,20 +138,34 @@ const MainMenu = () => {
             <NavLink to="/recommend/festival">{t('지역별 축제정보')}</NavLink>
             <NavLink to="/recommend/mylocation">
               {t('내 위치 주변 여행지')}
+=======
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
+            {t('조이팜의_추천')}
+          </NavLink>
+          <SubMenu className="sub-menu">
+            <NavLink to="/recommend/tour">{t('추천_여행지')}</NavLink>
+            <NavLink to="/recommend/festival">{t('지역별_축제정보')}</NavLink>
+            <NavLink to="/recommend/mylocation">
+              {t('내_위치_주변_여행지')}
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
             </NavLink>
           </SubMenu>
         </MenuItem>
         <MenuItem>
+<<<<<<< HEAD
           <NavLink
             to="/community"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
+=======
+          <NavLink className={({ isActive }) => (isActive ? 'on' : '')}>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
             {t('커뮤니티')}
           </NavLink>
           <SubMenu className="sub-menu">
-            <NavLink to="/community/sub1">{t('여행후기')}</NavLink>
-            <NavLink to="/community/sub2">{t('공지사항')}</NavLink>
-            <NavLink to="/community/sub2">{t('QnA')}</NavLink>
+            <NavLink to="/community/review">{t('여행후기')}</NavLink>
+            <NavLink to="/community/notice">{t('공지사항')}</NavLink>
+            <NavLink to="/community/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
       </div>

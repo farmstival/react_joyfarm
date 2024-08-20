@@ -10,7 +10,7 @@ import {
   ContentBox,
 } from '../../commons/components/LayoutBox';
 
-const TravelMain = () => {
+const FestivalMain = () => {
   const { t } = useTranslation();
   return (
     <>
@@ -35,4 +35,4 @@ const TravelMain = () => {
   );
 };
 
-export default React.memo(TravelMain);
+export default React.memo(FestivalMain);

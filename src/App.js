@@ -17,16 +17,18 @@ const Recommend = loadable(() => import('./routes/Recommend'));
 // 게시판
 const Community = loadable(() => import('./routes/Community'));
 
+<<<<<<< HEAD
 // 예약 페이지
 const Reservation = loadable(() => import('./routes/Reservation'));
 
 // 예약 현황 조회
 const MyReservation = loadable(() => import('./routes/My_reservation'));
 
+=======
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
 const routeUrlPaths = [
   'member',
   'mypage',
-  'festival',
   'recommend',
   'community',
   'reservation',

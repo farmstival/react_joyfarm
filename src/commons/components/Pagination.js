@@ -11,9 +11,15 @@ import {
 
 const Wrapper = styled.div`
   display: flex;
+<<<<<<< HEAD
   max-width: 450px;
   min-width: 100px;
   margin: 10px auto;
+=======
+  max-width: 500px;
+  min-width: 100px;
+  margin: 60px auto 0;
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
   align-items: center;
 
   .page {
@@ -23,7 +29,11 @@ const Wrapper = styled.div`
     text-align: center;
     flex-grow: 1;
     font-size: 1.15rem;
+<<<<<<< HEAD
     border: 1px solid #000;
+=======
+    border: 1px solid #ada493;
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
     border-radius: 3px;
     cursor: pointer;
   }
@@ -32,7 +42,11 @@ const Wrapper = styled.div`
   }
 
   .page.on {
+<<<<<<< HEAD
     background: #000;
+=======
+    background: #8d90a1;
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
     color: #fff;
   }
 `;

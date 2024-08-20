@@ -5,9 +5,17 @@ import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
+<<<<<<< HEAD
 
 function getQueryString(searchParams) {
   const qs = {};
+=======
+import KakaoMap from '../../../map/KakaoMap';
+import { ImageListBox } from '../../../commons/components/ImageListBox';
+
+function getQueryString(searchParams) {
+  const qs = { limit: 9 };
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
@@ -30,7 +38,14 @@ const ListContainer = () => {
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
+<<<<<<< HEAD
       setLoading(false);
+=======
+      setTimeout(function () {
+        setLoading(false);
+      }, 500);
+      // setLoading(false); -> setTimeout 하지 않을 때는 주석 해제!
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
     });
   }, [search]);
 
@@ -52,7 +67,11 @@ const ListContainer = () => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
 
+<<<<<<< HEAD
   // 로딩 처리
+=======
+  /* 로딩 처리 */
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
   if (loading) {
     return <Loading />;
   }
@@ -64,7 +83,13 @@ const ListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
+<<<<<<< HEAD
       <ItemsBox items={items} />
+=======
+      <ImageListBox className="List-box">
+        <ItemsBox items={items} />
+      </ImageListBox>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}

@@ -34,16 +34,28 @@ const ItemDescription = ({ item }) => {
     <Wrapper>
       {period && (
         <dl>
+<<<<<<< HEAD
           <dt>{t('행사기간')}</dt>
+=======
+          <dt>{t('추천_여행기간')}</dt>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
           <dd>{period}</dd>
         </dl>
       )}
       <dl>
+<<<<<<< HEAD
         <dt>{t('행사명')}</dt>
         <dd>{title}</dd>
       </dl>
       <dl>
         <dt>{t('행사장소')}</dt>
+=======
+        <dt>{t('여행지_명')}</dt>
+        <dd>{title}</dd>
+      </dl>
+      <dl>
+        <dt>{t('여행장소')}</dt>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
         <dd>{address}</dd>
       </dl>
       <dl>
@@ -58,6 +70,7 @@ const ItemDescription = ({ item }) => {
       )}
       {description && (
         <dl>
+<<<<<<< HEAD
           <dt>{t('행사내용')}</dt>
           <dd>{description}</dd>
         </dl>
@@ -66,6 +79,13 @@ const ItemDescription = ({ item }) => {
       <Link to="/reservation/1">
         <MidButton color="primary">{t('예약하기')}</MidButton>
       </Link>
+=======
+          <dt>{t('여행설명')}</dt>
+          <dd>{description}</dd>
+        </dl>
+      )}
+      <MidButton color='midGreen'>{t('여행지_찜하기')}</MidButton>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
     </Wrapper>
   );
 };

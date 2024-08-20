@@ -14,7 +14,11 @@ const customStyles = {
 const ImageUpload = ({ children, gid, color }) => {
   Modal.setAppElement('#root');
 
+<<<<<<< HEAD
   color = color ?? 'primary';
+=======
+  color = color ?? 'midGreen';
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
   const [open, setOpen] = useState(false);
 
   const onClick = useCallback(() => {
@@ -28,7 +32,11 @@ const ImageUpload = ({ children, gid, color }) => {
       </SmallButton>
       {open && (
         <Modal isOpen={open} style={customStyles}>
+<<<<<<< HEAD
           <h1>노출!</h1>
+=======
+          <h1>♥노출♥</h1>
+>>>>>>> ae8cc0939bdab9bb11fb2850d4f4c59698611293
           <button type="button" onClick={() => setOpen(false)}>
             닫기
           </button>
