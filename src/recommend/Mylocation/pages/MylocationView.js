@@ -5,6 +5,7 @@ import {
   OuterBox,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
+import SubTitleLink from '../../commons/SubTitleLink';
 import {
   DetailImgBox,
   DetailTitle,
@@ -12,12 +13,12 @@ import {
 import Header from '../../layouts/Header';
 import ViewContainer from '../containers/ViewContainer';
 
-
 const MylocationView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');
   const { t } = useTranslation();
   return (
     <>
+    <SubTitleLink text={t('내_위치_주변_여행지')} href="/recommend/mylocation" />
       <Helmet>
         <title>{SubPageTitle}</title>
       </Helmet>
