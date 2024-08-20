@@ -5,7 +5,7 @@ import { ImageBgBox } from '../../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../../styles/color';
 
-const { white, midGreen, dark } = color;
+const { midGreen } = color;
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
