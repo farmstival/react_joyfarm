@@ -5,13 +5,13 @@ const requestData = (url) =>
     (async () => {
       try {
         const res = await apiRequest(url);
-        if (res.status < 200 || res.status >= 400) {
+        if(res.status < 200 || res.status >= 400) {
           reject(res.data);
           return;
         }
 
         resolve(res.data.data);
-      } catch (err) {
+      } catch(err) {
         reject(err);
       }
     })();
