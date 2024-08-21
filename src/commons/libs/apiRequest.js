@@ -8,11 +8,11 @@ export default function apiRequest(url, method = 'GET', data, headers) {
   if (!/^http[s]?/i.test(url)) {
     // 외부 URL이 아닌 경우 - http://localhost:4000/api/v1/account
     if (url.indexof('/email') !== 0) {
-    url = process.env.REACT_APP_API_URL + url;
-  } else {
+      url = process.env.REACT_APP_API_URL + url;
+    } else {
       url = process.env.REACT_APP_EMAIL_URL + url.replace('/email', '');
+    }
   }
-}
 
   /**
    * axios 응답 코드가 2xx ~ 3xx 만 정상 응답 판단
@@ -29,7 +29,7 @@ export default function apiRequest(url, method = 'GET', data, headers) {
     options.data = data;
   }
 
-  const token = cookies.load("token"); //토큰이 있으면 토큰도 담아서 보냄
+  const token = cookies.load('token'); //토큰이 있으면 토큰도 담아서 보냄
   if (token && token.trim()) {
     headers = headers ?? {};
     headers.Authorization = `Bearer ${token}`;
