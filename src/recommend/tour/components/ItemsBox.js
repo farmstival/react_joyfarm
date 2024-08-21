@@ -93,10 +93,14 @@ const ItemStyledBox = styled(ItemBox)`
         align-items: center;
         text-align: justify;
         line-height: 20px;
-        overflow: hidden;
-        text-overflow: ellipsis;
         -webkit-line-clamp: 3;
         display: -webkit-box;
+        overflow: hidden; //글자 넘치는 부분 감추기
+        text-overflow: ellipsis; //숨겨지는 영역 끝에 말줄임표 생성
+        white-space: normal; //줄바꿈
+        word-wrap: break-word; //단어 단위로 줄바꿈
+        -webkit-line-clamp: 3; //해당 영역 내 텍스트 최대 라인수
+        -webkit-box-orient: vertical; //박스 방향 설정(가로)
       }
 
       .address {
