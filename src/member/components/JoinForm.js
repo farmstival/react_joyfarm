@@ -10,12 +10,12 @@ import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 
 const FormBox = styled.form`
-background-color: #FFFFBA; /* 부드러운 배경색 추가 */
+background-color: #e1ffba; /* 부드러운 배경색 추가 */
 padding: 25px;
 border-radius: 40px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
-max-width: 500px; /* 최대 너비 설정 */
-margin: 10px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
+max-width: 580px; /* 최대 너비 설정 */
+margin: 20px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
 transition: all 0.3s ease;
 
  textarea {
@@ -49,9 +49,9 @@ transition: all 0.3s ease;
       flex-grow: 1;
       input {
         width: 100%;
-        padding: 11px;
+        padding: 15px;
         border: 1px solid #ccc;
-        border-radius: 11px;
+        border-radius: 20px;
         font-size: 1rem;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
@@ -64,12 +64,12 @@ transition: all 0.3s ease;
   }
 
   dl + dl {
-    margin-top: 8px;
+    margin-top: 18px;
   }
 
   .terms-agree {
     text-align: center;
-    margin: 20px 0;
+    margin: 30px 0;
     font-size: 1rem;
     color: #555;
     cursor: pointer;
@@ -94,30 +94,28 @@ transition: all 0.3s ease;
 `;
 
 const EmailVerificationBox = styled.div`
- .rows {
- display: flex;
- align-items: center;
- button {
-   width: 160px;
-   height: 40px;
-
-  } 
- }
-
- .rows:last-of-type {
-  span {
-    width: 100px;
-    text-align: center;
-  }
+  .rows {
+    display: flex;
+    align-items: center;
     button {
-     width: 80px;
+      width: 130px;
+      height: 50px;
+    }
+  }
+
+  .rows:last-of-type {
+    span {
+      width: 70px;
+      text-align: center;
+    }
+    button {
+      width: 50px;
     }
 
     button + button {
       margin-left: 5px;
     }
- }
-
+  }
 `;
 
 const JoinForm = ({
@@ -139,55 +137,56 @@ const JoinForm = ({
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
-         <EmailVerificationBox>
-         <div className="rows">
-          <InputBox
-            type="text"
-            name="email"
-            value={form.email ?? ''}
-            onChange={onChange}
-            readOnly={
-              form.emailVerified ||
-              (form.authCount > 0 && form.authCount < 180)
-            }
-          />
-          {!form.emailVerified && form.authCount > 0 && (
-           <button
-             type="button"
-             onClick={onSendAuthCode}
-             disabled={form.authCount < 180 && form.authCount > 0}
-             >
-                 {t('인증코드_전송')}
-                  </button>
-          )}
-           </div>
-            {form.emailVerified ? (
-             <MessageBox color="primary">
-              {t('확인된_이메일_입니다.')}
-             </MessageBox>
-            ):(
+          <EmailVerificationBox>
             <div className="rows">
-              {form.authCount > 0 && (
-               <InputBox
-                 type="text"
-                 name="authNum"
-                 placeholder={t('인증코드_입력')}
-                 onChange={onChange}
+              <InputBox
+                type="text"
+                name="email"
+                value={form.email ?? ''}
+                onChange={onChange}
+                readOnly={
+                  form.emailVerified ||
+                  (form.authCount > 0 && form.authCount < 180)
+                }
               />
+
+              {!form.emailVerified && form.authCount > 0 && (
+                <button
+                  type="button"
+                  onClick={onSendAuthCode}
+                  disabled={form.authCount < 180 && form.authCount > 0}
+                >
+                  {t('인증코드_전송')}
+                </button>
               )}
-              <span>{form.authCountMin}</span>
-              <button type="button" onClick={onVerifyAuthCode}>
-                {t('확인')}
-              </button>
-             <button type="button" onClick={onReSendAuthCode}>
-              {t('재전송')}
-             </button>
             </div>
+            {form.emailVerified ? (
+              <MessageBox color="primary">
+                {t('확인된_이메일_입니다.')}
+              </MessageBox>
+            ) : (
+              <div className="rows">
+                {form.authCount > 0 && (
+                  <InputBox
+                    type="text"
+                    name="authNum"
+                    placeholder={t('인증코드_입력')}
+                    onChange={onChange}
+                  />
+                )}
+                <span>{form.authCountMin}</span>
+                <button type="button" onClick={onVerifyAuthCode}>
+                  {t('확인')}
+                </button>
+                <button type="button" onClick={onReSendAuthCode}>
+                  {t('재전송')}
+                </button>
+              </div>
             )}
-     </EmailVerificationBox>
-      <MessageBox messages={errors.email} color="danger" />
-     </dd>
-     </dl>
+          </EmailVerificationBox>
+          <MessageBox messages={errors.email} color="danger" />
+        </dd>
+      </dl>
 
       <dl>
         <dt>{t('비밀번호')}</dt>
@@ -237,6 +236,7 @@ const JoinForm = ({
           <MessageBox messages={errors.mobile} color="danger" />
         </dd>
       </dl>
+
       <dl>
         <dt>{t('프로필_이미지')}</dt>
         <dd>
@@ -448,8 +448,8 @@ const JoinForm = ({
           {t('가입하기')}
         </BigButton>
       </ButtonGroup>
-    
     </FormBox>
-)};
+  );
+};
 
 export default React.memo(JoinForm);

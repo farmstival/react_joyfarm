@@ -8,9 +8,12 @@ import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 
+
 const { small } = fontSize;
 
 const FormBox = styled.form`
+
+
   width: 350px;
   margin: 0 auto;
 

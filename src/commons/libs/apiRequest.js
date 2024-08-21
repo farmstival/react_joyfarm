@@ -7,7 +7,7 @@ export default function apiRequest(url, method = 'GET', data, headers) {
    */
   if (!/^http[s]?/i.test(url)) {
     // 외부 URL이 아닌 경우 - http://localhost:4000/api/v1/account
-    if (url.indexof('/email') !== 0) {
+    if (url.indexOf('/email') !== 0) {
       url = process.env.REACT_APP_API_URL + url;
     } else {
       url = process.env.REACT_APP_EMAIL_URL + url.replace('/email', '');
