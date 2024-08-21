@@ -12,9 +12,13 @@ const Wrapper = styled.div`
 const ImageBox = styled.div`
   background:url('${({image}) => image}') no-repeat center center;
   background-size: cover;
+  background-size: 100% 100%;
   width: 100%;
-  height: 500px;
+  height: 450px;
+  border-radius: 8px;
+  isolation: isolate;
   cursor: pointer;
+  margin-top: 30px;
 `;
 
 const ItemImage = ({ images, onClick }) => {
