@@ -22,9 +22,12 @@ const ViewContainer = () => {
       /* 현재 위치 설정
       const { latitude, longitude } = pos.coords; 
       setCenter({ lat: latitude, lng: longitude }); */
-      
-      const { latitude, longitude } = {lat: 37.938384140783754, lng: 126.95154477764298}
-      setCenter({ lat: 37.938384140783754, lng: 126.95154477764298});
+
+      const { latitude, longitude } = {
+        lat: 37.938384140783754,
+        lng: 126.95154477764298,
+      };
+      setCenter({ lat: 37.938384140783754, lng: 126.95154477764298 });
 
       geocoder.coord2RegionCode(longitude, latitude, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
@@ -77,7 +80,7 @@ const ViewContainer = () => {
     return <Loading />;
   }
 
-  return <KakaoMap center={center} marker={locations} />;
+  return <KakaoMap center={center} marker={locations} zoom={6} />;
 };
 
 export default React.memo(ViewContainer);
