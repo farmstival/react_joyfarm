@@ -8,6 +8,7 @@ import {
   DetailTitle,
 } from '../../../commons/components/DetailBox';
 import ViewContainer from '../containers/ViewContainer';
+import { IoMdPricetags } from "react-icons/io";
 
 const TourView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');
@@ -21,7 +22,8 @@ const TourView = () => {
         <ContentBox>
           <DetailImgBox>
             <DetailTitle>
-              <h1>[ {SubPageTitle} ]</h1>
+              <h1>
+              <IoMdPricetags  className='icon' /> {SubPageTitle}</h1>
             </DetailTitle>
             <ViewContainer setSubPageTitle={setSubPageTitle} />
           </DetailImgBox>
