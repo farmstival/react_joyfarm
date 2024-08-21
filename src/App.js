@@ -36,7 +36,7 @@ const App = () => {
     </>
   ) : (
     <Routes>
-      <Route path="/" element={<><MainLayout /><VisitorInfo/></>}>
+      <Route path="/" element={<><MainLayout /></>}>
         <Route index element={<Main />} /> {/* 메인 페이지 */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
