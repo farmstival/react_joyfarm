@@ -29,26 +29,33 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item }) => {
   const { t } = useTranslation();
-  const { townName, activityName, address, ownerTel, facilityInfo, wwwAddress } = item;
+  const {
+    townName,
+    activityName,
+    doroAddress,
+    ownerTel,
+    facilityInfo,
+    wwwAddress,
+  } = item;
   return (
     <Wrapper>
-        <dl>
-          <dt>{t('체험마을명')}</dt>
-          <dd>{townName}</dd>
-        </dl>
+      <dl>
+        <dt>{t('체험마을명')}</dt>
+        <dd>{townName}</dd>
+      </dl>
       <dl>
         <dt>{t('체험프로그램명')}</dt>
         <dd>{activityName}</dd>
       </dl>
       <dl>
-        <dt>{t('체험마을장소')}</dt>
-        <dd>{address}</dd>
+        <dt>{t('체험마을 주소')}</dt>
+        <dd>{doroAddress}</dd>
       </dl>
       {ownerTel && (
-      <dl>
-        <dt>{t('대표전화번호')}</dt>
-        <dd>{ownerTel}</dd>
-      </dl>
+        <dl>
+          <dt>{t('대표전화번호')}</dt>
+          <dd>{ownerTel}</dd>
+        </dl>
       )}
       {facilityInfo && (
         <dl>
@@ -63,8 +70,8 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
 
-      <Link to="/reservation/list/1">
-      <MidButton color='midGreen'>{t('예약하기')}</MidButton>
+      <Link to="/reservation/info/{seq}/reserve">
+        <MidButton color="midGreen">{t('예약하기')}</MidButton>
       </Link>
     </Wrapper>
   );

@@ -44,9 +44,7 @@ const App = () => {
       <Recommend />
       <Board />
       <Reservation />
-
       <MyReservation />
-      <Board/>
     </>
   ) : (
     <Routes>

@@ -5,6 +5,8 @@ import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
+import KakaoMap from '../../map/KakaoMap';
+import { ImageListBox } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -50,6 +52,7 @@ const ReserveListContainer = () => {
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
+    window.location.hash = '#root';
   }, []);
 
   /* 로딩 처리 */
@@ -64,6 +67,7 @@ const ReserveListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
+      
       <ItemsBox items={items} />
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />

@@ -6,6 +6,7 @@ import KakaoMap from '../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const ReserveViewContainer = ({ setPageTitle }) => {
+  const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
@@ -25,11 +27,12 @@ const ReserveViewContainer = ({ setPageTitle }) => {
     apiGet(seq).then((item) => {
       setPageTitle(item.title);
       setItem(item);
+      
       const position = { lat: item.latitude, lng: item.longitude };
       setMapOptions((opt) => {
         const options = item.latitude
           ? { ...opt, center: position, marker: position }
-          : { ...opt, address: item.address };
+          : { ...opt, doroAddress: item.doroAddress };
 
         return options;
       });
@@ -40,7 +43,7 @@ const ReserveViewContainer = ({ setPageTitle }) => {
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
-  });
+  }, []);
 
   if (loading || !item) {
     return <Loading />;
@@ -49,8 +52,8 @@ const ReserveViewContainer = ({ setPageTitle }) => {
   return (
     <>
       <Wrapper>
-        {item.photoUrl && (
-          <ItemImage images={item.photoUrl} onClick={onShowImage} />
+        {item.townImage && (
+          <ItemImage images={item.townImage} onClick={onShowImage} />
         )}
         <ItemDescription item={item} />
       </Wrapper>

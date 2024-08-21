@@ -10,7 +10,7 @@ import {
 } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import ReserveViewContainer from '../containers/ReserveViewContainer';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const ReservationView = () => {
   const { t } = useTranslation();
@@ -24,8 +24,8 @@ const ReservationView = () => {
       <OuterBox>
         <PageNavWrap>
           <PageNav>
-            <Link to='/reservation/list'>체험활동 조회</Link>
-            <span> / </span>
+            <NavLink Link to='/reservation/list'>체험활동 조회</NavLink>
+            <span> | </span>
             <Link to=''>상세보기</Link>
           </PageNav>
           <PageTitle>
