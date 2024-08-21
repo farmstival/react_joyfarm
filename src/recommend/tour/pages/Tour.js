@@ -10,25 +10,19 @@ import {
   PageTitle,
   ContentBox,
 } from '../../../commons/components/LayoutBox';
+import Header from '../../../layouts/Header';
+import SubTitleLink from '../../../commons/SubTitleLink';
 
 const Tour = () => {
   const { t } = useTranslation();
   return (
     <>
+       <SubTitleLink text={t('추천_여행지')} href="/recommend/tour" />
       <Helmet>
         <title>{t('추천_여행지')}</title>
       </Helmet>
       <OuterBox>
-        <PageNavWrap>
-          <PageNav>
-            <h3>
-              <IoMdHome /> &gt; 조이팜의 추천 &gt; 추천 여행지
-            </h3>
-          </PageNav>
-          <PageTitle>
-            <h1>추천 여행지</h1>
-          </PageTitle>
-        </PageNavWrap>
+        <Header />
         <ContentBox>
           <ListContainer />
         </ContentBox>
