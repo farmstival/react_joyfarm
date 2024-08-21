@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { color } from '../../../styles/color';
+
+const { midGreen, white } = color;
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
@@ -22,7 +25,7 @@ const ItemBox = ({ item, className }) => {
           <div className="title">{title}</div>
           <div className="description">{description}</div>
           <div className="address">
-            <FaMapMarkerAlt />
+            <FaMapMarkerAlt className="icon" />
             {address}
           </div>
         </div>
@@ -37,19 +40,33 @@ const ItemStyledBox = styled(ItemBox)`
   width: 100%;
   height: 450px;
 
+  &:hover {
+    border: 1px solid ${midGreen};
+  }
+
+  &:hover .title {
+    background: ${midGreen};
+    color: ${white};
+    text-shadow: 1px 1px gray;
+    transition: 0.3s;
+    text-shadow: 1px 1px gray;
+    transition: 0.3s;
+  }
+
   a {
     display: flex;
     flex-direction: column;
 
     .photo {
       width: 100%;
+      height: 250px;
       border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 20px;
+      padding: 5px 20px;
       height: 200px;
       display: flex;
       flex-direction: column;
@@ -61,13 +78,25 @@ const ItemStyledBox = styled(ItemBox)`
         text-align: center;
         height: 30%;
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 30px 0 30px;
       }
 
       .description {
         font-size: 15px;
         margin-bottom: 10px;
         width: 100%;
-        height: 40%;
+        height: 30%;
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
       }
 
       .address {
@@ -75,6 +104,13 @@ const ItemStyledBox = styled(ItemBox)`
         color: #767676;
         height: 30%;
         padding-top: 20px;
+
+        .icon {
+          color: #ff5e00;
+          position: relative;
+          top: 3px;
+          margin-right: 5px;
+        }
       }
     }
   }
