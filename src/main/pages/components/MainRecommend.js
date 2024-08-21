@@ -6,16 +6,16 @@ import MainRecommendImage from '../../../images/banner1.jpg';
 const { darkGreen, white, dark, mid_gray, midGreen } = color;
 
 const MainRecommendWrapper = styled.div`
-  padding: 100px 20px; /* 좌우 padding 추가 */
+  padding: 100px 20px; 
   background: ${white};
   margin-bottom: 100px;
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
+  justify-content: center; 
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1440px; /* 최대 너비 제한 */
-  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
+  max-width: 1440px; 
+  width: 100%; 
 `;
 
 const Header = styled.div`
@@ -26,15 +26,21 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.5em;
+  font-size: 2em;
+  font-weight: bold;
   color: ${darkGreen};
 `;
 
 const MoreLink = styled.a`
-  font-size: 1em;
+  font-size: 1.5em;
   color: ${darkGreen};
   cursor: pointer;
-  text-decoration: underline;
+  margin-right: 50px;
+   &:hover {
+        text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 10px;
+  }
 `;
 
 const Grid = styled.div`
@@ -58,7 +64,7 @@ const Image = styled.img`
   &:hover {
     opacity: 1; 
   }
-  margin-bottom: 0; /* 이미지와 InfoBox 사이의 공백 제거 */
+  margin-bottom: 0; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
@@ -95,7 +101,7 @@ const Address = styled.p`
 `;
 
 const handleItemClick = (url) => {
-  window.location.href = url; // 클릭 시 경로로 이동
+  window.location.href = url; 
 };
 
 const MainRecommend = ({ onButtonClick }) => {
