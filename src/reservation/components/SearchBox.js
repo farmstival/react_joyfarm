@@ -19,11 +19,11 @@ const FormBox = styled.form`
   }
 
   input {
-    width: 400px;
+    width: 430px;
   }
 
   select {
-    width: 110px;
+    width: 130px;
   }
 
   .rsv_searchBar {
@@ -33,7 +33,7 @@ const FormBox = styled.form`
   }
 
   .rsv_btn {
-    width: 250px;
+    width: 180px;
   }
 `;
 

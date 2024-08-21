@@ -62,7 +62,9 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: calc(100% - 160px);
       word-break: break-all;
-      padding: 10px 0;
+      padding-top: 10px;
+      position: relative;
+      height: 200px;
 
       .townName {
         font-size: ${big};
@@ -75,14 +77,24 @@ const ItemStyledBox = styled(ItemBox)`
         font-size: ${medium};
         line-height: 170%;
         width: 100%;
-        height: 50%;
+        //height: 50%;
+        overflow: hidden; //글자 넘치는 부분 감추기
+        text-overflow: ellipsis; //숨겨지는 영역 끝에 말줄임표 생성
+        white-space: normal; //줄바꿈
+        text-align: left; //텍스트 윈쪽 정렬
+        word-wrap: break-word; //단어 단위로 줄바꿈
+        display: -webkit-box; //영역을 box형태로 지정
+        -webkit-line-clamp: 3; //해당 영역 내 텍스트 최대 라인수
+        -webkit-box-orient: vertical; //박스 방향 설정(가로)
       }
 
       .doroAddress {
         font-size: ${medium};
         color: #767676;
-        height: 20%;
-        padding-top: 10px;
+        height: 15%;
+        position: absolute;
+        bottom: 0px;
+
       }
     }
   }

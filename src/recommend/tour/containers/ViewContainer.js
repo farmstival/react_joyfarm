@@ -6,6 +6,7 @@ import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;

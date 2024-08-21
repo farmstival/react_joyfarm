@@ -3,15 +3,32 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
+import fontSize from '../../styles/fontSize';
+
+const {normal } =fontSize;
 
 const Wrapper = styled.div`
-  width: 350px;
+  width: 400px;
+  height: 500px;
   word-break: break-all;
+
+  .des_box {
+    position: relative;
+
+    .rsv_btn {
+    position: absolute;
+    bottom: 10px;
+    width: 400px;
+    
+  }
+  }
+
 
   dl {
     display: flex;
-
     padding: 10px 15px;
+    font-size: ${normal};
+    line-height: 150%;
 
     dt {
       width: 100px;
@@ -23,8 +40,10 @@ const Wrapper = styled.div`
   }
 
   dl + dl {
-    border-top: 1px dashed #818181;
+    border-top: 1px solid #A6A6A6;
   }
+
+
 `;
 
 const ItemDescription = ({ item }) => {
@@ -38,17 +57,17 @@ const ItemDescription = ({ item }) => {
     wwwAddress,
   } = item;
   return (
-    <Wrapper>
+    <Wrapper className='des_box'>
       <dl>
         <dt>{t('체험마을명')}</dt>
         <dd>{townName}</dd>
       </dl>
       <dl>
-        <dt>{t('체험프로그램명')}</dt>
+        <dt>{t('체험프로그램')}</dt>
         <dd>{activityName}</dd>
       </dl>
       <dl>
-        <dt>{t('체험마을 주소')}</dt>
+        <dt>{t('체험마을_주소')}</dt>
         <dd>{doroAddress}</dd>
       </dl>
       {ownerTel && (
@@ -70,8 +89,8 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
 
-      <Link to="/reservation/info/{seq}/reserve">
-        <MidButton color="midGreen">{t('예약하기')}</MidButton>
+      <Link to="/reservation/info/{seq}/apply">
+        <MidButton className='rsv_btn' color="midGreen">{t('예약하기')}</MidButton>
       </Link>
     </Wrapper>
   );
