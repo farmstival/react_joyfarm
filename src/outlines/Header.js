@@ -25,7 +25,7 @@ const HeaderBox = styled.header`
         display: inline-block;
         line-height: 34px;
         margin: 0 10px;
-        font-size: ${fontSize.normal};
+        font-size: ${fontSize.medium};
 
         &.on {
           color: ${midGreen};
@@ -49,8 +49,9 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
-
+  //관리자 url, 환경 변수로 추가함
   const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
+  // console.log(adminUrl);
 
   return (
     <HeaderBox>
@@ -67,6 +68,7 @@ const Header = () => {
                   <GrUserManager />
                   {t('사이트_관리')}
                 </a>
+                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체  
               )}
               <NavLink
                 to="/mypage"
