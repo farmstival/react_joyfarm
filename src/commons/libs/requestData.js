@@ -1,6 +1,7 @@
-import apiRequest from "./apiRequest";
+import apiRequest from './apiRequest';
 
-const requestData = (url) => new Promise((resolve, reject) => {
+const requestData = (url) =>
+  new Promise((resolve, reject) => {
     (async () => {
       try {
         const res = await apiRequest(url);
@@ -14,6 +15,6 @@ const requestData = (url) => new Promise((resolve, reject) => {
         reject(err);
       }
     })();
-});
+  });
 
 export default requestData;

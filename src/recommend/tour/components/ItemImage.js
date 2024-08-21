@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-flex-grow: 1;
-margin-right: 10px;
-border-radius: 5px;
-height: 500px;
-overflow: hidden;
+  flex-grow: 1;
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 500px;
+  overflow: hidden;
 `;
 
 const ImageBox = styled.div`
@@ -28,8 +28,11 @@ const ItemImage = ({ images, onClick }) => {
     images.length > 0 && (
       <Wrapper className="item-images">
         {images.map((image) => (
-          <ImageBox image={image} key={image} className="item-image"
-          onClick={() => onClick(image)} 
+          <ImageBox
+            image={image}
+            key={image}
+            className="item-image"
+            onClick={() => onClick(image)}
           />
         ))}
       </Wrapper>
