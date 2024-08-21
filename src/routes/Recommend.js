@@ -15,7 +15,7 @@ const FestivalViewPage = loadable(() => import('../recommend/Festival/pages/Fest
 /* 축제 관련 페이지 E */
 
 /* 내 위치 주변 여행지 페이지 */
-const MylocationPage = loadable(() => import('../recommend/Mylocation/pages/MylocationView'));
+const MylocationPage = loadable(() => import('../recommend/Mylocation/pages/Mylocation'));
 
 const Recommend = () => {
   return (
