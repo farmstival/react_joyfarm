@@ -7,13 +7,44 @@ import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
-
+import styles from 'styled-components';
 
 const { small } = fontSize;
 
+const StyledMidButton = styled(MidButton)`
+  background-color: ${({ bgColor }) => bgColor || ''}; /* 기본 배경색 */
+  color: ${({ textColor }) => textColor || ''}; /* 기본 텍스트 색상 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ hoverBgColor }) => hoverBgColor || ''}; /* hover 시 배경색 */
+    color: ${({ hoverTextColor }) => hoverTextColor || ''}; /* hover 시 텍스트 색상 */
+    cursor: pointer;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 10px 0;
+  text-align: center;
+  font-size: ${small};
+
+  &:hover {
+    background-color: #f0f0f0; /* 배경색 변경 */
+    color: #2a74f5; /* 텍스트 색상 변경 */
+    cursor: pointer;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+`;
+
+//-----------------
+
+
+
 const FormBox = styled.form`
-
-
   width: 350px;
   margin: 0 auto;
 
@@ -21,6 +52,7 @@ const FormBox = styled.form`
     margin-bottom: 5px;
   }
 `;
+
 const LinkBox = styled.div`
   width: 350px;
   margin: 10px auto 0;
@@ -66,22 +98,27 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
         />
         <MessageBox messages={errors.password} color="danger" />
 
-        <MidButton type="submit" color="primary">
+        <StyledMidButton type="submit" 
+          bgColor="#6e8f6d"          /* 기본 배경색 */
+          textColor="white"          /* 기본 텍스트 색상 */
+          hoverBgColor="#77c973"    /* hover 시 배경색 */
+          hoverTextColor="black"    /* hover 시 텍스트 색상 */>
+          
           {t('로그인')}
-        </MidButton>
+        </StyledMidButton>
 
         <MessageBox messages={errors.global} color="danger" />
       </FormBox>
       <LinkBox>
-        <Link to="/member/find_id">
+        <StyledLink to="/member/find_id">
           <FaLock /> {t('아이디_찾기')}
-        </Link>
-        <Link to="/member/find_pw">
+        </StyledLink>
+        <StyledLink to="/member/find_pw">
           <FaKey /> {t('비밀번호_찾기')}
-        </Link>
-        <Link to="/member/join">
+        </StyledLink>
+        <StyledLink to="/member/join">
           <FaUserPlus /> {t('회원가입')}
-        </Link>
+        </StyledLink>
       </LinkBox>
     </>
   );
