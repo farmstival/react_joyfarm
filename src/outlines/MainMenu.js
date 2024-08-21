@@ -93,7 +93,7 @@ const MainMenu = () => {
       <div className="layout-width">
         <MenuItem>
           <NavLink
-            to="/reservation"
+            to="/reservation/list"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
             {t('농촌체험_예약')}

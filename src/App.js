@@ -28,7 +28,6 @@ const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
-
   'reservation',
   'myreservation',
   'board',

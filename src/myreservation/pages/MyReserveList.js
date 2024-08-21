@@ -22,7 +22,7 @@ const MyReservList = () => {
       <OuterBox>
         <PageNavWrap>
           <PageNav>
-            <a>예약 현황 조회</a>
+            <h1>예약 현황 조회</h1>
           </PageNav>
           <PageTitle>
             <MainTitle>{t('나의_예약_현황')}</MainTitle>

@@ -10,7 +10,7 @@ export const apiList = (search) => {
     qs.push(`${k}=${v}`);
   }
 
-  let url = '/reservation/list';
+  let url = '/activity/reservation';
   if (qs.length > 0) url += `?${qs}`; //검색 조건이 있을 때
 
   return new Promise((resolve, reject) => {
@@ -20,12 +20,9 @@ export const apiList = (search) => {
           resolve(res.data.data);
           return;
         }
-        reject(new Error('Unexpected response status: ' + res.status));
+        reject(res.data);
       })
-      .catch((err) => {
-        console.error('API request failed:', err);
-        reject(new Error('API request failed: ' + err.message));
-      });
+      .catch((err) => reject(err));
   });
 };
 
