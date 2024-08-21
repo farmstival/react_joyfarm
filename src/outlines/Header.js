@@ -50,8 +50,7 @@ const Header = () => {
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   //관리자 url, 환경 변수로 추가함
-  const adminUrl =
-    process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
+  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
   // console.log(adminUrl);
 
   return (
@@ -69,7 +68,7 @@ const Header = () => {
                   <GrUserManager />
                   {t('사이트_관리')}
                 </a>
-                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
+                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체  
               )}
               <NavLink
                 to="/mypage"

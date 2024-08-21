@@ -2,13 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
-import {
-  OuterBox,
-  PageNav,
-  PageNavWrap,
-  PageTitle,
-  ContentBox,
-} from '../../commons/components/LayoutBox';
+import { OuterBox, PageNav, PageNavWrap, PageTitle, ContentBox } from '../../commons/components/LayoutBox';
 import MyReserveListContainer from '../containers/MyReserveListContainer';
 
 const MyReservList = () => {
@@ -21,12 +15,12 @@ const MyReservList = () => {
       </Helmet>
       <OuterBox>
         <PageNavWrap>
-          <PageNav>
-            <a>예약 현황 조회</a>
-          </PageNav>
-          <PageTitle>
-            <MainTitle>{t('나의_예약_현황')}</MainTitle>
-          </PageTitle>
+            <PageNav>
+              <a>예약 현황 조회</a>
+            </PageNav>
+            <PageTitle>
+              <MainTitle>{t('나의_예약_현황')}</MainTitle>
+            </PageTitle>
         </PageNavWrap>
         <ContentBox>
           <PageTitle>

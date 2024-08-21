@@ -5,12 +5,8 @@ import loadable from '@loadable/component';
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
 /* 예약 관련 페이지 S */
-const ReservationList = loadable(() =>
-  import('../reservation/pages/ReservationList'),
-);
-const ReservationView = loadable(() =>
-  import('../reservation/pages/ReservationView'),
-);
+const ReservationList = loadable(() => import('../reservation/pages/ReservationList'));
+const ReservationView = loadable(() => import('../reservation/pages/ReservationView'));
 const ApplyPage = loadable(() => import('../reservation/pages/Apply'));
 const CompletionPage = loadable(() =>
   import('../reservation/pages/Completion'),
@@ -21,8 +17,8 @@ const Reservation = () => {
   return (
     <Routes>
       <Route path="/reservation" element={<MainLayout />}>
-        <Route path="list" element={<ReservationList />} />
-        <Route path="info/:seq" element={<ReservationView />} />
+        <Route path="list" element={<ReservationList/>}/>
+        <Route path="info/:seq" element={<ReservationView/>}/>
         <Route path="complete" element={<CompletionPage />} />
         <Route path=":seq" element={<ApplyPage />} />
       </Route>

@@ -19,3 +19,4 @@ export const SubTitle = styled.h1`
   line-height: 1;
   text-align: center;
 `;
+
