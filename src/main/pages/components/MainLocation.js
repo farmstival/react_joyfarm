@@ -75,6 +75,7 @@ const Button = styled.button`
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 1.5em;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
@@ -102,7 +103,7 @@ const MainLocation = ({ onButtonClick }) => {
           <LogoImage src={logoImage} alt="Logo" />
           <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
           <ButtonContainer>
-            <Button onClick={() => handleItemClick('recommend/festival/seoul')}>서울</Button>
+            <Button onClick={() => handleItemClick('recommend/festival/seoul')}>서 울</Button>
             <Button onClick={() => handleItemClick('recommend/festival/GyeongIn')}>경기•인천</Button>
             <Button onClick={() => handleItemClick('recommend/festival/Chung')}>충청도</Button>
             <Button onClick={() => handleItemClick('recommend/festival/Gang')}>강원도</Button>
