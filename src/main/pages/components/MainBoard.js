@@ -30,18 +30,17 @@ const Title = styled.h2`
   font-size: 3em;
   margin-bottom: 10px;
   position: relative;
-  display: inline-block; /* inline-block으로 변경하여 밑줄이 제목 아래에 위치하도록 함 */
+  display: inline-block;
+`;
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0; 
-    bottom: -10px; 
-    width: 100%; 
-    height: 5px;
-    background-color: ${lightGreen}; 
-    border-radius: 5px; /* 밑줄의 모서리를 둥글게 */
-  }
+const Underline = styled.span`
+  display: block;
+  width: 400px;
+  height: 10px;
+  background-color: ${lightGreen};
+  margin-top: -5px; 
+  margin-left: 20px;
+  border-radius: 5px;
 `;
 
 const MoreLink = styled.a`
@@ -169,6 +168,7 @@ const MainBoard = ({ onButtonClick }) => {
       <InnerContentWrapper>
         <Header>
           <Title>조이팜이 전하는 소식들</Title>
+          < Underline />
           <MoreLink onClick={onButtonClick}>더보기</MoreLink>
         </Header>
         <ContentWrapper>
