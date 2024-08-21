@@ -116,7 +116,7 @@ const ImageBox1 = styled(ImageBoxContainer)`
 
 const ImageBox2 = styled(ImageBoxContainer)`
   animation: ${scrollUp} 25s linear infinite;
-    animation-delay: 1.3s;
+    animation-delay: 0.3s;
 `;
 
 const ImageBox3 = styled(ImageBoxContainer)`
@@ -125,7 +125,7 @@ const ImageBox3 = styled(ImageBoxContainer)`
 
 const ImageBox4 = styled(ImageBoxContainer)`
   animation: ${scrollDown} 25s linear infinite;
-  animation-delay: -1.3s;
+  animation-delay: -1.7s;
 `;
 
 const ReviewImage = styled.img`

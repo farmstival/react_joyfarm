@@ -28,7 +28,7 @@ const Main = () => {
   };
 
   const handleButtonReview = () => {
-    navigate('/community/review'); 
+    navigate('/board/list/review'); 
   };
 
   const handleButtonRecommend = () => {
@@ -36,7 +36,7 @@ const Main = () => {
   };
 
   const handleButtonBoard = () => {
-    navigate('/community/notice'); 
+    navigate('/board/list/notice'); 
   };
 
   const scrollToSection = (ref, offset = 0) => {

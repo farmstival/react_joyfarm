@@ -64,7 +64,7 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 40px; 
-  width: 70%; 
+  width: 100%; 
 `;
 
 const Button = styled.button`
@@ -72,9 +72,9 @@ const Button = styled.button`
   color: ${dark};
   border-radius: 15px;
   width: 200px;
-  height: 90px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  height: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
@@ -104,12 +104,16 @@ const MainLocation = ({ onButtonClick }) => {
           <LogoImage src={logoImage} alt="Logo" />
           <HighlightBox>어떤지역으로 가시나요?</HighlightBox>
           <ButtonContainer>
-            <Button onClick={() => handleItemClick('recommend/festival/seoul')}>서 울</Button>
-            <Button onClick={() => handleItemClick('recommend/festival/GyeongIn')}>경기•인천</Button>
-            <Button onClick={() => handleItemClick('recommend/festival/Chung')}>충청도</Button>
-            <Button onClick={() => handleItemClick('recommend/festival/Gang')}>강원도</Button>
-            <Button onClick={() => handleItemClick('recommend/festival/Jun')}>전라도</Button>
-            <Button onClick={() => handleItemClick('recommend/festival/Gyeong')}>경상도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=서울특별시')}>서 울</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=경기도')}>경기•인천</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=강원도')}>강원도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=제주도')}>제주도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=충청북도')}>충청북도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=충청남도')}>충청남도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=전라북도')}>전라북도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=전라남도')}>전라남도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=경상북도')}>경상북도</Button>
+            <Button onClick={() => handleItemClick('recommend/festival?sido=경상남도')}>경상남도</Button>
           </ButtonContainer>
         </InnerContentWrapper>
       </ContentWrapper>

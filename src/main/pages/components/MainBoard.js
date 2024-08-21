@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios'; 
 import { color } from '../../../styles/color';
-import MainReviewImage from '../../../images/banner1.jpg'; 
+import MainReviewImage from '../../../images/ReviewImage1.jpg';
 
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray } = color;
 
@@ -29,16 +30,17 @@ const Title = styled.h2`
   font-size: 3em;
   margin-bottom: 10px;
   position: relative;
+  display: inline-block; /* inline-block으로 변경하여 밑줄이 제목 아래에 위치하도록 함 */
 
   &::after {
     content: '';
     position: absolute;
-    left: 20px; 
-    bottom: -5px; 
-    width: 97%;
-    height: 10px;
+    left: 0; 
+    bottom: -10px; 
+    width: 100%; 
+    height: 5px;
     background-color: ${lightGreen}; 
-    border-radius: 5px; 
+    border-radius: 5px; /* 밑줄의 모서리를 둥글게 */
   }
 `;
 
@@ -141,9 +143,26 @@ const NoticeContent = styled.p`
 `;
 
 const MainBoard = ({ onButtonClick }) => {
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    const fetchNotices = async () => {
+      try {
+        const response = await axios.get('https://api.example.com/notices'); // 실제 API URL로 변경
+        setNotices(response.data);
+      } catch (error) {
+        console.error('Error fetching notices:', error);
+      }
+    };
+
+    fetchNotices();
+  }, []);
+
   const handleNoticeClick = (url) => {
     window.location.href = url; 
   };
+
+  
 
   return (
     <MainBoardWrapper>
@@ -159,9 +178,21 @@ const MainBoard = ({ onButtonClick }) => {
             </ImageBox>
             <TextContainer onClick={() => handleNoticeClick('/notice/1')}>
               <DateText>2024.04.12</DateText>
-              <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeText>
+              <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해..<br/> 최시원님의 생일은 4월 22일 입니다. 생일을 축하해....</NoticeText>
             </TextContainer>
           </LeftSection>
+          
+          {/* <LeftSection>
+            <ImageBox>
+              <Image src={mainNotice.image} alt="Notice" />
+            </ImageBox>
+            <TextContainer onClick={() => handleNoticeClick(`/notice/${mainNotice.id}`)}>
+              <DateText>{mainNotice.date}</DateText>
+              <NoticeText>{mainNotice.content}</NoticeText>
+            </TextContainer>
+          </LeftSection> */}
+          
+          
           <RightSection>
             {[1, 2, 3,4].map(index => (
               <NoticeItem key={index} onClick={() => handleNoticeClick(`/notice/${index}`)}>
@@ -169,7 +200,17 @@ const MainBoard = ({ onButtonClick }) => {
                 <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
               </NoticeItem>
             ))}
+          </RightSection> 
+         
+          {/* <RightSection>       게시글이 있을때 밑에 경로 바꾸고, 위에 지우고 사용하시면 됩니다.
+            {notices.map(notice => (
+              <NoticeItem key={notice.id} onClick={() => handleNoticeClick(`/notice/${notice.id}`)}>
+                <NoticeDate>{notice.date}</NoticeDate>
+                <NoticeContent>{notice.content}</NoticeContent>
+              </NoticeItem>
+            ))}
           </RightSection>
+           */}
         </ContentWrapper>
       </InnerContentWrapper>
     </MainBoardWrapper>
