@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PageNavWrap, ContentBox, OuterBox } from '../../../commons/components/LayoutBox';
-import { MainTitle } from '../../../commons/components/TitleBox';
+import { OuterBox, ContentBox } from '../../../commons/components/LayoutBox';
+import Header from '../../../layouts/Header';
+import SubTitleLink from '../../../commons/SubTitleLink';
+import {
+  DetailImgBox,
+  DetailTitle,
+} from '../../../commons/components/DetailBox';
 import ViewContainer from '../containers/ViewContainer';
 
 const TourView = () => {
-  const [pageTitle, setPageTitle] = useState('');
-
+  const [SubPageTitle, setSubPageTitle] = useState('');
   return (
     <>
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{SubPageTitle}</title>
       </Helmet>
       <OuterBox>
-      <PageNavWrap>
-        <MainTitle>{pageTitle}</MainTitle>
-        </PageNavWrap>
+        <Header />
         <ContentBox>
-        <ViewContainer setPageTitle={setPageTitle} />
+          <DetailImgBox>
+            <DetailTitle>
+              <h1>[ {SubPageTitle} ]</h1>
+            </DetailTitle>
+            <ViewContainer setSubPageTitle={setSubPageTitle} />
+          </DetailImgBox>
         </ContentBox>
       </OuterBox>
     </>
