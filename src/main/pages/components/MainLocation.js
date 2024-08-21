@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import mapImage from '../../../images/banner1.jpg';
+import mapImage from '../../../images/MainLocationImage.png';
 import logoImage from '../../../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen, darkGreen } = color;
@@ -17,6 +17,7 @@ const MainLocationWrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: space-between
   max-width: 1440px; 
   width: 100%; 
   padding: 0 20px;
@@ -25,18 +26,18 @@ const ContentWrapper = styled.div`
 
 const MapImage = styled.img`
   margin-top: 100px;
-  width: 40%; 
+  width: 30%; 
   height: auto;
   object-fit: cover;
   margin-bottom: 20px; 
 `;
 
-const InnerContentWrapper = styled.div`
+const InnerContentWrapper = styled.div`ㅎ
   margin-top: 100px;
   margin-left: 100px;
   display: flex;
   flex-direction: column;
-  width: 60%; 
+  width: 50%; 
   padding-left:50px;
 `;
 

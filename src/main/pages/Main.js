@@ -49,7 +49,7 @@ const Main = () => {
   const handleLinkClick = (section) => {
     switch (section) {
       case 'top':
-        scrollToSection(top, HEADER_HEIGHT); // 메뉴 선택 시 HEADER_HEIGHT 적용
+        scrollToSection(top, HEADER_HEIGHT); 
         break;
       case 'location':
         scrollToSection(locationRef);

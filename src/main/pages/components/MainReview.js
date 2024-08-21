@@ -1,7 +1,16 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { color } from '../../../styles/color';
-import MainReviewImage from '../../../images/banner1.jpg';
+import ReviewImage1 from '../../../images/ReviewImage1.jpg';
+import ReviewImage2 from '../../../images/ReviewImage2.jpg';
+import ReviewImage3 from '../../../images/ReviewImage3.jpg';
+import ReviewImage4 from '../../../images/ReviewImage4.jpg';
+import ReviewImage5 from '../../../images/ReviewImage5.jpg';
+import ReviewImage6 from '../../../images/ReviewImage6.jpg';
+import ReviewImage7 from '../../../images/ReviewImage7.jpg';
+import ReviewImage8 from '../../../images/ReviewImage8.jpg';
+import ReviewImage9 from '../../../images/ReviewImage9.jpg';
+import ReviewImage10 from '../../../images/ReviewImage10.jpg';
 import logoImage from '../../../images/logo.png';
 
 const { darkGreen, white, dark, midGreen, whiteGreen, lightGreen,mid_gray } = color;
@@ -59,10 +68,10 @@ const scrollUp = keyframes`
 
 const scrollDown = keyframes`
   0% {
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
   100% {
-    transform: translateY(100%);
+    transform: translateY(0%);
   }
 `;
 
@@ -102,21 +111,21 @@ const ImageBox = styled.div`
 `;
 
 const ImageBox1 = styled(ImageBoxContainer)`
-  animation: ${scrollUp} 20s linear infinite;
+  animation: ${scrollUp} 25s linear infinite;
 `;
 
 const ImageBox2 = styled(ImageBoxContainer)`
-  animation: ${scrollUp} 20s linear infinite;
-    animation-delay: 1s;
+  animation: ${scrollUp} 25s linear infinite;
+    animation-delay: 1.3s;
 `;
 
 const ImageBox3 = styled(ImageBoxContainer)`
-  animation: ${scrollDown} 20s linear infinite;
+  animation: ${scrollDown} 25s linear infinite;
 `;
 
 const ImageBox4 = styled(ImageBoxContainer)`
-  animation: ${scrollDown} 20s linear infinite;
-  animation-delay: 1s;
+  animation: ${scrollDown} 25s linear infinite;
+  animation-delay: -1.3s;
 `;
 
 const ReviewImage = styled.img`
@@ -176,72 +185,72 @@ const MainReview = ({ onButtonClick }) => {
           <LeftSection>
             <ImageBox1>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 1" />
+                <ReviewImage src={ReviewImage1} alt="Review 1" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 2" />
+                <ReviewImage src={ReviewImage2} alt="Review 2" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 3" />
+                <ReviewImage src={ReviewImage3} alt="Review 3" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 4" />
+                <ReviewImage src={ReviewImage4} alt="Review 4" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 5" />
+                <ReviewImage src={ReviewImage5} alt="Review 5" />
               </ImageBox>
             </ImageBox1>
             <ImageBox2>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 1" />
+                <ReviewImage src={ReviewImage1} alt="Review 1" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 2" />
+                <ReviewImage src={ReviewImage2} alt="Review 2" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 3" />
+                <ReviewImage src={ReviewImage3} alt="Review 3" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 4" />
+                <ReviewImage src={ReviewImage4} alt="Review 4" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 5" />
+                <ReviewImage src={ReviewImage5} alt="Review 5" />
               </ImageBox>
             </ImageBox2>
           </LeftSection>
           <RightSection>
             <ImageBox3>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 1" />
+                <ReviewImage src={ReviewImage6} alt="Review 1" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 2" />
+                <ReviewImage src={ReviewImage7} alt="Review 2" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 3" />
+                <ReviewImage src={ReviewImage8} alt="Review 3" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 4" />
+                <ReviewImage src={ReviewImage9} alt="Review 4" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 5" />
+                <ReviewImage src={ReviewImage10} alt="Review 5" />
               </ImageBox>
             </ImageBox3>
             <ImageBox4>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 1" />
+                <ReviewImage src={ReviewImage6} alt="Review 1" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 2" />
+                <ReviewImage src={ReviewImage7} alt="Review 2" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 3" />
+                <ReviewImage src={ReviewImage8} alt="Review 3" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 4" />
+                <ReviewImage src={ReviewImage9} alt="Review 4" />
               </ImageBox>
               <ImageBox>
-                <ReviewImage src={MainReviewImage} alt="Review 5" />
+                <ReviewImage src={ReviewImage10} alt="Review 5" />
               </ImageBox>
             </ImageBox4>
           </RightSection>

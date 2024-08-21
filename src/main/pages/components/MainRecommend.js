@@ -11,6 +11,7 @@ const MainRecommendWrapper = styled.div`
   margin-bottom: 100px;
   display: flex;
   justify-content: center; 
+  
 `;
 
 const ContentWrapper = styled.div`
@@ -34,10 +35,10 @@ const Title = styled.h2`
 const MoreLink = styled.a`
   font-size: 1.5em;
   color: ${darkGreen};
+  font-weight: bold;
   cursor: pointer;
-  margin-right: 50px;
-   &:hover {
-        text-decoration-line: underline;
+     &:hover {
+      text-decoration-line: underline;
       text-decoration-thickness: 2px;
       text-underline-offset: 10px;
   }
@@ -47,13 +48,25 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 20px;
-  margin-top: 70px;
+
+  margin: 70px auto 0;
+  
+  & > *:nth-child(4n) {
+    margin-right: 0; /* 4번째 요소마다 오른쪽 마진 제거 */
+  }
 `;
 
 const Item = styled.div`
   text-align: left; 
   cursor: pointer; 
+  margin-right: 20px; /* 기본 오른쪽 마진 */
+  
+  &:nth-last-child(-n + 4) {
+    margin-right: 0; /* 마지막 열의 요소들에 오른쪽 마진 제거 */
+  }
 `;
+
+
 
 const Image = styled.img`
   width: 300px;

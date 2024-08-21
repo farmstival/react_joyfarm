@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import MainReviewImage from '../../../images/banner1.jpg'; // Example image path
+import MainReviewImage from '../../../images/banner1.jpg'; 
 
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray } = color;
 
@@ -66,7 +66,8 @@ const LeftSection = styled.div`
 
 const ImageBox = styled.div`
   width: 400px;
-  height: 200px; 
+  height: 250px; 
+  border-radius: 15px;
   background: ${dark};
   margin-bottom: 20px;
   display: flex;
@@ -76,6 +77,7 @@ const ImageBox = styled.div`
 
 const Image = styled.img`
   width: 100%;
+  border-radius: 15px;
   height: 100%;
   object-fit: cover;
 `;
@@ -109,16 +111,22 @@ const RightSection = styled.div`
 `;
 
 const NoticeItem = styled.div`
+  width:90%;
   display: flex;
+   cursor: pointer;
   align-items: center;
   border-bottom: 1px solid ${mid_gray};
-  padding: 25px 0;
+  &:first-child {
+    border-top: 1px solid ${mid_gray}; 
+  }
+  padding: 10px 0;
 `;
 
 const NoticeDate = styled.p`
   font-size: 1.5em;
   font-weight: bold;
   color: ${mid_gray};
+  margin-left: 20px;
   margin-right: 30px;
 `;
 
@@ -155,7 +163,7 @@ const MainBoard = ({ onButtonClick }) => {
             </TextContainer>
           </LeftSection>
           <RightSection>
-            {[1, 2, 3].map(index => (
+            {[1, 2, 3,4].map(index => (
               <NoticeItem key={index} onClick={() => handleNoticeClick(`/notice/${index}`)}>
                 <NoticeDate>2024.04.12</NoticeDate>
                 <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
