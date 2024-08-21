@@ -60,11 +60,6 @@ const ListContainer = () => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
 
-  /* 지도 선택시 콜백 처리 함수 */
-  const onSelectMap = useCallback((sido) => {
-    //setSearch((search) => ({ ...search, sido }));
-  }, []);
-
   // 로딩 처리
   if (loading) {
     return <Loading />;
@@ -73,7 +68,7 @@ const ListContainer = () => {
   return (
     <>
       <StyledMap>
-        <SearchMap onSelectMap={onSelectMap} />
+        <SearchMap />
       </StyledMap>
       <SearchBox
         form={form}
