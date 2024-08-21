@@ -10,16 +10,22 @@ const ViewContainer = () => {
     sigungu: '',
     limit: 100000,
   });
-  const [center, setCenter] = useState([]); // 지도 중심 좌표(현재 위치)
-  const [locations, setLocations] = useState([]); // 마커 표기할 위도, 경도 정보
+  const [center, setCenter] = useState([]); // 지도 중심 좌표(현재 위치의 위도, 경도) - 사용자의 현재 위치 기반으로 설정
+  const [locations, setLocations] = useState([]); // 검색된 위치들의 위도, 경도를 저장하는 배열 -> 마커 표기할 위도, 경도 정보
 
   /* 현재 위치의 시도, 시군구 찾기 S */
   useEffect(() => {
     const geocoder = new kakao.maps.services.Geocoder();
+    //Geocoder - 특정 좌표를 시도, 시군구 등의 행정구역 정보로 변환하는 작업
 
     navigator.geolocation.getCurrentPosition((pos) => {
-      const { latitude, longitude } = pos.coords;
-      setCenter({ lat: latitude, lng: longitude });
+      /* 현재 위치 설정
+      const { latitude, longitude } = pos.coords; 
+      setCenter({ lat: latitude, lng: longitude }); */
+      
+      const { latitude, longitude } = {lat: 37.938384140783754, lng: 126.95154477764298}
+      setCenter({ lat: 37.938384140783754, lng: 126.95154477764298});
+
       geocoder.coord2RegionCode(longitude, latitude, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
           for (const r of result) {
@@ -28,10 +34,10 @@ const ViewContainer = () => {
                 ...search,
                 sido: r.region_1depth_name,
                 sigungu: r.region_2depth_name,
-                //sido: r.region_1depth_name, // 현재 시도
+                //sido: r.region_1depth_name, // 현재 시도로 데이터 검색
                 sido: '경기도',
-                //sigungu: r.region_2depth_name, // 현재 시군구
-                sigungu: '파주시',
+                //sigungu: r.region_2depth_name, // 현재 시군구로 데이터 검색
+                sigungu: '양평군',
               }));
               break;
             }
