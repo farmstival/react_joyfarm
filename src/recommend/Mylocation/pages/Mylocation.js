@@ -11,8 +11,8 @@ import {
   DetailTitle,
 } from '../../../commons/components/DetailBox';
 
-import ViewContainer from '../containers/ViewContainer';
 import Header from '../../../layouts/Header';
+import MyLocationContainer from '../containers/MyLocationContainer';
 
 const MylocationView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');
@@ -30,7 +30,7 @@ const MylocationView = () => {
             <DetailTitle>
               <h1>{SubPageTitle}</h1>
             </DetailTitle>
-            <ViewContainer />
+            <MyLocationContainer/>
           </DetailImgBox>
         </ContentBox>
       </OuterBox>
