@@ -92,19 +92,16 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <MenuItem>
-          <NavLink
-            to="/reservation"
-            className={({ isActive }) => (isActive ? 'on' : '')}
-          >
-            {t('농촌체험_예약')}
+          <NavLink to="/reservation/list" className={({ isActive }) => isActive ? 'on' : ''}>
+            {t('농촌체험 예약')}
           </NavLink>
         </MenuItem>
         <MenuItem>
           <NavLink
-            to="/recommend"
+            to="/myreservation/list"
             className={({ isActive }) => (isActive ? 'on' : '')}
           >
-            {t('나의_예약현황')}
+            {t('나의_예약_현황')}
           </NavLink>
         </MenuItem>
         <MenuItem>
