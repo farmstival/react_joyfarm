@@ -6,14 +6,14 @@ const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
 /* 예약현황 관련 페이지 S */
 const MyReserveList = loadable(() =>
-  import('../myreservation/pages/MyReserveList'),
+  import('../my_reservation/pages/MyReserveList'),
 );
 const MyReserveView = loadable(() =>
-  import('../myreservation/pages/MyReserveView'),
+  import('../my_reservation/pages/MyReserveView'),
 );
 /* 예약현황 관련 페이지 E */
 
-const MyReservation = () => {
+const Reservation = () => {
   return (
     <Routes>
       <Route path="/myreservation" element={<MainLayout />}>
@@ -24,4 +24,4 @@ const MyReservation = () => {
   );
 };
 
-export default React.memo(MyReservation);
+export default React.memo(Reservation);

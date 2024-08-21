@@ -8,19 +8,20 @@ import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 
-const { small } = fontSize;
+const { small, big, medium } = fontSize;
 
 const FormBox = styled.form`
-  width: 350px;
+  width: 500px;
   margin: 0 auto;
+  font-size: ${medium};
 
   input {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 `;
 const LinkBox = styled.div`
-  width: 350px;
-  margin: 10px auto 0;
+  width: 500px;
+  margin: 20px auto 0;
   display: flex;
   border: 1px solid #d5d5d5;
   border-left: 0;
@@ -31,7 +32,7 @@ const LinkBox = styled.div`
     width: 0;
     text-align: center;
     padding: 10px 0;
-    font-size: ${small};
+    font-size: ${medium};
 
     svg {
       vertical-align: middle;

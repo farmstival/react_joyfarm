@@ -32,7 +32,7 @@ const ItemDescription = ({ item }) => {
   const {
     townName,
     activityName,
-    address,
+    doroAddress,
     ownerTel,
     facilityInfo,
     wwwAddress,
@@ -48,8 +48,8 @@ const ItemDescription = ({ item }) => {
         <dd>{activityName}</dd>
       </dl>
       <dl>
-        <dt>{t('체험마을장소')}</dt>
-        <dd>{address}</dd>
+        <dt>{t('체험마을 주소')}</dt>
+        <dd>{doroAddress}</dd>
       </dl>
       {ownerTel && (
         <dl>
@@ -70,7 +70,7 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
 
-      <Link to="/reservation/list/1">
+      <Link to="/reservation/info/{seq}/reserve">
         <MidButton color="midGreen">{t('예약하기')}</MidButton>
       </Link>
     </Wrapper>

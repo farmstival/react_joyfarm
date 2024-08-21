@@ -5,9 +5,23 @@ import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
-import ImageUpload from '../../commons/components/ImageUpload';
+import FileUpload from '../../commons/components/FileUpload';
+import ProfileImage from './ProfileImage';
+import fontSize from '../../styles/fontSize';
+
+const {medium, big} = fontSize;
 
 const FormBox = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: ${medium};
+
+  .form_box {
+    width: 700px;
+    margin-top: 70px;
+  }
+
   dl {
     display: flex;
     align-items: center;
@@ -22,7 +36,7 @@ const FormBox = styled.form`
   }
 
   dl + dl {
-    margin-top: 5px;
+    margin-top: 10px;
   }
 
   .terms-agree {
@@ -36,19 +50,97 @@ const FormBox = styled.form`
   }
 `;
 
-const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
+const EmailVerificationBox = styled.div`
+  .rows {
+    display: flex;
+    align-items: center;
+    button {
+      width: 160px;
+      height: 40px;
+    }
+  }
+
+  .rows:last-of-type {
+    span {
+      width: 100px;
+      text-align: center;
+    }
+    button {
+      width: 80px;
+    }
+
+    button + button {
+      margin-left: 5px;
+    }
+  }
+`;
+
+const JoinForm = ({
+  form,
+  onSubmit,
+  onChange,
+  onToggle,
+  onReset,
+  onSendAuthCode,
+  onReSendAuthCode,
+  onVerifyAuthCode,
+  errors,
+  fileUploadCallback,
+  fileDeleteCallback,
+}) => {
   const { t } = useTranslation();
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
+      <div className='form_box'>
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
+        <EmailVerificationBox>
+        <div className="rows">
           <InputBox
             type="text"
             name="email"
             value={form.email ?? ''}
             onChange={onChange}
+            readOnly={
+              form.emailVerified ||
+              (form.authCount > 0 && form.authCount < 180)
+            }
           />
+          {!form.emailVerified && form.authCount > 0 && (
+            <button
+              type="button"
+              onClick={onSendAuthCode}
+              disabled={form.authCount < 180 && form.authCount > 0}
+            >
+              {t('인증코드_전송')}
+            </button>
+          )}
+        </div>
+        {form.emailVerified ? (
+          <MessageBox color="primary">
+            {t('확인된_이메일_입니다.')}
+          </MessageBox>
+        ) : (
+          <div className="rows">
+            {form.authCount > 0 && (
+              <InputBox
+                type="text"
+                name="authNum"
+                placeholder={t('인증코드_입력')}
+                onChange={onChange}
+              />
+            )}
+            <span>{form.authCountMin}</span>
+            <button type="button" onClick={onVerifyAuthCode}>
+              {t('확인')}
+            </button>
+            <button type="button" onClick={onReSendAuthCode}>
+              {t('재전송')}
+            </button>
+          </div>
+        )}
+      </EmailVerificationBox>
           <MessageBox messages={errors.email} color="danger" />
         </dd>
       </dl>
@@ -103,7 +195,24 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
       <dl>
         <dt>{t('프로필_이미지')}</dt>
         <dd>
-          <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
+          {form.profile && (
+            <ProfileImage
+              items={form.profile}
+              width="250px"
+              height="250px"
+              radius="5px"
+              onDelete={fileDeleteCallback}
+            />
+          )}
+          <FileUpload
+            width={150}
+            color="primary"
+            gid={form.gid}
+            imageOnly={true}
+            callback={fileUploadCallback}
+          >
+            {t('이미지_업로드')}
+          </FileUpload>
         </dd>
       </dl>
       <div className="terms-agree" onClick={onToggle}>
@@ -121,6 +230,7 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
           {t('가입하기')}
         </BigButton>
       </ButtonGroup>
+      </div>
     </FormBox>
   );
 };

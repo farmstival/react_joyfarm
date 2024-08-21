@@ -22,7 +22,7 @@ const Reservation = () => {
     <Routes>
       <Route path="/reservation" element={<MainLayout />}>
         <Route path="list" element={<ReservationList />} />
-        <Route path="view/:seq" element={<ReservationView />} />
+        <Route path="info/:seq" element={<ReservationView />} />
         <Route path="complete" element={<CompletionPage />} />
         <Route path=":seq" element={<ApplyPage />} />
       </Route>

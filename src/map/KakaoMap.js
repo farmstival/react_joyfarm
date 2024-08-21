@@ -15,7 +15,7 @@ const KakaoMap = ({
   marker,
   markerImage,
   currentLocation, // 위치 기반
-  address, // 주소 기반
+  address, // 주소
 }) => {
   const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
@@ -33,9 +33,9 @@ const KakaoMap = ({
       });
     }
   }, [currentLocation]);
-  /* 현재 위치 기반 E */
+  // 현재 위치 기반 E
 
-  /* 주소로 가운데 배치 S */
+  // 주소로 가운데 배치 S
   useEffect(() => {
     if (!address?.trim()) return;
 
@@ -47,23 +47,23 @@ const KakaoMap = ({
       }
     });
   }, [address]);
-  /* 주소로 가운데 배치 E */
+  // 주소로 가운데 배치 E
 
   useEffect(() => {
     const mapEl = mapRef.current;
-
-    /* 지도 가운데 배치 S */
+    // 지도 가운데 배치 S
     const position = new kakao.maps.LatLng(
-      _center?.lat ?? 37.557756188912954,
-      _center?.lng ?? 126.94062742683245,
+      _center?.lat ?? 37.579617,
+      _center?.lng ?? 126.977041,
     );
+
     const map = new kakao.maps.Map(mapEl, {
       center: position,
       level: zoom || 3,
     });
-    /* 지도 가운데 배치 E */
+    // 지도 가운데 배치 E
 
-    /* 마커 출력 S */
+    // 마커 출력 S
     if (marker) {
       let _markers = marker;
       if (!Array.isArray(marker)) _markers = [marker];
@@ -73,9 +73,8 @@ const KakaoMap = ({
         const options = {
           position: new kakao.maps.LatLng(lat, lng),
         };
-        /* 마커 출력 E */
 
-        /* 마커 이미지 처리 S */
+        // 마커 이미지 처리 S
         const mi = image ? image : markerImage;
         if (mi) {
           const mIcon = new kakao.maps.MarkerImage(
@@ -86,11 +85,11 @@ const KakaoMap = ({
 
           options.image = mIcon;
         }
-        /* 마커 이미지 처리 E */
+        // 마커 이미지 처리 E
 
         const _marker = new kakao.maps.Marker(options);
 
-        /* 인포 윈도우 처리 S */
+        // 인포 윈도우 처리 S
         if (info?.content?.trim()) {
           const { content, clickable, removable } = info;
 
@@ -116,7 +115,7 @@ const KakaoMap = ({
             infoWindow.open(map, _marker);
           }
         }
-        /* 인포 윈도우 처리 E */
+        // 인포 윈도우 처리 E
 
         _marker.setMap(map);
 
@@ -129,7 +128,7 @@ const KakaoMap = ({
       const _marker = new kakao.maps.Marker(options);
       _marker.setMap(map);
     }
-    /* 마커 출력 E */
+    // 마커 출력 E
   }, [mapRef, _center, zoom, marker, markerImage]);
 
   return <MapArea ref={mapRef} width={width} height={height} />;

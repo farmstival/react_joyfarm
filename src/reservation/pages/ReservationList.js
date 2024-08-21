@@ -9,7 +9,7 @@ import {
   PageTitle,
   ContentBox,
 } from '../../commons/components/LayoutBox';
-import ReservationListContainer from '../containers/ReservationListContainer';
+import ReserveListContainer from '../containers/ReserveListContainer';
 import { Link } from 'react-router-dom';
 
 const ReservationList = () => {
@@ -33,7 +33,7 @@ const ReservationList = () => {
           <PageTitle>
             <SubTitle>{t('체험활동_리스트')}</SubTitle>
           </PageTitle>
-          <ReservationListContainer />
+          <ReserveListContainer />
         </ContentBox>
       </OuterBox>
     </>

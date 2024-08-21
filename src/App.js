@@ -28,11 +28,12 @@ const routeUrlPaths = [
   'member',
   'mypage',
   'recommend',
+  'board',
   'reservation',
   'myreservation',
-  'board',
 ];
 
+//컴포넌트 형태로 라우터 구성, 주소 구분 편의성 위함
 const App = () => {
   const location = useLocation();
   return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
@@ -43,6 +44,8 @@ const App = () => {
       <Reservation />
       <MyReservation />
       <Board />
+      <Reservation />
+      <MyReservation />
     </>
   ) : (
     <Routes>

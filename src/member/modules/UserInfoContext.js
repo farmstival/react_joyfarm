@@ -3,6 +3,7 @@ import cookies from 'react-cookies';
 import { apiUser } from '../apis/apiLogin';
 
 const UserInfoContext = createContext({
+  //전역 상태 관리
   states: {
     // 상태 값
     userInfo: null,
@@ -36,13 +37,11 @@ const UserInfoProvider = ({ children }) => {
 
         const _isAdmin = user.authorities.some((a) => a.authority === 'ADMIN');
         setIsAdmin(_isAdmin);
-  
       } catch (err) {
         //토큰 만료, 토큰이 잘못된 경우
-        cookies.remove("token", { path: '/' });
+        cookies.remove('token', { path: '/' });
       }
     })();
-  
   }
 
   return (

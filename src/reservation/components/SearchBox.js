@@ -7,6 +7,7 @@ const FormBox = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 
   .select_box,
   .input_part {
@@ -50,7 +51,10 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
         </select>
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
-          <option value="TOWNNAME">{t('체험마을명')}</option>
+          <option value="DIVISION">{t('프로그램구분')}</option>
+          <option value="ACTIVITY">{t('체험프로그램명')}</option>
+          <option value="FACILITYINFO">{t('보유시설정보')}</option>
+          <option value="ADDRESS">{t('여행지_주소')}</option>
         </select>
         <input type="text" name="skey" value={form.skey} onChange={onChange} />
       </div>
