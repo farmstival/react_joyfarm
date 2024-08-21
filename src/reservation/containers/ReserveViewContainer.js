@@ -7,10 +7,15 @@ import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import img from '../../images/banner1.jpg'
 
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 15px;
+
+  .img {
+    width: 100px;
+  }
 `;
 
 const ReserveViewContainer = ({ setPageTitle }) => {
@@ -52,8 +57,11 @@ const ReserveViewContainer = ({ setPageTitle }) => {
   return (
     <>
       <Wrapper>
-        {item.townImage && (
+        {item.townImage ? (
           <ItemImage images={item.townImage} onClick={onShowImage} />
+        ): ( //이미지 없는 경우 대체
+          <ItemImage className="img" images={img} onClick={onShowImage} 
+          />
         )}
         <ItemDescription item={item} />
       </Wrapper>
