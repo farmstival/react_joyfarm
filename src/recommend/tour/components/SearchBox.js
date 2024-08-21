@@ -96,23 +96,9 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="ADDRESS">{t('여행장소')}</option>
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
-        <input type="text" name="skey" value={form.skey} onChange={onChange} />
-      </div>
-      <div>
-        <select name="sido" onChange={onChange}>
-          <option>- {t('시도_선택')} -</option>
-        </select>
-        <select name="sigungu" onChange={onChange}>
-          <option>- {t('시군구_선택')} -</option>
-        </select>
-      </div>
-
-      <MidButton color="primary">{t('검색하기')}></MidButton>
-
-      <MidButton color="midGreen">{t('검색하기')}
-
-      </MidButton>
-
+        <input type="text" name="skey" value={form.skey} onChange={onChange} placeholder="검색어를 입력하세요"/>
+        <Button><ImSearch /></Button>
+        </div>
     </FormBox>
   );
 };
