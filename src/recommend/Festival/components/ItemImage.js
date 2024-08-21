@@ -1,17 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Wrapper = styled.div`
-  flex-grow: 1;
-  margin-right: 10px;
-  border-radius: 5px;
-  height: 500px;
-  overflow: hidden;
+flex-grow: 1;
+margin-right: 10px;
+border-radius: 5px;
+height: 500px;
+overflow: hidden;
+display: flex;
+align-items: center;
 `;
+
 const ImageBox = styled.div`
-  background: url('${({ image }) => image}') no-repeat center center;
+  background:url('${({image}) => image}') no-repeat center center;
   background-size: cover;
+  background-size: 100% 100%;
   width: 100%;
-  height: 500px;
+  height: 450px;
   border-radius: 8px;
   isolation: isolate;
   cursor: pointer;

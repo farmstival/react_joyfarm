@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const StyledMap = styled.div`
   text-align: center;
+  margin: 20px;
 `;
 
 function getQueryString(searchParams) {
@@ -21,7 +22,7 @@ function getQueryString(searchParams) {
     }
   }
   return qs;
-}//
+} //
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
@@ -67,7 +68,7 @@ const ListContainer = () => {
   return (
     <>
       <StyledMap>
-      <SearchMap />
+        <SearchMap />
       </StyledMap>
       <SearchBox
         form={form}
