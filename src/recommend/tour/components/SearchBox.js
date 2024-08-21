@@ -107,9 +107,11 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
         </select>
       </div>
 
-      <MidButton color="primary">{t('검색하기')}</MidButton>
+      <MidButton color="primary">{t('검색하기')}></MidButton>
 
-      <MidButton color="midGreen">{t('검색하기')}</MidButton>
+      <MidButton color="midGreen">{t('검색하기')}
+
+      </MidButton>
 
     </FormBox>
   );
