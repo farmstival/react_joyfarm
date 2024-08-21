@@ -5,6 +5,13 @@
   font-family: "Nanum Gothic", sans-serif;
 }
 
+/* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&display=swap');
+* {
+  font-family: "Do Hyeon", sans-serif;
+  outline: none;
+  box-sizing: border-box; 
+} */
+
 html {
   font-size: 13px;
 }
@@ -38,6 +45,7 @@ img {
   margin: 0 auto;
 }
 
+/*강제 적용*/
 .ReactModal__Overlay {
   background: rgba(0, 0, 0, 0.7) !important;
 }

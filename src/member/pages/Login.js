@@ -6,7 +6,7 @@ import LoginContainer from '../containers/LoginContainer';
 import fontSize from '../../styles/fontSize';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
 
-const { medium } = fontSize;
+const { medium, big } = fontSize;
 
 const OuterBox = styled.div`
   position: absolute;
@@ -21,8 +21,8 @@ const OuterBox = styled.div`
 
   h1 {
     text-align: center;
-    font-size: ${medium};
-    margin: 0 0 10px;
+    font-size: ${big};
+    margin: 0 0 20px;
     padding: 0;
     line-height: 1;
   }

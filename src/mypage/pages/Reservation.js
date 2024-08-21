@@ -2,24 +2,19 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
-import styled from 'styled-components';
+import { MainTitle } from '../../commons/components/TitleBox';
 
-const OuterBox = styled.div`
-  margin-bottom: 150px;
-`;
-
-const ReservationMain = () => {
+const Reservation = () => {
   const { t } = useTranslation();
+
   return (
     <MemberOnlyContainer>
       <Helmet>
-        <title>{t('농촌체험 예약')}</title>
+        <title>{t('예약관리')}</title>
       </Helmet>
-      <OuterBox className="layout-width">
-        <h1>농촌체험 예약</h1>
-      </OuterBox>
+      <MainTitle>{t('예약관리')}</MainTitle>
     </MemberOnlyContainer>
   );
 };
 
-export default React.memo(ReservationMain);
+export default React.memo(Reservation);
