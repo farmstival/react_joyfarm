@@ -7,12 +7,12 @@ import logoImage from '../../../images/logo.png';
 const { darkGreen, white, dark, midGreen, whiteGreen, lightGreen,mid_gray } = color;
 
 const LogoImage = styled.img`
-  width: 1300px;
+  width: 900px;
   height: auto;
   opacity: 0.1;
   position: absolute;
   top: 655px; 
-  left: 1670px;
+  left: 1450px;
   transform: translateX(-50%);
 `;
 
@@ -22,6 +22,7 @@ const MainReviewWrapper = styled.div`
   justify-content: center; 
   position: relative;
   height: 700px;
+  margin-bottom: 150px;
 `;
 
 const WhiteSection = styled.div`

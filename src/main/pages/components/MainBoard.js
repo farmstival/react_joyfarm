@@ -22,19 +22,35 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 `;
 
 const Title = styled.h2`
-  font-size: 1.5em;
-  color: ${darkGreen};
+  font-size: 3em;
+  margin-bottom: 10px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 20px; 
+    bottom: -5px; 
+    width: 97%;
+    height: 10px;
+    background-color: ${lightGreen}; 
+    border-radius: 5px; 
+  }
 `;
 
 const MoreLink = styled.a`
-  font-size: 1em;
+  font-size: 1.5em;
   color: ${darkGreen};
+  font-weight: bold;
   cursor: pointer;
-  text-decoration: underline;
+     &:hover {
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 10px;
 `;
 
 const ContentWrapper = styled.div`
@@ -50,7 +66,7 @@ const LeftSection = styled.div`
 
 const ImageBox = styled.div`
   width: 400px;
-  height: 200px; /* Adjust height as needed */
+  height: 200px; 
   background: ${dark};
   margin-bottom: 20px;
   display: flex;
@@ -66,45 +82,61 @@ const Image = styled.img`
 
 const TextContainer = styled.div`
   color: ${dark};
+  cursor: pointer; 
 `;
 
 const DateText = styled.p`
-  font-size: 1em;
-  margin: 0;
+  font-size: 1.5em;
+  color: ${mid_gray};
+  font-weight: bold;
+  margin-bottom: 30px;
 `;
 
 const NoticeText = styled.p`
-  font-size: 1em;
+  font-size: 1.2em;
+  color: ${dark};
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
 `;
 
 const RightSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 `;
 
 const NoticeItem = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid ${mid_gray};
-  padding-bottom: 10px;
+  padding: 25px 0;
 `;
 
 const NoticeDate = styled.p`
-  font-size: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
   color: ${mid_gray};
   margin-right: 30px;
 `;
 
 const NoticeContent = styled.p`
-  font-size: 1em;
+  font-size: 1.2em;
   color: ${dark};
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
 `;
 
 const MainBoard = ({ onButtonClick }) => {
+  const handleNoticeClick = (url) => {
+    window.location.href = url; 
+  };
+
   return (
     <MainBoardWrapper>
       <InnerContentWrapper>
@@ -117,16 +149,16 @@ const MainBoard = ({ onButtonClick }) => {
             <ImageBox>
               <Image src={MainReviewImage} alt="Notice" />
             </ImageBox>
-            <TextContainer>
+            <TextContainer onClick={() => handleNoticeClick('/notice/1')}>
               <DateText>2024.04.12</DateText>
               <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeText>
             </TextContainer>
           </LeftSection>
           <RightSection>
             {[1, 2, 3].map(index => (
-              <NoticeItem key={index}>
+              <NoticeItem key={index} onClick={() => handleNoticeClick(`/notice/${index}`)}>
                 <NoticeDate>2024.04.12</NoticeDate>
-                <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
+                <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
               </NoticeItem>
             ))}
           </RightSection>

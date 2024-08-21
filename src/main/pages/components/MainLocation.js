@@ -69,7 +69,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   background-color: ${white};
   color: ${dark};
-  border-radius: 30px;
+  border-radius: 15px;
   width: 200px;
   height: 90px;
   padding-top: 20px;
@@ -91,7 +91,7 @@ const Button = styled.button`
 `;
 
 const handleItemClick = (url) => {
-  window.location.href = url; // 클릭 시 경로로 이동
+  window.location.href = url; 
 };
 
 const MainLocation = ({ onButtonClick }) => {
