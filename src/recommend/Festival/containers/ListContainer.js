@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const StyledMap = styled.div`
   text-align: center;
+  margin: 20px;
 `;
 
 function getQueryString(searchParams) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ZzimButton } from '../../../commons/components/Buttons';
 import moment from 'moment';

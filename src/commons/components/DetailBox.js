@@ -9,6 +9,7 @@ export const DetailImgBox = styled.div`
   margin: 30px auto;
   max-width: 1200px;
   border-radius: 8px;
+  box-shadow: 2px 2px 2px 1px #f5f5f5;
 `;
 
 export const DetailTitle = styled.div`
