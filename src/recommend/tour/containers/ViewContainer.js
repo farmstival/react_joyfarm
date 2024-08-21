@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
@@ -9,13 +10,17 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 15px;
+  position: relative;
+  padding: 48px 0;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e6e6eb;
 `;
 
-const ViewContainer = ({ setPageTitle }) => {
+const ViewContainer = ({ setSubPageTitle }) => {
+  const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
+  const [mapOptions, setMapOptions] = useState({ height: '600px', zoom: 3 });
 
   const { seq } = useParams();
 
@@ -23,7 +28,7 @@ const ViewContainer = ({ setPageTitle }) => {
     setLoading(true);
 
     apiGet(seq).then((item) => {
-      setPageTitle(item.title);
+      setSubPageTitle(item.title);
       setItem(item);
       const position = { lat: item.latitude, lng: item.longitude };
       setMapOptions((opt) => {
@@ -36,7 +41,7 @@ const ViewContainer = ({ setPageTitle }) => {
     });
 
     setLoading(false);
-  }, [seq, setPageTitle]);
+  }, [seq, setSubPageTitle]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
@@ -54,6 +59,7 @@ const ViewContainer = ({ setPageTitle }) => {
         )}
         <ItemDescription item={item} />
       </Wrapper>
+      <h1>{t('길찾기')}</h1>
       <KakaoMap {...mapOptions} />
     </>
   );

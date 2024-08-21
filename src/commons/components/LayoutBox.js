@@ -21,6 +21,7 @@ export const PageNav = styled.div`
 
 export const PageTitle = styled.div`
   margin-top: 20px;
+  font-size: 20px;
 `;
 
 export const ContentBox = styled.div`
