@@ -54,7 +54,6 @@ const App = () => {
         element={
           <>
             <MainLayout />
-            <VisitorInfo />
           </>
         }
       >
