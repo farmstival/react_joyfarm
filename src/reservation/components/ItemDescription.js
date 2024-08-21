@@ -89,7 +89,7 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
 
-      <Link to="/reservation/info/{seq}/apply">
+      <Link to="/reservation/apply">
         <MidButton className='rsv_btn' color="midGreen">{t('예약하기')}</MidButton>
       </Link>
     </Wrapper>
