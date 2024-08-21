@@ -5,6 +5,7 @@ import { ImageBgBox } from '../../commons/components/ImageBox';
 
 const ItemBox = ({ item, className }) => {
   const { seq, townImage, townName, address } = item;
+
   const url = `/reservation/view/${seq}`;
   return (
     <li className={className}>
