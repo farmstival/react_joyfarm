@@ -39,14 +39,15 @@ function getImage(location) {
     default:
       return map;
   }
-} 
+}
 
-const SearchMap = () => {
+const SearchMap = ({ onSelectMap }) => {
   const [searchParams] = useSearchParams();
   const sido = searchParams.get('sido');
   const [image, setImage] = useState(() => getImage(sido));
   const onChange = useCallback((location) => {
     setImage(() => getImage(location));
+    onSelectMap(location);
   }, []);
   return (
     <>

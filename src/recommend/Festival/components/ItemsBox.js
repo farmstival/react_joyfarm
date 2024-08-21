@@ -6,10 +6,13 @@ import moment from 'moment';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import logo from '../../../images/logo.png';
 import { useTranslation } from 'react-i18next';
+import { color } from '../../../styles/color';
+
+const { midGreen, white } = color;
 
 const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
-  const { seq, title, photoUrl1, address, content, startDate, endDate } = item;
+  const { seq, title, photoUrl1, address, tel, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
   const startformattedDate = moment({ startDate }).format('YYYY/MM/DD');
   const endformattedDate = moment({ endDate }).format('YYYY/MM/DD');
@@ -34,11 +37,12 @@ const ItemBox = ({ item, className }) => {
         )}
         <div className="item-content">
           <div className="title">{title}</div>
-          <div className="Date">
-            축제 진행 기간 : {startformattedDate} ~ {endformattedDate}
+          <div className="date">
+            축제 진행 기간 | {startformattedDate} - {endformattedDate}
           </div>
+          <div className="tel">문의 | {tel}</div>
           <div className="address">
-            <FaMapMarkerAlt />
+            <FaMapMarkerAlt className="icon" />
             {address}
           </div>
         </div>
@@ -53,23 +57,38 @@ const ItemStyledBox = styled(ItemBox)`
   width: 100%;
   height: 450px;
 
+  &:hover {
+    border: 1px solid ${midGreen};
+  }
+
+  &:hover .title {
+    background: ${midGreen};
+    color: ${white};
+    text-shadow: 1px 1px gray;
+    transition: 0.3s;
+    text-shadow: 1px 1px gray;
+    transition: 0.3s;
+  }
+
   a {
     display: flex;
     flex-direction: column;
 
     .photo {
       width: 100%;
+      height: 250px;
       border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 20px;
+      padding: 5px 20px;
       height: 200px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      font-size: 15px;
 
       .title {
         font-size: 18px;
@@ -77,13 +96,14 @@ const ItemStyledBox = styled(ItemBox)`
         text-align: center;
         height: 30%;
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 30px 0 30px;
       }
 
-      .description {
-        font-size: 15px;
-        margin-bottom: 10px;
-        width: 100%;
-        height: 40%;
+      .tel, .date {
+        margin-top: 10px;
       }
 
       .address {
@@ -91,6 +111,13 @@ const ItemStyledBox = styled(ItemBox)`
         color: #767676;
         height: 30%;
         padding-top: 20px;
+
+        .icon {
+          color: #ff5e00;
+          position: relative;
+          top: 3px;
+          margin-right: 5px;
+        }
       }
     }
   }
