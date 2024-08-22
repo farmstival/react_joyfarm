@@ -55,7 +55,7 @@ const SubMenu = styled.div`
   position: absolute;
   top: 80px;
   // left: 10px;
-  background: ${light};
+  background: ${white};
   display: none;
   flex-direction: column;
   width: 200px;
