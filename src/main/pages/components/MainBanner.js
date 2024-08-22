@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { color } from '../../../styles/color';
 import bannerImage1 from '../../../images/MainBanner1.jpeg';
 import bannerImage2 from '../../../images/MainBanner2.jpeg';
+import bannerImage3 from '../../../images/MainBanner3.jpeg';
 
 const { darkGreen, white, light, mid_gray } = color;
 
@@ -92,33 +93,33 @@ const ArrowButton = styled.button`
   padding: 15px;
   cursor: pointer;
   border-radius: 50%;
-  width:55px; 
+  width: 55px; 
   z-index: 2;
   font-size: 2em;
   line-height: 1;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+    background-color: rgba(0, 0, 0, 0.8); 
   }
 `;
 
 const MainBanner = ({ onButtonClick }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const banners = [bannerImage1, bannerImage2];
+  const banners = [bannerImage1, bannerImage2, bannerImage3]; 
 
   const nextBanner = useCallback(() => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % banners.length);
+    setActiveIndex(prevIndex => (prevIndex + 1) % banners.length);
   }, [banners.length]);
 
   const prevBanner = useCallback(() => {
-    setActiveIndex((prevIndex) =>
+    setActiveIndex(prevIndex =>
       prevIndex === 0 ? banners.length - 1 : prevIndex - 1
     );
   }, [banners.length]);
 
   useEffect(() => {
-    const interval = setInterval(nextBanner, 5000); 
+    const interval = setInterval(nextBanner, 7000);
     return () => clearInterval(interval);
   }, [nextBanner]);
 
