@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FaWindowClose, FaFileUpload } from 'react-icons/fa';
 
 const FileItems = ({
@@ -12,7 +11,7 @@ const FileItems = ({
     files &&
     files.length > 0 && (
       <ul>
-        {files.map(({ seq, fileName, fileDownloadUrl, fileUrl, }) => (
+        {files.map(({ seq, fileName, fileDownloadUrl, fileUrl }) => (
           <li key={seq}>
             <a href={fileDownloadUrl}>{fileName}</a>
             {fileName}

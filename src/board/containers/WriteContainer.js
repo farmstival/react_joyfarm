@@ -57,13 +57,13 @@ const WriteContainer = ({ setPageTitle }) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   }, []);
 
-  const onToggleNotice = useCallback(() => {
+  const onToggleNotice = useCallback(() =>
     setForm(
       produce((draft) => {
         draft.notice = !draft.notice;
       }),
-    );
-  }, []);
+    ),
+  );
 
   /* 파일 업로드 후속 처리 */
   const fileUploadCallback = useCallback((files, editor) => {
@@ -83,17 +83,12 @@ const WriteContainer = ({ setPageTitle }) => {
         _attachFiles.push(file);
       }
     }
+
     // 에디터에 이미지 추가
     if (imageUrls.length > 0) {
       editor.execute('insertImage', { source: imageUrls });
     }
-    /*
-    setForm((form) => ({
-      ...form,
-      attachFiles: [...form.attachFiles].concat(_attachFiles),
-      editorImages: [...form.editorImages].concat(_editorImages),
-    }));
-    */
+
     setForm(
       produce((draft) => {
         draft.attachFiles.push(..._attachFiles);
@@ -102,7 +97,7 @@ const WriteContainer = ({ setPageTitle }) => {
     );
   }, []);
 
-  /* 파일 삭제 처리 */
+  /**파일 삭제 처리 */
   const fileDeleteCallback = useCallback((seq) => {
     if (!window.confirm('정말 삭제하시겠습니까?')) {
       return;
@@ -110,11 +105,10 @@ const WriteContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         await apiFileDelete(seq);
-
         setForm(
           produce((draft) => {
             draft.attachFiles = draft.attachFiles.filter(
-              (file) => file.seq !== seq,
+              (file) => file.seq != seq,
             );
 
             draft.editorImages = draft.editorImages.filter(
@@ -131,27 +125,27 @@ const WriteContainer = ({ setPageTitle }) => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
+      /**유효성 검사 - 필수항목 검증 S */
 
-      /* 유효성 검사 - 필수 항목 검증 S */
-      const requiredFileds = {
+      const requiredFields = {
         poster: t('작성자를_입력하세요.'),
         subject: t('제목을_입력하세요.'),
         content: t('내용을_입력하세요.'),
       };
 
       if (!isLogin) {
-        // 비회원인 경우
-        requiredFileds.guestPw = t('비밀번호를_입력하세요.');
+        //비회원인 경우
+        requiredFields.guestPw = t('비밀번호를_입력하세요.');
       }
 
       if (!isAdmin) {
-        // 관리자가 아니면 공지글 작성 X
+        //관리자가 아니면 공지글 작성 X
         form.notice = false;
       }
 
       const _errors = {};
       let hasErrors = false;
-      for (const [field, message] of Object.entries(requiredFileds)) {
+      for (const [field, message] of Object.entries(requiredFields)) {
         if (!form[field]?.trim()) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
@@ -159,7 +153,7 @@ const WriteContainer = ({ setPageTitle }) => {
           hasErrors = true;
         }
       }
-      /* 유효성 검사 - 필수 항목 검증 E */
+      /**유효성 검사 - 필수항목 검증 E */
 
       // 검증 실패시에는 처리 X
       if (hasErrors) {

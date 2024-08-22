@@ -39,6 +39,7 @@ const Form = ({
   form,
   onSubmit,
   onToggleNotice,
+  notice,
   errors,
   fileUploadCallback,
   fileDeleteCallback,
@@ -86,22 +87,22 @@ const Form = ({
       </dl>
       {((form.mode === 'write' && !isLogin) ||
         (form.mode === 'update' && !form?.member)) && (
-        <dl>
-          <dt>{t('비밀번호')}</dt>
-          <dd>
-            <InputBox
-              type="password"
-              name="guestPw"
-              defaultValue={form?.guestPw}
-            />
-            {errors?.guestPw && (
-              <MessageBox color="danger" messages={errors.guestPw} />
-            )}
-          </dd>
-        </dl>
-      )}
+          <dl>
+            <dt>{t('비밀번호')}</dt>
+            <dd>
+              <InputBox
+                type="password"
+                name="guestPw"
+                defaultValue={form?.guestPw}
+              />
+              {errors?.guestPw && (
+                <MessageBox color="danger" messages={errors.guestPw} />
+              )}
+            </dd>
+          </dl> 
+        )}
       {isAdmin && (
-        <dl>
+        <dl> 
           <dt>{t('공지글')}</dt>
           <dd>
             <label onClick={onToggleNotice}>
@@ -190,26 +191,24 @@ const Form = ({
         <dl>
           <dt>{t('파일첨부')}</dt>
           <dd>
-            <>
-              <FileUpload
-                gid={form.gid}
-                location="attach"
-                width="120"
-                color="primary"
-                callback={fileUploadCallback}
-              >
-                {t('파일선택')}
-              </FileUpload>
-              <FileItems
-                files={form?.attachFiles}
-                mode="attach"
-                fileDeleteCallback={fileDeleteCallback}
-              />
-            </>
+            <FileUpload
+              gid={form.gid}
+              location="attach"
+              width="120"
+              color="primary"
+              callback={fileUploadCallback}
+            >
+              {t('파일선택')}
+            </FileUpload>
+            <FileItems
+              files={form?.attachFiles}
+              mode="attach"
+              fileDeleteCallback={fileDeleteCallback}
+            />
           </dd>
         </dl>
       )}
-      <MidButton type="submit" color="info">
+      <MidButton type="submit" color='info'>
         {t(form.mode === 'update' ? '수정하기' : '작성하기')}
       </MidButton>
     </Wrapper>

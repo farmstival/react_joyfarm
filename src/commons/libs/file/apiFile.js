@@ -5,11 +5,10 @@ export const apiFileDelete = (seq) =>
     (async () => {
       try {
         const res = await apiRequest(`/file/delete/${seq}`, 'DELETE');
-        if(res.status === 200) {
-            resolve(res.data.data);
-            return;
+        if (res.status === 200) {
+          resolve(res.data.data);
+          return;
         }
-
         reject(res.data);
       } catch (err) {
         reject(err);
