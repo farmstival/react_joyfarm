@@ -67,7 +67,7 @@ const ReserveListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-      
+
       <ItemsBox items={items} />
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
