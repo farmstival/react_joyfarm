@@ -18,7 +18,8 @@ const Wrapper = styled.div`
 
   position: relative;
   flex: 1;
-  padding-left: 52px;
+  padding-left: 20px;
+  margin: auto;
 
   dl {
     padding-top: 10px;
