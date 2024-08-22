@@ -226,3 +226,4 @@ const MainRecommend = ({ onButtonClick }) => {
 };
 
 export default React.memo(MainRecommend);
+

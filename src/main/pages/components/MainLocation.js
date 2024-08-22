@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import mapImage from '../../../images/MainLocationImage.png';
+import mapImage from '../../../images/Main_Map.png';
 import logoImage from '../../../images/logo.png';
 
 const { dark, light, midGreen, white, lightGreen, darkGreen } = color;
@@ -26,7 +26,7 @@ const ContentWrapper = styled.div`
 
 const MapImage = styled.img`
   margin-top: 100px;
-  width: 30%; 
+  width: 50%; 
   height: auto;
   object-fit: cover;
   margin-bottom: 20px; 
