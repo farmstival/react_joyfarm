@@ -53,7 +53,7 @@ const Button = styled.button`
   height: 60px;
   background-color: ${white};
   color: ${dark};
-  border: 1px solid ${midGreen};
+  border: 2px solid ${({ borderColor }) => borderColor || 'midGreen'};
   border-radius: 30px;
   cursor: pointer;
   text-align: center;
@@ -63,30 +63,7 @@ const Button = styled.button`
     font-weight: bold;
     transform: scale(1.07);
     border: none;
-  }
-
-  .one&:hover {
-    background-color: #fbbd20;
-  }
-
-  .two&:hover {
-    background-color: #87c9f7;
-  }
-
-  .three&:hover {
-    background-color: #9ce89a;
-  }
-
-  .four&:hover {
-    background-color: #ffbc80;
-  }
-
-  .five&:hover {
-    background-color: #feacb6;
-  }
-
-  .six&:hover {
-    background-color: #dbbbff;
+    background-color: ${({ hoverColor }) => hoverColor || 'transparent'};
   }
 `;
 
@@ -99,40 +76,40 @@ const TagBox = () => {
           <div className="tagtitle">{t('인기_테마')}</div>
         </TagTitle>
         <TagSection>
-          <Button className="one">
+          <Button borderColor="#fbbd20" hoverColor="#fbbd20">
             <span>{t('숲체험')}</span>
           </Button>
-          <Button className="two">
+          <Button borderColor="#87c9f7" hoverColor="#87c9f7">
             <span>{t('전통문화')}</span>
           </Button>
-          <Button className="three">
+          <Button borderColor="#9ce89a" hoverColor="#9ce89a">
             <span>{t('텃밭체험')}</span>
           </Button>
-          <Button className="four">
+          <Button borderColor="#ffbc80" hoverColor="#ffbc80">
             <span>{t('휴양')}</span>
           </Button>
-          <Button className="five">
+          <Button borderColor="#feacb6" hoverColor="#feacb6">
             <span>{t('농촌_관광')}</span>
           </Button>
-          <Button className="six">
+          <Button borderColor="#dbbbff" hoverColor="#dbbbff">
             <span>{t('힐링')}</span>
           </Button>
-          <Button className="six">
+          <Button borderColor="#dbbbff" hoverColor="#dbbbff">
             <span>{t('테마파크')}</span>
           </Button>
-          <Button className="five">
+          <Button borderColor="#feacb6" hoverColor="#feacb6">
             <span>{t('캠핑')}</span>
           </Button>
-          <Button className="four">
+          <Button borderColor="#ffbc80" hoverColor="#ffbc80">
             <span>{t('여름휴가')}</span>
           </Button>
-          <Button className="three">
+          <Button borderColor="#9ce89a" hoverColor="#9ce89a">
             <span>{t('건강')}</span>
           </Button>
-          <Button className="two">
+          <Button borderColor="#87c9f7" hoverColor="#87c9f7">
             <span>{t('체험')}</span>
           </Button>
-          <Button className="one">
+          <Button borderColor="#fbbd20" hoverColor="#fbbd20">
             <span>{t('자연휴양림')}</span>
           </Button>
         </TagSection>
