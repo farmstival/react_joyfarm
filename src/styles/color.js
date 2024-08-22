@@ -16,7 +16,8 @@ export const color = {
   mid_gray: '#767676',
   whiteGreen: '#EEFBEB',
   yellowGreen: '#FFFFBA',
-   melonGreen:'#e1ffba'
+   melonGreen:'#e1ffba',
+  whiteGray: '#E2E2E2'
 };
 
 export const buttonColor = {

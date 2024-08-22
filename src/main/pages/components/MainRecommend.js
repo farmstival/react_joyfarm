@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../../styles/color';
-import MainRecommendImage from '../../../images/banner1.jpg';
+import MainRecommendImage from '../../../images/ReviewImage1.jpg';
 
-const { darkGreen, white, dark, mid_gray, midGreen } = color;
+const { darkGreen, white, dark, mid_gray, midGreen, lightGreen } = color;
 
 const MainRecommendWrapper = styled.div`
-  padding: 100px 20px; /* 좌우 padding 추가 */
+  padding: 100px 20px; 
   background: ${white};
   margin-bottom: 100px;
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
+  justify-content: center; 
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1440px; /* 최대 너비 제한 */
-  width: 100%; /* 너비를 100%로 설정하여 부모 요소의 너비에 맞추도록 함 */
+  max-width: 1440px; 
+  width: 100%; 
 `;
 
 const Header = styled.div`
@@ -26,40 +26,86 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.5em;
-  color: ${darkGreen};
+  font-size: 3em;
+  margin-bottom: 10px;
+  position: relative;
+`;
+
+const Underline = styled.span`
+  display: block;
+  width: 400px;
+  height: 10px;
+  background-color: ${lightGreen};
+  margin-top: -5px; 
+  margin-left: 20px;
+  border-radius: 5px;
 `;
 
 const MoreLink = styled.a`
-  font-size: 1em;
+  font-size: 1.5em;
   color: ${darkGreen};
+  font-weight: bold;
   cursor: pointer;
-  text-decoration: underline;
+  &:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 20px;
-  margin-top: 70px;
+  margin: 70px auto 0;
+
+  & > *:nth-child(4n) {
+    margin-right: 0; /* 4번째 요소마다 오른쪽 마진 제거 */
+  }
 `;
 
 const Item = styled.div`
   text-align: left; 
+  
   cursor: pointer; 
+  margin-right: 20px; 
+
+  &:nth-last-child(-n + 4) {
+    margin-right: 0; 
+  }
 `;
 
-const Image = styled.img`
+const ImageWrapper = styled.div`
+  position: relative;
   width: 300px;
   height: 350px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  opacity: 0.7; 
-  &:hover {
-    opacity: 1; 
+  overflow: hidden;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: opacity 0.5s ease;
+  
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  transition: background-color 0.5s ease;
+
+  ${Item}:hover & {
+    background-color: rgba(0, 0, 0, 0); 
   }
-  margin-bottom: 0; /* 이미지와 InfoBox 사이의 공백 제거 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const InfoBox = styled.div`
@@ -68,6 +114,7 @@ const InfoBox = styled.div`
   border-bottom-right-radius: 30px;
   width: 300px;
   margin-top: -4px; 
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
 `;
 
 const Description = styled.p`
@@ -75,8 +122,8 @@ const Description = styled.p`
   margin-left: 20px;
   font-size: 1.5em;
   font-weight: bold;
-  color: ${dark};
-  line-height: 1.5; 
+  color: ${darkGreen};
+  line-height: 1.7; 
 `;
 
 const ExtraInfo = styled.p`
@@ -84,10 +131,12 @@ const ExtraInfo = styled.p`
   color: ${dark};
   margin-top: 10px;
   margin-left: 20px;
+  line-height: 1.7;
 `;
 
 const Address = styled.p`
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
   color: ${mid_gray};
   margin-top: 10px;
   margin-bottom: 30px;
@@ -95,7 +144,7 @@ const Address = styled.p`
 `;
 
 const handleItemClick = (url) => {
-  window.location.href = url; // 클릭 시 경로로 이동
+  window.location.href = url; 
 };
 
 const MainRecommend = ({ onButtonClick }) => {
@@ -103,12 +152,18 @@ const MainRecommend = ({ onButtonClick }) => {
     <MainRecommendWrapper>
       <ContentWrapper>
         <Header>
-          <Title>이런 여행지는 어떠세요?</Title>
+          <Title>
+            이런 여행지는 어떠세요?
+            <Underline />
+          </Title>
           <MoreLink onClick={onButtonClick}>더보기</MoreLink>
         </Header>
         <Grid>
           <Item onClick={() => handleItemClick('path_to_destination1')}>
-            <Image src={MainRecommendImage} alt="Travel Destination 1" />
+            <ImageWrapper>
+              <Image src={MainRecommendImage} alt="Travel Destination 1" />
+              <Overlay />
+            </ImageWrapper>
             <InfoBox>
               <Description>소 젖먹이기 체험</Description>
               <ExtraInfo>
@@ -120,7 +175,10 @@ const MainRecommend = ({ onButtonClick }) => {
             </InfoBox>
           </Item>
           <Item onClick={() => handleItemClick('path_to_destination2')}>
-            <Image src={MainRecommendImage} alt="Travel Destination 2" />
+            <ImageWrapper>
+              <Image src={MainRecommendImage} alt="Travel Destination 2" />
+              <Overlay />
+            </ImageWrapper>
             <InfoBox>
               <Description>소 젖먹이기 체험</Description>
               <ExtraInfo>
@@ -132,7 +190,10 @@ const MainRecommend = ({ onButtonClick }) => {
             </InfoBox>
           </Item>
           <Item onClick={() => handleItemClick('path_to_destination3')}>
-            <Image src={MainRecommendImage} alt="Travel Destination 3" />
+            <ImageWrapper>
+              <Image src={MainRecommendImage} alt="Travel Destination 3" />
+              <Overlay />
+            </ImageWrapper>
             <InfoBox>
               <Description>소 젖먹이기 체험</Description>
               <ExtraInfo>
@@ -144,7 +205,10 @@ const MainRecommend = ({ onButtonClick }) => {
             </InfoBox>
           </Item>
           <Item onClick={() => handleItemClick('path_to_destination4')}>
-            <Image src={MainRecommendImage} alt="Travel Destination 4" />
+            <ImageWrapper>
+              <Image src={MainRecommendImage} alt="Travel Destination 4" />
+              <Overlay />
+            </ImageWrapper>
             <InfoBox>
               <Description>소 젖먹이기 체험</Description>
               <ExtraInfo>
@@ -162,3 +226,4 @@ const MainRecommend = ({ onButtonClick }) => {
 };
 
 export default React.memo(MainRecommend);
+
