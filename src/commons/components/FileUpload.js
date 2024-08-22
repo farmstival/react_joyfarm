@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { Children, useCallback, userState, useState } from 'react';
 import apiRequest from '../libs/apiRequest';
 import { SmallButton } from './Buttons';
 import MessageBox from './MessageBox';
@@ -17,9 +17,8 @@ const FileUpload = ({
 }) => {
   const [message, setMessage] = useState('');
 
-  const { t } = useTranslation();
+  const { t } = useTranslation(single);
 
-  // 버튼 클릭 처리
   const onButtonClick = useCallback(() => {
     const fileEl = document.createElement('input');
     fileEl.type = 'file';
@@ -40,7 +39,6 @@ const FileUpload = ({
             }
           }
         }
-
         if (!gid?.trim()) {
           throw new Error(t('필수항목(gid)_누락'));
         }
@@ -107,5 +105,4 @@ const FileUpload = ({
     </>
   );
 };
-
 export default React.memo(FileUpload);

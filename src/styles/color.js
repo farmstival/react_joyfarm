@@ -1,4 +1,5 @@
 export const color = {
+  blue: '#6CC0FF',
   primary: '#007bff',
   secondary: '#6c757d',
   success: '#28a745',
@@ -13,7 +14,9 @@ export const color = {
   white: '#ffffff',
   dark_gray: '#333333',
   mid_gray: '#767676',
-  whiteGreen: '#EEFBEB'
+  whiteGreen: '#EEFBEB',
+  yellowGreen: '#FFFFBA',
+   melonGreen:'#e1ffba'
 };
 
 export const buttonColor = {
@@ -27,5 +30,5 @@ export const buttonColor = {
   dark: [color.dark, '#fff', color.dark],
   darkGreen: [color.darkGreen, '#fff', color.darkGreen],
   midGreen: [color.midGreen, '#fff', color.midGreen],
-  lightGreen: [color.lightGreen, '#fff', color.lightGreen],
+  rightGreen: [color.rightGreen, '#fff', color.rightGreen],
 };

@@ -154,6 +154,15 @@ const JoinContainer = () => {
         hasErrors = true;
       }
 
+      /* 이메일 인증 여부 체크 S */
+     if (!form.emailVerified) {
+        _errors.email = _errors.email ?? [];
+        _errors.email.push(t('이메일을_인증하세요.'));
+        hasErrors = true;
+     }
+     
+    /* 이메일 인증 여부 체크 E */
+
       if (hasErrors) {
         setErrors(_errors);
         return;
@@ -210,7 +219,7 @@ const JoinContainer = () => {
 
   const onReset = useCallback(() => setForm({ agree: false }), []);
 
-  // 파일 업로드 콜백 처리
+  //파일 업로드 콜백 처리
   const fileUploadCallback = useCallback((files) => {
     // 프로필 파일 정보 업데이트
     if (files.length === 0) return;

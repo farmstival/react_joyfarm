@@ -5,6 +5,7 @@ import JoinContainer from '../containers/JoinContainer';
 import { OuterBox, PageTitle, ContentBox, PageNavWrap } from '../../commons/components/LayoutBox';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
+import Image from '../../images/join.png';
 
 const Join = () => {
   const { t } = useTranslation();

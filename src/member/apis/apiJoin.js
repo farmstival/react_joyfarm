@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import apiRequest from '../../commons/libs/apiRequest';
 import cookies from 'react-cookies';
+import requestData from '../../commons/libs/requestData';
 
 export const apiJoin = (form) =>
   new Promise((resolve, reject) => {
