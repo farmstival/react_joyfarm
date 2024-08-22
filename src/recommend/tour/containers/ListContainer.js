@@ -7,6 +7,8 @@ import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
+import TagBox from '../components/TagBox';
+
 
 function getQueryString(searchParams) {
   const qs = { limit: 9 };
@@ -65,6 +67,7 @@ const ListContainer = () => {
 
   return (
     <>
+    <TagBox/>
       <SearchBox
         form={form}
         onChange={onChangeSearch}
