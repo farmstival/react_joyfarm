@@ -71,6 +71,43 @@ const MyLocationContainer = () => {
           }));
 
         setLocations(_locations);
+
+        /* 마커 표기 좌표 가공 처리 E */
+      } catch (err) {
+        console.err(err);
+      }
+    })();
+  }, [search]);
+
+  //마커 표기
+  useEffect(() => {
+    (async () => {
+      try {
+        if (!search.sido?.trim()) {
+          return;
+        }
+        const res = await apiList(search);
+
+        /* 마커 표기 좌표 가공 처리 S */
+        if (!res?.items || res?.items?.length === 0) {
+          return;
+        }
+
+        //const url = `https://map.kakao.com/link/map/${d.latitude}, ${d.longitude}`
+
+        const _locations = res.items
+          .filter((d) => d.latitude && d.longitude)
+          .map((d) => ({
+            lat: d.latitude,
+            lng: d.longitude,
+            info: {
+              content: `<div style="padding:8px; font-size: 1.25rem;">${d.title}<br><a href="https://map.kakao.com/link/map/${d.title}, ${d.latitude}, ${d.longitude}" target="_blank" style="color:blue">길찾기 검색하기</a></div>`, // 표시할 정보
+              clickable: true, // 클릭 시 인포윈도우 표시
+              removable: true, // 인포윈도우 닫기 버튼 표시
+            },
+          }));
+
+        setLocations(_locations);
         /* 마커 표기 좌표 가공 처리 E */
       } catch (err) {
         console.err(err);
