@@ -5,31 +5,62 @@ import { color } from '../../../styles/color';
 const { white, dark, midGreen } = color;
 
 const Wrapper = styled.div`
+  display: flex;
+  height: 150px;
+  align-items: center;
 `;
 
 const TagSection = styled.div`
-  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px 20px;
+  align-items: center;
 `;
 
-const Tag = styled.div``;
+const Tag = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 5px 30px 5px 20px;
+`;
 
 const TagTitle = styled.div`
+  .tagtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100%;
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: ${midGreen};
+    color: #fff;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 3px 40px 0 60px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 `;
 
 const Button = styled.button`
   font-size: 1.3em;
-  width: 140px;
-  height: 50px;
+  width: 150px;
+  height: 60px;
   background-color: ${white};
   color: ${dark};
-  border: 1px solid #ada493;
+  font-weight: bold;
+  border: 2px solid #a19988;
   border-radius: 30px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
   &:hover {
-      color: ${midGreen};
-      transform: scale(1.07);
+    color: ${midGreen};
+    transform: scale(1.07);
   }
 `;
 
@@ -39,52 +70,44 @@ const TagBox = () => {
     <Wrapper>
       <Tag>
         <TagTitle>
-        <Button className='tagtitle'>
-            <span>{t('인기_#테마')}</span>
-          </Button>
+          <div className="tagtitle">{t('인기_테마')}</div>
         </TagTitle>
         <TagSection>
           <Button>
-            <span>{t('#_숲체험')}</span>
+            <span>{t('숲체험')}</span>
           </Button>
           <Button>
-            <span>{t('#_전통문화')}</span>
+            <span>{t('전통문화')}</span>
           </Button>
           <Button>
-            <span>{t('#_텃밭체험')}</span>
+            <span>{t('텃밭체험')}</span>
           </Button>
           <Button>
-            <span>{t('#_휴양')}</span>
+            <span>{t('휴양')}</span>
           </Button>
           <Button>
-            <span>{t('#_농촌_관광')}</span>
+            <span>{t('농촌_관광')}</span>
           </Button>
           <Button>
-            <span>{t('#_힐링')}</span>
+            <span>{t('힐링')}</span>
           </Button>
           <Button>
-            <span>{t('#_테마파크')}</span>
+            <span>{t('테마파크')}</span>
           </Button>
           <Button>
-            <span>{t('#_캠핑')}</span>
+            <span>{t('캠핑')}</span>
           </Button>
           <Button>
-            <span>{t('#_여름휴가')}</span>
+            <span>{t('여름휴가')}</span>
           </Button>
           <Button>
-            <span>{t('#_건강')}</span>
+            <span>{t('건강')}</span>
           </Button>
           <Button>
-            <span>{t('#_체험')}</span>
+            <span>{t('체험')}</span>
           </Button>
           <Button>
-            <span>{t('#_역사탐방')}</span>
-          </Button>
-          <Button>
-            <span>{t('#_농촌_생활문화')}</span>
-          </Button>
-          <Button>
-            <span>{t('#_자연휴양림')}</span>
+            <span>{t('자연휴양림')}</span>
           </Button>
         </TagSection>
       </Tag>
