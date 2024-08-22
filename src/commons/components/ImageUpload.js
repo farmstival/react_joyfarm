@@ -13,13 +13,13 @@ const customStyles = {
 
 const ImageUpload = ({ children, gid, color }) => {
   Modal.setAppElement('#root');
-
-
   color = color ?? 'blue';
 
   color = color ?? 'midGreen';
 
   const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // 업로드한 이미지 저장
+  const [previewImage, setPreviewImage] = useState(null);  // 미리보기 이미지 저장
 
   const onClick = useCallback(() => {
     setOpen((open) => !open);
