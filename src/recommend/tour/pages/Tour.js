@@ -8,7 +8,7 @@ import {
   PageNav,
   PageNavWrap,
   PageTitle,
-  ContentBox,
+  ContentBox2,
 } from '../../../commons/components/LayoutBox';
 import Header from '../../../layouts/Header';
 import SubTitleLink from '../../../commons/SubTitleLink';
@@ -23,9 +23,9 @@ const Tour = () => {
       </Helmet>
       <OuterBox>
         <Header />
-        <ContentBox>
+        <ContentBox2>
           <ListContainer />
-        </ContentBox>
+        </ContentBox2>
       </OuterBox>
     </>
   );

@@ -13,7 +13,8 @@ export const color = {
   white: '#ffffff',
   dark_gray: '#333333',
   mid_gray: '#767676',
-  whiteGreen: '#EEFBEB'
+  whiteGreen: '#EEFBEB',
+  whiteGray: '#E2E2E2'
 };
 
 export const buttonColor = {
