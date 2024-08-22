@@ -35,22 +35,14 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
+  padding: 15px;
   border: 1px solid #ada493;
   border-radius: 5px;
   width: 100%;
   height: 450px;
 
   &:hover {
-    border: 1px solid ${midGreen};
-  }
-
-  &:hover .title {
-    background: ${midGreen};
-    color: ${white};
-    text-shadow: 1px 1px gray;
-    transition: 0.3s;
-    text-shadow: 1px 1px gray;
-    transition: 0.3s;
+    border: 2px solid ${midGreen};
   }
 
   a {
@@ -73,20 +65,19 @@ const ItemStyledBox = styled(ItemBox)`
       justify-content: center;
 
       .title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
         text-align: center;
         height: 30%;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0 30px 0 30px;
+        word-wrap: break-word;
       }
 
       .description {
         font-size: 15px;
-        margin-bottom: 10px;
         width: 100%;
         height: 30%;
         display: flex;
@@ -95,19 +86,19 @@ const ItemStyledBox = styled(ItemBox)`
         line-height: 20px;
         -webkit-line-clamp: 3;
         display: -webkit-box;
-        overflow: hidden; //글자 넘치는 부분 감추기
-        text-overflow: ellipsis; //숨겨지는 영역 끝에 말줄임표 생성
-        white-space: normal; //줄바꿈
-        word-wrap: break-word; //단어 단위로 줄바꿈
-        -webkit-line-clamp: 3; //해당 영역 내 텍스트 최대 라인수
-        -webkit-box-orient: vertical; //박스 방향 설정(가로)
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: break-word;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
 
       .address {
         font-size: 15px;
         color: #767676;
         height: 30%;
-        padding-top: 20px;
+        padding-top: 15px;
 
         .icon {
           color: #ff5e00;
