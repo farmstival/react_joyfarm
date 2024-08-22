@@ -9,6 +9,7 @@ import FileUpload from '../../commons/components/FileUpload';
 import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 
+
 const FormBox = styled.form`
 background-color: #e1ffba; /* 부드러운 배경색 추가 */
 padding: 25px;
@@ -64,7 +65,7 @@ transition: all 0.3s ease;
   }
 
   dl + dl {
-    margin-top: 10px;
+    margin-top: 18px;
   }
 
   .terms-agree {
