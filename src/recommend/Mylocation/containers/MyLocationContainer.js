@@ -4,7 +4,7 @@ import { apiList } from '../apis/apiInfo';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 
-const ViewContainer = () => {
+const MyLocationContainer = () => {
   const [search, setSearch] = useState({
     sido: '',
     sigungu: '',
@@ -23,11 +23,10 @@ const ViewContainer = () => {
       const { latitude, longitude } = pos.coords; 
       setCenter({ lat: latitude, lng: longitude }); */
 
-      const { latitude, longitude } = {
-        lat: 37.938384140783754,
-        lng: 126.95154477764298,
-      };
-      setCenter({ lat: 37.938384140783754, lng: 126.95154477764298 });
+      const [latitude, longitude] = [37.505848570003, 127.47334950721961];
+      console.log('latitude :' + latitude);
+
+      setCenter({ lat: 37.505848570003, lng: 127.47334950721961 });
 
       geocoder.coord2RegionCode(longitude, latitude, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
@@ -35,10 +34,10 @@ const ViewContainer = () => {
             if (r.region_type === 'H') {
               setSearch((search) => ({
                 ...search,
-                sido: r.region_1depth_name,
-                sigungu: r.region_2depth_name,
+                //sido: r.region_1depth_name,
+                //sigungu: r.region_2depth_name,
                 //sido: r.region_1depth_name, // 현재 시도로 데이터 검색
-                sido: '경기도',
+                sido: '경기',
                 //sigungu: r.region_2depth_name, // 현재 시군구로 데이터 검색
                 sigungu: '양평군',
               }));
@@ -54,6 +53,9 @@ const ViewContainer = () => {
   useEffect(() => {
     (async () => {
       try {
+        if (!search.sido?.trim()) {
+          return;
+        }
         const res = await apiList(search);
 
         /* 마커 표기 좌표 가공 처리 S */
@@ -80,7 +82,7 @@ const ViewContainer = () => {
     return <Loading />;
   }
 
-  return <KakaoMap center={center} marker={locations} zoom={6} />;
+  return <KakaoMap center={center} marker={locations} zoom={5} />;
 };
 
-export default React.memo(ViewContainer);
+export default React.memo(MyLocationContainer);
