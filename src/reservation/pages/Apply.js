@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { OuterBox } from '../../commons/components/LayoutBox';
+import { MainTitle } from '../../commons/components/TitleBox';
+
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
+import ReservationContainer from '../containers/ReservationContainer';
 const Apply = () => {
+  const [PageTitle, setPageTitle] = useState('');
   return (
     <MemberOnlyContainer>
-      <h1>예약 신청</h1>
+      <Helmet>
+        <title>{PageTitle}</title>
+      </Helmet>
+      <OuterBox>
+        <MainTitle>{PageTitle}</MainTitle>
+        <ReservationContainer setPageTitle={setPageTitle} />
+      </OuterBox>
     </MemberOnlyContainer>
   );
 };
