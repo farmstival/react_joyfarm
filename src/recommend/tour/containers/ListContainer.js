@@ -6,7 +6,7 @@ import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
-import TagBox from '../components/tagBox';
+import TagBox from '../components/TagBox';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
 
 
