@@ -12,6 +12,7 @@ const MypageMain = () => {
     profileImage: 'https://via.placeholder.com/100', // 기본 프로필 이미지
     name: '오혜원',
     email: 'user@example.com',
+    
   });
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 개인정보 수정 모달 상태
@@ -42,7 +43,7 @@ const MypageMain = () => {
     // 여기에 API 호출 코드로 개인정보를 업데이트
     setUser(editedUser); // 로컬 상태에 사용자 정보 업데이트
     closeEditModal(); // 모달 닫기
-    alert('개인정보가 수정되었습니다.');
+    alert('회원정보가 수정되었습니다.');
   };
 
   return (
@@ -56,7 +57,6 @@ const MypageMain = () => {
           </ProfileSection>
           <ButtonContainer>
             <LinkButton to="/">홈</LinkButton>
-            <LinkButton to="/profile">프로필</LinkButton>
             <LinkButton to="/likes">좋아요 한 목록</LinkButton>
             <button onClick={openEditModal}>수정</button>
             <button onClick={handleDeleteAccount}>탈퇴</button>
@@ -67,22 +67,71 @@ const MypageMain = () => {
         <Modal
           isOpen={isEditModalOpen}
           onRequestClose={closeEditModal}
-          contentLabel="개인정보 수정"
+          contentLabel="회원정보 수정"
           style={customStyles}
         >
-          <h2>개인정보 수정</h2>
+          <h2>회원정보 수정</h2>
           <form>
-            <label>
+            <FormLabel>
               이름:
-              <input
+              <InputField
                 type="text"
                 name="name"
                 value={editedUser.name}
                 onChange={handleInputChange}
               />
-            </label>
-          
-           
+            </FormLabel>
+
+            <FormLabel>
+              생년월일:
+              <InputField
+                type="text"
+                name="birth"
+                value={editedUser.birth}
+                onChange={handleInputChange}
+              />
+            </FormLabel>
+
+            <FormLabel>
+              이메일:
+              <InputField
+                type="text"
+                name="email"
+                value={editedUser.email}
+                onChange={handleInputChange}
+              />
+            </FormLabel>
+
+            <FormLabel>
+              비밀번호:
+              <InputField
+                type="text"
+                name="password"
+                value={editedUser.password}
+                onChange={handleInputChange}
+              />
+            </FormLabel>
+
+            <FormLabel>
+              휴대전화:
+              <InputField
+                type="text"
+                name="phone"
+                value={editedUser.phone}
+                onChange={handleInputChange}
+              />
+            </FormLabel>
+
+            <FormLabel>
+              주소:
+              <InputField
+                type="text"
+                name="address"
+                value={editedUser.address}
+                onChange={handleInputChange}
+              />
+            </FormLabel>
+
             <button type="button" onClick={handleSaveProfile}>
               저장
             </button>
@@ -142,7 +191,7 @@ const ProfileSection = Styled.div`
 const ButtonContainer = Styled.div`
   display: flex;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
 
   button {
     padding: 10px 20px;
@@ -177,12 +226,30 @@ const LinkButton = Styled(Link)`
   }
 `;
 
+const FormLabel = Styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+`;
+
+const InputField = Styled.input`
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;  // 위의 텍스트와의 간격 조정
+`;
+
+const SmallText = Styled.span`
+  margin-top: 5px;
+  font-size: 12px;
+  color: gray;
+`;
+
 const customStyles = {
   content: {
     top: 'calc(50% - 200px)',
     left: 'calc(50% - 150px)',
     width: '400px',
-    height: '400px',
+    height: '450px',
     padding: '20px',
   },
 };
