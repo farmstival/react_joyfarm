@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
@@ -7,13 +7,16 @@ import ReservationApplyContainer from '../containers/ReserveApplyContainer';
 
 const Apply = () => {
   const [pageTitle, setPageTitle] = useState('');
+  //컨테이너에서 데이터 불러와서 사용
 
   return (
     <MemberOnlyContainer>
-      <Helmet>{pageTitle}</Helmet>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
       <OuterBox>
         <MainTitle>{pageTitle}</MainTitle>
-        <ReservationApplyContainer />
+        <ReservationApplyContainer setPageTitle={setPageTitle} />
       </OuterBox>
     </MemberOnlyContainer>
   );

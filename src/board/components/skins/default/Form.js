@@ -7,6 +7,8 @@ import MessageBox from '../../../../commons/components/MessageBox';
 import InputBox from '../../../../commons/components/InputBox';
 import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
+import { MidButton } from '../../../../commons/components/Buttons';
+import FileUpload from '../../../../commons/components/FileUpload';
 
 import 'ckeditor5/ckeditor5.css';
 
@@ -26,14 +28,15 @@ const Wrapper = styled.form`
 const Form = ({
   board,
   form,
-  setEditor,
-  onFormChange,
   onSubmit,
   onToggleNotice,
+  notice,
   errors,
+  fileUploadCallback,
 }) => {
   const [mounted, setMounted] = useState(false);
-  const { useEditor } = board;
+  const [editor, setEditor] = useState(null);
+  const { useEditor, useUploadImage, useUploadFile } = board;
   const { t } = useTranslation();
   const {
     states: { isLogin, isAdmin },
@@ -48,98 +51,107 @@ const Form = ({
   }, []);
 
   return (
-    mounted && (
-      <Wrapper onSubmit={onSubmit} autoComplete="off">
-        <dl>
-          <dt>{t('작성자')}</dt>
-          <dd>
-            <InputBox
-              type="text"
-              name="poster"
-              value={form.poster}
-              onChange={onFormChange}
-            />
-            {errors.poster && (
-              <MessageBox color="danger" messages={errors.poster} />
-            )}
-          </dd>
-        </dl>
-        {(form.mode === 'write' && !isLogin) ||
-          (form.mode === 'update' && !form.member && (
-            <dl>
-              <dt>{t('비밀번호')}</dt>
-              <dd>
-                <InputBox
-                  type="password"
-                  name="guestPw"
-                  value={form.guestPw}
-                  onChange={onFormChange}
-                />
-                {errors.guestPw && (
-                  <MessageBox color="danger" messages={errors.guestPw} />
-                )}
-              </dd>
-            </dl>
-          ))}
-        {isAdmin && (
+    <Wrapper onSubmit={(e) => onSubmit(e, editor)} autoComplete="off">
+      <dl>
+        <dt>{t('작성자')}</dt>
+        <dd>
+          <InputBox type="text" name="poster" defaultValue={form?.poster} />
+          {errors?.poster && (
+            <MessageBox color="danger" messages={errors.poster} />
+          )}
+        </dd>
+      </dl>
+      {(form.mode === 'write' && !isLogin) ||
+        (form.mode === 'update' && !form.member && (
           <dl>
-            <dt>{t('공지글')}</dt>
+            <dt>{t('비밀번호')}</dt>
             <dd>
-              <label onClick={onToggleNotice}>
-                {form.notice ? <FaCheckSquare /> : <FaSquare />}
-                {t('공지글로_등록하기')}
-              </label>
+              <InputBox
+                type="password"
+                name="guestPw"
+                defaultValue={form?.guestPw}
+              />
+              {errors?.guestPw && (
+                <MessageBox color="danger" messages={errors.guestPw} />
+              )}
             </dd>
           </dl>
-        )}
+        ))}
+      {isAdmin && (
         <dl>
-          <dt>{t('제목')}</dt>
+          <dt>{t('공지글')}</dt>
           <dd>
-            <InputBox
-              type="text"
-              name="subject"
-              value={form.subject}
-              onChange={onFormChange}
-            />
-            {errors.subject && (
-              <MessageBox color="danger" messages={errors.subject} />
-            )}
+            <label onClick={onToggleNotice}>
+              {notice ? <FaCheckSquare /> : <FaSquare />}
+              {t('공지글로_등록하기')}
+            </label>
           </dd>
         </dl>
+      )}
+      <dl>
+        <dt>{t('제목')}</dt>
+        <dd>
+          <InputBox type="text" name="subject" defaultValue={form?.subject} />
+          {errors?.subject && (
+            <MessageBox color="danger" messages={errors.subject} />
+          )}
+        </dd>
+      </dl>
+      <dl>
+        <dt>{t('내용')}</dt>
+        <dd>
+          {useEditor ? (
+            mounted && (
+              <>
+                <CKEditor
+                  editor={ClassicEditor}
+                  config={{
+                    plugins: [Bold, Essentials, Italic, Paragraph],
+                    toolbar: ['undo', 'redo', 'bold', 'italic'],
+                  }}
+                  data={form?.content}
+                  onReady={(editor) => setEditor(editor)}
+                />
+                {editor && useUploadImage && (
+                  <FileUpload
+                    gid={form.gid}
+                    location="editor"
+                    imageOnly
+                    color="primary"
+                    width="120"
+                    callback={(files) => fileUploadCallback(files, editor)}
+                  >
+                    {t('이미지_업로드')}
+                  </FileUpload>
+                )}
+              </>
+            )
+          ) : (
+            <textarea name="content" defaultValue={form?.content}></textarea>
+          )}
+          {errors?.content && (
+            <MessageBox color="danger" messages={errors.content} />
+          )}
+        </dd>
+      </dl>
+      {useUploadFile && (
         <dl>
-          <dt>{t('내용')}</dt>
+          <dt>{t('파일첨부')}</dt>
           <dd>
-            {useEditor ? (
-              <CKEditor
-                editor={ClassicEditor}
-                config={{
-                  plugins: [Bold, Essentials, Italic, Paragraph],
-                  toolbar: ['undo', 'redo', 'bold', 'italic'],
-                }}
-                //data={form.content}
-                onReady={(editor) => {
-                  //setEditor(() => editor);
-                }}
-                onChange={(e, editor) => {
-                  onFormChange({
-                    target: { name: 'content', value: editor.getData() },
-                  });
-                }}
-              />
-            ) : (
-              <textarea
-                name="content"
-                defaultValue={form.content}
-                onChange={onFormChange}
-              ></textarea>
-            )}
-            {errors.content && (
-              <MessageBox color="danger" messages={errors.content} />
-            )}
+            <FileUpload
+              gid={form.gid}
+              location="attach"
+              callback={fileUploadCallback}
+              color="primary"
+              width="120"
+            >
+              {t('파일선택')}
+            </FileUpload>
           </dd>
         </dl>
-      </Wrapper>
-    )
+      )}
+      <button type="submit">제출</button>
+    </Wrapper>
   );
 };
 

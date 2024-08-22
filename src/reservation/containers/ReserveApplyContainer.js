@@ -1,53 +1,121 @@
-import React, { useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
-import ReservationForm from '../components/ReservationForm';
-import { apiGet } from '../../reservation/apis/apiInfo';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { format } from 'date-fns';
+import { produce } from 'immer';
+import { apiGet } from '../apis/apiInfo';
+import ReservationForm from '../components/ReservationForm';
 import Loading from '../../commons/components/Loading';
+import UserInfoContext from '../../member/modules/UserInfoContext';
+import apiApply from '../apis/apiApply';
 
-const ReserveApplyContainer = ({ setPageTitle }) => {
-  const [data, setData] = useState(null);
-  const [form, setForm] = useState({});
-  const [ampm, setAmpm] = useState([]);
-
+const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
-  const { t } = useTranslation();
+  const {
+    states: {
+      userInfo: { userName, email, mobile },
+    },
+  } = useContext(UserInfoContext);
 
-  useState(() => {
+  const [data, setData] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({
+    activitySeq: seq,
+    name: userName,
+    email,
+    mobile,
+  });
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
     (async () => {
       try {
         const res = await apiGet(seq);
+        console.log("Fetched data:", res); // 데이터 확인용 로그 추가
+        setPageTitle(`${res.townName} ${t('예약하기')}`);
 
-        res.availableDates = res.availableDates.map((d) => new Date(d));
-        console.log('res', res);
+        /* 예약 가능일 문자열 -> Date 객체  */
+        const availableDates = Object.keys(res.availableDates).sort();
+        res.minDate = new Date(availableDates[0]);
+        res.maxDate = new Date(availableDates.pop());
+
         setData(res);
-        setPageTitle(`${res.seq} ${t('예약하기')}`);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, [seq, setPageTitle, t]);
+  }, [seq, t, setPageTitle]);
 
-  const onCalendarClick = useCallback((selected) => {
-    const { availableDates } = data;
-    for (const [ampm] of Object.entries(availableDates)) {
-      setForm((form) => ({ ...form, rDate: selected })); //date-fns-날짜 형식화 필요함
-      setAmpm(ampm);
-      break;
-    }
-  }, [data]);
+  const onDateChange = useCallback(
+    (date) => {
+      const rDate = format(date, 'yyyy-MM-dd');
+      const times = data.availableDates[rDate];
+      setData((data) => ({ ...data, times }));
+      setForm((form) => ({ ...form, rDate }));
+    },
+    [data, setForm],
+  );
 
-  const onTimeClick = useCallback((rTime) => {
-    setForm((form) => ({ ...form, rTime }));
+  const onTimeChange = useCallback((ampm) => {
+    setForm((form) => ({ ...form, ampm }));
   }, []);
 
   const onChange = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
+    setForm(
+      produce((draft) => {
+        draft[e.target.name] = e.target.value.trim();
+      }),
+    );
   }, []);
 
-  const onSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      let _errors = {};
+      let hasErrors = false;
+
+      setErrors({});
+
+      /* 필수 항목 검증 S */
+      const requiredFields = {
+        rDate: t('예약일을_선택하세요.'),
+        ampm: t('시간대를_선택하세요.'),
+        name: t('예약자명을_입력하세요.'),
+        email: t('예약자_이메일을_입력하세요.'),
+        mobile: t('예약자_휴대전화번호를_입력하세요.'),
+      };
+
+      for (const [field, message] of Object.entries(requiredFields)) {
+        if (!form[field] || !form[field].trim()) {
+          _errors[field] = _errors[field] ?? [];
+          _errors[field].push(message);
+          hasErrors = true;
+        }
+      }
+      /* 필수 항목 검증 E */
+
+      if (hasErrors) {
+        setErrors(_errors);
+        return;
+      }
+
+      /* 예약 접수 처리 S */
+      (async () => {
+        try {
+          const res = await apiApply(form);
+          // 예약 접수 성공시 예약 완료 페이지 이동
+          navigate(`/reservation/complete/${res.seq}`, { replace: true });
+        } catch (err) {
+          console.error(err);
+          setErrors({ global: [err.message] });
+        }
+      })();
+      /* 예약 접수 처리 E */
+    },
+    [t, form, navigate],
+  );
 
   if (!data) {
     return <Loading />;
@@ -57,13 +125,13 @@ const ReserveApplyContainer = ({ setPageTitle }) => {
     <ReservationForm
       data={data}
       form={form}
-      ampm={ampm}
-      onCalendarClick={onCalendarClick}
-      onTimeClick={onTimeClick}
-      onChange={onChange}
+      errors={errors}
+      onDateChange={onDateChange}
+      onTimeChange={onTimeChange}
       onSubmit={onSubmit}
+      onChange={onChange}
     />
   );
 };
 
-export default React.memo(ReserveApplyContainer);
+export default React.memo(ReservationApplyContainer);

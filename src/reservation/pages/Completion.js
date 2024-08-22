@@ -1,9 +1,10 @@
 import React from 'react';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
+import ReserveCompletionContainer from '../containers/ReserveCompletionContainer';
 const Completion = () => {
   return (
     <MemberOnlyContainer>
-      <h1>예약 완료</h1>
+      <ReserveCompletionContainer />
     </MemberOnlyContainer>
   );
 };

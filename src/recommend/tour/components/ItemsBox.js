@@ -49,8 +49,6 @@ const ItemStyledBox = styled(ItemBox)`
     color: ${white};
     text-shadow: 1px 1px gray;
     transition: 0.3s;
-    text-shadow: 1px 1px gray;
-    transition: 0.3s;
   }
 
   a {
