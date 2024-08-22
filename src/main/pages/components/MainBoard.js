@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'; 
 import { color } from '../../../styles/color';
-import MainReviewImage from '../../../images/ReviewImage1.jpg';
+import MainReviewImage from '../../../images/QnAImage.png';
 
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray } = color;
 
@@ -26,19 +26,35 @@ const Header = styled.div`
   margin-bottom: 70px;
 `;
 
-const Title = styled.h2`
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px; /* Space between titles */
+`;
+
+const QnATitle = styled.h2`
   font-size: 3em;
   margin-bottom: 10px;
   position: relative;
+  flex: 1;
+  text-align: center;
+`;
+
+const NoticeTitle = styled.h2`
+  font-size: 3em;
+  margin-bottom: 10px;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  margin-left: 400px;
 `;
 
 const Underline = styled.span`
   display: block;
-  width: 400px;
+  width: 150px; 
   height: 10px;
   background-color: ${lightGreen};
-  margin-top: -5px; 
-  margin-left: 20px;
+  margin: 0 auto;
   border-radius: 5px;
 `;
 
@@ -63,29 +79,29 @@ const LeftSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;  
-  text-align: left;  /* 텍스트 왼쪽 정렬 */
+  align-items: center; 
+  text-align: center; 
   background: ${white};
-  padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  padding-bottom:30px;
 `;
 
 const ImageBox = styled.div`
   width: 100%; 
-  max-width: 400px;
+  max-width: 500px;
   height: 250px; 
   border-radius: 15px;
   background: ${dark};
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const Image = styled.img`
   width: 100%;
-  border-radius: 15px;
   height: 100%;
   object-fit: cover;
 `;
@@ -98,7 +114,8 @@ const TextContainer = styled.div`
 
 const DateText = styled.p`
   font-size: 1.5em;
-  color: ${mid_gray};
+  font-weight:bold;
+  color: ${midGreen};
   font-weight: bold;
   margin-bottom: 30px;
 `;
@@ -110,7 +127,8 @@ const NoticeText = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;  /* 텍스트의 최대 너비를 100%로 설정 */
+  max-width: 100%;
+
 `;
 
 const RightSection = styled.div`
@@ -120,7 +138,7 @@ const RightSection = styled.div`
   align-items: center; 
   text-align: center; 
   background: ${white};
-  padding: 20px 20px 30px; /* 위 아래 여백 조정 */
+  padding: 20px 20px 30px;
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 `;
@@ -135,7 +153,7 @@ const NoticeItem = styled.div`
   &:first-child {
     border-top: 1px solid ${mid_gray}; 
   }
-  padding: 10px 0;
+  padding: 5px 0;
 `;
 
 const NoticeDate = styled.p`
@@ -180,10 +198,16 @@ const MainBoard = ({ onButtonClick }) => {
     <MainBoardWrapper>
       <InnerContentWrapper>
         <Header>
-          <Title>
-            조이팜이 전하는 소식들
-            <Underline />
-          </Title>
+          <TitleWrapper>
+            <QnATitle>
+              QnA
+              <Underline />
+            </QnATitle>
+            <NoticeTitle>
+              공지사항
+              <Underline />
+            </NoticeTitle>
+          </TitleWrapper>
           <MoreLink onClick={onButtonClick}>더보기</MoreLink>
         </Header>
         <ContentWrapper>
@@ -192,8 +216,9 @@ const MainBoard = ({ onButtonClick }) => {
               <Image src={MainReviewImage} alt="Notice" />
             </ImageBox>
             <TextContainer onClick={() => handleNoticeClick('/notice/1')}>
-              <DateText>2024.04.12</DateText>
-              <NoticeText>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 축하해..<br/> 최시원님의 생일은 4월 22일 입니다. 생일을 축하해....</NoticeText>
+              <DateText>문의 사항이 있으시다면 알려주세요</DateText>
+              <NoticeText>당신의 소중한 의견을 받아,< br/>
+               더 나은 서비스가 되도록 노력하겠습니다.</NoticeText>
             </TextContainer>
           </LeftSection>
           
