@@ -19,6 +19,7 @@ const FormBox = styled.form`
     border: 1px solid #ccc;
     border-top: 3px solid #444;
     padding: 5px 20px;
+    margin-top: 20px;
 
     select {
     width: 120px;
