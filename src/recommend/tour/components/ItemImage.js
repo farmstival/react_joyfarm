@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   border-radius: 5px;
   height: 500px;
   overflow: hidden;
+  display:flex; 
+  align-items:center;
 `;
 
 const ImageBox = styled.div`
@@ -18,7 +20,6 @@ const ImageBox = styled.div`
   border-radius: 8px;
   isolation: isolate;
   cursor: pointer;
-  margin-top: 30px;
 `;
 
 const ItemImage = ({ images, onClick }) => {

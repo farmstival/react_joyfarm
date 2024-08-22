@@ -1,6 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import { ClassicEditor, Bold, Essentials, Italic, Paragraph } from 'ckeditor5';
+import {
+  ClassicEditor,
+  Image,
+  ImageInsert,
+  Bold,
+  Essentials,
+  Italic,
+  Paragraph,
+} from 'ckeditor5';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import MessageBox from '../../../../commons/components/MessageBox';
@@ -9,6 +17,7 @@ import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import { MidButton } from '../../../../commons/components/Buttons';
 import FileUpload from '../../../../commons/components/FileUpload';
+import FileItems from '../../../../commons/components/FileItems';
 
 import 'ckeditor5/ckeditor5.css';
 
@@ -33,6 +42,8 @@ const Form = ({
   notice,
   errors,
   fileUploadCallback,
+  fileDeleteCallback,
+  onChange,
 }) => {
   const [mounted, setMounted] = useState(false);
   const [editor, setEditor] = useState(null);
@@ -50,19 +61,32 @@ const Form = ({
     };
   }, []);
 
+  // 이미지 에디터 첨부
+  const insertImageCallback = useCallback(
+    (url) => {
+      editor.execute('insertImage', { source: url });
+    },
+    [editor],
+  );
+
   return (
-    <Wrapper onSubmit={(e) => onSubmit(e, editor)} autoComplete="off">
+    <Wrapper onSubmit={onSubmit} autoComplete="off">
       <dl>
         <dt>{t('작성자')}</dt>
         <dd>
-          <InputBox type="text" name="poster" defaultValue={form?.poster} />
+          <InputBox
+            type="text"
+            name="poster"
+            value={form?.poster}
+            onChange={onChange}
+          />
           {errors?.poster && (
             <MessageBox color="danger" messages={errors.poster} />
           )}
         </dd>
       </dl>
-      {(form.mode === 'write' && !isLogin) ||
-        (form.mode === 'update' && !form.member && (
+      {((form.mode === 'write' && !isLogin) ||
+        (form.mode === 'update' && !form?.member)) && (
           <dl>
             <dt>{t('비밀번호')}</dt>
             <dd>
@@ -75,14 +99,14 @@ const Form = ({
                 <MessageBox color="danger" messages={errors.guestPw} />
               )}
             </dd>
-          </dl>
-        ))}
+          </dl> 
+        )}
       {isAdmin && (
-        <dl>
+        <dl> 
           <dt>{t('공지글')}</dt>
           <dd>
             <label onClick={onToggleNotice}>
-              {notice ? <FaCheckSquare /> : <FaSquare />}
+              {form?.notice ? <FaCheckSquare /> : <FaSquare />}
               {t('공지글로_등록하기')}
             </label>
           </dd>
@@ -91,7 +115,12 @@ const Form = ({
       <dl>
         <dt>{t('제목')}</dt>
         <dd>
-          <InputBox type="text" name="subject" defaultValue={form?.subject} />
+          <InputBox
+            type="text"
+            name="subject"
+            value={form?.subject}
+            onChange={onChange}
+          />
           {errors?.subject && (
             <MessageBox color="danger" messages={errors.subject} />
           )}
@@ -106,28 +135,52 @@ const Form = ({
                 <CKEditor
                   editor={ClassicEditor}
                   config={{
-                    plugins: [Bold, Essentials, Italic, Paragraph],
+                    plugins: [
+                      Bold,
+                      Essentials,
+                      Italic,
+                      Paragraph,
+                      Image,
+                      ImageInsert,
+                    ],
                     toolbar: ['undo', 'redo', 'bold', 'italic'],
                   }}
                   data={form?.content}
                   onReady={(editor) => setEditor(editor)}
+                  onChange={(e, editor) => {
+                    onChange({
+                      target: { name: 'content', value: editor.getData() },
+                    });
+                  }}
                 />
                 {editor && useUploadImage && (
-                  <FileUpload
-                    gid={form.gid}
-                    location="editor"
-                    imageOnly
-                    color="primary"
-                    width="120"
-                    callback={(files) => fileUploadCallback(files, editor)}
-                  >
-                    {t('이미지_업로드')}
-                  </FileUpload>
+                  <>
+                    <FileUpload
+                      gid={form.gid}
+                      location="editor"
+                      imageOnly
+                      color="primary"
+                      width="120"
+                      callback={(files) => fileUploadCallback(files, editor)}
+                    >
+                      {t('이미지_업로드')}
+                    </FileUpload>
+                    <FileItems
+                      files={form?.editorImages}
+                      mode="editor"
+                      insertImageCallback={insertImageCallback}
+                      fileDeleteCallback={fileDeleteCallback}
+                    />
+                  </>
                 )}
               </>
             )
           ) : (
-            <textarea name="content" defaultValue={form?.content}></textarea>
+            <textarea
+              name="content"
+              value={form?.content}
+              onChange={onChange}
+            ></textarea>
           )}
           {errors?.content && (
             <MessageBox color="danger" messages={errors.content} />
@@ -141,16 +194,23 @@ const Form = ({
             <FileUpload
               gid={form.gid}
               location="attach"
-              callback={fileUploadCallback}
-              color="primary"
               width="120"
+              color="primary"
+              callback={fileUploadCallback}
             >
               {t('파일선택')}
             </FileUpload>
+            <FileItems
+              files={form?.attachFiles}
+              mode="attach"
+              fileDeleteCallback={fileDeleteCallback}
+            />
           </dd>
         </dl>
       )}
-      <button type="submit">제출</button>
+      <MidButton type="submit" color='info'>
+        {t(form.mode === 'update' ? '수정하기' : '작성하기')}
+      </MidButton>
     </Wrapper>
   );
 };

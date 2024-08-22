@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+@font-face {
+  font-family: 'MICEGothic Bold';
+  src: url(./font/MICEGothic\ Bold.woff2);
+}
+
+@font-face {
+  font-family: 'MICEGothic';
+  src: url(./font/MICEGothic.woff2);
+}
+
 * { 
   box-sizing: border-box; 
   outline: none; 
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: 'MICEGothic', sans-serif;
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&display=swap');
