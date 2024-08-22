@@ -15,12 +15,13 @@ const Wrapper = styled.div`
   .loading2 {
     width: 130px;
     height: 23px;
-    margin: 100px 0 20px 0;
+    margin: 150px 0 10px 0;
+    opacity: 0.3;
   }
 
   img {
-    width: 80px;
-    height: 30px;
+    width: 60px;
+    height: 20px;
     display: block;
   }
 `;
