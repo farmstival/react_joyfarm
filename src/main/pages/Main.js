@@ -8,7 +8,7 @@ import MainBoard from './components/MainBoard';
 import Sidebar from './components/SideBar'; 
 import styled from 'styled-components';
 
-const HEADER_HEIGHT = 200; 
+const HEADER_HEIGHT = 300; 
 
 const Main = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Main = () => {
   const boardRef = useRef(null);
 
   const handleButtonReservation = () => {
-    navigate('/reservation'); 
+    navigate('/reservation/list'); 
   };
 
   const handleButtonLocation = () => {

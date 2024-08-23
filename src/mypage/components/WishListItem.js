@@ -1,8 +1,7 @@
 import React from 'react';
 
-const WishListItem = ({ items, pagination }) => {
-  console.log(items, pagination);
-  return <></>;
+const WishListItem = () => {
+return <></>;
 };
 
 export default React.memo(WishListItem);
