@@ -43,6 +43,7 @@ const Underline = styled.span`
 
 const MoreLink = styled.a`
   font-size: 1.5em;
+  margin-right:50px;
   color: ${darkGreen};
   font-weight: bold;
   cursor: pointer;
@@ -226,4 +227,3 @@ const MainRecommend = ({ onButtonClick }) => {
 };
 
 export default React.memo(MainRecommend);
-

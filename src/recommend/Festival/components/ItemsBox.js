@@ -8,14 +8,15 @@ import logo from '../../../images/logo.png';
 import { useTranslation } from 'react-i18next';
 import { color } from '../../../styles/color';
 
-const { midGreen, white } = color;
+const { midGreen, lightGreen, white, whiteGreen } = color;
 
 const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
   const { seq, title, photoUrl1, address, tel, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
-  const startformattedDate = moment( startDate ).format('YYYY/MM/DD');
-  const endformattedDate = moment( endDate ).format('YYYY/MM/DD');
+  
+  const startformattedDate = moment(startDate).format('YYYY/MM/DD');
+  const endformattedDate = moment(endDate).format('YYYY/MM/DD');
   return (
     <li className={className}>
       <Link to={url}>
@@ -52,22 +53,15 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
+  padding: 15px;
   border: 1px solid #ada493;
   border-radius: 5px;
   width: 100%;
   height: 450px;
 
   &:hover {
-    border: 1px solid ${midGreen};
-  }
-
-  &:hover .title {
-    background: ${midGreen};
-    color: ${white};
-    text-shadow: 1px 1px gray;
-    transition: 0.3s;
-    text-shadow: 1px 1px gray;
-    transition: 0.3s;
+    border: 3px solid ${midGreen};
+    background: ${whiteGreen};
   }
 
   a {
@@ -83,7 +77,7 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 5px 20px;
+      padding: 5px 11px;
       height: 200px;
       display: flex;
       flex-direction: column;
@@ -91,26 +85,27 @@ const ItemStyledBox = styled(ItemBox)`
       font-size: 15px;
 
       .title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
         text-align: center;
         height: 30%;
-        margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0 30px 0 30px;
+        word-wrap: break-word;
       }
 
-      .tel, .date {
+      .tel,
+      .date {
         margin-top: 10px;
       }
 
       .address {
-        font-size: 15px;
+        font-size: 14.5px;
         color: #767676;
         height: 30%;
         padding-top: 20px;
+
 
         .icon {
           color: #ff5e00;

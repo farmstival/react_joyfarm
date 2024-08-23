@@ -21,7 +21,7 @@ const LogoImage = styled.img`
   opacity: 0.1;
   position: absolute;
   top: 655px; 
-  left: 1450px;
+  left: 1200px;
   transform: translateX(-50%);
 `;
 

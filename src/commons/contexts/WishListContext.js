@@ -1,63 +1,61 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import { getWishList } from '../libs/wish/apiWish';
 import UserInfoContext from '../../member/modules/UserInfoContext';
-
 const WishListContext = createContext({
   states: {
     boardWish: [],
     tourWish: [],
-    activityWish: [],
     festivalWish: [],
+    activityWish: [],
   },
   actions: {
     setBoardWish: null,
     setTourWish: null,
-    setActivityWish: null,
     setFestivalWish: null,
+    setActivityWish: null,
   },
 });
 
 export const WishListProvider = ({ children }) => {
   const [boardWish, setBoardWish] = useState([]);
   const [tourWish, setTourWish] = useState([]);
-  const [activityWish, setActivityWish] = useState([]);
   const [festivalWish, setFestivalWish] = useState([]);
-
+  const [activityWish, setActivityWish] = useState([]);
   const value = {
     states: {
       boardWish,
       tourWish,
-      activityWish,
       festivalWish,
+      activityWish,
     },
     actions: {
       setBoardWish,
       setTourWish,
-      setActivityWish,
       setFestivalWish,
+      setActivityWish,
     },
   };
 
-  const {
-    states: { isLogin },
-  } = useContext;
+  const { states: { isLogin }} = useContext(UserInfoContext);
 
   useEffect(() => {
-    if (!isLogin) {
+    if(!isLogin) {
       return;
     }
+  })
 
+  useEffect(() => {
     (async () => {
       try {
         const boardWish = await getWishList('BOARD');
         const tourWish = await getWishList('TOUR');
-        const activityWish = await getWishList('ACTIVITY');
         const festivalWish = await getWishList('FESTIVAL');
+        const activityWish = await getWishList('ACTIVITY');
 
         setBoardWish(boardWish);
         setTourWish(tourWish);
-        setActivityWish(activityWish);
         setFestivalWish(festivalWish);
+        setActivityWish(activityWish);
       } catch (err) {
         console.error(err);
       }

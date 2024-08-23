@@ -9,7 +9,6 @@ import ErrorPage from './commons/pages/Error';
 import { UserInfoProvider } from './member/modules/UserInfoContext';
 import { RecommendProvider } from './commons/modules/RecommendContext';
 import { WishListProvider } from './commons/contexts/WishListContext';
-
 import 'react-calendar/dist/Calendar.css'; //calendar 기본 스타일 시트 전역 적용
 
 import './i18n';
@@ -17,8 +16,8 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserInfoProvider>
-      <WishListProvider>
+    <WishListProvider>
+      <UserInfoProvider>
         <RecommendProvider>
           <ErrorPage>
             <HelmetProvider>
@@ -28,9 +27,9 @@ root.render(
             </HelmetProvider>
           </ErrorPage>
         </RecommendProvider>
-      </WishListProvider>
-    </UserInfoProvider>
-  </React.StrictMode>,
+      </UserInfoProvider>
+    </WishListProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

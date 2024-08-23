@@ -1,7 +1,6 @@
 import React from 'react';
 
-const WishListItem = ({ items, pagination }) => {
-  console.log(items, pagination);
+const WishListItem = () => {
   return <></>;
 };
 

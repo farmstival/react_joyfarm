@@ -9,7 +9,6 @@ import KakaoMap from '../../../map/KakaoMap';
 import TagBox from '../components/TagBox';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
 
-
 function getQueryString(searchParams) {
   const qs = { limit: 9 };
   if (searchParams.size > 0) {
@@ -67,7 +66,7 @@ const ListContainer = () => {
 
   return (
     <>
-    <TagBox/>
+      <TagBox />
       <SearchBox
         form={form}
         onChange={onChangeSearch}

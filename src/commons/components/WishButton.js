@@ -17,14 +17,14 @@ const WishButton = ({ IconOn, IconOff, seq, type }) => {
     states: { isLogin },
   } = useContext(UserInfoContext);
 
-  const { states } = useContext(WishListContext);
+const {states} = useContext(WishListContext);
 
-  const wishListKey = `${type.toLowerCase()}Wish`;
-  const wishList = states[wishListKey];
+const wishListKey = `${type.toLowerCase()}Wish`;
+const wishList = states[wishListKey];
 
-  useEffect(() => {
-    setToggle(wishList.includes(seq));
-  }, [wishList, seq]);
+useEffect(() => {
+  setToggle(wishList.includes(seq));
+}, [wishList, seq]);
 
   const onClick = useCallback(
     (status) => {

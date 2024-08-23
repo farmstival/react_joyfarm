@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
-import banner from '../../images/banner1.jpg';
+import banner from '../../images/ReviewImage1.jpg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
@@ -52,7 +52,7 @@ const ItemBox = ({ item, className }) => {
           </div>
         </div>
       </Link>
-      <WishButton seq={seq} type="ACTIVITY" />
+      <WishButton seq={seq} type={"ACTIVITY"} />
     </li>
   );
 };

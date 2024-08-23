@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import markerG from '../images/marker_green.png'
+import markerG from '../images/marker_green.png';
 
 const MapArea = styled.div`
   width: ${({ width }) => width ?? '100%'};
@@ -65,6 +65,10 @@ const KakaoMap = ({
     // 지도 가운데 배치 E
 
     // 마커 출력 S
+    if (address?.trim() && _center?.lat && _center?.lng) {
+      marker = { lat: _center.lat, lng: _center.lng };
+    }
+
     if (marker) {
       let _markers = marker;
       if (!Array.isArray(marker)) _markers = [marker];
@@ -77,6 +81,7 @@ const KakaoMap = ({
 
         // 마커 이미지 처리 S
         const mi = image ? image : markerG;
+
         if (mi) {
           const mIcon = new kakao.maps.MarkerImage(
             mi,

@@ -14,7 +14,7 @@ const WishList = () => {
         <title>WishList</title>
       </Helmet>
       <MainTitle>WishList</MainTitle>
-      <WishListContainer/>
+      <WishListContainer />
     </MemberOnlyContainer>
   );
 };
