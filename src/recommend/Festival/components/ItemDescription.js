@@ -70,8 +70,8 @@ const ItemDescription = ({ item }) => {
     pageLink,
     content,
   } = item;
-  const startformattedDate = moment({ startDate }).format('YYYY년 MM월 DD일');
-  const endformattedDate = moment({ endDate }).format('YYYY년 MM월 DD일');
+  const startformattedDate = moment(startDate).format('YYYY년 MM월 DD일');
+  const endformattedDate = moment(endDate).format('YYYY년 MM월 DD일');
   return (
     <Wrapper>
       {startDate && endDate && (

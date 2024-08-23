@@ -44,4 +44,5 @@ const WishButton = ({ IconOn, IconOff, seq, type }) => {
   );
 };
 
+
 export default React.memo(WishButton);
