@@ -1,8 +1,5 @@
 import requestData from '../../commons/libs/requestData';
 
-// 상세 조회
-export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);
-
 export const apiList = (search) => {
   search = search ?? {};
 
@@ -16,3 +13,6 @@ export const apiList = (search) => {
 
   return requestData(url);
 };
+
+// 상세 조회
+export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);

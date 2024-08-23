@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
+import { Helmet } from 'react-helmet-async';
+import ReservationApplyContainer from '../containers/ReserveApplyContainer';
 
-import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
-import ReservationContainer from '../containers/ReservationContainer';
 const Apply = () => {
-  const [PageTitle, setPageTitle] = useState('');
+  const [pageTitle, setPageTitle] = useState('');
+  //컨테이너에서 데이터 불러와서 사용
+
   return (
     <MemberOnlyContainer>
       <Helmet>
-        <title>{PageTitle}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{PageTitle}</MainTitle>
-        <ReservationContainer setPageTitle={setPageTitle} />
+        <MainTitle>{pageTitle}</MainTitle>
+        <ReservationApplyContainer setPageTitle={setPageTitle} />
       </OuterBox>
     </MemberOnlyContainer>
   );

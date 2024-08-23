@@ -9,7 +9,7 @@ import ErrorPage from './commons/pages/Error';
 import { UserInfoProvider } from './member/modules/UserInfoContext';
 import { RecommendProvider } from './commons/modules/RecommendContext';
 
-import 'react-calendar/dist/Calendar.css';
+import 'react-calendar/dist/Calendar.css'; //calendar 기본 스타일 시트 전역 적용
 
 import './i18n';
 

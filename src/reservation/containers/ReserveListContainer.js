@@ -6,7 +6,7 @@ import SearchBox from '../components/SearchBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 import KakaoMap from '../../map/KakaoMap';
-import { ImageListBox } from '../../commons/components/ImageListBox';
+import { ImageListBox2 } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -67,8 +67,9 @@ const ReserveListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-
-      <ItemsBox items={items} />
+      <ImageListBox2>
+        <ItemsBox items={items} />
+      </ImageListBox2>
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}
