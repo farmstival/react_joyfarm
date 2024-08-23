@@ -5,7 +5,7 @@ import { ImageBgBox } from '../../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../../styles/color';
 
-const { midGreen, white } = color;
+const { midGreen, whiteGreen } = color;
 
 const ItemBox = ({ item, className }) => {
   const { seq, title, photoUrl, address, description } = item;
@@ -41,8 +41,9 @@ const ItemStyledBox = styled(ItemBox)`
   width: 100%;
   height: 450px;
 
-  &:hover {
-    border: 2px solid ${midGreen};
+   &:hover {
+    border: 3px solid ${midGreen};
+    background: ${whiteGreen};
   }
 
   a {
