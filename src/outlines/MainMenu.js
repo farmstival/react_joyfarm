@@ -30,12 +30,8 @@ const MenuItem = styled.div`
     text-decoration: none;
     text-align: center;
     display: block;
-    font-size: ${fontSize.medium};
+    font-size: 1.5em;
     font-weight: bold;
-
-    &.on {
-      background: ${white};
-    }
 
     &:hover {
       background: ${white};
@@ -65,7 +61,7 @@ const SubMenu = styled.div`
   a {
     padding: 0 20px;
     color: ${dark};
-    font-size: 14px;
+    font-size:1.3em;
     text-decoration: none;
 
     &:hover {
