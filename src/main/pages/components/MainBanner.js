@@ -33,7 +33,7 @@ const InfoBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 40px;
+  padding: 50px 40px;
   box-sizing: border-box;
   font-size: 1.2em;
 `;
@@ -43,6 +43,7 @@ const InfoBox = styled.div`
 `;
 
 const InfoText = styled.div`
+  margin-right:270px;
   color: ${white};
   font-size: ${props => (props.isHeader ? '1.5em' : '1em')};
   margin-top: ${props => (props.isHeader ? '0' : '5px')};
@@ -54,6 +55,7 @@ const Button = styled.button`
   color: ${white};
   border: 1px solid ${white};
   border-radius: 20px;
+  margin-left:300px;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;

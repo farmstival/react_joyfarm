@@ -10,10 +10,17 @@ const { dark, light, midGreen, white, lightGreen } = color;
 
 const MenuBox = styled.nav`
   background: ${white};
-  border-bottom: 1px solid ${midGreen};
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 0 20px;
+  
+`;
+
+const MenuWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const MenuItem = styled.div`
@@ -23,19 +30,15 @@ const MenuItem = styled.div`
 
   a {
     color: ${dark};
-    line-height: 80px;
+    line-height: 100px;
     width: 200px;
     padding: 0 20px;
     font-size: ${fontSize.medium};
     text-decoration: none;
     text-align: center;
     display: block;
-    font-size: ${fontSize.medium};
+    font-size: 1.5em;
     font-weight: bold;
-
-    &.on {
-      background: ${white};
-    }
 
     &:hover {
       background: ${white};
@@ -54,7 +57,6 @@ const MenuItem = styled.div`
 const SubMenu = styled.div`
   position: absolute;
   top: 80px;
-  // left: 10px;
   background: ${white};
   display: none;
   flex-direction: column;
@@ -65,7 +67,7 @@ const SubMenu = styled.div`
   a {
     padding: 0 20px;
     color: ${dark};
-    font-size: 14px;
+    font-size: 1.3em;
     text-decoration: none;
 
     &:hover {
@@ -80,7 +82,7 @@ const Logo = styled.div`
   margin: 0 10px;
 
   img {
-    width: 150px;
+    width: 180px;
     height: auto;
   }
 `;
@@ -90,7 +92,7 @@ const MainMenu = () => {
 
   return (
     <MenuBox>
-      <div className="layout-width">
+      <MenuWrap>
         <MenuItem>
           <NavLink to="/reservation/list" className={({ isActive }) => isActive ? 'on' : ''}>
             {t('농촌체험 예약')}
@@ -133,7 +135,7 @@ const MainMenu = () => {
             <NavLink to="/board/list/qna">{t('QnA')}</NavLink>
           </SubMenu>
         </MenuItem>
-      </div>
+      </MenuWrap>
     </MenuBox>
   );
 };
