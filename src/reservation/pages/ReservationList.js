@@ -8,7 +8,6 @@ import {
   PageNavWrap,
   PageTitle,
   ContentBox,
-  ContentBox2,
 } from '../../commons/components/LayoutBox';
 import ReserveListContainer from '../containers/ReserveListContainer';
 import { Link } from 'react-router-dom';

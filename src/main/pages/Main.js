@@ -5,10 +5,9 @@ import MainLocation from './components/MainLocation';
 import MainRecommend from './components/MainRecommend';
 import MainReview from './components/MainReview';
 import MainBoard from './components/MainBoard';
-import Sidebar from './components/SideBar'; 
-import styled from 'styled-components';
+import Sidebar from './components/SideBar';
 
-const HEADER_HEIGHT = 200; 
+const HEADER_HEIGHT = 200;
 
 const Main = () => {
   const navigate = useNavigate();
@@ -20,28 +19,29 @@ const Main = () => {
   const boardRef = useRef(null);
 
   const handleButtonReservation = () => {
-    navigate('/reservation/list'); 
+    navigate('/reservation/list');
   };
 
   const handleButtonLocation = () => {
-    navigate('/recommend/festival'); 
+    navigate('/recommend/festival');
   };
 
   const handleButtonReview = () => {
-    navigate('/board/list/review'); 
+    navigate('/board/list/review');
   };
 
   const handleButtonRecommend = () => {
-    navigate('/recommend/tour'); 
+    navigate('/recommend/tour');
   };
 
   const handleButtonBoard = () => {
-    navigate('/board/list/notice'); 
+    navigate('/board/list/notice');
   };
 
   const scrollToSection = (ref, offset = 0) => {
     if (ref.current) {
-      const topOffset = ref.current.getBoundingClientRect().top + window.pageYOffset - offset;
+      const topOffset =
+        ref.current.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
     }
   };
@@ -49,7 +49,7 @@ const Main = () => {
   const handleLinkClick = (section) => {
     switch (section) {
       case 'top':
-        scrollToSection(top, HEADER_HEIGHT); 
+        scrollToSection(top, HEADER_HEIGHT);
         break;
       case 'location':
         scrollToSection(locationRef);
