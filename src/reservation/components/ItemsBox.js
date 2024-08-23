@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
-import banner from '../../images/banner1.jpg';
+import banner from '../../images/MainBanner1.jpeg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';

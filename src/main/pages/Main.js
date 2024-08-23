@@ -20,7 +20,7 @@ const Main = () => {
   const boardRef = useRef(null);
 
   const handleButtonReservation = () => {
-    navigate('/reservation'); 
+    navigate('/reservation/list'); 
   };
 
   const handleButtonLocation = () => {

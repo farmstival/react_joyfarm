@@ -23,7 +23,7 @@ const MenuItem = styled.div`
 
   a {
     color: ${dark};
-    line-height: 80px;
+    line-height: 100px;
     width: 200px;
     padding: 0 20px;
     font-size: ${fontSize.medium};
