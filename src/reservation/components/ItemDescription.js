@@ -85,7 +85,9 @@ const ItemDescription = ({ item }) => {
         {wwwAddress && (
           <dl>
             <dt>{t('홈페이지주소')}</dt>
-            <dd>{wwwAddress}</dd>
+            <a href={wwwAddress} target="_blank" rel="noopener noreferrer">
+              {wwwAddress}
+            </a>
           </dl>
         )}
       </div>

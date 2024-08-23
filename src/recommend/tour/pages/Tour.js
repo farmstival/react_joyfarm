@@ -2,14 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ListContainer from '../containers/ListContainer';
-import { IoMdHome } from 'react-icons/io';
-import {
-  OuterBox,
-  PageNav,
-  PageNavWrap,
-  PageTitle,
-  ContentBox2,
-} from '../../../commons/components/LayoutBox';
+import { OuterBox, ContentBox2 } from '../../../commons/components/LayoutBox';
 import Header from '../../../layouts/Header';
 import SubTitleLink from '../../../commons/SubTitleLink';
 

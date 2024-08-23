@@ -23,10 +23,7 @@ const Reservation = () => {
       <Route path="/reservation" element={<MainLayout />}>
         <Route path="list" element={<ReservationList />} />
         <Route path="info/:seq" element={<ReservationView />} />
-
-        {/* 예약상태보기 */}
         <Route path="complete/:seq" element={<CompletionPage />} />
-
         <Route path="apply/:seq" element={<ApplyPage />} />
       </Route>
     </Routes>

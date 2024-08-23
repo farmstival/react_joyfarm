@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,6 @@ import { IoIosRadioButtonOff, IoIosRadioButtonOn } from 'react-icons/io';
 import { BigButton } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
-import UserInfoContext from '../../member/modules/UserInfoContext';
 
 const FormBox = styled.form`
   display: flex;
@@ -127,8 +126,8 @@ const ReservationForm = ({
               ))}
             </select>
             {errors?.persons && (
-                <MessageBox color="danger" messages={errors.persons} />
-              )}
+              <MessageBox color="danger" messages={errors.persons} />
+            )}
           </dd>
         </dl>
         <BigButton type="submit" color="primary">
