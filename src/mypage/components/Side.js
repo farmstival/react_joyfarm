@@ -47,7 +47,7 @@ const Side = () => {
         to="/mypage/wishlist/tour"
         className={({ isActive }) => classNames({ on: isActive })}
       >
-        {t('위시_리스트')}
+        WishList
       </NavLink>
     </Wrapper>
   );

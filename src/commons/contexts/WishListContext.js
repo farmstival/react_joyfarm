@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import { getWishList } from '../libs/wish/apiWish';
 import UserInfoContext from '../../member/modules/UserInfoContext';
-
 const WishListContext = createContext({
   states: {
     boardWish: [],
@@ -37,14 +36,15 @@ export const WishListProvider = ({ children }) => {
     },
   };
 
-  const {
-    states: { isLogin },
-  } = useContext(UserInfoContext);
+  const { states: { isLogin }} = useContext(UserInfoContext);
 
   useEffect(() => {
-    if (!isLogin) {
+    if(!isLogin) {
       return;
     }
+  })
+
+  useEffect(() => {
     (async () => {
       try {
         const boardWish = await getWishList('BOARD');

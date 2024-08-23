@@ -4,9 +4,8 @@ import classNames from 'classnames';
 import styled from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
-
-const { midGreen, dark } = buttonColor;
-const {medium} = fontSize;
+const { dark } = buttonColor;
+const { medium } = fontSize;
 
 const Wrapper = styled.nav`
   padding: 10px 0;
@@ -18,7 +17,6 @@ const Wrapper = styled.nav`
     padding: 0 25px;
     border-radius: 3px;
     font-size: ${medium};
-    line-height: 35px;
   }
   a:hover,
   a.on {
