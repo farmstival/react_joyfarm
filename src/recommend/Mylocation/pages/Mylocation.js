@@ -7,12 +7,10 @@ import {
 } from '../../../commons/components/LayoutBox';
 import SubTitleLink from '../../../commons/SubTitleLink';
 import {
-  DetailImgBox,
-  DetailTitle,
+  DetailImgBox2,
 } from '../../../commons/components/DetailBox';
-
 import Header from '../../../layouts/Header';
-import MyLocationContainer from '../containers/MyLocationContainer';
+import MyLocListContainer from '../containers/MyLocListContainer';
 
 const MylocationView = () => {
   const [SubPageTitle, setSubPageTitle] = useState('');
@@ -25,14 +23,9 @@ const MylocationView = () => {
       </Helmet>
       <OuterBox>
         <Header />
-        <ContentBox>
-          <DetailImgBox>
-            <DetailTitle>
-              <h1>{SubPageTitle}</h1>
-            </DetailTitle>
-            <MyLocationContainer/>
-          </DetailImgBox>
-        </ContentBox>
+          <DetailImgBox2>
+            <MyLocListContainer/>
+          </DetailImgBox2>
       </OuterBox>
     </>
   );
