@@ -57,7 +57,7 @@ export const WishListProvider = ({ children }) => {
         setFestivalWish(festivalWish);
         setActivityWish(activityWish);
       } catch (err) {
-        console.err(err);
+        console.error(err);
       }
     })();
   }, [isLogin]);
