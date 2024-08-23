@@ -44,10 +44,11 @@ const Side = () => {
         {t('게시글_관리')}
       </NavLink>
       <NavLink
-        to="/mypage/wishlist"
+        to="/mypage/wishlist/tour"
         className={({ isActive }) => classNames({ on: isActive })}
-      >{t('위시_리스트')}
-        </NavLink>
+      >
+        {t('위시_리스트')}
+      </NavLink>
     </Wrapper>
   );
 };
