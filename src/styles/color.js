@@ -13,6 +13,7 @@ export const color = {
   white: '#ffffff',
   dark_gray: '#333333',
   mid_gray: '#767676',
+  line_gray: '#D5D5D5',
   whiteGreen: '#EEFBEB',
   whiteGray: '#E2E2E2'
 };

@@ -11,7 +11,8 @@ const MainLocationWrapper = styled.div`
   justify-content: center;
   background: linear-gradient(to bottom, ${lightGreen}, ${white});
   padding: 50px 0; 
-  min-height: 950px; 
+  min-height: 950px;
+   
 `;
 
 const ContentWrapper = styled.div`
@@ -21,23 +22,23 @@ const ContentWrapper = styled.div`
   max-width: 1440px; 
   width: 100%; 
   padding: 0 20px;
-  margin-top: 50px
+  
 `;
 
 const MapImage = styled.img`
-  margin-top: 100px;
-  width: 50%; 
+  margin-left: 200px;
+  margin-top: 50px;
+  width: 40%; 
   height: auto;
   object-fit: cover;
   margin-bottom: 20px; 
 `;
 
-const InnerContentWrapper = styled.div`ㅎ
+const InnerContentWrapper = styled.div`
   margin-top: 100px;
-  margin-left: 100px;
   display: flex;
   flex-direction: column;
-  width: 50%; 
+  width: 40%; 
   padding-left:50px;
 `;
 
@@ -50,13 +51,14 @@ const HighlightBox = styled.div`
   background-color: ${darkGreen};
   color: ${white};
   padding: 25px 40px;
-  width: calc(100% - 20px); 
+  width: 85%; 
   margin-bottom: 30px; 
   display: flex;
   font-size: 2em;
   font-weight: bold;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
+  // border-top-left-radius: 40px;
+  // border-bottom-left-radius: 40px;
+  border-radius:20px;
   margin-right: 0; 
 `;
 
@@ -71,8 +73,8 @@ const Button = styled.button`
   background-color: ${white};
   color: ${dark};
   border-radius: 15px;
-  width: 200px;
-  height: 80px;
+  width: 170px;
+  height: 70px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 1.5em;

@@ -45,7 +45,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
-  });
+  }, []);
 
   if (loading || !item) {
     return <Loading />;
