@@ -213,9 +213,9 @@ const MainBoard = ({ onButtonClick }) => {
         <ContentWrapper>
           <LeftSection>
             <ImageBox>
-              <Image src={MainReviewImage} alt="Notice" />
+              <Image src={MainReviewImage} alt="QnA" />
             </ImageBox>
-            <TextContainer onClick={() => handleNoticeClick('/notice/1')}>
+            <TextContainer onClick={() => handleNoticeClick('/board/list/qna')}>
               <DateText>문의 사항이 있으시다면 알려주세요</DateText>
               <NoticeText>당신의 소중한 의견을 받아,< br/>
                더 나은 서비스가 되도록 노력하겠습니다.</NoticeText>
