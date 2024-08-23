@@ -126,6 +126,9 @@ const ReservationForm = ({
                 </option>
               ))}
             </select>
+            {errors?.persons && (
+                <MessageBox color="danger" messages={errors.persons} />
+              )}
           </dd>
         </dl>
         <BigButton type="submit" color="primary">

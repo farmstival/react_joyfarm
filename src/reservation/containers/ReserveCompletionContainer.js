@@ -21,7 +21,11 @@ const ReserveCompletionContainer = () => {
     return <Loading />;
   }
   console.log(data);
-  return <></>;
+  return (
+    <>
+      <h2>예약 완료</h2>
+    </>
+  );
 };
 
 export default React.memo(ReserveCompletionContainer);

@@ -85,6 +85,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
         name: t('예약자명을_입력하세요.'),
         email: t('예약자_이메일을_입력하세요.'),
         mobile: t('예약자_휴대전화번호를_입력하세요.'),
+        persons: t('예약인원을_선택하세요'),
       };
 
       for (const [field, message] of Object.entries(requiredFields)) {
