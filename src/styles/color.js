@@ -6,7 +6,7 @@ export const color = {
   warning: '#ffc107',
   info: '#17a2b8',
   light: '#E2E2E2',
-  dark: '#515151',
+  dark: '#343a40',
   black: '#000',
   darkGreen: '#428C4C',
   midGreen: '#39AE48',
