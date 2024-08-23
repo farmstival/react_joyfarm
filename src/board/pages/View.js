@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 
-const View = () => {
+const View = () => { /** 수정 예정 */
   const [board, setBoard] = useState({
     bName: '여행후기',
   });
