@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
 import banner from '../../images/banner1.jpg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
+import { FcLandscape } from 'react-icons/fc';
 
 const { midGreen, white } = color;
 const { medium, big, normal } = fontSize;
@@ -39,14 +41,18 @@ const ItemBox = ({ item, className }) => {
         )}
         <div className="item-content">
           <div className="townName">{townName}</div>
-          <div className="actNameTitle">{t('체험_프로그램_소개')}</div>
+          <div className="actNameTitle">
+            <FcLandscape className="t_icon" />
+            <p className="act_title">{t('체험_프로그램_소개')}</p>
+          </div>
           <div className="activityName">{activityName}</div>
           <div className="doroAddress">
             <FaMapMarkerAlt className="icon" />
-            <p className='addr'>{doroAddress}</p>
+            <p className="addr">{doroAddress}</p>
           </div>
         </div>
       </Link>
+      <WishButton seq={seq} type="ACTIVITY" />
     </li>
   );
 };
@@ -79,7 +85,7 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 15px 20px 5px ;
+      padding: 15px 20px 5px;
       height: 200px;
       display: flex;
       flex-direction: column;
@@ -103,6 +109,16 @@ const ItemStyledBox = styled(ItemBox)`
         font-size: ${medium};
         font-weight: bold;
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+
+                .act_title {
+          margin: 0;
+        }
+
+        .t_icon {
+          margin-right: 10px;
+        }
       }
 
       .activityName {

@@ -20,3 +20,6 @@ export const apiList = (search) => {
 // 상세 조회
 export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);
 
+//찜하기 목록
+export const apiWishList = () => requestData(`/reservation/wish`);
+

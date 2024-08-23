@@ -9,7 +9,7 @@ import KakaoMap from '../../map/KakaoMap';
 import { ImageListBox2 } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
-  const qs = {};
+  const qs = { limit: 9 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
@@ -67,9 +67,9 @@ const ReserveListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-        <ImageListBox2>
-          <ItemsBox items={items} />
-        </ImageListBox2>
+      <ImageListBox2>
+        <ItemsBox items={items} />
+      </ImageListBox2>
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
       )}
