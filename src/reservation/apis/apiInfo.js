@@ -21,7 +21,7 @@ export const apiList = (search) => {
 export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);
 
 // 예약된 상세조회
-export const myApiGet = (seq) => requestData(`/myreservation/info/${seq}`);
+export const myApiGet = (seq) => requestData(`/reservation/complete/${seq}`);
 
 //찜하기 목록
 export const apiWishList = () => requestData(`/reservation/wish`);
