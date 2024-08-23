@@ -29,7 +29,7 @@ const ReservationView = () => {
             <Link to=''>상세보기</Link>
           </PageNav>
           <PageTitle>
-            <MainTitle>{t('체험활동_상세')}</MainTitle>
+            <MainTitle>{t('체험활동_상세_정보')}</MainTitle>
           </PageTitle>
         </PageNavWrap>
         <ContentBox>

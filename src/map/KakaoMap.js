@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import markerG from '../images/marker_green.png'
 
 const MapArea = styled.div`
   width: ${({ width }) => width ?? '100%'};
@@ -75,7 +76,7 @@ const KakaoMap = ({
         };
 
         // 마커 이미지 처리 S
-        const mi = image ? image : markerImage;
+        const mi = image ? image : markerG;
         if (mi) {
           const mIcon = new kakao.maps.MarkerImage(
             mi,
