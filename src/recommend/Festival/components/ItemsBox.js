@@ -14,8 +14,9 @@ const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
   const { seq, title, photoUrl1, address, tel, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
-  const startformattedDate = moment({ startDate }).format('YYYY/MM/DD');
-  const endformattedDate = moment({ endDate }).format('YYYY/MM/DD');
+  
+  const startformattedDate = moment(startDate).format('YYYY/MM/DD');
+  const endformattedDate = moment(endDate).format('YYYY/MM/DD');
   return (
     <li className={className}>
       <Link to={url}>
