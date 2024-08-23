@@ -33,7 +33,7 @@ const InfoBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 40px;
+  padding: 50px 40px;
   box-sizing: border-box;
   font-size: 1.2em;
 `;

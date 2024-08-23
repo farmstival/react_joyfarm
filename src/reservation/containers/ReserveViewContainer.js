@@ -7,7 +7,7 @@ import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import img from '../../images/MainBanner1.jpeg';
+import img from '../../images/ReviewImage1.jpg';
 
 const Wrapper = styled.div`
   display: flex;
