@@ -8,6 +8,7 @@ import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
+import WishListContext from '../commons/contexts/WishListContext';
 import { GrUserManager } from 'react-icons/gr';
 import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
 
@@ -42,15 +43,32 @@ const Header = () => {
     actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
 
+  const {
+    actions: { setBoardWish, setTourWish, setFestivalWish, setActivityWish },
+  } = useContext(WishListContext);
+
   const onLogout = useCallback(() => {
     setIsLogin(false);
     setIsAdmin(false);
     setUserInfo(null);
     cookies.remove('token', { path: '/' });
-  }, [setIsLogin, setIsAdmin, setUserInfo]);
+    setBoardWish([]);
+    setTourWish([]);
+    setFestivalWish([]);
+    setActivityWish([]);
+  }, [
+    setIsLogin,
+    setIsAdmin,
+    setUserInfo,
+    setBoardWish,
+    setTourWish,
+    setFestivalWish,
+    setActivityWish,
+  ]);
 
   //관리자 url, 환경 변수로 추가함
-  const adminUrl = process.env.REACT_APP_ADMIN_URL+ '?token=' + cookies.load('token');
+  const adminUrl =
+    process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
   // console.log(adminUrl);
 
   return (
@@ -68,7 +86,7 @@ const Header = () => {
                   <GrUserManager />
                   {t('사이트_관리')}
                 </a>
-                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체  
+                //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
               )}
               <NavLink
                 to="/mypage"

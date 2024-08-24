@@ -14,34 +14,43 @@ const WishListContainer = () => {
   const [pagination, setPagination] = useState();
   const { t } = useTranslation();
   const { tab } = useParams();
+
   useEffect(() => {
     setMenus(() => [
       { name: t('예약'), link: '/mypage/wishlist/reservation' },
       { name: t('여행지'), link: '/mypage/wishlist/tour' },
-      { name: t('게시글'), link: '/mypage/wishlist/board' },
       { name: t('축제'), link: '/mypage/wishlist/festival' },
+      { name: t('게시글'), link: '/mypage/wishlist/board' },
     ]);
 
     let apiList = null;
     switch (tab) {
-      case 'tour':
-        apiList = getTourList;
-        break;
       case 'reservation':
         apiList = getReservation;
         break;
-      default:
+      case 'tour':
+        apiList = getTourList;
+        break;
+      case 'festival':
         apiList = getFestivalList;
+        break;
+      default:
+        apiList = getReservation;
         return;
     }
 
-    if (!apiList) {
-      return;
-    }
+    //if (!apiList) {
+    //  return;
+    //}
 
     (async () => {
+      if (!apiList) {
+        return;
+      }
+
       try {
         const res = await apiList();
+        console.log('API Response:', res);
         setItems(res.items);
         setPagination(res.pagination);
       } catch (err) {

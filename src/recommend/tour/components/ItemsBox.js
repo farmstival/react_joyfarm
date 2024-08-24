@@ -41,7 +41,7 @@ const ItemStyledBox = styled(ItemBox)`
   width: 100%;
   height: 450px;
 
-   &:hover {
+  &:hover {
     border: 3px solid ${midGreen};
     background: ${whiteGreen};
   }
@@ -74,7 +74,7 @@ const ItemStyledBox = styled(ItemBox)`
         display: flex;
         align-items: center;
         justify-content: center;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
 
       .description {
@@ -90,7 +90,6 @@ const ItemStyledBox = styled(ItemBox)`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
-        word-wrap: break-word;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
       }
