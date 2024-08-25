@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WishListItem = () => {
-return <></>;
+  return <></>;
 };
 
 export default React.memo(WishListItem);

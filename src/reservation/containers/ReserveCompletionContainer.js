@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { apiGet } from '../apis/apiInfo';
+import { myApiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고옴 
 import Loading from '../../commons/components/Loading';
 
 const ReserveCompletionContainer = () => {
@@ -9,7 +9,7 @@ const ReserveCompletionContainer = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await apiGet(seq);
+        const res = await myApiGet(seq);
         setData(res);
       } catch (err) {
         console.error(err);
