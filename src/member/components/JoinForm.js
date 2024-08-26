@@ -241,7 +241,7 @@ const JoinForm = ({
         </dl>
 
         <dl>
-          <dt>{t('프로필_이미지')}</dt>
+          <dt>{t('프로필 이미지')}</dt>
           <dd>
             {form.profile && (
               <ProfileImage
@@ -428,7 +428,7 @@ const JoinForm = ({
           Soeun318@joyfarm.co.kr [개인정보 관리담당자] 이름 : 강태현 소속 / 직위
           : ㈜🍀JOY_FARM /부장 / 이메일:kth232@joyfarm.com [회원 페이지 담당자 ]
           이름: 유준범 소속 / 직위 : ㈜🍀JOY_FARM /과장 / 이메일 :
-          byby5546@joyfarm.com [메인 담당자] 이름: 최시원 소속/직위 :
+          byby5546@joyfarm.com [메인 담당자] 이름: 최시원(퇴사) 소속/직위 :
           ㈜🍀JOY_FARM / 차장 / 이메일 : siwon77@joyfarm.com [게시판 담장자]
           이름: 양예지 소속/직위: ㈜🍀JOY_FARM / 주임 / 이메일 :
           yeji219@joyfarm.com [예약 관리 담장자] 이름: 이진표 소속/직위 :

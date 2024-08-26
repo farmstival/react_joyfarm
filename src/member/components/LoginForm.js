@@ -45,12 +45,16 @@ const StyledLink = styled(Link)`
 //-----------------
 
 const FormBox = styled.form`
-  background-color: #D5D5D5; 
+  background-color: #E2E2E2;
   padding: 35px;
   border-radius: 55px;
   width: 400px;
   margin: 0 auto;
   font-size: ${medium};
+
+  position: relative;
+  top: -80px; /* 위로 50px 이동 */
+  left: 10px;
 
   input {
     margin-bottom: 10px;
@@ -64,6 +68,10 @@ const LinkBox = styled.div`
   border: 1px solid #d5d5d5;
   border-left: 0;
   border-right: 0;
+  position: relative;
+  bottom: 70px; /* 화면 하단에서 20px 위로 고정 */
+  right: -10px;
+  
 
   a {
     flex-grow: 1;
@@ -106,7 +114,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           type="submit"
           bgColor="#767676" /* 기본 배경색 */
           textColor="white" /* 기본 텍스트 색상 */
-          hoverBgColor="#C2F2B6" /* hover 시 배경색 */
+          hoverBgColor="#39AE48" /* hover 시 배경색 */
           hoverTextColor="black" /* hover 시 텍스트 색상 */
         >
           {t('로그인')}

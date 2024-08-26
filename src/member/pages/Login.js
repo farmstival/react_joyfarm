@@ -47,7 +47,7 @@ const Login = () => {
           minHeight: '50vh', // 세로 가운데 정렬을 위한 높이 설정
         }}
       >
-        <h1 style={{ marginBottom: '-30px', marginLeft: '-4px' }}>
+        <h1 style={{ marginBottom: '50px', marginLeft: '-4px' }}>
           {t('로그인')}
         </h1>
 
@@ -56,7 +56,7 @@ const Login = () => {
         size={40} 
         style={{ 
           position: 'relative', // 위치 조정 시작
-          top:'-10px',         // 위에서 아래로 20px 이동
+          top:'-90px',         // 위에서 아래로 20px 이동
           left:'-50px',          // 왼쪽에서 오른쪽으로 10px 이동
           color:'green'         // 아이콘 색상 설정 (선택 사항)
         }} 
