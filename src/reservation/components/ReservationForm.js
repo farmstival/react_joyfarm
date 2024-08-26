@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { useTranslation } from 'react-i18next';
@@ -117,7 +117,12 @@ const ReservationForm = ({
         <dl>
           <dt>{t('예약인원')}</dt>
           <dd>
-            <select name="persons" value={form?.persons} onChange={onChange}>
+            <select
+              name="persons"
+              value={form?.persons}
+              onChange={onChange}
+              size="10"
+            >
               {[...new Array(30).keys()].map((i) => (
                 <option key={`persons_${i}`} value={i + 1}>
                   {i + 1}

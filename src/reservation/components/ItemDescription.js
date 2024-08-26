@@ -85,9 +85,12 @@ const ItemDescription = ({ item }) => {
         {wwwAddress && (
           <dl>
             <dt>{t('홈페이지주소')}</dt>
-            <a href={wwwAddress} target="_blank" rel="noopener noreferrer">
-              {wwwAddress}
-            </a>
+            <dd>
+              <a href={wwwAddress} target="_blank" rel="noopener noreferrer">
+                {wwwAddress}
+              </a>
+            </dd>
+            {/* 외부 링크 사용 시 a 태그 */}
           </dl>
         )}
       </div>

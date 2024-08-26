@@ -9,7 +9,7 @@ import KakaoMap from '../../map/KakaoMap';
 import { ImageListBox2 } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
-  const qs = {};
+  const qs = { limit: 9 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
