@@ -5,29 +5,53 @@ import { ImageBgBox } from '../../commons/components/ImageBox';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
 import { useParams } from 'react-router-dom';
+import NoImage from '../../images/farm.jpg';
+import { FcPhone } from 'react-icons/fc';
 
 const { midGreen } = color;
 
-const WishListItems = ({ item, className }) => {
+const WishListItems = ({ item, className, rootUrl}) => {
   const { tab } = useParams();
-  const { seq, title, photoUrl, address } = item;
-  const url = `/${tab}/${seq}`;
+  const Notel = '홈페이지 문의';
+  const {
+    seq,
+    title,
+    photoUrl1,
+    address,
+    photoUrl,
+    townImage,
+    townName,
+    doroAddress,
+    tel,
+    ownerTel,
+  } = item;
+  const displayImageUrl = photoUrl1 ?? photoUrl ?? townImage ?? NoImage;
+  console.log(displayImageUrl);
+  const displaytitle = title ?? townName;
+  const displayaddress = address ?? doroAddress;
+  const displaytel = tel ?? ownerTel ?? Notel;
+  rootUrl = rootUrl ?? '';
+  const url = `${rootUrl}/${tab}/${seq}`;
   return (
     <li className={className}>
       <Link to={url}>
-        {photoUrl && (
+        {displayImageUrl && (
           <ImageBgBox
             className="photo"
-            url={photoUrl}
+            url={displayImageUrl}
             width="100%"
-            height="150px"
+            height="165px"
           />
         )}
         <div className="item-content">
-          <div className="title">{title}</div>
+          <div className="title">{displaytitle}</div>
+          <div className="tel">
+            <FcPhone className="tel_icon" />
+            {displaytel}
+          </div>
           <div className="address">
             <FaMapMarkerAlt className="icon" />
-            {address}
+            {displayaddress}
           </div>
         </div>
       </Link>
@@ -39,8 +63,10 @@ const ItemStyledBox = styled(WishListItems)`
   padding: 15px;
   border: 1px solid #ada493;
   border-radius: 5px;
-  width: 50%;
+  width: 450px;
   height: 200px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 
   &:hover {
     border: 3px solid ${midGreen};
@@ -56,7 +82,7 @@ const ItemStyledBox = styled(WishListItems)`
 
     .item-content {
       width: 100%;
-      padding: 10px;
+      padding: 10px 0 10px 20px;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -67,6 +93,18 @@ const ItemStyledBox = styled(WishListItems)`
         font-weight: bold;
         text-align: center;
         overflow-wrap: break-word;
+        padding: 0 10px;
+      }
+
+      .tel {
+        font-size: 15px;
+        color: #767676;
+
+        .tel_icon {
+          position: relative;
+          top: 3px;
+          margin-right: 5px;
+        }
       }
 
       .address {

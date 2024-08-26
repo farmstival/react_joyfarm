@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styled from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
-const { dark } = buttonColor;
+const { midGreen, darkGreen } = buttonColor;
 const { medium } = fontSize;
 
 const Wrapper = styled.nav`
@@ -12,15 +12,22 @@ const Wrapper = styled.nav`
   display: flex;
   height: 55px;
   a {
-    background: ${dark[0]};
-    color: ${dark[1]};
+    background: ${midGreen[0]};
+    width: 150px;
+    height: 50px;
+    color: ${darkGreen[1]};
     padding: 0 25px;
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: ${medium};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   a:hover,
   a.on {
-    background: ${dark[2]};
+    background: ${darkGreen[2]};
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
   a + a {
     margin-left: 10px;

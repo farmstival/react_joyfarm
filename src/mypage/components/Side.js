@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../../styles/fontSize';
+import { useParams } from 'react-router-dom';
 const { medium } = fontSize;
 
 const Wrapper = styled.aside`
@@ -22,6 +23,8 @@ const Wrapper = styled.aside`
 
 const Side = () => {
   const { t } = useTranslation();
+  const { tab } = useParams();
+  const wishlistTab = tab || 'reservation';
 
   return (
     <Wrapper>
@@ -44,10 +47,10 @@ const Side = () => {
         {t('게시글_관리')}
       </NavLink>
       <NavLink
-        to="/mypage/wishlist/tour"
+        to={`/mypage/wishlist/${wishlistTab}`}
         className={({ isActive }) => classNames({ on: isActive })}
       >
-        WishList
+        {t('찜하기_리스트')}
       </NavLink>
     </Wrapper>
   );

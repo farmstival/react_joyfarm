@@ -26,3 +26,13 @@ export const ImageListBox2 = styled.div`
   margin-top: 60px;
   justify-content: center;
 `;
+
+export const WishListBox = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+`;

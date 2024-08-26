@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { color } from '../../../styles/color';
-import { ZzimButton } from '../../../commons/components/Buttons';
 import {
   FcCalendar,
   FcAbout,

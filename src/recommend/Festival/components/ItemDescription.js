@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { ZzimButton } from '../../../commons/components/Buttons';
+import { color } from '../../../styles/color';
 import moment from 'moment';
 import {
   FcCalendar,
@@ -13,6 +13,9 @@ import {
   FcElectricity,
   FcPlus,
 } from 'react-icons/fc';
+import WishButton from '../../../commons/components/WishButton';
+
+const { mid_gray } = color;
 
 const Wrapper = styled.div`
   position: relative;
@@ -51,8 +54,13 @@ const Wrapper = styled.div`
 
   .button {
     display: flex;
-    justify-content: flex-end;
-    margin: 30px 30px 0 0;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    color: ${mid_gray};
+    position: relative;
+    left: 250px;
+    bottom: -35px;
   }
 `;
 
@@ -69,6 +77,7 @@ const ItemDescription = ({ item }) => {
     tel,
     pageLink,
     content,
+    seq
   } = item;
   const startformattedDate = moment( startDate ).format('YYYY년 MM월 DD일');
   const endformattedDate = moment( endDate ).format('YYYY년 MM월 DD일');
@@ -147,8 +156,9 @@ const ItemDescription = ({ item }) => {
         </dt>
         <dd>{content}</dd>
       </dl>
-      <div className='button'>
-      <ZzimButton>{t('찜하기')}</ZzimButton>
+      <div className="button">
+        <WishButton seq={seq} type={'FESTIVAL'}></WishButton>
+        {t('찜하기')}
       </div>
     </Wrapper>
   );
