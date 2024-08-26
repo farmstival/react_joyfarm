@@ -31,7 +31,7 @@ const StyledMain = styled.div`
   }
 `;
 
-const Main = () => {
+const MyPageMain = () => {
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
@@ -50,4 +50,4 @@ const Main = () => {
   );
 };
 
-export default React.memo(Main);
+export default React.memo(MyPageMain);

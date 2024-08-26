@@ -1,12 +1,13 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import InputBox from '../../commons/components/InputBox';
 import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
+import { apiUpdate } from '../apis/apiUpdate';
 const { small, big, medium } = fontSize;
 const { midGreen, whiteGray } = color;
 
@@ -30,7 +31,7 @@ const FormBox = styled.form`
   }
 
   button a {
-    color:white;
+    color: white;
     background: ${midGreen};
   }
 `;
@@ -55,16 +56,23 @@ const MyPageView = () => {
     [userInfo, setUserInfo],
   );
 
-  //const onToggle = useCallback(setUserInfo(...userInfo));
+  const navigate = useNavigate();
 
   const updateUserInfo = () => {
-    setUserInfo(userInfo);
-    alert(t('회원정보가_수정되었습니다.'));
+    apiUpdate(userInfo)
+      .then(() => {
+        alert(t('회원정보가_수정되었습니다.'));
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(t('회원정보 수정 중 오류가 발생했습니다.'));
+      });
   };
 
   return (
     <FormBox>
-      <div class="mypage">
+      <div className="mypage">
         <dl>
           <dt>{t('이메일')}</dt>
           <dd>
@@ -72,6 +80,7 @@ const MyPageView = () => {
               type="text"
               name="email"
               value={userInfo.email ?? ''}
+              disabled
               onChange={_onChange}
             />
           </dd>
@@ -80,9 +89,8 @@ const MyPageView = () => {
           <dt>{t('비밀번호')}</dt>
           <dd>
             <InputBox
-              type="password"
               name="password"
-              value={userInfo.password ?? ''} // blank로 처리하기
+              value=''
               onChange={_onChange}
             />
           </dd>
