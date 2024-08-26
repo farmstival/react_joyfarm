@@ -12,19 +12,19 @@ import apiApply from '../apis/apiApply';
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
   const {
-    states: {
-      userInfo: { userName, email, mobile },
-    },
+    states: { userInfo },
   } = useContext(UserInfoContext);
 
   const [data, setData] = useState(null);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     activitySeq: seq,
-    name: userName,
-    email,
-    mobile,
+    name: userInfo?.userName,
+    email: userInfo?.email,
+    mobile: userInfo?.mobile,
+    persons: 1, //기본값 1명
   });
+  const [times, setTimes] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log("Fetched data:", res); // 데이터 확인용 로그 추가
+        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
         setPageTitle(`${res.townName} ${t('예약하기')}`);
 
         /* 예약 가능일 문자열 -> Date 객체  */

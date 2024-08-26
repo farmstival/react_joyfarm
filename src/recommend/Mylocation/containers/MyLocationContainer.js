@@ -23,8 +23,8 @@ const MyLocationContainer = ({ onLocationsUpdate }) => {
       const { latitude, longitude } = pos.coords; 
       setCenter({ lat: latitude, lng: longitude }); */
 
-      const [latitude, longitude] = [37.505848570003, 127.47334950721961];
-      setCenter({ lat: 37.505848570003, lng: 127.47334950721961 });
+      const [latitude, longitude] = [37.7271753, 126.5122578];
+      setCenter({ lat: 37.7271753, lng: 126.5122578 });
 
       geocoder.coord2RegionCode(longitude, latitude, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
@@ -35,9 +35,9 @@ const MyLocationContainer = ({ onLocationsUpdate }) => {
                 //sido: r.region_1depth_name,
                 //sigungu: r.region_2depth_name,
                 //sido: r.region_1depth_name, // 현재 시도로 데이터 검색
-                sido: '경기',
+                sido: '인천',
                 //sigungu: r.region_2depth_name, // 현재 시군구로 데이터 검색
-                sigungu: '양평군',
+                sigungu: '강화군',
               }));
               break;
             }
