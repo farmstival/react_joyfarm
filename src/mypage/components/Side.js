@@ -9,21 +9,10 @@ const { medium } = fontSize;
 const { midGreen, lightGreen } = color;
 
 const Wrapper = styled.aside`
-  /* 
- background: #6c757d;
-  a {
-    
-    font-size: ${medium};
-    border-bottom: 1px solid #616161;
-    &.on {
-      background: #000;
-      color: #fff;
-    }
-  } */
-
   align-content: center;
   position: fixed;
   top: 22%;
+  margin-left: -30px;
 
   a {
     display: flex;
@@ -55,6 +44,7 @@ const Wrapper = styled.aside`
     border-bottom-left-radius: 15px; /* 좌측 상단 모서리 반경 */
     border-bottom-right-radius: 15px; /* 우측 상단 모서리 반경 */
   }
+
 `;
 
 const Side = () => {

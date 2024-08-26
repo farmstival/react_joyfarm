@@ -8,16 +8,30 @@ import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
 const { small, big, medium } = fontSize;
-const { midGreen } = color;
+const { midGreen, whiteGray } = color;
 
 const FormBox = styled.form`
   width: 500px;
   margin: 0 auto;
   margin-top: 50px;
-  font-size: ${medium};w
+  font-size: ${medium};
 
   input {
     margin-bottom: 10px;
+  }
+
+  dl + dl {
+    padding-top: 20px;
+  }
+
+  button {
+    color: white;
+    background: ${midGreen};
+  }
+
+  button a {
+    color:white;
+    background: ${midGreen};
   }
 `;
 
@@ -28,7 +42,6 @@ const MyPageView = () => {
     actions: { setUserInfo },
   } = useContext(UserInfoContext);
   // 'UserInfoContext'로 로그인 상태, 사용자 정보 가져옴
-
 
   const _onChange = useCallback(
     (e) => {
@@ -98,11 +111,12 @@ const MyPageView = () => {
         </dl>
       </div>
       <ButtonGroup>
-        <MidButton type="button" color="midGreen" onClick={updateUserInfo}>
+        <MidButton type="button" onClick={updateUserInfo}>
           {t('회원정보_수정하기')}
         </MidButton>
-        <MidButton type="button" color="midGreen">
+        <MidButton type="button">
           <NavLink to="/">{t('회원탈퇴하기')}</NavLink>
+          {/* 탈퇴하기 누르면 메인페이지로 이동(기능 아직 X) */}
         </MidButton>
       </ButtonGroup>
     </FormBox>
