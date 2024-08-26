@@ -6,7 +6,7 @@ import Footer from '../outlines/Footer';
 import Side from '../mypage/components/Side'; // 우측 메뉴
 
 const MainBox = styled.main`
-  min-height: 650px;
+  min-height: 820px;
   position: relative;
   display: flex;
   aside {
