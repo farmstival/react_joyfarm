@@ -32,6 +32,6 @@ export const WishListBox = styled.div`
   width: 950px;
   margin: 0 auto;
   display: grid;
-  place-items: left;
+  place-items: center;
   grid-template-columns: repeat(2, 1fr);
 `;

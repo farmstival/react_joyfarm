@@ -16,7 +16,6 @@ const MainBox = styled.main`
   section.main-content {
     flex-grow: 1;
     padding: 20px;
-    padding-left: 150px;
   }
 `;
 
