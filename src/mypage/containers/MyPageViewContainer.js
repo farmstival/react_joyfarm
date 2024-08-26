@@ -26,11 +26,13 @@ const FormBox = styled.form`
   }
 
   button {
+    border: none;
     color: white;
     background: ${midGreen};
   }
 
   button a {
+    border: none;
     color: white;
     background: ${midGreen};
   }
@@ -88,11 +90,13 @@ const MyPageView = () => {
         <dl>
           <dt>{t('비밀번호')}</dt>
           <dd>
-            <InputBox
-              name="password"
-              value=''
-              onChange={_onChange}
-            />
+            <InputBox name="password" type="password" onChange={_onChange} />
+          </dd>
+        </dl>
+        <dl>
+          <dt>{t('비밀번호_확인')}</dt>
+          <dd>
+            <InputBox name="confirmPassword" type="password" onChange={_onChange} />
           </dd>
         </dl>
         <dl>
