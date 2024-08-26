@@ -8,6 +8,7 @@ export const color = {
   info: '#17a2b8',
   light: '#E2E2E2',
   dark: '#343a40',
+  black: '#000',
   darkGreen: '#428C4C',
   midGreen: '#39AE48',
   lightGreen: '#C2F2B6',

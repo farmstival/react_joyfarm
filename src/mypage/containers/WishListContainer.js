@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import TabMenus from '../../commons/components/TabMenus';
 import { apiWishlist as getFestivalList } from '../../recommend/Festival/apis/apiInfo';
 import { apiWishlist as getTourList } from '../../recommend/tour/apis/apiInfo';
+import { apiWishList as getReservation } from '../../reservation/apis/apiInfo';
 import Loading from '../../commons/components/Loading';
 import WishListItem from '../components/WishListItem';
 
@@ -15,6 +16,7 @@ const WishListContainer = () => {
   const { tab } = useParams();
   useEffect(() => {
     setMenus(() => [
+      { name: t('예약'), link: '/mypage/wishlist/reservation' },
       { name: t('여행지'), link: '/mypage/wishlist/tour' },
       { name: t('게시글'), link: '/mypage/wishlist/board' },
       { name: t('축제'), link: '/mypage/wishlist/festival' },
@@ -25,32 +27,39 @@ const WishListContainer = () => {
       case 'tour':
         apiList = getTourList;
         break;
-      case 'board':
+      case 'reservation':
+        apiList = getReservation;
         break;
       default:
         apiList = getFestivalList;
         return;
     }
 
-    if (!apiList){
-        return;
+    if (!apiList) {
+      return;
     }
 
     (async () => {
-        try {
-            const res = await apiList();
-            setItems(res.items);
-            setPagination(res.pagination);
-        } catch (err) {
-            console.error(err);
-        }
+      try {
+        const res = await apiList();
+        setItems(res.items);
+        setPagination(res.pagination);
+      } catch (err) {
+        console.error(err);
+      }
     })();
   }, [t, tab]);
 
-  return (<>
-  <TabMenus items={menus}/>
-  {items && items.length > 0 ? <WishListItem items={items} pagination={pagination}/> : <Loading/>}
-  </>);
+  return (
+    <>
+      <TabMenus items={menus} />
+      {items && items.length > 0 ? (
+        <WishListItem items={items} pagination={pagination} />
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
 };
 
 export default React.memo(WishListContainer);
