@@ -61,9 +61,9 @@ const MyLocListContainer = () => {
           <MyLocationContainer onLocationsUpdate={handleLocationsUpdate} />
         </StyledMyLoc>
         <StyledList>
-          <div class="sub_title">
+          <div className="sub_title">
             <h2>
-              <GrMapLocation class="icon" />
+              <GrMapLocation className="icon" />
               &nbsp;
               {t('주변_여행지_리스트')}
             </h2>
