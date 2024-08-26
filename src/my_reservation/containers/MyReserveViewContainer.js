@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -8,7 +8,6 @@ import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import img from '../../images/ReviewImage1.jpg';
-import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiCancel from '../apis/apiCancel';
 
 const Wrapper = styled.div`
@@ -57,20 +56,16 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
   }, []);
 
   const onSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
 
-      /* 예약 취소 처리 S */
-      (async () => {
-        try {
-          const res = await apiCancel(item);
-          // 예약 취소 성공시 예약 취소 페이지 이동
-          navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
-        } catch (err) {
-          console.error(err);
-        }
-      })();
-      /* 예약 취소 처리 E */
+      try {
+        const res = await apiCancel(item.seq);
+        // 예약 취소 성공시 예약 취소 페이지로 이동
+        navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
+      } catch (err) {
+        console.error(err);
+      }
     },
     [item, navigate],
   );

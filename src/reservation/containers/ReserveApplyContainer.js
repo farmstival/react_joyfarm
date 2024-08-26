@@ -24,7 +24,6 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     mobile: userInfo?.mobile,
     persons: 1, //기본값 1명
   });
-  const [times, setTimes] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 

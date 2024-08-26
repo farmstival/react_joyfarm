@@ -86,11 +86,11 @@ const ItemDescription = ({ item, onSubmit }) => {
           <dd>{townName}</dd>
         </dl>
       </div>
-      <Link to={`/myreservation/cancel/${item.seq}`}>
-        <MidButton className="rsv_button" onSubmit={onSubmit} color="midGreen">
+      <form onSubmit={onSubmit}>
+        <MidButton type="submit" className="rsv_button" color="midGreen">
           {t('예약_취소')}
         </MidButton>
-      </Link>
+      </form>
     </Wrapper>
   );
 };
