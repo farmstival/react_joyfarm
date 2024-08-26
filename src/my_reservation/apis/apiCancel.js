@@ -5,7 +5,7 @@ export default function apiCancel(seq) {
     (async () => {
       try {
         const res = await apiRequest(`/myreservation/cancel/${seq}`, 'POST');
-        if (res.status === 201) {
+        if (res.status >= 200 || res.status < 300) {
           resolve(res.data.data);
           return;
         }

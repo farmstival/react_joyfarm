@@ -32,18 +32,19 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log("Fetched data:", res); // 데이터 확인용 로그 추가
+        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
         setPageTitle(`${res.townName} ${t('예약정보')}`);
-      setItem(res);
+        setItem(res);
 
-      const position = { lat: item.latitude, lng: item.longitude };
-      setMapOptions((opt) => {
-        const options = item.latitude
-          ? { ...opt, center: position, marker: position }
-          : { ...opt, doroAddress: item.doroAddress };
+        const position = { lat: item.latitude, lng: item.longitude };
+        setMapOptions((opt) => {
+          const options = item.latitude
+            ? { ...opt, center: position, marker: position }
+            : { ...opt, doroAddress: item.doroAddress };
 
-        return options;
-      })} catch (err) {
+          return options;
+        });
+      } catch (err) {
         console.error(err);
       }
     })();
@@ -53,14 +54,12 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     console.log('이미지 주소', imageUrl);
   }, []);
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-
+  const onClick = useCallback(
+    (seq) => {
       /* 예약 취소 처리 S */
       (async () => {
         try {
-          const res = await apiCancel(item.seq);
+          const res = await apiCancel(seq);
           // 예약 취소 성공시 예약 취소 페이지 이동
           navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
         } catch (err) {
@@ -69,7 +68,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
       })();
       /* 예약 취소 처리 E */
     },
-    [item, navigate],
+    [navigate],
   );
 
   if (!item) {
@@ -85,7 +84,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
           //이미지 없는 경우 대체
           <ItemImage className="img" images={img} onClick={onShowImage} />
         )}
-        <ItemDescription item={item} onSubmit={onSubmit} />
+        <ItemDescription item={item} onClick={onClick} />
       </Wrapper>
       <KakaoMap {...mapOptions} />
     </>

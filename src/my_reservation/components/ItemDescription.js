@@ -45,61 +45,55 @@ const Wrapper = styled.div`
   }
 `;
 
-
-const ItemDescription = ({ item, onSubmit }) => {
+const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
-  const {
-    name,
-    email,
-    mobile,
-    rdate,
-    ampm,
-    townName,
-    persons,
-  } = item;
-  
+  const { name, email, mobile, rdate, ampm, townName, persons } = item;
+
   return (
     <Wrapper className="wrap_box">
-    <div className="person_info">
-      <div>{t('예약자_정보')}</div>
-      <dl>
-        <dt>{t('예약자명')}</dt>
-        <dd>{name}</dd>
-      </dl>
-      <dl>
-        <dt>{t('이메일')}</dt>
-        <dd>{email}</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약자_전화번호')}</dt>
-        <dd>{mobile}</dd>
-      </dl>
-    </div>
+      <div className="person_info">
+        <div>{t('예약자_정보')}</div>
+        <dl>
+          <dt>{t('예약자명')}</dt>
+          <dd>{name}</dd>
+        </dl>
+        <dl>
+          <dt>{t('이메일')}</dt>
+          <dd>{email}</dd>
+        </dl>
+        <dl>
+          <dt>{t('예약자_전화번호')}</dt>
+          <dd>{mobile}</dd>
+        </dl>
+      </div>
 
-    <div className="rsv_info">
-      <div>{t('예약한_체험_마을')}</div>
-      <dl>
-        <dt>{t('예약일')}</dt>
-        <dd>{rdate}</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약시간')}</dt>
-        <dd>{ampm}</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약인원')}</dt>
-        <dd>{persons}</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약한_체험_마을')}</dt>
-        <dd>{townName}</dd>
-      </dl>
-    </div>
-      <Link to={`/myreservation/cancel/${item.seq}`}>
-        <MidButton className="rsv_button" onClick={onSubmit} color="midGreen" >
-          {t('예약_취소')}
-        </MidButton>
-      </Link>
+      <div className="rsv_info">
+        <div>{t('예약한_체험_마을')}</div>
+        <dl>
+          <dt>{t('예약일')}</dt>
+          <dd>{rdate}</dd>
+        </dl>
+        <dl>
+          <dt>{t('예약시간')}</dt>
+          <dd>{ampm}</dd>
+        </dl>
+        <dl>
+          <dt>{t('예약인원')}</dt>
+          <dd>{persons}</dd>
+        </dl>
+        <dl>
+          <dt>{t('예약한_체험_마을')}</dt>
+          <dd>{townName}</dd>
+        </dl>
+      </div>
+
+      <MidButton
+        className="rsv_button"
+        onClick={() => onClick(item.seq)}
+        color="midGreen"
+      >
+        {t('예약_취소')}
+      </MidButton>
     </Wrapper>
   );
 };
