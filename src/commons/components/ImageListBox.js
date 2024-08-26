@@ -29,10 +29,9 @@ export const ImageListBox2 = styled.div`
 
 export const WishListBox = styled.div`
   box-sizing: border-box;
-  width: 100%;
+  width: 950px;
   margin: 0 auto;
   display: grid;
-  place-items: center;
+  place-items: left;
   grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
 `;

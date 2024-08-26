@@ -6,7 +6,7 @@ import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 
 const { midGreen, line_gray, dark, white } = color;
-const { big } = fontSize;
+const { medium } = fontSize;
 
 const Wrapper = styled.nav`
   padding: 10px 0;
@@ -14,16 +14,17 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   height: 55px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   a {
     background: ${white};
-    width: 150px;
+    width: 130px;
     height: 50px;
     color: ${dark};
     padding: 0 25px;
     border-radius: 5px;
-    font-size: ${big};
+    font-size: ${medium};
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
