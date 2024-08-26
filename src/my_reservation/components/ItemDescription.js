@@ -3,18 +3,36 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
+import fontSize from '../../styles/fontSize';
+
+const { normal, medium } = fontSize;
 
 const Wrapper = styled.div`
-  width: 350px;
+  width: 400px;
+  height: 500px;
   word-break: break-all;
+
+  .dscp_box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 90%;
+
+    .rsv_button {
+      position: absolute;
+      width: 400px;
+    }
+  }
 
   dl {
     display: flex;
-
     padding: 10px 15px;
+    font-size: ${normal};
+    line-height: 170%;
 
     dt {
-      width: 100px;
+      width: 120px;
+      font-weight: bold;
     }
 
     dd {
@@ -23,55 +41,64 @@ const Wrapper = styled.div`
   }
 
   dl + dl {
-    border-top: 1px dashed #818181;
+    border-top: 1px solid #a6a6a6;
   }
 `;
 
-const ItemDescription = ({ item }) => {
+
+const ItemDescription = ({ item, onSubmit }) => {
   const { t } = useTranslation();
   const {
+    name,
+    email,
+    mobile,
+    rdate,
+    ampm,
     townName,
-    activityName,
-    address,
-    ownerTel,
-    facilityInfo,
-    wwwAddress,
+    persons,
   } = item;
+  
   return (
-    <Wrapper>
+    <Wrapper className="wrap_box">
+    <div className="person_info">
+      <div>{t('예약자_정보')}</div>
       <dl>
-        <dt>{t('체험마을명')}</dt>
+        <dt>{t('예약자명')}</dt>
+        <dd>{name}</dd>
+      </dl>
+      <dl>
+        <dt>{t('이메일')}</dt>
+        <dd>{email}</dd>
+      </dl>
+      <dl>
+        <dt>{t('예약자_전화번호')}</dt>
+        <dd>{mobile}</dd>
+      </dl>
+    </div>
+
+    <div className="rsv_info">
+      <div>{t('예약한_체험_마을')}</div>
+      <dl>
+        <dt>{t('예약일')}</dt>
+        <dd>{rdate}</dd>
+      </dl>
+      <dl>
+        <dt>{t('예약시간')}</dt>
+        <dd>{ampm}</dd>
+      </dl>
+      <dl>
+        <dt>{t('예약인원')}</dt>
+        <dd>{persons}</dd>
+      </dl>
+      <dl>
+        <dt>{t('예약한_체험_마을')}</dt>
         <dd>{townName}</dd>
       </dl>
-      <dl>
-        <dt>{t('체험프로그램명')}</dt>
-        <dd>{activityName}</dd>
-      </dl>
-      <dl>
-        <dt>{t('체험마을장소')}</dt>
-        <dd>{address}</dd>
-      </dl>
-      {ownerTel && (
-        <dl>
-          <dt>{t('대표전화번호')}</dt>
-          <dd>{ownerTel}</dd>
-        </dl>
-      )}
-      {facilityInfo && (
-        <dl>
-          <dt>{t('보유시설정보')}</dt>
-          <dd>{facilityInfo}</dd>
-        </dl>
-      )}
-      {wwwAddress && (
-        <dl>
-          <dt>{t('홈페이지주소')}</dt>
-          <dd>{wwwAddress}</dd>
-        </dl>
-      )}
-
-      <Link to="/reservation/list/1">
-        <MidButton color="midGreen">{t('취소하기')}</MidButton>
+    </div>
+      <Link to={`/myreservation/cancel/${item.seq}`}>
+        <MidButton className="rsv_button"  onSubmit={onSubmit}color="midGreen">
+          {t('예약_취소')}
+        </MidButton>
       </Link>
     </Wrapper>
   );

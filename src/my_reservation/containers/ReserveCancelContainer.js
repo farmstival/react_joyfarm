@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 import { myApiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고옴
 import Loading from '../../commons/components/Loading';
 import { useTranslation } from 'react-i18next';
-import CompletionForm from '../components/CompletionForm';
+import CancelForm from '../components/CancelForm';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import apiCancel from '../apis/apiCancel';
 
-const ReserveCompletionContainer = ({ setPageTitle, setMainTitle }) => {
+const ReserveCanCelContainer = ({ setPageTitle }) => {
   const [data, setData] = useState(null);
   const { seq } = useParams();
   const { t } = useTranslation();
@@ -16,15 +17,12 @@ const ReserveCompletionContainer = ({ setPageTitle, setMainTitle }) => {
       try {
         const res = await myApiGet(seq);
         setData(res);
-        setMainTitle(
-          `${data.name} ${t('님의_')} ${res.townName} ${t('예약_확인')}`,
-        );
-        setPageTitle(`${res.townName} ${t('예약_확인')}`);
+        setPageTitle(`${res.townName} ${t('예약_취소')}`);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, [seq, setMainTitle, setPageTitle, t, data]); //변화감지 값 넣어주기
+  }, [seq, setPageTitle, t, data]); //변화감지 값 넣어주기
 
   if (!data) {
     return <Loading />;
@@ -33,9 +31,9 @@ const ReserveCompletionContainer = ({ setPageTitle, setMainTitle }) => {
 
   return (
     <>
-      <CompletionForm data={data} />
+      <CancelForm data={data} />
     </>
   );
 };
 
-export default React.memo(ReserveCompletionContainer);
+export default React.memo(ReserveCanCelContainer);

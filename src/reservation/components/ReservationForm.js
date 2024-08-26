@@ -6,7 +6,6 @@ import { IoIosRadioButtonOff, IoIosRadioButtonOn } from 'react-icons/io';
 import { BigButton } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
-import UserInfoContext from '../../member/modules/UserInfoContext';
 
 const FormBox = styled.form`
   display: flex;
