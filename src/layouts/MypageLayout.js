@@ -10,7 +10,7 @@ const MainBox = styled.main`
   position: relative;
   display: flex;
   aside {
-    width: 210px;
+    width: 150px;
   }
 
   section.main-content {
