@@ -4,7 +4,7 @@ import { apiList } from '../apis/apiInfo';
 import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 
-const MyLocationContainer = ({onLocationsUpdate}) => {
+const MyLocationContainer = ({ onLocationsUpdate }) => {
   const [search, setSearch] = useState({
     sido: '',
     sigungu: '',
@@ -85,7 +85,7 @@ const MyLocationContainer = ({onLocationsUpdate}) => {
           return;
         }
         const res = await apiList(search);
-        
+
         /* 마커 표기 좌표 가공 처리 S */
         if (!res?.items || res?.items?.length === 0) {
           return;
@@ -108,7 +108,6 @@ const MyLocationContainer = ({onLocationsUpdate}) => {
             },
           }));
 
-      
         if (onLocationsUpdate) {
           onLocationsUpdate(_locations); // 부모 컴포넌트에 위치 정보 전달
         }

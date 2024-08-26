@@ -10120,7 +10120,7 @@ react-chartjs-2@^5.2.0:
 
 react-cookies@^0.1.1:
   version "0.1.1"
-  resolved "https://registry.npmjs.org/react-cookies/-/react-cookies-0.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/react-cookies/-/react-cookies-0.1.1.tgz#2a35807e04f5a13f58ccd1a9fb66574506873c88"
   integrity sha512-PP75kJ4vtoHuuTdq0TAD3RmlAv7vuDQh9fkC4oDlhntgs9vX1DmREomO0Y1mcQKR9nMZ6/zxoflaMJ3MAmF5KQ==
   dependencies:
     cookie "^0.3.1"
@@ -10218,7 +10218,7 @@ react-lifecycles-compat@^3.0.0:
 
 react-modal@^3.16.1:
   version "3.16.1"
-  resolved "https://registry.npmjs.org/react-modal/-/react-modal-3.16.1.tgz"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.16.1.tgz#34018528fc206561b1a5467fc3beeaddafb39b2b"
   integrity sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==
   dependencies:
     exenv "^1.2.0"

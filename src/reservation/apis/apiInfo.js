@@ -18,3 +18,4 @@ export const apiList = (search) => {
 
 // 상세 조회
 export const apiGet = (seq) => requestData(`/reservation/info/${seq}`);
+export const myapiGet = (seq) => requestData(`/myreservation/info/${seq}`);
