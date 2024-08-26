@@ -206,12 +206,12 @@ const FormContainer = ({ setPageTitle }) => {
       /* 데이터 저장 처리 S */
       (async () => {
         try {
+          const { locationAfterWriting, bid } = board;
           const res =
             form.mode === 'update'
               ? await update(seq, form)
               : await write(bid, form);
 
-          const { locationAfterWriting, bid } = board;
           const url =
             locationAfterWriting === 'list'
               ? `/board/list/${bid}`
