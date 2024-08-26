@@ -5,8 +5,7 @@ import JoinContainer from '../containers/JoinContainer';
 import { OuterBox, PageTitle, ContentBox, PageNavWrap } from '../../commons/components/LayoutBox';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
-import Image from '../../images/join.png';
-
+import { RiPlantLine } from "react-icons/ri";
 const Join = () => {
   const { t } = useTranslation();
 
@@ -26,18 +25,8 @@ const Join = () => {
             position: 'relative',
           }}
         >
-          <img
-            src={Image}
-            alt="join.png"
-            style={{
-              width: '35px',
-              position: 'absolute', // 절대 위치 지정
-              left: 'calc(50% - 70px)', // 이미지의 가운데 위치를 조정
-              transform: 'translateX(-50%)',
-              marginBottom: '10px',
-            }}
-          />
-          <MainTitle style={{ marginLeft: '10px', marginBottom: '-10px' }}>
+         <RiPlantLine size={35} color="#428C4C" />
+          <MainTitle style={{ marginLeft: '-8px', marginBottom: '-20px' }}>
             {t('회원가입')}
           </MainTitle>
         </div>

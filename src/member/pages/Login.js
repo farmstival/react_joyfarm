@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import LoginContainer from '../containers/LoginContainer';
 import fontSize from '../../styles/fontSize';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
-import Image from '../../images/login.png';
+import { PiPlantDuotone } from 'react-icons/pi';
 
 const { medium, big } = fontSize;
 
@@ -47,17 +47,22 @@ const Login = () => {
           minHeight: '50vh', // 세로 가운데 정렬을 위한 높이 설정
         }}
       >
-        <h1 style={{ marginBottom: '-40px' }}>{t('로그인')}</h1>
-        <img
-          src={Image}
-          alt="login.png"
-          style={{
-            width: '35px',
-            marginRight: '150px',
-            marginLeft: '50px',
-            marginBottom: '10px',
-          }}
-        ></img>
+        <h1 style={{ marginBottom: '-30px', marginLeft: '-4px' }}>
+          {t('로그인')}
+        </h1>
+
+        <div>
+        <PiPlantDuotone 
+        size={40} 
+        style={{ 
+          position: 'relative', // 위치 조정 시작
+          top:'-10px',         // 위에서 아래로 20px 이동
+          left:'-50px',          // 왼쪽에서 오른쪽으로 10px 이동
+          color:'green'         // 아이콘 색상 설정 (선택 사항)
+        }} 
+        />
+        </div>
+
         <LoginContainer />
       </OuterBox>
     </GuestOnlyContainer>

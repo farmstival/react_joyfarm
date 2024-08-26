@@ -21,9 +21,9 @@ export const apiJoin = (form) =>
       });
   });
 
-  // 이메일 인증 메일 보내기
+// 이메일 인증 메일 보내기
 export const apiEmailAuth = (email, uid) =>
-  requestData(`/email/verify?email=${email}&uid=${uid}`);
+  requestData(`/email-service/verify?email=${email}&uid=${uid}`);
 
 // 인증 메일 코드 검증 처리
 export const apiEmailAuthCheck = (authNum, uid) =>

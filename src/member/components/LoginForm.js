@@ -45,7 +45,7 @@ const StyledLink = styled(Link)`
 //-----------------
 
 const FormBox = styled.form`
-  background-color: #bad2ff; /* 부드러운 배경색 추가 */
+  background-color: #D5D5D5; 
   padding: 35px;
   border-radius: 55px;
   width: 400px;
@@ -104,9 +104,9 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
 
         <StyledMidButton
           type="submit"
-          bgColor="#6e8f6d" /* 기본 배경색 */
+          bgColor="#767676" /* 기본 배경색 */
           textColor="white" /* 기본 텍스트 색상 */
-          hoverBgColor="#77c973" /* hover 시 배경색 */
+          hoverBgColor="#C2F2B6" /* hover 시 배경색 */
           hoverTextColor="black" /* hover 시 텍스트 색상 */
         >
           {t('로그인')}
