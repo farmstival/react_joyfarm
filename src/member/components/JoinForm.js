@@ -10,8 +10,6 @@ import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 import { color } from '../../styles/color';
 
-
-
 const FormBox = styled.form`
 background-color: #E2E2E2; /* 부드러운 배경색 추가 */
 padding: 25px;
@@ -104,9 +102,8 @@ const EmailVerificationBox = styled.div`
       width: 95px;
       height: 68px;
       border-radius: 20px;
-      border: px solid #A2A2A2;
+      border: 2px solid #A2A2A2;
       padding: 8px;
-      
     }
   }
 
@@ -452,7 +449,12 @@ const JoinForm = ({
         </div>
 
         <ButtonGroup width={450}>
-          <BigButton type="button" color="midGreen" onClick={onReset}  gid={form.gid} >
+          <BigButton
+            type="button"
+            color="midGreen"
+            onClick={onReset}
+            gid={form.gid}
+          >
             {t('다시입력')}
           </BigButton>
           <BigButton type="submit" color="darkGreen">
