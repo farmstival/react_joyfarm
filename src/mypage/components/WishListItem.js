@@ -10,7 +10,7 @@ import { FcPhone } from 'react-icons/fc';
 
 const { midGreen } = color;
 
-const WishListItems = ({ item, className, rootUrl}) => {
+const WishListItems = ({ item, className, rootUrl }) => {
   const { tab } = useParams();
   const Notel = '홈페이지 문의';
   const {
@@ -32,6 +32,7 @@ const WishListItems = ({ item, className, rootUrl}) => {
   const displaytel = tel ?? ownerTel ?? Notel;
   rootUrl = rootUrl ?? '';
   const url = `${rootUrl}/${tab}/${seq}`;
+  console.log('tttt', url, tab, 'rootUrl', rootUrl);
   return (
     <li className={className}>
       <Link to={url}>

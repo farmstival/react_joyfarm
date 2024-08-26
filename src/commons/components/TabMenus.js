@@ -5,12 +5,13 @@ import styled from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 const { midGreen, darkGreen } = buttonColor;
-const { medium } = fontSize;
+const { big } = fontSize;
 
 const Wrapper = styled.nav`
   padding: 10px 0;
   display: flex;
   height: 55px;
+  margin-bottom: 20px;
   a {
     background: ${midGreen[0]};
     width: 150px;
@@ -18,7 +19,7 @@ const Wrapper = styled.nav`
     color: ${darkGreen[1]};
     padding: 0 25px;
     border-radius: 5px;
-    font-size: ${medium};
+    font-size: ${big};
     display: flex;
     align-items: center;
     justify-content: center;
