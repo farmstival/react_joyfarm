@@ -4,8 +4,7 @@ import { myApiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고�
 import Loading from '../../commons/components/Loading';
 import { useTranslation } from 'react-i18next';
 import CancelForm from '../components/CancelForm';
-import UserInfoContext from '../../member/modules/UserInfoContext';
-import apiCancel from '../apis/apiCancel';
+
 
 const ReserveCanCelContainer = ({ setPageTitle }) => {
   const [data, setData] = useState(null);

@@ -8,7 +8,6 @@ import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import img from '../../images/ReviewImage1.jpg';
-import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiCancel from '../apis/apiCancel';
 
 const Wrapper = styled.div`
@@ -23,7 +22,6 @@ const Wrapper = styled.div`
 const MyReserveViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
 
   const { seq } = useParams();
@@ -49,7 +47,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, t, setPageTitle]);
+  }, [seq, t, setPageTitle, item]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
@@ -62,7 +60,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
       /* 예약 취소 처리 S */
       (async () => {
         try {
-          const res = await apiCancel(item);
+          const res = await apiCancel(item.seq);
           // 예약 취소 성공시 예약 취소 페이지 이동
           navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
         } catch (err) {
@@ -74,7 +72,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     [item, navigate],
   );
 
-  if (loading || !item) {
+  if (!item) {
     return <Loading />;
   }
 
