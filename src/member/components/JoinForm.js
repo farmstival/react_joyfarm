@@ -101,8 +101,12 @@ const EmailVerificationBox = styled.div`
     display: flex;
     align-items: center;
     button {
-      width: 130px;
-      height: 50px;
+      width: 95px;
+      height: 68px;
+      border-radius: 20px;
+      border: 3px solid #A2A2A2;
+      padding: 8px;
+      
     }
   }
 
@@ -159,7 +163,7 @@ const JoinForm = ({
                     onClick={onSendAuthCode}
                     disabled={form.authCount < 180 && form.authCount > 0}
                   >
-                    {t('인증코드_전송')}
+                    {t('인증코드전송')}
                   </button>
                 )}
               </div>

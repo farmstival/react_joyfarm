@@ -116,6 +116,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           textColor="white" /* 기본 텍스트 색상 */
           hoverBgColor="#39AE48" /* hover 시 배경색 */
           hoverTextColor="black" /* hover 시 텍스트 색상 */
+          style={{ border: 'none' }} /* 라인제거 */
         >
           {t('로그인')}
         </StyledMidButton>
