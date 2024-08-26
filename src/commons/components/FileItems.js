@@ -12,8 +12,8 @@ const FileItems = ({
     files.length > 0 && (
       <ul>
         {files.map(({ seq, fileName, fileDownloadUrl, fileUrl }) => (
-            <li key={seq}>
-                <a href={fileDownloadUrl}>{fileName}</a>
+          <li key={seq}>
+            <a href={fileDownloadUrl}>{fileName}</a>
             {fileName}
             {mode === 'editor' && (
               <FaFileUpload onClick={() => insertImageCallback(fileUrl)} />

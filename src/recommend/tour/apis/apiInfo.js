@@ -16,3 +16,5 @@ export const apiList = (search) => {
 
 // 상세 조회
 export const apiGet = (seq) => requestData(`/tour/info/${seq}`);
+
+export const apiWishlist = () => requestData(`/tour/wish`);

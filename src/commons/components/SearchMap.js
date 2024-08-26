@@ -12,6 +12,7 @@ import jeollabuk from '../../images/map/jeollabuk.png';
 import jeollanam from '../../images/map/jeollanam.png';
 import jeju from '../../images/map/jeju.png';
 import styled from 'styled-components';
+
 const Wrapper = styled.div``;
 
 function getImage(location) {
@@ -45,9 +46,11 @@ const SearchMap = () => {
   const [searchParams] = useSearchParams();
   const address = searchParams.get('address');
   const [image, setImage] = useState(() => getImage(address));
+  
   const onChange = useCallback((location) => {
     setImage(() => getImage(location));
   }, []);
+
   return (
     <>
       <Wrapper>

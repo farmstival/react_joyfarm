@@ -7,7 +7,7 @@ import MainReview from './components/MainReview';
 import MainBoard from './components/MainBoard';
 import Sidebar from './components/SideBar';
 
-const HEADER_HEIGHT = 200;
+const HEADER_HEIGHT = 300;
 
 const Main = () => {
   const navigate = useNavigate();
