@@ -6,32 +6,55 @@ import classNames from 'classnames';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 const { medium } = fontSize;
-const {midGreen, lightGreen} = color;
+const { midGreen, lightGreen } = color;
 
 const Wrapper = styled.aside`
+  /* 
  background: #6c757d;
   a {
-    display: block;
-    padding: 15px 25px;
+    
     font-size: ${medium};
     border-bottom: 1px solid #616161;
     &.on {
       background: #000;
       color: #fff;
     }
-  } 
- /* 
- display: flex;
- justify-content: space-around;
- height: 40px;
-  div {
-    background: ${lightGreen};
-    width: 120px;
+  } */
+
+  align-content: center;
+  position: fixed;
+  top: 22%;
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 25px 25px;
+    justify-content: center;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid #000;
-  }*/
+    font-size: 1.25rem;
+    font-weight: bold;
+    background: ${lightGreen};
+    &.on {
+      background: ${midGreen};
+      color: white;
+      text-decoration: underline;
+    }
+  }
+  a:hover {
+    background: ${midGreen};
+    color: white;
+  }
 
+  a:first-of-type {
+    border-top-left-radius: 15px; /* 좌측 상단 모서리 반경 */
+    border-top-right-radius: 15px; /* 우측 상단 모서리 반경 */
+  }
+
+    a:last-of-type {
+    border-bottom-left-radius: 15px; /* 좌측 상단 모서리 반경 */
+    border-bottom-right-radius: 15px; /* 우측 상단 모서리 반경 */
+  }
 `;
 
 const Side = () => {
@@ -39,38 +62,30 @@ const Side = () => {
 
   return (
     <Wrapper>
-      <div class="navi">
       <NavLink
         to="/mypage/info"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('회원정보_수정')}
       </NavLink>
-      </div>
-      <div class="navi2">
       <NavLink
         to="/mypage/reservation"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('예약관리')}
       </NavLink>
-      </div>
-      <div class="navi3">
       <NavLink
         to="/mypage/board"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('게시글_관리')}
       </NavLink>
-      </div>
-      <div class="navi4">
       <NavLink
         to="/mypage/wishlist/tour"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         WishList
       </NavLink>
-      </div>
     </Wrapper>
   );
 };

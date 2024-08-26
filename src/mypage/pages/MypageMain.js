@@ -5,16 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
-import { CgProfile } from "react-icons/cg";
 import jprofile from '../../images/jprofile.png';
-const {whiteGray, mid_gray} = color;
+const {whiteGreen, whiteGray, mid_gray} = color;
 
 const StyledMain = styled.div`
   width: 700px;
   height: 400px;
   margin: 50px auto 0;
   padding: 20px 0;
-  background: ${whiteGray};
+  background: ${whiteGreen};
   text-align: center;
   font-size: 1.8rem;
   border: 4px solid ${mid_gray};
