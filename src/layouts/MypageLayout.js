@@ -10,12 +10,13 @@ const MainBox = styled.main`
   position: relative;
   display: flex;
   aside {
-    width: 210px;
+    width: 150px;
   }
 
   section.main-content {
     flex-grow: 1;
     padding: 20px;
+    padding-left: 150px;
   }
 `;
 

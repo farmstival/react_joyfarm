@@ -37,7 +37,7 @@ const MyLocationContainer = ({ onLocationsUpdate }) => {
                 //sido: r.region_1depth_name, // 현재 시도로 데이터 검색
                 sido: '인천',
                 //sigungu: r.region_2depth_name, // 현재 시군구로 데이터 검색
-                //sigungu: '속초',
+                sigungu: '강화군',
               }));
               break;
             }
