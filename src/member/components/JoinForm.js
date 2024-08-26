@@ -104,7 +104,7 @@ const EmailVerificationBox = styled.div`
       width: 95px;
       height: 68px;
       border-radius: 20px;
-      border: 3px solid #A2A2A2;
+      border: px solid #A2A2A2;
       padding: 8px;
       
     }
@@ -452,7 +452,7 @@ const JoinForm = ({
         </div>
 
         <ButtonGroup width={450}>
-          <BigButton type="button" color="midGreen" onClick={onReset}>
+          <BigButton type="button" color="midGreen" onClick={onReset}  gid={form.gid} >
             {t('다시입력')}
           </BigButton>
           <BigButton type="submit" color="darkGreen">

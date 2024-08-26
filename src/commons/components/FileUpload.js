@@ -15,6 +15,7 @@ const FileUpload = ({
   callback,
   width,
 }) => {
+  console.log('gid', gid);
   const [message, setMessage] = useState('');
 
   const { t } = useTranslation(single);
