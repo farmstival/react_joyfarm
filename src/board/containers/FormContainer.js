@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
 import { produce } from 'immer';
@@ -7,17 +7,25 @@ import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import { write, update, getInfo } from '../apis/apiBoard';
 
-function skinRoute(skin, props) {
-  const WriteMain = loadable(() =>
-    import(`../components/skins/${skin}/WriteMain`),
-  );
-
-  return <WriteMain {...props} />;
+const DefaultForm = loadable(() => import('../components/skins/default/Form'));
+const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
+function skinRoute(skin) {
+  switch (skin) {
+    case 'gallery':
+      return GalleryForm;
+    default:
+      return DefaultForm;
+  }
 }
 
-const WriteContainer = ({ setPageTitle }) => {
-  const { bid } = useParams();
+const FormContainer = ({ setPageTitle }) => {
+  const { bid, seq } = useParams();
+
+  const {
+    states: { isLogin, isAdmin, userInfo },
+  } = useContext(UserInfoContext);
 
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,17 +35,47 @@ const WriteContainer = ({ setPageTitle }) => {
     notice: false,
     attachFiles: [],
     editorImages: [],
+    poster: userInfo?.userName,
   });
-
-  const {
-    states: { isLogin, isAdmin },
-  } = useContext(UserInfoContext);
 
   const [errors, setErrors] = useState({});
 
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  /**
+   * 게시글 번호 seq로 유입되면 수정
+   *
+   */
   useEffect(() => {
+    if (!seq) {
+      return;
+    }
+
+    (async () => {
+      try {
+        setLoading(true);
+
+        const res = await getInfo(seq);
+        res.mode = 'update';
+        delete res.guestPw;
+
+        setForm(res);
+        setBoard(res.board);
+        setPageTitle(`${res.subject}`);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [seq, setPageTitle]);
+
+  useEffect(() => {
+    if (board || !bid) {
+      return;
+    }
+
     (async () => {
       try {
         setLoading(true);
@@ -51,19 +89,22 @@ const WriteContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [bid, setPageTitle]);
+  }, [bid, setPageTitle, board]);
 
-  const onChange = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    },
+    [form],
+  );
 
-  const onToggleNotice = useCallback(() =>
+  const onToggleNotice = useCallback(() => {
     setForm(
       produce((draft) => {
         draft.notice = !draft.notice;
       }),
-    ),
-  );
+    );
+  }, []);
 
   /* 파일 업로드 후속 처리 */
   const fileUploadCallback = useCallback((files, editor) => {
@@ -97,18 +138,20 @@ const WriteContainer = ({ setPageTitle }) => {
     );
   }, []);
 
-  /**파일 삭제 처리 */
+  /* 파일 삭제 처리 */
   const fileDeleteCallback = useCallback((seq) => {
-    if (!window.confirm('정말 삭제하시겠습니까?')) {
+    if (!window.confirm('정말 삭제하겠습니까?')) {
       return;
     }
+
     (async () => {
       try {
         await apiFileDelete(seq);
+
         setForm(
           produce((draft) => {
             draft.attachFiles = draft.attachFiles.filter(
-              (file) => file.seq != seq,
+              (file) => file.seq !== seq,
             );
 
             draft.editorImages = draft.editorImages.filter(
@@ -125,8 +168,8 @@ const WriteContainer = ({ setPageTitle }) => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      /**유효성 검사 - 필수항목 검증 S */
 
+      /* 유효성 검사 - 필수 항목 검증 S */
       const requiredFields = {
         poster: t('작성자를_입력하세요.'),
         subject: t('제목을_입력하세요.'),
@@ -134,13 +177,13 @@ const WriteContainer = ({ setPageTitle }) => {
       };
 
       if (!isLogin) {
-        //비회원인 경우
+        // 비회원인 경우
         requiredFields.guestPw = t('비밀번호를_입력하세요.');
       }
 
       if (!isAdmin) {
-        //관리자가 아니면 공지글 작성 X
-        form.notice = false;
+        // 관리자가 아니면 공지글 작성 X
+        setForm({ ...form, notice: false });
       }
 
       const _errors = {};
@@ -149,19 +192,39 @@ const WriteContainer = ({ setPageTitle }) => {
         if (!form[field]?.trim()) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
-
           hasErrors = true;
         }
       }
-      /**유효성 검사 - 필수항목 검증 E */
+      /* 유효성 검사 - 필수 항목 검증 E */
 
       // 검증 실패시에는 처리 X
+      setErrors(_errors);
       if (hasErrors) {
-        setErrors(_errors);
         return;
       }
+
+      /* 데이터 저장 처리 S */
+      (async () => {
+        try {
+          const { locationAfterWriting, bid } = board;
+          const res =
+            form.mode === 'update'
+              ? await update(seq, form)
+              : await write(bid, form);
+
+          const url =
+            locationAfterWriting === 'list'
+              ? `/board/list/${bid}`
+              : `/board/view/${res.seq}`;
+          navigate(url, { replace: true });
+        } catch (err) {
+          setErrors(err.message);
+        }
+      })();
+
+      /* 데이터 저장 처리 E */
     },
-    [t, form, isAdmin, isLogin],
+    [t, form, isAdmin, isLogin, board, navigate, seq],
   );
 
   if (loading || !board) {
@@ -169,7 +232,20 @@ const WriteContainer = ({ setPageTitle }) => {
   }
 
   const { skin } = board;
-
+  const Form = skinRoute(skin);
+  return (
+    <Form
+      board={board}
+      form={form}
+      onSubmit={onSubmit}
+      onChange={onChange}
+      onToggleNotice={onToggleNotice}
+      errors={errors}
+      fileUploadCallback={fileUploadCallback}
+      fileDeleteCallback={fileDeleteCallback}
+    />
+  );
+  /*
   return skinRoute(skin, {
     board,
     form,
@@ -180,6 +256,7 @@ const WriteContainer = ({ setPageTitle }) => {
     fileUploadCallback,
     fileDeleteCallback,
   });
+  */
 };
 
-export default React.memo(WriteContainer);
+export default React.memo(FormContainer);

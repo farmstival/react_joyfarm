@@ -54,6 +54,7 @@ const MyLocationContainer = ({ onLocationsUpdate }) => {
         if (!search.sido?.trim()) {
           return;
         }
+
         const res = await apiList(search);
 
         /* 마커 표기 좌표 가공 처리 S */
