@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
 import { produce } from 'immer';
@@ -7,6 +7,8 @@ import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import { write, update, getInfo } from '../apis/apiBoard';
+
 const DefaultForm = loadable(() => import('../components/skins/default/Form'));
 const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
 function skinRoute(skin) {
@@ -18,8 +20,12 @@ function skinRoute(skin) {
   }
 }
 
-const WriteContainer = ({ setPageTitle }) => {
-  const { bid } = useParams();
+const FormContainer = ({ setPageTitle }) => {
+  const { bid, seq } = useParams();
+
+  const {
+    states: { isLogin, isAdmin, userInfo },
+  } = useContext(UserInfoContext);
 
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -29,17 +35,47 @@ const WriteContainer = ({ setPageTitle }) => {
     notice: false,
     attachFiles: [],
     editorImages: [],
+    poster: userInfo?.userName,
   });
-
-  const {
-    states: { isLogin, isAdmin },
-  } = useContext(UserInfoContext);
 
   const [errors, setErrors] = useState({});
 
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  /**
+   * 게시글 번호 seq로 유입되면 수정
+   *
+   */
   useEffect(() => {
+    if (!seq) {
+      return;
+    }
+
+    (async () => {
+      try {
+        setLoading(true);
+
+        const res = await getInfo(seq);
+        res.mode = 'update';
+        delete res.guestPw;
+
+        setForm(res);
+        setBoard(res.board);
+        setPageTitle(`${res.subject}`);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [seq, setPageTitle]);
+
+  useEffect(() => {
+    if (board || !bid) {
+      return;
+    }
+
     (async () => {
       try {
         setLoading(true);
@@ -53,7 +89,7 @@ const WriteContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [bid, setPageTitle]);
+  }, [bid, setPageTitle, board]);
 
   const onChange = useCallback(
     (e) => {
@@ -147,7 +183,7 @@ const WriteContainer = ({ setPageTitle }) => {
 
       if (!isAdmin) {
         // 관리자가 아니면 공지글 작성 X
-        form.notice = false;
+        setForm({ ...form, notice: false });
       }
 
       const _errors = {};
@@ -166,8 +202,29 @@ const WriteContainer = ({ setPageTitle }) => {
       if (hasErrors) {
         return;
       }
+
+      /* 데이터 저장 처리 S */
+      (async () => {
+        try {
+          const res =
+            form.mode === 'update'
+              ? await update(seq, form)
+              : await write(bid, form);
+
+          const { locationAfterWriting, bid } = board;
+          const url =
+            locationAfterWriting === 'list'
+              ? `/board/list/${bid}`
+              : `/board/view/${res.seq}`;
+          navigate(url, { replace: true });
+        } catch (err) {
+          setErrors(err.message);
+        }
+      })();
+
+      /* 데이터 저장 처리 E */
     },
-    [t, form, isAdmin, isLogin],
+    [t, form, isAdmin, isLogin, board, navigate, seq],
   );
 
   if (loading || !board) {
@@ -202,4 +259,4 @@ const WriteContainer = ({ setPageTitle }) => {
   */
 };
 
-export default React.memo(WriteContainer);
+export default React.memo(FormContainer);
