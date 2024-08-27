@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { color } from '../../../styles/color';
-import { ZzimButton } from '../../../commons/components/Buttons';
 import {
   FcCalendar,
   FcAbout,
@@ -14,6 +13,8 @@ import {
   FcPlus,
 } from 'react-icons/fc';
 import WishButton from '../../../commons/components/WishButton';
+
+const { mid_gray } = color;
 
 const Wrapper = styled.div`
   position: relative;
@@ -52,8 +53,13 @@ const Wrapper = styled.div`
 
   .button {
     display: flex;
-    justify-content: flex-end;
-    margin: 30px 30px 0 0;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    color: ${mid_gray};
+    position: relative;
+    left: 250px;
+    bottom: -35px;
   }
 `;
 
@@ -112,8 +118,8 @@ const ItemDescription = ({ item }) => {
         </dl>
       )}
       <div className="button">
-        <ZzimButton>{t('여행지_찜하기')}</ZzimButton>
-        <WishButton seq={seq} type={'TOUR'} />
+        <WishButton seq={seq} type={'TOUR'}></WishButton>
+        {t('찜하기')}
       </div>
     </Wrapper>
   );

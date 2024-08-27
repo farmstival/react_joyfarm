@@ -1,60 +1,79 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import loadable from '@loadable/component';
-import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
+import apiConfig from '../apis/apiConfig';
+import { getList } from '../apis/apiBoard';
+import getQueryString from '../../commons/libs/getQueryString';
+import Pagination from '../../commons/components/Pagination';
+import DefaultList from '../components/skins/default/List'; // 기본 스킨
+import GalleryList from '../components/skins/gallery/List'; // 갤러리 스킨
+import ListMain from '../components/skins/default/ListMain';
 
-function skinRoute(skin, props) {
-  const ListMain = loadable(() =>
-    import(`../components/skins/${skin}/ListMain`),
-  );
-
-  return <ListMain {...props} />;
+function skinRoute(skin) {
+  switch (skin) {
+    case 'gallery':
+      return GalleryList;
+    default:
+      return DefaultList;
+  }
 }
 
-const ListContainer = ({ setPageTitle }) => {
-  const { bid } = useParams();
- 
-  const [board, setBoard] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    mode: 'list',
-    notice: false,
-  });
-  const [editor, setEditor] = useState();
-  const [errors, setErrors] = useState({});
+const ListContainer = ({ setPageTitle, bid }) => {
+  const [searchParams] = useSearchParams();
+  const { bid: _bid } = useParams();
+  const mode = bid ? 'view' : 'list';
+  bid = bid ?? _bid;
 
-  const { t } = useTranslation();
+  const [board, setBoard] = useState(null);
+  const [items, setItems] = useState(null);
+  const [pagination, setPagination] = useState(null);
+  const [search, setSearch] = useState(() => getQueryString(searchParams));
 
   useEffect(() => {
     (async () => {
       try {
-        setLoading(true);
+        // 게시판 설정
+        const res1 = await apiConfig(bid);
+        setBoard(res1);
 
-        const data = await apiConfig(bid);
-        setBoard(data); // 게시판 설정 조회
-        setPageTitle(data.bname); // 사이트 제목
+        setPageTitle && setPageTitle(res1.bname);
 
-        setLoading(false);
+        // 게시글 목록
+        const { items, pagination } = await getList(bid, search);
+        setItems(items);
+        setPagination(pagination);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, [bid, setPageTitle]);
+  }, [bid, search, setPageTitle]);
 
-  if (loading || !board) {
+  const onPageClick = useCallback((page) => {
+    setSearch((search) => ({ ...search, page }));
+  }, []);
+
+  const onChange = useCallback((e) => {
+    setSearch((search) => ({
+      ...search,
+      [e.target.name]: e.target.value,
+    }));
+  }, []);
+
+  if (!board || !items) {
     return <Loading />;
   }
 
   const { skin } = board;
+  const List = skinRoute(skin);
 
-  return skinRoute(skin, {
-    board,
-    form,
-    setEditor,
-    errors,
-  });
+  return (
+    <>
+      <List items={items} search={search} onChange={onChange} />
+      {mode === 'list' && <ListMain />}
+      <Pagination pagination={pagination} onClick={onPageClick} />
+    </>
+  );
 };
 
 export default React.memo(ListContainer);
