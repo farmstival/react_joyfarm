@@ -27,6 +27,7 @@ const FormBox = styled.form`
   button {
     color: white;
     background: ${midGreen};
+    border: none;
   }
 
   button a {
@@ -64,7 +65,7 @@ const MyPageView = () => {
 
   return (
     <FormBox>
-      <div class="mypage">
+      <div className="mypage">
         <dl>
           <dt>{t('이메일')}</dt>
           <dd>

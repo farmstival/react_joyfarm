@@ -22,7 +22,7 @@ function getQueryString(searchParams) {
     }
   }
   return qs;
-} //
+}
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
