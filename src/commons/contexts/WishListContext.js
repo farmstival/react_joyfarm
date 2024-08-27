@@ -1,6 +1,13 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from 'react';
 import { getWishList } from '../libs/wish/apiWish';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+
 const WishListContext = createContext({
   states: {
     boardWish: [],
@@ -21,30 +28,7 @@ export const WishListProvider = ({ children }) => {
   const [tourWish, setTourWish] = useState([]);
   const [festivalWish, setFestivalWish] = useState([]);
   const [activityWish, setActivityWish] = useState([]);
-  const value = {
-    states: {
-      boardWish,
-      tourWish,
-      festivalWish,
-      activityWish,
-    },
-    actions: {
-      setBoardWish,
-      setTourWish,
-      setFestivalWish,
-      setActivityWish,
-    },
-  };
-
-  const { states: { isLogin }} = useContext(UserInfoContext);
-
-  useEffect(() => {
-    if(!isLogin) {
-      return;
-    }
-  })
-
-  useEffect(() => {
+  const updateWish = useCallback(() => {
     (async () => {
       try {
         const boardWish = await getWishList('BOARD');
@@ -60,7 +44,40 @@ export const WishListProvider = ({ children }) => {
         console.error(err);
       }
     })();
-  }, [isLogin]);
+  }, []);
+  const value = {
+    states: {
+      boardWish,
+      tourWish,
+      festivalWish,
+      activityWish,
+    },
+    actions: {
+      setBoardWish,
+      setTourWish,
+      setFestivalWish,
+      setActivityWish,
+      updateWish,
+    },
+  };
+
+  const {
+    states: { isLogin },
+  } = useContext(UserInfoContext);
+
+  useEffect(() => {
+    if (!isLogin) {
+      setBoardWish([]);
+      setTourWish([]);
+      setFestivalWish([]);
+      setActivityWish([]);
+      return;
+    }
+  }, [setBoardWish, setTourWish, setFestivalWish, setActivityWish, isLogin]);
+
+  useEffect(() => {
+    updateWish();
+  }, [isLogin, updateWish]);
 
   return (
     <WishListContext.Provider value={value}>
