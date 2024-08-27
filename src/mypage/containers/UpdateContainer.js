@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useState } from 'react';
+import React, { useContext, useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
 import { apiUpdate } from '../apis/apiUpdate';
-import { apiDelete } from '../apis/apiDelete';
+import apiDelete from '../apis/apiDelete';
 const { small, big, medium } = fontSize;
 const { midGreen, whiteGray } = color;
 
@@ -78,7 +78,7 @@ const MyPageView = () => {
     apiUpdate(form)
       .then(() => {
         setUserInfo(form);
-        alert(t('회원정보가_수정되었습니다.'));
+        alert(t('회원정보가_수정되었습니다'));
         navigate('/', { replace: true });
       })
       .catch((error) => {
@@ -87,7 +87,36 @@ const MyPageView = () => {
       });
   };
 
-  const deleteUserInfo = {}
+  const deleteUserInfo = async () => {
+    try {
+      if (window.confirm(t('정말 삭제하시겠습니까?'))) {
+        await apiDelete(seq);
+        alert(t('회원탈퇴가 완료되었습니다.'));
+        onLogout(); // 로그아웃 처리
+        navigate('/', { replace: true }); // 메인 페이지로 이동
+      }
+    } catch (error) {
+      console.error(error);
+      alert(t('회원탈퇴 중 오류가 발생했습니다.'));
+    }
+  };
+  
+/*
+  const deleteUserInfo = async () => {
+    try {
+      const form = { email: form.email }; // 필요한 데이터를 폼에 포함
+      if (window.confirm(t('정말 삭제하시겠습니까?'))) {
+        await apiDelete(form);
+        setUserInfo(null); // 유저 정보를 초기화하여 로그아웃 상태로 변경
+        alert(t('회원탈퇴가 완료되었습니다.'));
+        onLogout(); // 로그아웃 처리
+        navigate('/', { replace: true }); // 메인 페이지로 이동
+      }
+    } catch (error) {
+      console.error(error);
+      alert(t('회원탈퇴 중 오류가 발생했습니다.'));
+    }
+  };*/
     
   return (
     <FormBox>
