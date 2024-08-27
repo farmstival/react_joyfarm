@@ -5,8 +5,10 @@ import { MidButton } from '../../commons/components/Buttons';
 import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 import DatePicker from 'react-datepicker';
+import fontSize from '../../styles/fontSize';
 
-const { white } = color;
+const { white, lightGreen } = color;
+const { medium, normal, normedium } = fontSize;
 
 const FormBox = styled.form`
   display: flex;
@@ -15,12 +17,63 @@ const FormBox = styled.form`
   margin-bottom: 20px;
 
   .select_box,
-  .input_part {
+  .search_box {
     height: 45px;
     items-align: center;
     justify-content: center;
     display: flex;
     margin: 0 20px 0 10px;
+
+    .pick_sdate,
+    .pick_edate {
+      display: flex;
+      align-items: center;
+      width: 120px;
+      height: 45px;
+      text-align: center;
+      margin-right: 3px;
+      box-sizing: border-box;
+      font-size: ${normal};
+      padding: 8px 20px;
+      border-radius: 4px;
+
+      &:focus {
+        border: 2px solid #000;
+      }
+    }
+  }
+
+  .react-datepicker {
+    border-radius: 10px;
+    border: 1px solid #c8c8c8;
+
+    .react-calendar {
+      border-radius: 10px;
+      border: 1px solid #c8c8c8; // 전체 틀: border, border-radius 조정
+    }
+
+    .react-calendar__navigation__label > span {
+      // 달력 상단 년/월 글씨 커스텀
+      color: #3a3a3a;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 140%;
+    }
+
+    .react-calendar__tile:enabled:hover,
+    .react-calendar__tile:enabled:focus {
+      background: #ff7a00; //hover 했을 때 색상 변경
+    }
+
+    .react-datepicker__day--today {
+      // 오늘 날짜 하이라이트 커스텀
+      background: white;
+      color: #3a3a3a;
+    }
+    .react-datepicker__day--selected {
+      background: #ff7a00;
+      color: white;
+    }
   }
 
   input {
@@ -62,18 +115,27 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
-      <div className="input_part">
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          minDate={new Date('')}
-          dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-        />
-        {/* <DatePicker
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-        /> */}
+      <div className="search_box">
+        <div className="sdate">
+          <DatePicker
+            className="pick_sdate"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
+            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            placeholderText={t('예약시작일')}
+          />
+        </div>
+        <div className="edate">
+          <DatePicker
+            className="pick_edate"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
+            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            placeholderText={t('예약종료일')}
+          />
+        </div>
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
           <option value="DIVISION">{t('프로그램구분')}</option>

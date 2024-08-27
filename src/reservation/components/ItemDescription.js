@@ -8,7 +8,7 @@ import fontSize from '../../styles/fontSize';
 const { normal, medium, normedium } = fontSize;
 
 const Wrapper = styled.div`
-  width: 450px;
+  width: 45%;
   height: 500px;
   word-break: break-all;
 
@@ -20,7 +20,6 @@ const Wrapper = styled.div`
 
     .rsv_button {
       position: absolute;
-      width: 400px;
     }
   }
 
@@ -84,7 +83,7 @@ const ItemDescription = ({ item }) => {
         )}
         {wwwAddress && (
           <dl>
-            <dt>{t('홈페이지주소')}</dt>
+            <dt>{t('홈페이지_주소')}</dt>
             <dd><a href={wwwAddress} target="_blank" rel="noopener noreferrer">{wwwAddress}</a></dd>
             {/* 외부 링크 사용 시 a 태그 */}
           </dl>

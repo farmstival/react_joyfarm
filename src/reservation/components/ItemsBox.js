@@ -115,6 +115,7 @@ const ItemStyledBox = styled(ItemBox)`
         padding: 20px;
         margin-bottom: 10px;
         height: 160px;
+        position: relative;
       }
 
       .actNameTitle {
@@ -154,6 +155,8 @@ const ItemStyledBox = styled(ItemBox)`
         height: 15%;
         display: flex;
         align-items: center;
+        position: absolute;
+        bottom: 20px;
 
         .addr {
           margin: 0;

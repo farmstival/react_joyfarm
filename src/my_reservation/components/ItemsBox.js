@@ -106,7 +106,7 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 10px 20px 5px 30px;
+      padding: 5px 20px 5px 30px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -161,6 +161,7 @@ const ItemStyledBox = styled(ItemBox)`
       .rsvContent {
         display: flex;
         padding: 5px 0;
+        position: relative;
 
         > div {
           margin-right: 15px;
@@ -170,7 +171,7 @@ const ItemStyledBox = styled(ItemBox)`
 
       .act_content {
         height: 35%;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
       }
 
       .activityName {
@@ -192,6 +193,7 @@ const ItemStyledBox = styled(ItemBox)`
         color: ${darkGreen};
         height: 15%;
         margin-top: 10px;
+        padding-top: 5px;
         display: flex;
         align-items: center;
         border-top: 1px solid ${line_gray};
