@@ -23,7 +23,7 @@ const TourView = () => {
           <DetailImgBox>
             <DetailTitle>
               <h1>
-              <IoMdPricetags  className='icon' /> {SubPageTitle}</h1>
+              <IoMdPricetags className='icon' /> {SubPageTitle}</h1>
             </DetailTitle>
             <ViewContainer setSubPageTitle={setSubPageTitle} />
           </DetailImgBox>

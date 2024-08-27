@@ -11,9 +11,9 @@ const WishList = () => {
   return (
     <MemberOnlyContainer>
       <Helmet>
-        <title>WishList</title>
+        <title>{t('찜하기_리스트')}</title>
       </Helmet>
-      <MainTitle>WishList</MainTitle>
+      <MainTitle>{t('찜하기_리스트')}</MainTitle>
       <WishListContainer />
     </MemberOnlyContainer>
   );
