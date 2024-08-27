@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
-import banner from '../../images/ReviewImage1.jpg';
+import farmImg from '../../images/farm.jpg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
@@ -43,7 +43,7 @@ const ItemBox = ({ item, className }) => {
           //이미지 없는 경우 대체
           <ImageBgBox
             className="img"
-            url={banner}
+            url={farmImg}
             width="25%"
             height="250px"
             alt={t('마을사진')}

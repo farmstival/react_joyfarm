@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
-import banner from '../../images/ReviewImage1.jpg';
+import farmImg from '../../images/farm.jpg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
@@ -20,30 +20,28 @@ const ItemBox = ({ item, className }) => {
   const url = `/reservation/info/${seq}`;
   return (
     <li className={className}>
+      <div className="wishbtn">
+        <WishButton seq={seq} type={'ACTIVITY'} />
+      </div>
       <Link to={url}>
-        <div className="imgbox">
-          <div className="wishbtn">
-            <WishButton seq={seq} type={'ACTIVITY'} />
-          </div>
-          {townImage ? (
-            <ImageBgBox
-              className="townImg"
-              url={townImage}
-              width="30%"
-              height="230px"
-              alt={t('마을사진')}
-            />
-          ) : (
-            //이미지 없는 경우 대체
-            <ImageBgBox
-              className="basicImg"
-              url={banner}
-              width="30%"
-              height="230px"
-              alt={t('마을사진')}
-            />
-          )}
-        </div>
+        {townImage ? (
+          <ImageBgBox
+            className="townImg"
+            url={townImage}
+            width="30%"
+            height="230px"
+            alt={t('마을사진')}
+          />
+        ) : (
+          //이미지 없는 경우 대체
+          <ImageBgBox
+            className="basicImg"
+            url={farmImg}
+            width="30%"
+            height="230px"
+            alt={t('마을사진')}
+          />
+        )}
         <div className="item-content">
           <div className="townName">{townName}</div>
           <div className="act_content">

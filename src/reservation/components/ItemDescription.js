@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium } = fontSize;
+const { normal, medium, normedium } = fontSize;
 
 const Wrapper = styled.div`
-  width: 400px;
+  width: 450px;
   height: 500px;
   word-break: break-all;
 
@@ -27,16 +27,16 @@ const Wrapper = styled.div`
   dl {
     display: flex;
     padding: 10px 15px;
-    font-size: ${normal};
+    font-size: ${normedium};
     line-height: 170%;
 
     dt {
-      width: 120px;
+      width: 140px;
       font-weight: bold;
     }
 
     dd {
-      width: calc(100% - 100px);
+      width: calc(100% - 140px);
     }
   }
 
@@ -56,7 +56,7 @@ const ItemDescription = ({ item }) => {
     wwwAddress,
   } = item;
   return (
-    <Wrapper className="wrap_box">
+    <Wrapper>
       <div className="dscp_box">
         <dl>
           <dt>{t('체험마을명')}</dt>
