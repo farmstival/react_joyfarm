@@ -1,24 +1,47 @@
+// import React, { useState } from 'react';
+// import { Helmet } from 'react-helmet-async';
+// import { useTranslation } from 'react-i18next';
+// import { OuterBox } from '../../commons/components/LayoutBox';
+// import { MainTitle } from '../../commons/components/TitleBox';
+
+// const View = () => { /** 수정 예정 */
+//   const [board, setBoard] = useState({
+//     bName: '여행후기',
+//   });
+
+//   const { bName } = board;
+//   const { t } = useTranslation();
+
+//   return (
+//     <>
+//       <Helmet>
+//         <title>{t(bName)}</title>
+//       </Helmet>
+//       <OuterBox>
+//         <MainTitle>{t(bName)}</MainTitle>
+//       </OuterBox>
+//     </>
+//   );
+// };
+
+// export default React.memo(View);
+
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
+import ViewContainer from '../containers/ViewContainer';
 
-const View = () => { /** 수정 예정 */
-  const [board, setBoard] = useState({
-    bName: '여행후기',
-  });
-
-  const { bName } = board;
-  const { t } = useTranslation();
+const View = () => {
+  const [pageTitle, setPageTitle] = useState('');
 
   return (
     <>
       <Helmet>
-        <title>{t(bName)}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{t(bName)}</MainTitle>
+        <ViewContainer setPageTitle={setPageTitle} />
       </OuterBox>
     </>
   );
