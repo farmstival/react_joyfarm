@@ -35,11 +35,11 @@ export const apiEmailAuthCheck = (authNum, uid) =>
         );
 
         if (res.status === 200 && res.data.success) {
-          reject(res.data);
+          resolve(res.data.data);
           return;
         }
 
-        resolve(res.data.data);
+        reject(res.data);
       } catch (err) {
         reject(err);
       }
