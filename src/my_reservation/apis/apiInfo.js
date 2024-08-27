@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 import requestData from '../../commons/libs/requestData';
 
-export const apiList = (search) => {
+export const apiList = (search, status) => {
   search = search ?? {};
 
   const qs = [];
 
-  for ([k, v] of Object.entries(search)) {
+  for (const [k, v] of Object.entries(search, status)) {
     qs.push(`${k}=${v}`);
   }
 

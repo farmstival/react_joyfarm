@@ -5,7 +5,6 @@ import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
-import KakaoMap from '../../map/KakaoMap';
 import { ImageListBox2 } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
@@ -52,7 +51,7 @@ const ReserveListContainer = () => {
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
-    window.location.hash = '#root';
+    window.location.hash = '#root'; // 이거 이유를 모르겠음
   }, []);
 
   /* 로딩 처리 */

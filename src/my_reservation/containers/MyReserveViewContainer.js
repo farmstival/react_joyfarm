@@ -37,11 +37,11 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         setPageTitle(`${res.townName} ${t('예약정보')}`);
         setItem(res);
 
-        const position = { lat: item.latitude, lng: item.longitude };
+        const position = { lat: res.latitude, lng: res.longitude };
         setMapOptions((opt) => {
-          const options = item.latitude
+          const options = res.latitude
             ? { ...opt, center: position, marker: position }
-            : { ...opt, doroAddress: item.doroAddress };
+            : { ...opt, doroAddress: res.doroAddress };
 
           return options;
         });
