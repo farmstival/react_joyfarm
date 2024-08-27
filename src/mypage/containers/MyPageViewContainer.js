@@ -27,6 +27,7 @@ const FormBox = styled.form`
   button {
     color: white;
     background: ${midGreen};
+    border: none;
   }
 
   button a {
