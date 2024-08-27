@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium } = fontSize;
+const { normal } = fontSize;
 
 const Wrapper = styled.div`
   width: 400px;

@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium } = fontSize;
+const { normal } = fontSize;
 
 const Wrapper = styled.div`
   width: 400px;
@@ -65,10 +64,6 @@ const ItemDescription = ({ item, onSubmit }) => {
           <dt>{t('예약자_전화번호')}</dt>
           <dd>{mobile}</dd>
         </dl>
-      </div>
-
-      <div className="rsv_info">
-        <div>{t('예약한_체험_마을')}</div>
         <dl>
           <dt>{t('예약일')}</dt>
           <dd>{rdate}</dd>
@@ -86,15 +81,11 @@ const ItemDescription = ({ item, onSubmit }) => {
           <dd>{townName}</dd>
         </dl>
       </div>
-
-      <MidButton
-        type="submit"
-        className="rsv_button"
-        color="midGreen"
-        onClick={onSubmit}
-      >
-        {t('예약_취소')}
-      </MidButton>
+      <form onSubmit={onSubmit}>
+        <MidButton type="submit" className="rsv_button" color="midGreen">
+          {t('예약_취소')}
+        </MidButton>
+      </form>
     </Wrapper>
   );
 };

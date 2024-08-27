@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { myApiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고옴
 import Loading from '../../commons/components/Loading';
 import { useTranslation } from 'react-i18next';
 import CompletionForm from '../components/CompletionForm';
-import UserInfoContext from '../../member/modules/UserInfoContext';
 
 const ReserveCompletionContainer = ({ setPageTitle, setMainTitle }) => {
   const [data, setData] = useState(null);

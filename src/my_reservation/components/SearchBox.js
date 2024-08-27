@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
 import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 
@@ -56,6 +55,30 @@ const Button = styled.button`
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
+
+  const [CrAtOptions, setCrAtOptions] = useState([]);
+
+  useEffect(() => {
+    const fetchSidoOptions = async () => {
+      const fetchedCrAtOptions = [
+        { value: '전라북도', label: '전라북도' },
+        { value: '대전광역시', label: '대전광역시' },
+        { value: '강원특별자치도', label: '강원특별자치도' },
+        { value: '전라남도', label: '전라남도' },
+        { value: '제주특별자치도', label: '제주특별자치도' },
+        { value: '충청북도', label: '충청북도' },
+        { value: '인천광역시', label: '인천광역시' },
+        { value: '충청남도', label: '충청남도' },
+        { value: '경상북도', label: '경상북도' },
+        { value: '경상남도', label: '경상남도' },
+        { value: '경기도', label: '경기도' },
+        { value: '울산광역시', label: '울산광역시' },
+      ];
+      setCrAtOptions(fetchedCrAtOptions);
+    };
+
+    fetchSidoOptions();
+  }, []);
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
