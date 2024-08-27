@@ -58,19 +58,22 @@ const Button = styled.button`
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="input_part">
-        <select name="sDate" onChange={onChange}>
-          <option>
-            <DatePicker selected={startDate} onChange={(date)=>setStartDate(date)}/>
-            - {t('예약_시작일')} -
-          </option>
-        </select>
-        <select name="eDate" onChange={onChange}>
-          <option>- {t('예약_종료일')} -</option>
-        </select>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          minDate={new Date('')}
+          dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
+        />
+        {/* <DatePicker
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}
+          dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
+        /> */}
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
           <option value="DIVISION">{t('프로그램구분')}</option>

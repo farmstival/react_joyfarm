@@ -6,7 +6,7 @@ export const apiList = (search) => {
 
   const qs = [];
 
-  for ([k, v] of Object.entries(search)) {
+  for (const [k, v] of Object.entries(search)) {
     qs.push(`${k}=${v}`);
   }
 

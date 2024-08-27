@@ -9,9 +9,10 @@ import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
 import { FcLandscape } from 'react-icons/fc';
+import { IoTicketOutline } from 'react-icons/io5';
 
-const { midGreen, white, lightGreen } = color;
-const { medium, big, normal, extraBig } = fontSize;
+const { line_gray, darkGreen, primary } = color;
+const { medium, normedium, normal, extraBig } = fontSize;
 
 //농활 체험 목록 조회
 const ItemBox = ({ item, className }) => {
@@ -56,10 +57,22 @@ const ItemBox = ({ item, className }) => {
               <p className="act_title">{t('체험_프로그램_소개')}</p>
             </div>
             <div className="activityName">{activityName}</div>
-            <div className="rsv">
-              <div className="rsvDate">{rdate}</div>
-              <div className="rsvTime">{ampm}</div>
-              <div className="rsvPersons">{persons}</div>
+          </div>
+          <div className="rsvInfo">
+            <div className="rsvTitle">
+              <IoTicketOutline className="icon" />
+              <p className="rsv_title">{t('예약정보')}</p>
+            </div>
+            <div className="rsvContent">
+              <div className="rsvDate">
+                {t('예약일')}: {rdate}
+              </div>
+              <div className="rsvTime">
+                {t('예약_시간')}: {ampm}
+              </div>
+              <div className="rsvPersons">
+                {t('인원수')}: {persons}
+              </div>
             </div>
           </div>
           <div className="doroAddress">
@@ -79,18 +92,13 @@ const ItemStyledBox = styled(ItemBox)`
   border: 1px solid #ada493;
   width: 100%;
 
-  &:hover .townName {
-    background: ${lightGreen};
-    transition: 0.3s;
-  }
-
   a {
     height: 250px;
     display: flex;
 
     .townImg,
     .img {
-      width: 50%;
+      width: 40%;
       height: 100%;
       border-radius: 5px 5px 0px 0px;
     }
@@ -109,9 +117,8 @@ const ItemStyledBox = styled(ItemBox)`
         font-size: ${extraBig};
         font-weight: bold;
         text-align: center;
-        line-height: 20%;
-        height: 20%;
-        margin-bottom: 20px;
+        line-height: 1;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -134,42 +141,67 @@ const ItemStyledBox = styled(ItemBox)`
         }
       }
 
-      .act_content {
+      .rsvTitle {
+        font-size: ${medium};
+        font-weight: bold;
         display: flex;
-        flex-direction: column;
-        height: 50%;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .rsv_title {
+          margin: 0;
+        }
+
+        .icon {
+          margin-right: 10px;
+          color: ${primary};
+        }
+      }
+
+      .rsvContent {
+        display: flex;
+        padding: 5px 0;
+
+        > div {
+          margin-right: 15px;
+          font-size: ${normedium};
+        }
+      }
+
+      .act_content {
+        height: 35%;
+        margin-bottom: 10px;
       }
 
       .activityName {
         font-size: ${medium};
         line-height: 170%;
         width: 100%;
-        margin-bottom: 10px;
         overflow: hidden; //글자 넘치는 부분 감추기
         text-overflow: ellipsis; //숨겨지는 영역 끝에 말줄임표 생성
         white-space: normal; //줄바꿈
         text-align: left; //텍스트 윈쪽 정렬
         word-wrap: break-word; //단어 단위로 줄바꿈
         display: -webkit-box; //영역을 box형태로 지정
-        -webkit-line-clamp: 3; //해당 영역 내 텍스트 최대 라인수
+        -webkit-line-clamp: 2; //해당 영역 내 텍스트 최대 라인수
         -webkit-box-orient: vertical; //박스 방향 설정(가로)
       }
 
       .doroAddress {
         font-size: ${medium};
-        color: #767676;
+        color: ${darkGreen};
         height: 15%;
         margin-top: 10px;
         display: flex;
         align-items: center;
+        border-top: 1px solid ${line_gray};
 
         .addr {
           margin: 0;
         }
 
         .icon {
-          color: #ff5e00;
-          top: 3px;
+          color: ${darkGreen};
           margin-right: 10px;
         }
       }
