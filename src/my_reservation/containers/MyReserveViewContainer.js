@@ -36,11 +36,11 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         setPageTitle(`${res.townName} ${t('예약정보')}`);
         setItem(res);
 
-        const position = { lat: item.latitude, lng: item.longitude };
+        const position = { lat: res.latitude, lng: res.longitude };
         setMapOptions((opt) => {
-          const options = item.latitude
+          const options = res.latitude
             ? { ...opt, center: position, marker: position }
-            : { ...opt, doroAddress: item.doroAddress };
+            : { ...opt, doroAddress: res.doroAddress };
 
           return options;
         });
@@ -48,7 +48,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, t, setPageTitle, item]);
+  }, [seq, t, setPageTitle]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);

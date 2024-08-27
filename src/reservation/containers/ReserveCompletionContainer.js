@@ -17,14 +17,14 @@ const ReserveCompletionContainer = ({ setPageTitle, setMainTitle }) => {
         const res = await myApiGet(seq);
         setData(res);
         setMainTitle(
-          `${data.name} ${t('님의_')} ${res.townName} ${t('예약_확인')}`,
+          `${res.name} ${t('님의_')} ${res.townName} ${t('예약_확인')}`,
         );
         setPageTitle(`${res.townName} ${t('예약_확인')}`);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, [seq, setMainTitle, setPageTitle, t, data]); //변화감지 값 넣어주기
+  }, [seq, setMainTitle, setPageTitle, t]); //변화감지 값 넣어주기
 
   if (!data) {
     return <Loading />;

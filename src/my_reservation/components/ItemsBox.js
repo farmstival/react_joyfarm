@@ -16,7 +16,16 @@ const { medium, big, normal, extraBig } = fontSize;
 //농활 체험 목록 조회
 const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
-  const { seq, townImage, townName, activityName, doroAddress, rdate } = item;
+  const {
+    seq,
+    townImage,
+    townName,
+    activityName,
+    doroAddress,
+    rdate,
+    ampm,
+    persons,
+  } = item;
   const url = `/myreservation/info/${seq}`;
   return (
     <li className={className}>
@@ -47,7 +56,11 @@ const ItemBox = ({ item, className }) => {
               <p className="act_title">{t('체험_프로그램_소개')}</p>
             </div>
             <div className="activityName">{activityName}</div>
-            <div className="rsvDate">{rdate}</div>
+            <div className="rsv">
+              <div className="rsvDate">{rdate}</div>
+              <div className="rsvTime">{ampm}</div>
+              <div className="rsvPersons">{persons}</div>
+            </div>
           </div>
           <div className="doroAddress">
             <FaMapMarkerAlt className="icon" />
