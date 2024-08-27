@@ -35,7 +35,6 @@ const BoardListTitles = styled.div`
     width: 100%;
 
     .seq {
-      background: red;
       width: 7%;
       display: flex;
       align-items: center;
@@ -43,7 +42,6 @@ const BoardListTitles = styled.div`
     }
 
     .title {
-      background: yellow;
       width: 57%;
       display: flex;
       align-items: center;
@@ -52,16 +50,22 @@ const BoardListTitles = styled.div`
   }
 
   .post-info {
-    background: blue;
     width: 38%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-right: 20px;
 
     .poster{
-    display: flex;
-    
+    width: 30%;
+    padding-right: 40px;
+    }
+    .view {
+    width: 30%;
+    text-align: left;
+    }
+    .datetime{
+    width: 30%;
+    padding-right: 40px;
     }
   }
 `;
