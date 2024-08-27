@@ -12,8 +12,8 @@ const { midGreen, lightGreen } = color;
 const Wrapper = styled.aside`
   align-content: center;
   position: fixed;
-  top: 22%;
-  margin-left: -30px;
+  top: 25%;
+  margin-left: -150px;
 
   a {
     display: flex;
@@ -61,12 +61,13 @@ const Side = () => {
       >
         {t('회원정보_수정')}
       </NavLink>
+      {/*
       <NavLink
         to="/mypage/reservation"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('예약관리')}
-      </NavLink>
+      </NavLink>*/}
       <NavLink
         to="/mypage/board"
         className={({ isActive }) => classNames({ on: isActive })}
