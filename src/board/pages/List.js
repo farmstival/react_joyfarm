@@ -3,18 +3,26 @@ import { Helmet } from 'react-helmet-async';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import ListContainer from '../containers/ListContainer';
+import { ContentBox } from '../../commons/components/LayoutBox';
+import SubTitleLink from '../../commons/SubTitleLink';
+import Header from '../../layouts/Header';
+import { useParams } from 'react-router-dom';
 
 const List = () => {
   const [pageTitle, setPageTitle] = useState('');
+  const { bid } = useParams();
 
   return (
     <>
+      <SubTitleLink text={pageTitle} href={`/board/list/${bid}`} />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{pageTitle}</MainTitle>
-        <ListContainer setPageTitle={setPageTitle} />
+        <Header />
+        <ContentBox>
+          <ListContainer setPageTitle={setPageTitle} />
+        </ContentBox>
       </OuterBox>
     </>
   );
