@@ -15,13 +15,15 @@ const Wrapper = styled.div`
   min-width: 100px;
   margin: 60px auto 0;
   align-items: center;
+  justify-content: center;
 
   .page {
-    width: 0;
+    min-width: 35px;
+    max-width: 45px;
+    padding: 0 5px;
     height: 35px;
     line-height: 33px;
     text-align: center;
-    flex-grow: 1;
     font-size: 1.15rem;
     border: 1px solid #ada493;
     border-radius: 3px;
@@ -34,6 +36,7 @@ const Wrapper = styled.div`
   .page.on {
     background: #8d90a1;
     color: #fff;
+    border: none;
   }
 `;
 
