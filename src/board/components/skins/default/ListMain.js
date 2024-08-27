@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import VisitorInfo from '../../../../visitors/VisitorInfo';
 
 const ListMain = (props) => {
     const navigate = useNavigate();
