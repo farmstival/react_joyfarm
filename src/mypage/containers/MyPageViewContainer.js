@@ -2,12 +2,13 @@ import React, { useContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import cookies from 'react-cookies';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import InputBox from '../../commons/components/InputBox';
 import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
-import { apiUpdate } from '../apis/apiUpdate';
+import { apiUpdate } from '../apis/apiMyPage';
 const { small, big, medium } = fontSize;
 const { midGreen, whiteGray } = color;
 
@@ -41,8 +42,8 @@ const FormBox = styled.form`
 
 const MyPageView = () => {
   const {
-    states: { userInfo },
-    actions: { setUserInfo },
+    states: { isLogin, userInfo, isAdmin },
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
   // 'UserInfoContext'로 로그인 상태, 사용자 정보 가져옴
 
@@ -52,6 +53,13 @@ const MyPageView = () => {
 
   const { t } = useTranslation();
 
+  const onLogout = useCallback(() => {
+    setIsLogin(false);
+    setIsAdmin(false);
+    setUserInfo(null);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
+
   const _onChange = useCallback((e) => {
     const { name, value } = e.target;
     // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
@@ -60,7 +68,6 @@ const MyPageView = () => {
       [name]: value,
     }));
   }, []);
-
   const navigate = useNavigate();
 
   const updateUserInfo = () => {
@@ -75,6 +82,43 @@ const MyPageView = () => {
         alert(t('회원정보 수정 중 오류가 발생했습니다.'));
       });
   };
+
+  /* 도전 대실패.. 
+  const deleteUserInfo = useCallback(
+    (seq) => {
+      if (!window.confirm(t('정말_삭제_하시겠습니까?'))){
+        return;
+      }
+
+      (async() => {
+       try{
+        await memberDelete(seq);
+        onLogout();
+        navigate(`/`); // 탈퇴 후 로그아웃 + 메인 페이지로 이동
+       } catch(err) {
+        console.error(err);
+       }
+      })();
+    },
+    [t, navigate, onLogout],
+  );
+  
+  const deleteUserInfo = async () => {
+    try {
+      const form = { email: form.email }; // 필요한 데이터를 폼에 포함
+      if (window.confirm(t('정말 삭제하시겠습니까?'))) {
+        await apiDelete(form);
+        setUserInfo(null); // 유저 정보를 초기화하여 로그아웃 상태로 변경
+        alert(t('회원탈퇴가 완료되었습니다.'));
+        onLogout(); // 로그아웃 처리
+        navigate('/', { replace: true }); // 메인 페이지로 이동
+      }
+    } catch (error) {
+      console.error(error);
+      alert(t('회원탈퇴 중 오류가 발생했습니다.'));
+    }
+  };*/
+
 
   return (
     <FormBox>
