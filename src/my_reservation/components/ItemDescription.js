@@ -86,11 +86,15 @@ const ItemDescription = ({ item, onSubmit }) => {
           <dd>{townName}</dd>
         </dl>
       </div>
-      <form onSubmit={onSubmit}>
-        <MidButton type="submit" className="rsv_button" color="midGreen">
-          {t('예약_취소')}
-        </MidButton>
-      </form>
+
+      <MidButton
+        type="submit"
+        className="rsv_button"
+        color="midGreen"
+        onClick={onSubmit}
+      >
+        {t('예약_취소')}
+      </MidButton>
     </Wrapper>
   );
 };
