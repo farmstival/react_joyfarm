@@ -39,30 +39,33 @@ const FormBox = styled.form`
 `;
 
 const MyPageView = () => {
-  const { t } = useTranslation();
   const {
     states: { userInfo },
     actions: { setUserInfo },
   } = useContext(UserInfoContext);
   // 'UserInfoContext'로 로그인 상태, 사용자 정보 가져옴
 
-  const _onChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
-      setUserInfo({
-        ...userInfo,
-        [name]: value,
-      });
-    },
-    [userInfo, setUserInfo],
-  );
+  const initialForm = userInfo;
+  delete initialForm.password;
+  const [form, setForm] = useState(initialForm);
+
+  const { t } = useTranslation();
+
+  const _onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
+    setForm((form) => ({
+      ...form,
+      [name]: value,
+    }));
+  }, []);
 
   const navigate = useNavigate();
 
   const updateUserInfo = () => {
-    apiUpdate(userInfo)
+    apiUpdate(form)
       .then(() => {
+        setUserInfo(form);
         alert(t('회원정보가_수정되었습니다.'));
         navigate('/', { replace: true });
       })
@@ -81,7 +84,7 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="email"
-              value={userInfo.email ?? ''}
+              value={form?.email}
               disabled
               onChange={_onChange}
             />
@@ -90,13 +93,23 @@ const MyPageView = () => {
         <dl>
           <dt>{t('비밀번호')}</dt>
           <dd>
-            <InputBox name="password" type="password" onChange={_onChange} />
+            <InputBox
+              name="password"
+              type="password"
+              value={form?.password}
+              onChange={_onChange}
+            />
           </dd>
         </dl>
         <dl>
           <dt>{t('비밀번호_확인')}</dt>
           <dd>
-            <InputBox name="confirmPassword" type="password" onChange={_onChange} />
+            <InputBox
+              name="confirmPassword"
+              type="password"
+              value={form?.confirmPassword}
+              onChange={_onChange}
+            />
           </dd>
         </dl>
         <dl>
@@ -105,7 +118,7 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="userName"
-              value={userInfo.userName ?? ''}
+              value={form?.userName}
               onChange={_onChange}
             />
           </dd>
@@ -116,7 +129,7 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="mobile"
-              value={userInfo.mobile ?? ''}
+              value={form?.mobile}
               onChange={_onChange}
             />
           </dd>
