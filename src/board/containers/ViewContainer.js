@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { getInfo } from '../apis/apiBoard';
 import Loading from '../../commons/components/Loading';
 import MessageBox from '../../commons/components/MessageBox';
-import { info } from 'sass';
 
 const ViewContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
