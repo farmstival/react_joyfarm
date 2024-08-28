@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { color } from '../../../../styles/color';
+import { ImSearch } from 'react-icons/im';
 
 const { white } = color;
 
@@ -47,10 +48,10 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-const ListSearchForm = ({ search, onChange }) => {
+const ListSearchForm = ({ search, onChange, onSubmit }) => {
   const { t } = useTranslation();
   return (
-    <FormBox onSubmit={(e) => e.preventDefault()} autoComplete="off">
+    <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="search">
       <select name="sopt" value={search?.sopt} onChange={onChange}>
         <option value="ALL">{t('통합검색')}</option>
@@ -66,7 +67,7 @@ const ListSearchForm = ({ search, onChange }) => {
         onChange={onChange}
         placeholder={t('검색어를_입력하세요')}
       />
-      <Button>{t('검색')}</Button>
+      <Button><ImSearch /></Button>
       </div>
     </FormBox>
   );

@@ -6,12 +6,12 @@ import ListSearchForm from './ListSearchForm';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
-const List = ({ board, items, search, onChange }) => {
+const List = ({items, search, onChange, onSubmitSearch }) => {
   const { t } = useTranslation();
   // 검색 항목 제출
   return (
     <>
-      <ListSearchForm search={search} onSubmit={onChange} />
+      <ListSearchForm search={search} onChange={onChange} onSubmit={onSubmitSearch} />
       <ListItems items={items} />
     </>
   );
