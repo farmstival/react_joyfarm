@@ -7,14 +7,16 @@ import { BoardButton } from '../../../../commons/components/Buttons';
 import { color } from '../../../../styles/color';
 import fontSize from '../../../../styles/fontSize';
 
-const { medium, extraBig } = fontSize;
+const { medium, big, extraBig } = fontSize;
 const { whiteGreen, midGreen, lightGreen, whiteGray, mid_gray, dark_gray } =
   color;
 
-// 게시글 제목 부분
+// 게시글 제목 부분(제목, 작성자, ...)
 const Wrapper = styled.div`
   font-size: ${medium};
   margin: 5px;
+  border-bottom: 1px solid ${whiteGray};
+  border-top: 2.5px solid ${whiteGray};
 
   .subject {
     font-size: ${extraBig};
@@ -22,15 +24,15 @@ const Wrapper = styled.div`
     text-align: left;
     vertical-align: middle;
     padding: 18px 30px;
-    background: #D2F1CA;
-    border-bottom: 2px solid ${mid_gray};
+    background: #d2f1ca;
+    border-bottom: 2px solid ${whiteGray};
     line-height: 30px;
   }
 
   .post-info {
     color: ${mid_gray};
     border-collapse: collapse;
-    border-bottom: 1px solid ${whiteGray};
+    //border-bottom: 1px solid ${whiteGray};
     display: flex;
     justify-content: space-between;
 
@@ -59,14 +61,19 @@ const StyledContents = styled.div`
   }
 
   .downloads {
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     color: ${mid_gray};
     vertical-align: middle;
-    padding: 5px;
+    padding: 5px 5px 5px 15px;
     border: 1px solid ${whiteGray};
     border-top: none;
   }
 `;
 
+// 버튼 그룹
 const Buttons = styled.div`
   align-items: flex-end;
   padding: 10px 0;
@@ -102,6 +109,7 @@ const ViewContent = ({ data, onDelete }) => {
 
         {data?.attachFiles?.length > 0 && (
           <ul className="downloads">
+            {t('첨부파일_목록')}
             {data.attachFiles.map(({ fileDownloadUrl, fileName }) => (
               <li key={fileDownloadUrl}>
                 <FaCloudDownloadAlt /> <a href={fileDownloadUrl}>{fileName}</a>

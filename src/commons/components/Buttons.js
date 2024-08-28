@@ -11,7 +11,7 @@ const commonStyle = css`
   cursor: pointer;
 `;
 
-const { midGreen, white } = color;
+const { midGreen, white, lightGreen, line_gray, whiteGray } = color;
 
 export const SmallButton = styled.button`
   font-size: ${normal};
@@ -100,6 +100,7 @@ export const BoardButton = styled.div`
   justify-content: center;
   font-size: ${medium};
   font-weight: 600px;
+  cursor: pointer;
   width: 100px;
   height: 30px;
   background-color: ${midGreen};
