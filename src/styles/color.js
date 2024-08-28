@@ -32,5 +32,5 @@ export const buttonColor = {
   dark: [color.dark, '#fff', color.dark],
   darkGreen: [color.darkGreen, '#fff', color.darkGreen],
   midGreen: [color.midGreen, '#fff', color.midGreen],
-  rightGreen: [color.rightGreen, '#fff', color.rightGreen],
+  lightGreen: [color.lightGreen, '#fff', color.lightGreen],
 };
