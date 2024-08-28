@@ -79,7 +79,7 @@ const MyPageView = () => {
       })
       .catch((error) => {
         console.error(error);
-        alert(t('회원정보 수정 중 오류가 발생했습니다'));
+        alert(t('회원정보_수정_중_오류가_발생했습니다'));
       });
   };
 
@@ -90,10 +90,12 @@ const MyPageView = () => {
       .then(() => {
         setUserInfo(updatedForm); // 업데이트된 정보를 Context에 반영
         alert(t('회원_탈퇴가_완료되었습니다'));
+        alert(t('회원_탈퇴가_완료되었습니다'));
         navigate('/', { replace: true });
       })
       .catch((error) => {
         console.error(error);
+        alert(t('회원_탈퇴_중_오류가_발생했습니다'));
         alert(t('회원_탈퇴_중_오류가_발생했습니다'));
       });
   };
