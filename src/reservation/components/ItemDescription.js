@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
+import { BigButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium } = fontSize;
+const { normal, medium, normedium } = fontSize;
 
 const Wrapper = styled.div`
-  width: 400px;
+  width: 45%;
   height: 500px;
   word-break: break-all;
 
@@ -20,23 +20,22 @@ const Wrapper = styled.div`
 
     .rsv_button {
       position: absolute;
-      width: 400px;
     }
   }
 
   dl {
     display: flex;
     padding: 10px 15px;
-    font-size: ${normal};
+    font-size: ${normedium};
     line-height: 170%;
 
     dt {
-      width: 120px;
+      width: 140px;
       font-weight: bold;
     }
 
     dd {
-      width: calc(100% - 100px);
+      width: calc(100% - 140px);
     }
   }
 
@@ -56,7 +55,7 @@ const ItemDescription = ({ item }) => {
     wwwAddress,
   } = item;
   return (
-    <Wrapper className="wrap_box">
+    <Wrapper>
       <div className="dscp_box">
         <dl>
           <dt>{t('체험마을명')}</dt>
@@ -84,16 +83,16 @@ const ItemDescription = ({ item }) => {
         )}
         {wwwAddress && (
           <dl>
-            <dt>{t('홈페이지주소')}</dt>
+            <dt>{t('홈페이지_주소')}</dt>
             <dd><a href={wwwAddress} target="_blank" rel="noopener noreferrer">{wwwAddress}</a></dd>
             {/* 외부 링크 사용 시 a 태그 */}
           </dl>
         )}
       </div>
       <Link to={`/reservation/apply/${item.seq}`}>
-        <MidButton className="rsv_button" color="midGreen">
+        <BigButton className="rsv_button" color="midGreen">
           {t('예약하기')}
-        </MidButton>
+        </BigButton>
       </Link>
     </Wrapper>
   );

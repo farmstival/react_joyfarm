@@ -7,14 +7,16 @@ import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import img from '../../images/ReviewImage1.jpg';
+import farmImg from '../../images/farm.jpg';
 
 const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e6e6eb;
+  padding-bottom: 20px;
 
-  .img {
-    width: 100px;
+  img {
+    width: 100%;
   }
 `;
 
@@ -22,7 +24,7 @@ const ReserveViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
+  const [mapOptions, setMapOptions] = useState({ height: '600px', zoom: 3 });
 
   const { seq } = useParams();
 
@@ -61,10 +63,11 @@ const ReserveViewContainer = ({ setPageTitle }) => {
           <ItemImage images={item.townImage} onClick={onShowImage} />
         ) : (
           //이미지 없는 경우 대체
-          <ItemImage className="img" images={img} onClick={onShowImage} />
+          <ItemImage className="img" images={farmImg} onClick={onShowImage} />
         )}
         <ItemDescription item={item} />
       </Wrapper>
+      <h1>{t('길찾기')}</h1>
       <KakaoMap {...mapOptions} />
     </>
   );
