@@ -237,7 +237,7 @@ const MainBoard = ({ onButtonClick }) => {
             {[1, 2, 3, 4].map(index => (
               <NoticeItem key={index} onClick={() => handleNoticeClick(`/notice/${index}`)}>
                 <NoticeDate>2024.04.12</NoticeDate>
-                <NoticeContent>[공지사항] 최시원님의 생일은 4월 22일 입니다. 생일을 최시원님의 생일은 4월 22일 입니다. 생일을 축하해...</NoticeContent>
+                <NoticeContent>[공지사항] 24년 9월 30일은 수료일입니다. 프로젝트 화이팅...</NoticeContent>
               </NoticeItem>
             ))}
           </RightSection>
