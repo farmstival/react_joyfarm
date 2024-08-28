@@ -6,16 +6,14 @@ import Header from '../../layouts/Header';
 import ViewContainer from '../containers/ViewContainer';
 import { useParams } from 'react-router-dom';
 
-const View = () => {
-
+const View = (bid) => {
+  const [SubPageTitle, setSubPageTitle] = useState('');
   const [pageTitle, setPageTitle] = useState('');
-  const { seq } = useParams();
 
   return (
     <>
-      <SubTitleLink text={pageTitle} href={`/board/update/${seq}`} />
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{SubPageTitle}</title>
       </Helmet>
       <OuterBox>
         <Header />
