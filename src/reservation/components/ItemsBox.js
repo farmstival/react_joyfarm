@@ -67,7 +67,15 @@ const ItemStyledBox = styled(ItemBox)`
   border-radius: 5px;
   border: 1px solid #ada493;
   width: 100%;
+  position: relative;
 
+  .wishbtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+    
   a {
     height: 450px;
     display: flex;
@@ -79,13 +87,6 @@ const ItemStyledBox = styled(ItemBox)`
       height: 230px;
       border-radius: 5px 5px 0px 0px;
       position: relative;
-
-      .wishbtn {
-        position: absolute;
-        top: 100px;
-        left: 30px;
-        z-index: 10;
-      }
     }
 
     .item-content {

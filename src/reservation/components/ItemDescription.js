@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
+import { BigButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
 const { normal, medium, normedium } = fontSize;
@@ -90,9 +90,9 @@ const ItemDescription = ({ item }) => {
         )}
       </div>
       <Link to={`/reservation/apply/${item.seq}`}>
-        <MidButton className="rsv_button" color="midGreen">
+        <BigButton className="rsv_button" color="midGreen">
           {t('예약하기')}
-        </MidButton>
+        </BigButton>
       </Link>
     </Wrapper>
   );

@@ -19,7 +19,7 @@ const {
   midGreen,
   black,
 } = color;
-const { normal, medium, normedium } = fontSize;
+const { normal, medium, normedium, big } = fontSize;
 
 const FormBox = styled.form`
   display: flex;
@@ -37,11 +37,10 @@ const FormBox = styled.form`
   dl {
     // display: flex;
     padding: 10px 15px;
-    font-size: ${normedium};
+    font-size: ${medium};
     line-height: 170%;
 
     dt {
-      // width: 140px;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -124,13 +123,12 @@ const FormBox = styled.form`
   }
 
   //hover 했을 때, 선택한 날짜 색상 변경
-  .react-calendar__tile:enabled:hover
- {
+  .react-calendar__tile:enabled:hover {
     background: ${lightGreen};
     color: white;
     border-radius: 40px;
   }
-  .react-calendar__tile:enabled:focus, 
+  .react-calendar__tile:enabled:focus,
   .react-calendar__tile--active {
     background: ${darkGreen};
     color: white;
@@ -190,6 +188,7 @@ const FormBox = styled.form`
     outline: 0 none;
     position: relative;
     cursor: pointer;
+    font-size: ${normedium};
 
     .option_container {
       display: none;
@@ -198,21 +197,16 @@ const FormBox = styled.form`
       position: absolute;
       top: 40px;
       left: 0;
-      padding: 0;
+      padding: 5px;
       list-style: none;
       overflow: hidden;
     }
 
     .option {
-      display: flex;
-      width: 135px;
-      height: 40px;
+      font-size: ${normedium};
       margin-bottom: 2px;
-      padding: 8px 20px;
-      border-radius: 8px;
       background-color: ${white};
       color: ${midGreen};
-      font-size: 14px;
     }
 
     .option:hover,
@@ -224,7 +218,7 @@ const FormBox = styled.form`
   li {
     display: flex;
     align-items: center;
-    font-size: ${medium};
+    font-size: ${big};
 
     svg {
       margin-right: 5px;
@@ -238,7 +232,10 @@ const FormBox = styled.form`
 
   .select_date {
     padding-left: 50px;
-    height: 100%
+    height: 100%;
+  }
+  input {
+    font-size: ${normedium};
   }
 `;
 

@@ -79,7 +79,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="DIVISION">{t('프로그램구분')}</option>
           <option value="ACTIVITY">{t('체험프로그램명')}</option>
           <option value="FACILITYINFO">{t('보유시설정보')}</option>
-          <option value="ADDRESS">{t('여행지_주소')}</option>
+          <option value="ADDRESS">{t('체험_마을_주소')}</option>
         </select>
         <input
           type="text"

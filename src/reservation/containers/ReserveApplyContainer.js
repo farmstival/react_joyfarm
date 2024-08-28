@@ -12,7 +12,7 @@ import apiApply from '../apis/apiApply';
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
   const {
-    states: {userInfo},
+    states: { userInfo },
   } = useContext(UserInfoContext);
 
   const [data, setData] = useState(null);
@@ -32,7 +32,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log("Fetched data:", res); // 데이터 확인용 로그 추가
+        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
         setPageTitle(`${res.townName} ${t('예약하기')}`);
 
         /* 예약 가능일 문자열 -> Date 객체  */
@@ -89,7 +89,10 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       };
 
       for (const [field, message] of Object.entries(requiredFields)) {
-        if (!form[field] || !form[field].trim()) {
+        if (
+          (typeof form[field] === 'string' && !form[field].trim()) ||
+          (typeof form[field] !== 'string' && !form[field])
+        ) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
           hasErrors = true;
