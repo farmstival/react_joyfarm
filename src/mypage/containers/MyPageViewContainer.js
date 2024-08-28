@@ -75,7 +75,7 @@ const MyPageView = () => {
       .then(() => {
         setUserInfo(form);
         alert(t('회원정보가_수정되었습니다'));
-        navigate('/mypage', { replace: true });
+        navigate('/mypage', { replace: false });
       })
       .catch((error) => {
         console.error(error);
@@ -90,14 +90,15 @@ const MyPageView = () => {
       .then(() => {
         setUserInfo(updatedForm); // 업데이트된 정보를 Context에 반영
         alert(t('회원_탈퇴가_완료되었습니다'));
+        alert(t('회원_탈퇴가_완료되었습니다'));
         navigate('/', { replace: true });
-        
       })
       .catch((error) => {
         console.error(error);
         alert(t('회원_탈퇴_중_오류가_발생했습니다'));
+        alert(t('회원_탈퇴_중_오류가_발생했습니다'));
       });
-  }
+  };
 
   return (
     <FormBox>

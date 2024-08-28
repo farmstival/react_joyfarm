@@ -17,7 +17,7 @@ import WishButton from '../../../commons/components/WishButton';
 const { mid_gray } = color;
 
 const Wrapper = styled.div`
-  position: relative;
+  display: flex;
   flex: 1;
   padding-left: 20px;
   margin: auto;
@@ -55,11 +55,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 13px;
+    font-size: 15px;
     color: ${mid_gray};
-    position: relative;
-    left: 250px;
-    bottom: -35px;
+    position: absolute;
+    right: 20px;
+    top: -40px;
   }
 `;
 
@@ -68,60 +68,62 @@ const ItemDescription = ({ item }) => {
   const { period, title, address, tel, course, description, seq } = item;
   const periodformattedDate = moment(period).format('YYYY년 MM월');
   return (
-    <Wrapper>
-      {period && (
-        <dl>
-          <dt>
-            <FcCalendar />
-            {t('추천_여행기간')}
-          </dt>
-          <dd>{periodformattedDate}</dd>
-        </dl>
-      )}
-      <dl>
-        <dt>
-          <FcAbout />
-          {t('추천_여행지')}
-        </dt>
-        <dd>{title}</dd>
-      </dl>
-      <dl>
-        <dt>
-          <FcAutomotive />
-          {t('여행장소')}
-        </dt>
-        <dd>{address}</dd>
-      </dl>
-      <dl>
-        <dt>
-          <FcContacts />
-          {t('문의처')}
-        </dt>
-        <dd>{tel}</dd>
-      </dl>
-      {course && (
-        <dl>
-          <dt>
-            <FcElectricity />
-            {t('여행코스')}
-          </dt>
-          <dd>{course}</dd>
-        </dl>
-      )}
-      {description && (
-        <dl>
-          <dt>
-            <FcPlus />
-            {t('여행지_설명')}
-          </dt>
-          <dd>{description}</dd>
-        </dl>
-      )}
-      <div className="button">
+      <Wrapper>
+        <div className="button">
         <WishButton seq={seq} type={'TOUR'}></WishButton>
         {t('찜하기')}
       </div>
-    </Wrapper>
+        <div className="description">
+          {period && (
+            <dl>
+              <dt>
+                <FcCalendar />
+                {t('추천_여행기간')}
+              </dt>
+              <dd>{periodformattedDate}</dd>
+            </dl>
+          )}
+          <dl>
+            <dt>
+              <FcAbout />
+              {t('추천_여행지')}
+            </dt>
+            <dd>{title}</dd>
+          </dl>
+          <dl>
+            <dt>
+              <FcAutomotive />
+              {t('여행장소')}
+            </dt>
+            <dd>{address}</dd>
+          </dl>
+          <dl>
+            <dt>
+              <FcContacts />
+              {t('문의처')}
+            </dt>
+            <dd>{tel}</dd>
+          </dl>
+          {course && (
+            <dl>
+              <dt>
+                <FcElectricity />
+                {t('여행코스')}
+              </dt>
+              <dd>{course}</dd>
+            </dl>
+          )}
+          {description && (
+            <dl>
+              <dt>
+                <FcPlus />
+                {t('여행지_설명')}
+              </dt>
+              <dd>{description}</dd>
+            </dl>
+          )}
+        </div>
+      </Wrapper>
   );
 };
 
