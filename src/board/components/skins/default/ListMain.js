@@ -11,7 +11,6 @@ const ListMain = (props) => {
 
     return (
         <>
-            <h1>리스트메인</h1>
             {/* <VisitorInfo/> */}
             <button onClick={handleButtonClick}>글쓰기 페이지로 이동</button>
         </>
