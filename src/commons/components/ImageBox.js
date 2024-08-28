@@ -8,4 +8,3 @@ export const ImageBgBox = styled.div`
   height: ${({ height }) => height ?? '200px'};
   object-fit: cover;
 `;
-
