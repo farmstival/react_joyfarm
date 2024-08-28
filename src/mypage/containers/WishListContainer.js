@@ -16,7 +16,6 @@ const WishListContainer = () => {
   const [menus, setMenus] = useState([]);
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
-  const [rootUrl, setRootUrl] = useState('');
   const { t } = useTranslation();
   const { tab } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,23 +38,18 @@ const WishListContainer = () => {
     switch (tab) {
       case 'reservation':
         apiList = getReservation;
-        setRootUrl(`/reservation/info`);
         break;
       case 'tour':
         apiList = getTourList;
-        setRootUrl(`/recommend/tour`);
         break;
       case 'festival':
         apiList = getFestivalList;
-        setRootUrl(`/recommend/festival`);
         break;
       case 'board':
         apiList = getBoardList;
-        setRootUrl(`/board`);
         break;
       default:
         apiList = getReservation;
-        setRootUrl('reservation/info');
         return;
     }
 
@@ -77,7 +71,7 @@ const WishListContainer = () => {
         console.error(err);
       }
     })();
-  }, [t, tab, currentPage, rootUrl]);
+  }, [t, tab, currentPage]);
 
   return (
     <>
@@ -98,7 +92,6 @@ const WishListContainer = () => {
         <Pagination
           onClick={onChangePage}
           pagination={pagination}
-          rootUrl={rootUrl}
         />
       )}
     </>
