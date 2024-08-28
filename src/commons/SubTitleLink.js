@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import RecommendContext from './modules/RecommendContext';
+import CommonContext from './modules/CommonContext';
 
 const SubTitleLink = ({ text, href }) => {
   const {
     actions: { setLinkText, setLinkHref },
-  } = useContext(RecommendContext);
+  } = useContext(CommonContext);
 
   useEffect(() => {
     setLinkText(text);
