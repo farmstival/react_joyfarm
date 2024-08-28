@@ -166,7 +166,7 @@ const ViewContainer = ({ setPageTitle }) => {
         onSubmit={onSubmit}
         errors={errors}
       />
-      ;{showListBelowView && <ListContainer bid={bid} />}
+      {showListBelowView && <ListContainer bid={bid} />}
     </>
   );
 };
