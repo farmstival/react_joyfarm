@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { t } from 'i18next';
 import BoardListTitle from '../../../../commons/components/BoardListTitle';
+import { FcInspection } from "react-icons/fc";
 
 const Wrapper = styled.ul``;
 
@@ -92,7 +93,13 @@ const StyledListItem = styled(ListItem)`
   }
 `;
 
-const NoData = styled.li``;
+const NoData = styled.li`
+  font-size: 1.3em;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const ListItems = ({ items }) => {
   const { t } = useTranslation();
@@ -103,7 +110,7 @@ const ListItems = ({ items }) => {
       {items && items.length > 0 ? (
         items.map((item) => <StyledListItem key={item.seq} item={item} />)
       ) : (
-        <NoData>{t('조회된_게시글이_없습니다.')}</NoData>
+<NoData>{t('조회된_게시글이_없습니다')}<FcInspection /></NoData>
       )}
     </Wrapper>
   );

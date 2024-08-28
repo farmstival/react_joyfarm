@@ -12,19 +12,19 @@ import apiApply from '../apis/apiApply';
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
   const {
-    states: {
-      userInfo: { userName, email, mobile },
-    },
+    states: { userInfo },
   } = useContext(UserInfoContext);
 
   const [data, setData] = useState(null);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     activitySeq: seq,
-    name: userName,
-    email,
-    mobile,
+    name: userInfo?.userName,
+    email: userInfo?.email,
+    mobile: userInfo?.mobile,
+    persons: 1, //기본값 1명
   });
+  const [times, setTimes] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log("Fetched data:", res); // 데이터 확인용 로그 추가
+        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
         setPageTitle(`${res.townName} ${t('예약하기')}`);
 
         /* 예약 가능일 문자열 -> Date 객체  */
@@ -80,16 +80,19 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
 
       /* 필수 항목 검증 S */
       const requiredFields = {
-        rDate: t('예약일을_선택하세요.'),
-        ampm: t('시간대를_선택하세요.'),
-        name: t('예약자명을_입력하세요.'),
-        email: t('예약자_이메일을_입력하세요.'),
-        mobile: t('예약자_휴대전화번호를_입력하세요.'),
+        rDate: t('예약일을_선택하세요'),
+        ampm: t('시간대를_선택하세요'),
+        name: t('예약자명을_입력하세요'),
+        email: t('예약자_이메일을_입력하세요'),
+        mobile: t('예약자_전화번호를_입력하세요'),
         persons: t('예약인원을_선택하세요'),
       };
 
       for (const [field, message] of Object.entries(requiredFields)) {
-        if (!form[field] || !form[field].trim()) {
+        if (
+          (typeof form[field] === 'string' && !form[field].trim()) ||
+          (typeof form[field] !== 'string' && !form[field])
+        ) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
           hasErrors = true;
