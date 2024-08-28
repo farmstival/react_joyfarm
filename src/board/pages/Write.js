@@ -13,7 +13,7 @@ const Write = () => {
 
   return (
     <>
-      <SubTitleLink text={pageTitle} href={`/board/write/${bid}`} />
+      <SubTitleLink text={pageTitle} href={`/board/list/${bid}`} />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
