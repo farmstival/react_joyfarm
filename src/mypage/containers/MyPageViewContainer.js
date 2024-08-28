@@ -30,7 +30,6 @@ const FormBox = styled.form`
     border: none;
     color: white;
     background: ${midGreen};
-    border: none;
   }
 
   button a {
@@ -53,13 +52,6 @@ const MyPageView = () => {
 
   const { t } = useTranslation();
 
-  const onLogout = useCallback(() => {
-    setIsLogin(false);
-    setIsAdmin(false);
-    setUserInfo(null);
-    cookies.remove('token', { path: '/' });
-  }, [setIsLogin, setIsAdmin, setUserInfo]);
-
   const _onChange = useCallback((e) => {
     const { name, value } = e.target;
     // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
@@ -68,6 +60,14 @@ const MyPageView = () => {
       [name]: value,
     }));
   }, []);
+
+  const onLogout = useCallback(() => {
+    setIsLogin(false);
+    setIsAdmin(false);
+    setUserInfo(null);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
+
   const navigate = useNavigate();
 
   const updateUserInfo = () => {
@@ -83,42 +83,21 @@ const MyPageView = () => {
       });
   };
 
-  /* 도전 대실패.. 
-  const deleteUserInfo = useCallback(
-    (seq) => {
-      if (!window.confirm(t('정말_삭제_하시겠습니까?'))){
-        return;
-      }
+  const deleteUserInfo = () => {
+    const updatedForm = { ...form, password: '' }; // 예를 들어 비밀번호를 빈 문자열로 초기화
 
-      (async() => {
-       try{
-        await memberDelete(seq);
-        onLogout();
-        navigate(`/`); // 탈퇴 후 로그아웃 + 메인 페이지로 이동
-       } catch(err) {
-        console.error(err);
-       }
-      })();
-    },
-    [t, navigate, onLogout],
-  );
-  
-  const deleteUserInfo = async () => {
-    try {
-      const form = { email: form.email }; // 필요한 데이터를 폼에 포함
-      if (window.confirm(t('정말 삭제하시겠습니까?'))) {
-        await apiDelete(form);
-        setUserInfo(null); // 유저 정보를 초기화하여 로그아웃 상태로 변경
-        alert(t('회원탈퇴가 완료되었습니다.'));
-        onLogout(); // 로그아웃 처리
-        navigate('/', { replace: true }); // 메인 페이지로 이동
-      }
-    } catch (error) {
-      console.error(error);
-      alert(t('회원탈퇴 중 오류가 발생했습니다.'));
-    }
-  };*/
-
+    apiUpdate(updatedForm)
+      .then(() => {
+        setUserInfo(updatedForm); // 업데이트된 정보를 Context에 반영
+        alert(t('회원_탈퇴가_완료되었습니다.'));
+        navigate('/', { replace: true });
+        
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(t('회원_탈퇴_중_오류가_발생했습니다.'));
+      });
+  }
 
   return (
     <FormBox>
@@ -184,7 +163,7 @@ const MyPageView = () => {
         <MidButton type="button" onClick={updateUserInfo}>
           {t('회원정보_수정하기')}
         </MidButton>
-        <MidButton type="button">
+        <MidButton type="button" onClick={deleteUserInfo && onLogout}>
           <NavLink to="/">{t('회원탈퇴하기')}</NavLink>
           {/* 탈퇴하기 누르면 메인페이지로 이동(기능 아직 X) */}
         </MidButton>
