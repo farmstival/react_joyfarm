@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
-import { OuterBox } from '../../commons/components/LayoutBox';
-import { MainTitle } from '../../commons/components/TitleBox';
+import { ContentBox, OuterBox } from '../../commons/components/LayoutBox';
+import SubTitleLink from '../../commons/SubTitleLink';
+import Header from '../../layouts/Header';
+import ViewContainer from '../containers/ViewContainer';
+import { useParams } from 'react-router-dom';
 
-const View = () => { /** 수정 예정 */
-  const [board, setBoard] = useState({
-    bName: '여행후기',
-  });
+const View = () => {
 
-  const { bName } = board;
-  const { t } = useTranslation();
+  const [pageTitle, setPageTitle] = useState('');
+  const { seq } = useParams();
 
   return (
     <>
+      <SubTitleLink text={pageTitle} href={`/board/update/${seq}`} />
       <Helmet>
-        <title>{t(bName)}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{t(bName)}</MainTitle>
+        <Header />
+        <ContentBox>
+          <ViewContainer setPageTitle={setPageTitle} />
+        </ContentBox>
       </OuterBox>
     </>
   );
-};
-
+}
 export default React.memo(View);

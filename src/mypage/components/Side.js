@@ -5,14 +5,15 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
+import { useParams } from 'react-router-dom';
 const { medium } = fontSize;
 const { midGreen, lightGreen } = color;
 
 const Wrapper = styled.aside`
   align-content: center;
   position: fixed;
-  top: 22%;
-  margin-left: -30px;
+  top: 25%;
+  margin-left: -150px;
 
   a {
     display: flex;
@@ -49,6 +50,8 @@ const Wrapper = styled.aside`
 
 const Side = () => {
   const { t } = useTranslation();
+  const { tab } = useParams();
+  const wishlistTab = tab || 'reservation';
 
   return (
     <Wrapper>
@@ -58,12 +61,13 @@ const Side = () => {
       >
         {t('회원정보_수정')}
       </NavLink>
+      {/*
       <NavLink
         to="/mypage/reservation"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('예약관리')}
-      </NavLink>
+      </NavLink>*/}
       <NavLink
         to="/mypage/board"
         className={({ isActive }) => classNames({ on: isActive })}
@@ -71,10 +75,10 @@ const Side = () => {
         {t('게시글_관리')}
       </NavLink>
       <NavLink
-        to="/mypage/wishlist/tour"
+        to={`/mypage/wishlist/${wishlistTab}`}
         className={({ isActive }) => classNames({ on: isActive })}
       >
-        WishList
+        {t('찜하기_리스트')}
       </NavLink>
     </Wrapper>
   );

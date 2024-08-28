@@ -5,6 +5,7 @@ const { extraBig, big, medium } = fontSize;
 
 export const MainTitle = styled.h1`
   font-size: ${extraBig};
+  text-align: center;
   border-bottom: 2px solid #000;
   padding: 0 15px 15px;
   margin: 0 0 20px;
