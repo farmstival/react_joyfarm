@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import { color } from '../../styles/color';
+
+const { whiteGreen } = color;
 
 const BoardListTitle = () => {
   const { t } = useTranslation();
@@ -22,6 +25,7 @@ const BoardListTitle = () => {
 const BoardListTitles = styled.div`
   border-bottom: 1px solid #ccc;
   border-top: 3px solid #ccc;
+  margin-top: 20px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -29,6 +33,7 @@ const BoardListTitles = styled.div`
   text-align: center;
   font-weight: bold;
   width: 100%;
+  background: ${whiteGreen};
 
   .board-list {
     display: flex;
@@ -52,20 +57,19 @@ const BoardListTitles = styled.div`
   .post-info {
     width: 38%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
 
     .poster{
     width: 30%;
-    padding-right: 40px;
+    padding-right: 20px;
     }
     .view {
     width: 30%;
-    text-align: left;
+    padding-right: 80px;
     }
     .datetime{
     width: 30%;
-    padding-right: 40px;
+    padding-right: 70px;
     }
   }
 `;

@@ -78,7 +78,17 @@ const StyledListItem = styled(ListItem)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 20px;
+    
+    .poster{
+    width: 25%;
+    padding-right: 40px;
+    }
+    .view {
+    width: 25%;
+    }
+    .datetime{
+    width: 50%;
+    }
   }
 `;
 
