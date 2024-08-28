@@ -60,8 +60,6 @@ const ListContainer = () => {
     window.location.hash = '#root';
   }, []);
 
-
-
   /* 로딩 처리 */
   if (loading) {
     return <Loading />;
