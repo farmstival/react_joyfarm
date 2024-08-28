@@ -52,15 +52,15 @@ const Login = () => {
         </h1>
 
         <div>
-        <PiPlantDuotone 
-        size={40} 
-        style={{ 
-          position: 'relative', // 위치 조정 시작
-          top:'-90px',         // 위에서 아래로 20px 이동
-          left:'-50px',          // 왼쪽에서 오른쪽으로 10px 이동
-          color:'green'         // 아이콘 색상 설정 (선택 사항)
-        }} 
-        />
+          <PiPlantDuotone
+            size={40}
+            style={{
+              position: 'relative', // 위치 조정 시작
+              top: '-90px', // 위에서 아래로 20px 이동
+              left: '-50px', // 왼쪽에서 오른쪽으로 10px 이동
+              color: 'green', // 아이콘 색상 설정 (선택 사항)
+            }}
+          />
         </div>
 
         <LoginContainer />

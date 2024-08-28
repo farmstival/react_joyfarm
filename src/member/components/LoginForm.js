@@ -45,7 +45,7 @@ const StyledLink = styled(Link)`
 //-----------------
 
 const FormBox = styled.form`
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   padding: 35px;
   border-radius: 55px;
   width: 400px;
@@ -71,7 +71,6 @@ const LinkBox = styled.div`
   position: relative;
   bottom: 70px; /* 화면 하단에서 20px 위로 고정 */
   right: -10px;
-  
 
   a {
     flex-grow: 1;
