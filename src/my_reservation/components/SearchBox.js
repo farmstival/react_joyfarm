@@ -7,7 +7,7 @@ import { color } from '../../styles/color';
 import DatePicker from 'react-datepicker';
 import fontSize from '../../styles/fontSize';
 
-const { white, lightGreen } = color;
+const { white, lightGreen, gray } = color;
 const { medium, normal, normedium } = fontSize;
 
 const FormBox = styled.form`
@@ -15,6 +15,8 @@ const FormBox = styled.form`
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
+  padding: 5px 20px 20px;
+  border-bottom: 1px solid #ccc;
 
   .select_box,
   .search_box {
@@ -26,6 +28,7 @@ const FormBox = styled.form`
 
     .pick_sdate,
     .pick_edate {
+      border: 1px solid ${gray};
       display: flex;
       align-items: center;
       width: 120px;
@@ -45,7 +48,7 @@ const FormBox = styled.form`
 
   .react-datepicker {
     border-radius: 10px;
-    border: 1px solid #c8c8c8;
+    border: 1px solid ${gray};
 
     .react-calendar {
       border-radius: 10px;
@@ -78,11 +81,18 @@ const FormBox = styled.form`
 
   input {
     width: 430px;
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid ${gray};
   }
 
   select {
+  
     width: 130px;
     margin-right: 3px;
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid ${gray};
   }
 
   .rsv_searchBar {

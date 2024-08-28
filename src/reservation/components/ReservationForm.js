@@ -9,11 +9,21 @@ import MessageBox from '../../commons/components/MessageBox';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 
-const { line_gray, primary, lightGreen, darkGreen } = color;
+const {
+  line_gray,
+  gray,
+  primary,
+  lightGreen,
+  darkGreen,
+  white,
+  midGreen,
+  black,
+} = color;
 const { normal, medium, normedium } = fontSize;
 
 const FormBox = styled.form`
   display: flex;
+  height: 100%;
 
   .box {
     flex-grow: 1;
@@ -21,7 +31,7 @@ const FormBox = styled.form`
   }
 
   .box + .box {
-    margin-left: 40px;
+    margin-left: 50px;
   }
 
   dl {
@@ -45,10 +55,12 @@ const FormBox = styled.form`
   .react-calendar {
     cursor: pointer;
     width: 90%;
-    height: 400px;
+    height: 450px;
     padding: 15px;
     border-radius: 20px;
     align-content: center;
+    display: flex;
+    flex-direction: column;
   }
 
   /* 네비게이션 가운데 정렬 */
@@ -64,8 +76,8 @@ const FormBox = styled.form`
 
   /* 네비게이션 비활성화 됐을때 스타일 */
   .react-calendar__navigation button:disabled {
-    background-color: white;
-    color: ${lightGreen};
+    background-color: ${white};
+    color: ${gray};
   }
 
   /* 년/월 상단 네비게이션 칸 크기 줄이기 */
@@ -73,18 +85,24 @@ const FormBox = styled.form`
     flex-grow: 0 !important;
   }
 
+  .react-calendar__viewContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   /* 요일 밑줄 제거 */
   .react-calendar__month-view__weekdays abbr {
     text-decoration: none;
-    font-weight: 800;
+    font-weight: bold;
   }
 
   .react-calendar__navigation button:focus {
-    background-color: white;
+    background-color: ${white};
   }
 
   .react-calendar__tile:disabled {
-    background-color: ${line_gray};
+    background-color: ${gray};
   }
 
   .react-calendar__navigation__label > span {
@@ -106,8 +124,13 @@ const FormBox = styled.form`
   }
 
   //hover 했을 때, 선택한 날짜 색상 변경
-  .react-calendar__tile:enabled:hover,
-  .react-calendar__tile:enabled:focus,
+  .react-calendar__tile:enabled:hover
+ {
+    background: ${lightGreen};
+    color: white;
+    border-radius: 40px;
+  }
+  .react-calendar__tile:enabled:focus, 
   .react-calendar__tile--active {
     background: ${darkGreen};
     color: white;
@@ -128,8 +151,10 @@ const FormBox = styled.form`
     }
   }
 
-  /* 네비게이션 월 스타일 적용 */
-  .react-calendar__year-view__months__month {
+  /* 네비게이션 월, 연도 스타일 적용 */
+  .react-calendar__year-view__months__month,
+  .react-calendar__decade-view__years__year,
+  .react-calendar__century-view__decades__decade {
     flex: 0 0 calc(33.3333% - 10px) !important;
     margin-inline-start: 5px !important;
     margin-inline-end: 5px !important;
@@ -155,15 +180,7 @@ const FormBox = styled.form`
     font-size: ${normal};
   }
 
-  //select 태그 스타일
-  select::-ms-expand {
-    display: none;
-  }
-
   .select {
-    -o-appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
 
     width: 460px;
@@ -171,16 +188,43 @@ const FormBox = styled.form`
     padding: 5px 30px 5px 10px;
     border-radius: 4px;
     outline: 0 none;
+    position: relative;
+    cursor: pointer;
+
+    .option_container {
+      display: none;
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      padding: 0;
+      list-style: none;
+      overflow: hidden;
+    }
 
     .option {
-      padding: 20px 0;
+      display: flex;
+      width: 135px;
+      height: 40px;
+      margin-bottom: 2px;
+      padding: 8px 20px;
+      border-radius: 8px;
+      background-color: ${white};
+      color: ${midGreen};
+      font-size: 14px;
+    }
+
+    .option:hover,
+    .option:cheched {
+      background-color: ${lightGreen};
     }
   }
 
   li {
     display: flex;
     align-items: center;
-    font-size: ${normedium};
+    font-size: ${medium};
 
     svg {
       margin-right: 5px;
@@ -190,6 +234,11 @@ const FormBox = styled.form`
   .rsv_btn {
     width: 400px;
     justify-content: center;
+  }
+
+  .select_date {
+    padding-left: 50px;
+    height: 100%
   }
 `;
 
