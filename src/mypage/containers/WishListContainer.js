@@ -84,15 +84,12 @@ const WishListContainer = () => {
         ) : (
           <NoData>
             {t('조회된_게시물이_없습니다')}
-            <FcInspection />
+            <FcInspection className="icon" />
           </NoData>
         )}
       </WishListBox>
       {items && items.length > 0 && (
-        <Pagination
-          onClick={onChangePage}
-          pagination={pagination}
-        />
+        <Pagination onClick={onChangePage} pagination={pagination} />
       )}
     </>
   );
@@ -104,6 +101,11 @@ const NoData = styled.div`
   position: relative;
   top: 50px;
   left: 250px;
+
+  .icon {
+  position: absolute;
+  top: 1px;
+  }
 `;
 
 export default React.memo(WishListContainer);
