@@ -219,7 +219,7 @@ const JoinForm = ({
                   <InputBox
                     type="text"
                     name="authNum"
-                    placeholder={t('인증코드_입력')}
+                    placeholder={t('인증코드 입력')}
                     onChange={onChange}
                   />
                 )}
