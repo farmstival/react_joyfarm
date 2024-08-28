@@ -1,16 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
-import {
-  OuterBox,
-  PageNav,
-  PageNavWrap,
-  PageTitle,
-  ContentBox,
-} from '../../commons/components/LayoutBox';
+import { SubTitle } from '../../commons/components/TitleBox';
+import { OuterBox, ContentBox } from '../../commons/components/LayoutBox';
 import ReserveListContainer from '../containers/ReserveListContainer';
-import { Link } from 'react-router-dom';
 import Header from '../../layouts/Header';
 import SubTitleLink from '../../commons/SubTitleLink';
 
@@ -26,14 +19,13 @@ const ReservationList = () => {
       <OuterBox>
         <Header />
         <ContentBox>
-            <SubTitle>{t('체험활동_리스트')}</SubTitle>
+          <SubTitle>{t('체험활동_리스트')}</SubTitle>
           <ReserveListContainer />
-        </ContentBox2>
+        </ContentBox>
       </OuterBox>
     </>
   );
 };
-
 export default React.memo(ReservationList);
 
 // <>

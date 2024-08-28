@@ -8,7 +8,7 @@ import Loading from '../../commons/components/Loading';
 import { ImageListBox2 } from '../../commons/components/ImageListBox';
 
 function getQueryString(searchParams) {
-  const qs = { limit: 9 };
+  const qs = { limit: 3 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams) {
       qs[k] = v;
@@ -51,7 +51,7 @@ const ReserveListContainer = () => {
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
-    window.location.hash = '#root'; // 이거 이유를 모르겠음
+    window.location.hash = '#root';
   }, []);
 
   /* 로딩 처리 */
