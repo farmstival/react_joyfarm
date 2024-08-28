@@ -88,7 +88,10 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       };
 
       for (const [field, message] of Object.entries(requiredFields)) {
-        if (!form[field] || !form[field].trim()) {
+        if (
+          (typeof form[field] === 'string' && !form[field].trim()) ||
+          (typeof form[field] !== 'string' && !form[field])
+        ) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
           hasErrors = true;
