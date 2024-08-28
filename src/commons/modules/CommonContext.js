@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 
-const RecommendContext = createContext({
+const CommonContext = createContext({
   states: {
     linkText: '',
     linkHref: '',
@@ -11,7 +11,7 @@ const RecommendContext = createContext({
   },
 });
 
-const RecommendProvider = ({ children }) => {
+const CommonProvider = ({ children }) => {
   const [linkText, setLinkText] = useState('');
   const [linkHref, setLinkHref] = useState('');
 
@@ -21,14 +21,12 @@ const RecommendProvider = ({ children }) => {
   };
 
   return (
-    <RecommendContext.Provider value={value}>
-      {children}
-    </RecommendContext.Provider>
+    <CommonContext.Provider value={value}>{children}</CommonContext.Provider>
   );
 };
 
-const { Consumer: RecommendConsumer } = RecommendContext;
+const { Consumer: CommonConsumer } = CommonContext;
 
-export { RecommendProvider, RecommendConsumer };
+export { CommonProvider, CommonConsumer };
 
-export default RecommendContext;
+export default CommonContext;
