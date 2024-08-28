@@ -9,7 +9,7 @@ import MessageBox from '../../commons/components/MessageBox';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 import moment from 'moment/moment';
-import { FcConferenceCall, FcAlarmClock, FcCalendar } from "react-icons/fc";
+import { FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 
 const { gray, primary, lightGreen, darkGreen, white, midGreen, dark } = color;
@@ -194,7 +194,7 @@ const FormBox = styled.form`
       font-size: ${medium};
       margin-bottom: 5px;
       background-color: ${white};
-      color: ${midGreen};
+      color: ${darkGreen};
     }
 
     .options:hover,
@@ -278,7 +278,7 @@ const ReservationForm = ({
       <div className="infoBox">
         <div className="select_date box">
           <div className="title">
-          <FcCalendar />
+            <FcCalendar />
             <h2>{t('예약일_선택')}</h2>
           </div>
           <h3>{t('예약은_당일로부터_한달_이내만_가능합니다')}</h3>
@@ -287,6 +287,7 @@ const ReservationForm = ({
             maxDate={maxDate}
             onChange={onDateChange}
             formatDay={(locale, date) => moment(date).format('DD')}
+            calendarType="gregory" //일요일부터 시작
           />
           {errors?.rDate && (
             <MessageBox color="danger" messages={errors.rDate} />
@@ -343,7 +344,7 @@ const ReservationForm = ({
           </div>
           <div className="people">
             <div className="title">
-            <FcConferenceCall />
+              <FcConferenceCall />
               <h2>{t('인원수_선택')}</h2>
             </div>
             <select
@@ -367,7 +368,7 @@ const ReservationForm = ({
             {times && (
               <div>
                 <div className="title">
-                <FcAlarmClock />
+                  <FcAlarmClock />
                   <h2>{t('예약시간_선택')}</h2>
                 </div>
                 <ul>

@@ -7,24 +7,20 @@ import { color } from '../../styles/color';
 import DatePicker from 'react-datepicker';
 import fontSize from '../../styles/fontSize';
 
-const { white, lightGreen, gray } = color;
+const { white, midGreen, gray, lightGreen } = color;
 const { medium, normal, normedium } = fontSize;
 
 const FormBox = styled.form`
   display: flex;
+  border-bottom: 1px solid #ccc;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
   padding: 5px 20px 20px;
-  border-bottom: 1px solid #ccc;
 
-  .select_box,
   .search_box {
     height: 45px;
-    items-align: center;
-    justify-content: center;
     display: flex;
-    margin: 0 20px 0 10px;
 
     .pick_sdate,
     .pick_edate {
@@ -44,65 +40,71 @@ const FormBox = styled.form`
         border: 2px solid #000;
       }
     }
-  }
 
-  .react-datepicker {
-    border-radius: 10px;
-    border: 1px solid ${gray};
+    input {
+      width: 430px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid ${gray};
+    }
 
-    .react-calendar {
+    select {
+      width: 130px;
+      margin-right: 3px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid ${gray};
+    }
+
+    .rsv_searchBar {
+      justify-content: center;
+      align-content: center;
+      display: flex;
+    }
+
+    .rsv_btn {
+      width: 180px;
+    }
+
+    .react-datepicker {
       border-radius: 10px;
-      border: 1px solid #c8c8c8; // 전체 틀: border, border-radius 조정
+      border: 1px solid ${gray};
     }
 
-    .react-calendar__navigation__label > span {
-      // 달력 상단 년/월 글씨 커스텀
-      color: #3a3a3a;
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 140%;
+    .react-datepicker__header {
+      background-color: ${gray};
+      border-bottom: none;
+      border-radius: 0;
     }
 
-    .react-calendar__tile:enabled:hover,
-    .react-calendar__tile:enabled:focus {
-      background: #ff7a00; //hover 했을 때 색상 변경
+    .react-datepicker__day-names {
+      //요일
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+    }
+
+    .react-datepicker__day-name {
+      color: #5b5b5b;
+      width: 30px;
     }
 
     .react-datepicker__day--today {
       // 오늘 날짜 하이라이트 커스텀
-      background: white;
-      color: #3a3a3a;
+      color: ${midGreen};
     }
     .react-datepicker__day--selected {
-      background: #ff7a00;
-      color: white;
+      background: ${lightGreen};
+      color: ${white};
     }
-  }
 
-  input {
-    width: 430px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid ${gray};
-  }
-
-  select {
-  
-    width: 130px;
-    margin-right: 3px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid ${gray};
-  }
-
-  .rsv_searchBar {
-    justify-content: center;
-    align-content: center;
-    display: flex;
-  }
-
-  .rsv_btn {
-    width: 180px;
+    .react-datepicker__month {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
   }
 `;
 
@@ -131,8 +133,8 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
             className="pick_sdate"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            dateFormat="yyyy-MM-dd" // 날짜 포맷 설정
+            // shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
             placeholderText={t('예약시작일')}
           />
         </div>
@@ -141,8 +143,8 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
             className="pick_edate"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
-            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            dateFormat="yyyy-MM-dd" // 날짜 포맷 설정
+            // shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
             placeholderText={t('예약종료일')}
           />
         </div>
