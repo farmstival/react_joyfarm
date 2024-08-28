@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios'; 
 import { color } from '../../../styles/color';
 import MainReviewImage from '../../../images/QnAImage.png';
+import ListItems from '../../../board/components/skins/default/ListItems';
+import { getList } from '../../../board/apis/apiBoard';
+import moment from 'moment';
+
 
 const { darkGreen, white, dark, midGreen, lightGreen, mid_gray, line_gray } = color;
 
@@ -166,17 +170,20 @@ const NoticeItem = styled.div`
     border-bottom: none;
   }
 `;
-const NoticeDate = styled.p`
+const NoticeItems = styled.p`
   font-size: 1.4em;
   font-weight: bold;
+  flex: 1;
   color: ${mid_gray};
   margin-left: 20px;
   margin-right: 30px;
 `;
 
-const NoticeContent = styled.p`
-  font-size: 1.2em;
-  color: ${dark};
+const NoticeSubject = styled.p`
+  font-size: 1.4em;
+  flex: 2;
+  color: black;
+  font-weight: bold;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -184,24 +191,25 @@ const NoticeContent = styled.p`
   max-width: 70%;
 `;
 
-const MainBoard = ({ onButtonClick }) => {
-  const [notices, setNotices] = useState([]);
+
+
+const MainBoard = ({ onButtonClick, bid='notice' }) => {
+  const [notices, setNotices] = useState([]); // 상태 추가
 
   useEffect(() => {
-    const fetchNotices = async () => {
+    (async () => {
       try {
-        const response = await axios.get('https://api.example.com/notices'); // 실제 API URL로 변경
-        setNotices(response.data);
-      } catch (error) {
-        console.error('Error fetching notices:', error);
+        const { items } = await getList(bid, { page: 1, limit: 5 });
+        console.log('Fetched items: ', items);
+        setNotices(items); // 상태 설정
+      } catch (err) {
+        console.error(err);
       }
-    };
+    })();
+  }, [bid]);
 
-    fetchNotices();
-  }, []);
-
-  const handleNoticeClick = (url) => {
-    window.location.href = url; 
+  const handleNoticeClick = (seq) => {
+    window.location.href = `/board/view/${seq}`; //클릭시 해당 게시글로 이동 
   };
 
   return (
@@ -234,12 +242,25 @@ const MainBoard = ({ onButtonClick }) => {
           
           <RightSection>
             <NoticeHeader>공지사항</NoticeHeader>
-            {[1, 2, 3, 4].map(index => (
-              <NoticeItem key={index} onClick={() => handleNoticeClick(`/notice/${index}`)}>
-                <NoticeDate>2024.04.12</NoticeDate>
-                <NoticeContent>[공지사항] 24년 9월 30일은 수료일입니다. 프로젝트 화이팅...</NoticeContent>
-              </NoticeItem>
-            ))}
+            <div className='noticeParent'>
+              {
+                notices && notices.length > 0 ? (
+                  notices.map((notice) => (
+                    <NoticeItem key={notice.seq} onClick={() => handleNoticeClick(notice.seq)}>
+                      <NoticeSubject>
+                      {notice.subject}
+                      </NoticeSubject>
+                      <NoticeItems>
+                        {notice.poster}
+                      </NoticeItems>
+                      <NoticeItems>
+                        {moment(notice.createdAt).format('YYYY/MM/DD')}
+                      </NoticeItems>
+                    </NoticeItem>
+                  )
+                  )
+                ) : (<p>공지사항이 없습니다.</p>)}
+            </div>
           </RightSection>
         </ContentWrapper>
       </InnerContentWrapper>
