@@ -11,7 +11,7 @@ const commonStyle = css`
   cursor: pointer;
 `;
 
-const { midGreen, white } = color;
+const { midGreen, white, lightGreen, line_gray, whiteGray } = color;
 
 export const SmallButton = styled.button`
   font-size: ${normal};
@@ -87,9 +87,25 @@ export const ZzimButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export const BoardButton = styled.div`
+  display: flex;
+  padding-top: 3px;
+  justify-content: center;
+  font-size: ${medium};
+  font-weight: 600px;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  background-color: ${midGreen};
+  color: white;
+  a {
+    color: white;
   }
 `;
