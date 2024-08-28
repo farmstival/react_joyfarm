@@ -71,24 +71,26 @@ const MyPageView = () => {
   const navigate = useNavigate();
 
   const updateUserInfo = () => {
+    if(window.confirm(t('회원정보를_수정하시겠습니까'))){
     apiUpdate(form)
       .then(() => {
         setUserInfo(form);
         alert(t('회원정보가_수정되었습니다'));
-        navigate('/mypage', { replace: true });
+        navigate('/mypage', { replace: false });
       })
       .catch((error) => {
         console.error(error);
         alert(t('회원정보_수정_중_오류가_발생했습니다'));
       });
+    }
   };
 
 const deleteUserInfo = () => {
-  if(window.confirm('탈퇴하시겠습니까?')) {
+  if(window.confirm(t('회원탈퇴를_진행하시겠습니까'))) {
     apiPatch(form)
     .then(() => {
       setUserInfo(null);
-      alert(t('회원탈퇴성공'));
+      alert(t('회원탈퇴완료'));
       navigate('/', {replace: true});
       onLogout();
     })
@@ -172,3 +174,4 @@ const deleteUserInfo = () => {
 };
 
 export default React.memo(MyPageView);
+
