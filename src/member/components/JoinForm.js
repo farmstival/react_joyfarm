@@ -10,6 +10,8 @@ import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 import { color } from '../../styles/color';
 
+
+
 const FormBox = styled.form`
 background-color: #E2E2E2; /* 부드러운 배경색 추가 */
 padding: 25px;
@@ -122,6 +124,7 @@ const EmailVerificationBox = styled.div`
   }
 `;
 
+
 const JoinForm = ({
   form,
   onSubmit,
@@ -188,7 +191,7 @@ const JoinForm = ({
                 </div>
               )}
             </EmailVerificationBox>
-            <MessageBox messages={errors.email} color="danger" />
+            <MessageBox messages={errors.email} color="darkGreen"/>
           </dd>
         </dl>
 
@@ -201,7 +204,7 @@ const JoinForm = ({
               value={form.password ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.password} color="danger" />
+            <MessageBox messages={errors.password} color="darkGreen" />
           </dd>
         </dl>
         <dl>
@@ -213,7 +216,7 @@ const JoinForm = ({
               value={form.confirmPassword ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.confirmPassword} color="danger" />
+            <MessageBox messages={errors.confirmPassword} color="darkGreen" />
           </dd>
         </dl>
         <dl>
@@ -225,7 +228,7 @@ const JoinForm = ({
               value={form.userName ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.userName} color="danger" />
+            <MessageBox messages={errors.userName} color="darkGreen" />
           </dd>
         </dl>
         <dl>
@@ -237,7 +240,7 @@ const JoinForm = ({
               value={form.mobile ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.mobile} color="danger" />
+            <MessageBox messages={errors.mobile} color="darkGreen" />
           </dd>
         </dl>
 
@@ -445,7 +448,7 @@ const JoinForm = ({
           {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
           {t('회원가입_약관에_동의합니다.')}
 
-          <MessageBox messages={errors.agree} color="danger" />
+          <MessageBox messages={errors.agree} color="darkGreen" />
         </div>
 
         <ButtonGroup width={450}>

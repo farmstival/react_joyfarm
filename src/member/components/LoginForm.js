@@ -8,6 +8,10 @@ import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 import styles from 'styled-components';
+import { color } from '../../styles/color';
+
+
+
 
 const { small, big, medium } = fontSize;
 
@@ -98,7 +102,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           placeholder={t('이메일')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.email} color="danger" />
+        <MessageBox messages={errors.email} color="darkGreen" />
 
         <InputBox
           type="password"
@@ -107,7 +111,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           placeholder={t('비밀번호')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.password} color="danger" />
+        <MessageBox messages={errors.password} color="darkGreen" />
 
         <StyledMidButton
           type="submit"
@@ -120,7 +124,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           {t('로그인')}
         </StyledMidButton>
 
-        <MessageBox messages={errors.global} color="danger" />
+        <MessageBox messages={errors.global} color="darkGreen" />
       </FormBox>
       <LinkBox>
         <StyledLink to="/member/find_id">

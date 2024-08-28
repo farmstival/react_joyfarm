@@ -97,6 +97,7 @@ const JoinContainer = () => {
         setErrors((errors) => ({
           ...errors,
           email: [t('이메일_인증에_실패하였습니다.')],
+          
         }));
       }
     })();
