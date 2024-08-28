@@ -2,16 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FaLock, FaKey, FaUserPlus } from 'react-icons/fa';
 import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
-import styles from 'styled-components';
-import { color } from '../../styles/color';
-
-
-
 
 const { small, big, medium } = fontSize;
 
@@ -37,7 +31,7 @@ const StyledLink = styled(Link)`
 
   &:hover {
     background-color: #f0f0f0; /* 배경색 변경 */
-    color: #2a74f5; /* 텍스트 색상 변경 */
+    color: black; /* 텍스트 색상 변경 */
     cursor: pointer;
   }
 
@@ -89,6 +83,24 @@ const LinkBox = styled.div`
   }
 `;
 
+const JoinPrompt = styled.div`
+  text-align: center;
+  margin-top: -30px;
+  font-size: ${medium};
+  color: #333;
+
+  a {
+    color: #767676;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+
+    &:hover {
+      color: #0056b3;
+    }
+  }
+`;
+
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
 
@@ -115,10 +127,10 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
 
         <StyledMidButton
           type="submit"
-          bgColor="#767676" /* 기본 배경색 */
-          textColor="white" /* 기본 텍스트 색상 */
-          hoverBgColor="#39AE48" /* hover 시 배경색 */
-          hoverTextColor="black" /* hover 시 텍스트 색상 */
+          bgColor="#39AE48" /* 기본 배경색 */
+          textColor="black" /* 기본 텍스트 색상 */
+          hoverBgColor="#767676" /* hover 시 배경색 */
+          hoverTextColor="white" /* hover 시 텍스트 색상 */
           style={{ border: 'none' }} /* 라인제거 */
         >
           {t('로그인')}
@@ -126,19 +138,11 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
 
         <MessageBox messages={errors.global} color="darkGreen" />
       </FormBox>
-      <LinkBox>
-        <StyledLink to="/member/find_id">
-          <FaLock /> {t('아이디_찾기')}
-        </StyledLink>
-        <StyledLink to="/member/find_pw">
-          <FaKey /> {t('비밀번호_찾기')}
-        </StyledLink>
-        <StyledLink to="/member/join">
-          <FaUserPlus /> {t('회원가입')}
-        </StyledLink>
-      </LinkBox>
+      <JoinPrompt>
+        아직 회원이 아니십니까?
+        <Link to="/member/join">{t('회원가입')}</Link>
+      </JoinPrompt>
     </>
   );
 };
-
 export default React.memo(LoginForm);

@@ -10,8 +10,6 @@ import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 import { color } from '../../styles/color';
 
-
-
 const FormBox = styled.form`
 background-color: #E2E2E2; /* 부드러운 배경색 추가 */
 padding: 25px;
@@ -38,7 +36,7 @@ transition: all 0.3s ease;
   dl {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 
     dt {
       width: 120px;
@@ -56,6 +54,7 @@ transition: all 0.3s ease;
         border: 1px solid #ccc;
         border-radius: 20px;
         font-size: 1rem;
+        margin-top: 12px;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
         &:focus {
@@ -100,30 +99,68 @@ const EmailVerificationBox = styled.div`
   .rows {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
+    
+
     button {
-      width: 95px;
-      height: 68px;
+      width: 80px;
       border-radius: 20px;
-      border: 2px solid #A2A2A2;
+      margin-left: 5px;
+      margin-top: -3px;
+      border: 2px solid #a2a2a2a2;
       padding: 8px;
+      margin-bottom: 0px;
+      cursor: pointer;
+      color: black;
+      transition: all 0.3s ease;
+
+    
+      &:hover {
+      background-color: #39AE48;
+      border-color: #39AE48;
+      color: white;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+      }
+      &:disabled {
+     background-color: #a2a2a2;
+     border-color: #a2a2a2;
+     cursor: not-allowed;
+     box-shadow: none;
+       }
     }
   }
 
   .rows:last-of-type {
-    span {
-      width: 70px;
-      text-align: center;
-    }
-    button {
-      width: 50px;
-    }
+    margin-bottom: -10px;
 
-    button + button {
-      margin-left: 5px;
-    }
-  }
 `;
 
+const StyledButton = styled.button`
+  width: 100px;
+  border-radius: 25px;
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #a2a2a2a2;
+  background-color: #a2a2a2a2a2;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #39AE48;
+    border-color: #39AE48;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+
+  &:disabled {
+    background-color: #a2a2a2;
+    border-color: #a2a2a2;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+`;
 
 const JoinForm = ({
   form,
@@ -142,10 +179,10 @@ const JoinForm = ({
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
       <div className="form_box">
-        <dl>
-          <dt>{t('이메일')}</dt>
-          <dd>
-            <EmailVerificationBox>
+        <EmailVerificationBox>
+          <dl>
+            <dt>{t('이메일')}</dt>
+            <dd>
               <div className="rows">
                 <InputBox
                   type="text"
@@ -167,34 +204,39 @@ const JoinForm = ({
                   </button>
                 )}
               </div>
-              {form.emailVerified ? (
-                <MessageBox color="primary">
-                  {t('확인된_이메일_입니다.')}
-                </MessageBox>
-              ) : (
-                <div className="rows">
-                  {form.authCount > 0 && (
-                    <InputBox
-                      type="text"
-                      name="authNum"
-                      placeholder={t('인증코드_입력')}
-                      onChange={onChange}
-                    />
-                  )}
-                  <span>{form.authCountMin}</span>
-                  <button type="button" onClick={onVerifyAuthCode}>
-                    {t('확인')}
-                  </button>
-                  <button type="button" onClick={onReSendAuthCode}>
-                    {t('재전송')}
-                  </button>
-                </div>
-              )}
-            </EmailVerificationBox>
-            <MessageBox messages={errors.email} color="darkGreen"/>
-          </dd>
-        </dl>
+            </dd>
+          </dl>
 
+          {form.emailVerified ? (
+            <MessageBox color="primary">
+              {t('확인된_이메일_입니다.')}
+            </MessageBox>
+          ) : (
+            <dl>
+              <dt>{t('인증코드')}</dt>
+              <dd>
+                {form.authCount > 0 && (
+                  <InputBox
+                    type="text"
+                    name="authNum"
+                    placeholder={t('인증코드_입력')}
+                    onChange={onChange}
+                  />
+                )}
+
+                <span>{form.authCountMin}</span>
+                <StyledButton type="button" onClick={onVerifyAuthCode}>
+                  {t('확인')}
+                </StyledButton>
+                <StyledButton type="button" onClick={onReSendAuthCode}>
+                  {t('재전송')}
+                </StyledButton>
+              </dd>
+            </dl>
+          )}
+
+          <MessageBox messages={errors.email} color="darkGreen" />
+        </EmailVerificationBox>
         <dl>
           <dt>{t('비밀번호')}</dt>
           <dd>
@@ -240,6 +282,7 @@ const JoinForm = ({
               value={form.mobile ?? ''}
               onChange={onChange}
             />
+
             <MessageBox messages={errors.mobile} color="darkGreen" />
           </dd>
         </dl>
