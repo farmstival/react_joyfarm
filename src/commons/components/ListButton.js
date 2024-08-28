@@ -12,7 +12,7 @@ const ListButton = () => {
   const { t } = useTranslation();
 
   const handleButtonClick = () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const Wrapper = styled.div`
@@ -35,7 +35,7 @@ const ListButton = () => {
     justify-content: center;
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
     }
   `;
