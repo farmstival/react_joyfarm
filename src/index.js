@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorPage from './commons/pages/Error';
 import { UserInfoProvider } from './member/modules/UserInfoContext';
-import { RecommendProvider } from './commons/modules/RecommendContext';
+import { CommonProvider } from './commons/modules/CommonContext';
 import { WishListProvider } from './commons/contexts/WishListContext';
 import 'react-calendar/dist/Calendar.css'; //calendar 기본 스타일 시트 전역 적용
 import 'react-datepicker/dist/react-datepicker.css'; //datepicker 스타일 시트
@@ -20,7 +20,7 @@ root.render(
   <React.StrictMode>
     <WishListProvider>
       <UserInfoProvider>
-        <RecommendProvider>
+        <CommonProvider>
           <ErrorPage>
             <HelmetProvider>
               <BrowserRouter>
@@ -30,7 +30,7 @@ root.render(
               </BrowserRouter>
             </HelmetProvider>
           </ErrorPage>
-        </RecommendProvider>
+        </CommonProvider>
       </UserInfoProvider>
     </WishListProvider>
   </React.StrictMode>,
