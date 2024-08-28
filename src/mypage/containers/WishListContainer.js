@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import TabMenus from '../../commons/components/TabMenus';
 import { apiWishlist as getFestivalList } from '../../recommend/Festival/apis/apiInfo';
 import { apiWishlist as getTourList } from '../../recommend/tour/apis/apiInfo';
-import { apiWishList as getReservation } from '../../reservation/apis/apiInfo';
-import Loading from '../../commons/components/Loading';
+import { apiWishlist as getReservation } from '../../reservation/apis/apiInfo';
 import WishListItem from '../components/WishListItem';
 import { WishListBox } from '../../commons/components/ImageListBox';
 import Pagination from '../../commons/components/Pagination';
+import styled from 'styled-components';
+import { FcInspection } from 'react-icons/fc';
 
 const WishListContainer = () => {
   const [menus, setMenus] = useState([]);
@@ -18,6 +19,7 @@ const WishListContainer = () => {
   const { t } = useTranslation();
   const { tab } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const onChangePage = useCallback((page) => {
     setCurrentPage(page);
@@ -36,7 +38,7 @@ const WishListContainer = () => {
     switch (tab) {
       case 'reservation':
         apiList = getReservation;
-        setRootUrl(`reservation/info`);
+        setRootUrl(`/reservation/info`);
         break;
       case 'tour':
         apiList = getTourList;
@@ -62,7 +64,7 @@ const WishListContainer = () => {
       }
 
       try {
-        const res = await apiList();
+        const res = await apiList(currentPage, itemsPerPage);
         console.log('API Response:', res);
         setItems(res.items);
         setPagination(res.pagination);
@@ -77,20 +79,33 @@ const WishListContainer = () => {
       <TabMenus items={menus} />
       <WishListBox>
         {items && items.length > 0 ? (
-          <WishListItem
-            items={items}
-            pagination={pagination}
-            rootUrl={rootUrl}
-          />
+          <>
+            <WishListItem items={items} />
+          </>
         ) : (
-          <Loading />
+          <NoData>
+            {t('조회된_게시물이_없습니다')}
+            <FcInspection />
+          </NoData>
         )}
       </WishListBox>
-      {items.length > 0 && (
-        <Pagination onClick={onChangePage} pagination={pagination} />
+      {items && items.length > 0 && (
+        <Pagination
+          onClick={onChangePage}
+          pagination={pagination}
+          rootUrl={rootUrl}
+        />
       )}
     </>
   );
 };
+
+const NoData = styled.div`
+  font-size: 1.5em;
+  height: 100px;
+  position: relative;
+  top: 50px;
+  left: 250px;
+`;
 
 export default React.memo(WishListContainer);
