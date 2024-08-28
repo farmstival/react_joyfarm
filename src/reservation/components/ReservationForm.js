@@ -9,6 +9,8 @@ import MessageBox from '../../commons/components/MessageBox';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 import moment from 'moment/moment';
+import { FcConferenceCall, FcAlarmClock, FcCalendar } from "react-icons/fc";
+import { BsFillPersonLinesFill } from 'react-icons/bs';
 
 const { gray, primary, lightGreen, darkGreen, white, midGreen, dark } = color;
 const { normal, medium, normedium, big, extraBig } = fontSize;
@@ -16,7 +18,7 @@ const { normal, medium, normedium, big, extraBig } = fontSize;
 const FormBox = styled.form`
   .infoBox {
     display: flex;
-    height: 770px;
+    height: 740px;
   }
 
   .box {
@@ -78,10 +80,9 @@ const FormBox = styled.form`
     flex-grow: 0 !important;
   }
 
-    //hover 했을 때, 선택한 날짜 색상 변경
+  //hover 했을 때, 선택한 날짜 색상 변경
   .react-calendar__navigation__label:hover,
-  .react-calendar__navigation button:enabled:hover
-   {
+  .react-calendar__navigation button:enabled:hover {
     background: ${lightGreen};
     border-radius: 40px;
   }
@@ -186,6 +187,8 @@ const FormBox = styled.form`
     outline: 0 none;
     position: relative;
     font-size: ${medium};
+    line-height: 170%;
+    margin-left: 10px;
 
     .options {
       font-size: ${medium};
@@ -207,8 +210,8 @@ const FormBox = styled.form`
   li {
     display: flex;
     align-items: center;
-    font-size: ${extraBig};
-    margin-bottom: 10px;
+    font-size: ${big};
+    margin: 0 0 10px 10px;
 
     svg {
       margin-right: 5px;
@@ -235,8 +238,26 @@ const FormBox = styled.form`
     font-size: ${medium};
   }
 
+  .people > select,
+  .time_box > ul {
+    margin: 10px 15px;
+    font-size: ${medium};
+    line-height: 170%;
+  }
+
   .people {
-    margin-top: 180px; 
+    margin-bottom: 40px;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: ${extraBig};
+      margin-right: 10px;
+      color: ${primary};
+    }
   }
 `;
 
@@ -256,23 +277,99 @@ const ReservationForm = ({
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="infoBox">
         <div className="select_date box">
-          <h2>{t('예약일_선택')}</h2>
+          <div className="title">
+          <FcCalendar />
+            <h2>{t('예약일_선택')}</h2>
+          </div>
           <h3>{t('예약은_당일로부터_한달_이내만_가능합니다')}</h3>
           <Calendar
             minDate={minDate}
             maxDate={maxDate}
             onChange={onDateChange}
-            formatDay={(locale, date) => moment(date).format("DD")}
+            formatDay={(locale, date) => moment(date).format('DD')}
           />
           {errors?.rDate && (
             <MessageBox color="danger" messages={errors.rDate} />
           )}
-          {times && (
+        </div>
+        <div className="select-time box">
+          <div className="userInfo">
+            <div className="title">
+              <BsFillPersonLinesFill />
+              <h2>{t('예약자_정보_입력')}</h2>
+            </div>
             <dl>
-              <dt>
-                <h2>{t('예약시간_선택')}</h2>
-              </dt>
+              <dt>{t('예약자명')}</dt>
               <dd>
+                <InputBox
+                  type="text"
+                  name="name"
+                  value={form?.name}
+                  onChange={onChange}
+                />
+                {errors?.name && (
+                  <MessageBox color="danger" messages={errors.name} />
+                )}
+              </dd>
+            </dl>
+            <dl>
+              <dt>{t('이메일')}</dt>
+              <dd>
+                <InputBox
+                  type="text"
+                  name="email"
+                  value={form?.email}
+                  onChange={onChange}
+                />
+                {errors?.email && (
+                  <MessageBox color="danger" messages={errors.email} />
+                )}
+              </dd>
+            </dl>
+            <dl>
+              <dt>{t('전화번호')}</dt>
+              <dd>
+                <InputBox
+                  type="text"
+                  name="mobile"
+                  value={form?.mobile}
+                  onChange={onChange}
+                />
+                {errors?.mobile && (
+                  <MessageBox color="danger" messages={errors.mobile} />
+                )}
+              </dd>
+            </dl>
+          </div>
+          <div className="people">
+            <div className="title">
+            <FcConferenceCall />
+              <h2>{t('인원수_선택')}</h2>
+            </div>
+            <select
+              name="persons"
+              value={form?.persons}
+              onChange={onChange}
+              className="select"
+            >
+              {[...new Array(30).keys()].map((i) => (
+                <option key={`persons_${i}`} value={i + 1} className="options">
+                  {i + 1}
+                  {t('명')}
+                </option>
+              ))}
+            </select>
+            {errors?.persons && (
+              <MessageBox color="danger" messages={errors.persons} />
+            )}
+          </div>
+          <div className="time_box">
+            {times && (
+              <div>
+                <div className="title">
+                <FcAlarmClock />
+                  <h2>{t('예약시간_선택')}</h2>
+                </div>
                 <ul>
                   {times[0] && (
                     <li onClick={() => onTimeChange('AM')}>
@@ -298,82 +395,8 @@ const ReservationForm = ({
                 {errors?.ampm && (
                   <MessageBox color="danger" messages={errors.ampm} />
                 )}
-              </dd>
-            </dl>
-          )}
-        </div>
-        <div className="select-time box">
-          <h2>{t('예약자_정보_입력')}</h2>
-          <dl>
-            <dt>{t('예약자명')}</dt>
-            <dd>
-              <InputBox
-                type="text"
-                name="name"
-                value={form?.name}
-                onChange={onChange}
-              />
-              {errors?.name && (
-                <MessageBox color="danger" messages={errors.name} />
-              )}
-            </dd>
-          </dl>
-          <dl>
-            <dt>{t('이메일')}</dt>
-            <dd>
-              <InputBox
-                type="text"
-                name="email"
-                value={form?.email}
-                onChange={onChange}
-              />
-              {errors?.email && (
-                <MessageBox color="danger" messages={errors.email} />
-              )}
-            </dd>
-          </dl>
-          <dl>
-            <dt>{t('전화번호')}</dt>
-            <dd>
-              <InputBox
-                type="text"
-                name="mobile"
-                value={form?.mobile}
-                onChange={onChange}
-              />
-              {errors?.mobile && (
-                <MessageBox color="danger" messages={errors.mobile} />
-              )}
-            </dd>
-          </dl>
-              <div className='people'>
-          <dl>
-            <dt>
-              <h2>{t('인원수_선택')}</h2>
-            </dt>
-            <dd>
-              <select
-                name="persons"
-                value={form?.persons}
-                onChange={onChange}
-                className="select"
-              >
-                {[...new Array(30).keys()].map((i) => (
-                  <option
-                    key={`persons_${i}`}
-                    value={i + 1}
-                    className="options"
-                  >
-                    {i + 1}
-                    {t('명')}
-                  </option>
-                ))}
-              </select>
-              {errors?.persons && (
-                <MessageBox color="danger" messages={errors.persons} />
-              )}
-            </dd>
-          </dl>
+              </div>
+            )}
           </div>
         </div>
       </div>
