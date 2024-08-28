@@ -4,8 +4,8 @@ import loadable from '@loadable/component';
 
 const MypageLayout = loadable(() => import('../layouts/MypageLayout'));
 /* 마이페이지 S */
-const MypageMain = loadable(() => import('../mypage/pages/MypageMain.js'));
-const InfoPage = loadable(() => import('../mypage/pages/Info.js')); // 회원정보 수정
+const MypageMain = loadable(() => import('../mypage/pages/MypageMain'));
+const InfoPage = loadable(() => import('../mypage/pages/Info')); // 회원정보 수정
 const ReservationPage = loadable(() => import('../mypage/pages/Reservation')); // 예약관리
 const BoardPage = loadable(() => import('../mypage/pages/Board')); // 게시글 관리
 const WishListPage = loadable(() => import('../mypage/pages/WishList'));
