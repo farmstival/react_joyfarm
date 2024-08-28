@@ -87,9 +87,24 @@ export const ZzimButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export const BoardButton = styled.div`
+  display: flex;
+  padding-top: 3px;
+  justify-content: center;
+  font-size: ${medium};
+  font-weight: 600px;
+  width: 100px;
+  height: 30px;
+  background-color: ${midGreen};
+  color: white;
+  a {
+    color: white;
   }
 `;
