@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
 import farmImg from '../../images/farm.jpg';
@@ -10,6 +9,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
 import { FcLandscape } from 'react-icons/fc';
 import { IoTicketOutline } from 'react-icons/io5';
+import { format } from 'date-fns';
 
 const { line_gray, darkGreen, primary } = color;
 const { medium, normedium, normal, extraBig } = fontSize;
@@ -27,7 +27,11 @@ const ItemBox = ({ item, className }) => {
     ampm,
     persons,
   } = item;
+
   const url = `/myreservation/info/${seq}`;
+  const formatDate = format(
+  Date(rdate), 'yyyy-MM-dd');
+
   return (
     <li className={className}>
       <Link to={url}>
@@ -65,13 +69,13 @@ const ItemBox = ({ item, className }) => {
             </div>
             <div className="rsvContent">
               <div className="rsvDate">
-                {t('예약일')}: {rdate}
+                {t('예약일')}: {formatDate}
               </div>
               <div className="rsvTime">
-                {t('예약_시간')}: {ampm}
+                {t('예약시간')}: {ampm === 'AM' ? t('오전'): t('오후')}
               </div>
               <div className="rsvPersons">
-                {t('인원수')}: {persons}
+                {t('인원수')}: {persons}{t('명')}
               </div>
             </div>
           </div>
@@ -211,10 +215,25 @@ const ItemStyledBox = styled(ItemBox)`
   }
 `;
 
+const NoData = styled.li`
+  font-size: 1.3em;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const ItemsBox = ({ items }) => {
+  const { t } = useTranslation();
+
   return (
-    items.length > 0 &&
-    items.map((item) => <ItemStyledBox key={item.seq} item={item} />)
+    <>
+      {items && items.length > 0 ? (
+        items.map((item) => <ItemStyledBox key={item.seq} item={item} />)
+      ) : (
+        <NoData>{t('조회된_예약_내역이_없습니다')}</NoData>
+      )}
+    </>
   );
 };
 

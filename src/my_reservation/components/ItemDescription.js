@@ -7,6 +7,7 @@ import fontSize from '../../styles/fontSize';
 import { BsPersonLinesFill } from 'react-icons/bs';
 import { IoTicketOutline } from 'react-icons/io5';
 import { color } from '../../styles/color';
+import { format } from 'date-fns';
 
 const { medium, normedium, big } = fontSize;
 const { primary } = color;
@@ -79,6 +80,9 @@ const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
   const { name, email, mobile, rdate, ampm, townName, persons } = item;
 
+  const formatDate = format(
+    Date(rdate), 'yyyy-MM-dd');
+
   return (
     <Wrapper>
       <div className="dscp_box">
@@ -108,15 +112,15 @@ const ItemDescription = ({ item, onClick }) => {
           </div>
           <dl>
             <dt>{t('예약일')}</dt>
-            <dd>{rdate}</dd>
+            <dd>{formatDate}</dd>
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
-            <dd>{ampm}</dd>
+            <dd>{ampm === 'AM' ? t('오전'): t('오후')}</dd>
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
-            <dd>{persons}</dd>
+            <dd>{persons}{t('명')}</dd>
           </dl>
           <dl>
             <dt>{t('체험_마을명')}</dt>
