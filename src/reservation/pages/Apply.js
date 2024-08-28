@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react';
+import React, { useState } from 'react';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import { OuterBox, ContentBox2 } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
