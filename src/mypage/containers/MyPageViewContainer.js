@@ -1,12 +1,14 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import cookies from 'react-cookies';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import InputBox from '../../commons/components/InputBox';
 import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
+import { apiUpdate } from '../apis/apiMyPage';
 const { small, big, medium } = fontSize;
 const { midGreen, whiteGray } = color;
 
@@ -25,42 +27,75 @@ const FormBox = styled.form`
   }
 
   button {
+    border: none;
     color: white;
     background: ${midGreen};
-    border: none;
   }
 
   button a {
+    border: none;
     color: white;
     background: ${midGreen};
   }
 `;
 
 const MyPageView = () => {
-  const { t } = useTranslation();
   const {
-    states: { userInfo },
-    actions: { setUserInfo },
+    states: { isLogin, userInfo, isAdmin },
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
   // 'UserInfoContext'로 로그인 상태, 사용자 정보 가져옴
 
-  const _onChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
-      setUserInfo({
-        ...userInfo,
-        [name]: value,
-      });
-    },
-    [userInfo, setUserInfo],
-  );
+  const initialForm = userInfo;
+  delete initialForm.password;
+  const [form, setForm] = useState(initialForm);
 
-  //const onToggle = useCallback(setUserInfo(...userInfo));
+  const { t } = useTranslation();
+
+  const _onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    // 현재 userInfo 상태를 복사한 후 변경된 값을 덮어씀
+    setForm((form) => ({
+      ...form,
+      [name]: value,
+    }));
+  }, []);
+
+  const onLogout = useCallback(() => {
+    setIsLogin(false);
+    setIsAdmin(false);
+    setUserInfo(null);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
+
+  const navigate = useNavigate();
 
   const updateUserInfo = () => {
-    setUserInfo(userInfo);
-    alert(t('회원정보가_수정되었습니다.'));
+    apiUpdate(form)
+      .then(() => {
+        setUserInfo(form);
+        alert(t('회원정보가_수정되었습니다.'));
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(t('회원정보 수정 중 오류가 발생했습니다.'));
+      });
+  };
+
+  const deleteUserInfo = () => {
+    const updatedForm = { ...form, password: '' }; // 예를 들어 비밀번호를 빈 문자열로 초기화
+
+    apiUpdate(updatedForm)
+      .then(() => {
+        setUserInfo(updatedForm); // 업데이트된 정보를 Context에 반영
+        alert(t('회원_탈퇴가_완료되었습니다.'));
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(t('회원_탈퇴_중_오류가_발생했습니다.'));
+      });
   };
 
   return (
@@ -72,7 +107,8 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="email"
-              value={userInfo.email ?? ''}
+              value={form?.email}
+              disabled
               onChange={_onChange}
             />
           </dd>
@@ -81,9 +117,20 @@ const MyPageView = () => {
           <dt>{t('비밀번호')}</dt>
           <dd>
             <InputBox
-              type="password"
               name="password"
-              value={userInfo.password ?? ''} // blank로 처리하기
+              type="password"
+              value={form?.password}
+              onChange={_onChange}
+            />
+          </dd>
+        </dl>
+        <dl>
+          <dt>{t('비밀번호_확인')}</dt>
+          <dd>
+            <InputBox
+              name="confirmPassword"
+              type="password"
+              value={form?.confirmPassword}
               onChange={_onChange}
             />
           </dd>
@@ -94,7 +141,7 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="userName"
-              value={userInfo.userName ?? ''}
+              value={form?.userName}
               onChange={_onChange}
             />
           </dd>
@@ -105,7 +152,7 @@ const MyPageView = () => {
             <InputBox
               type="text"
               name="mobile"
-              value={userInfo.mobile ?? ''}
+              value={form?.mobile}
               onChange={_onChange}
             />
           </dd>
@@ -115,7 +162,7 @@ const MyPageView = () => {
         <MidButton type="button" onClick={updateUserInfo}>
           {t('회원정보_수정하기')}
         </MidButton>
-        <MidButton type="button">
+        <MidButton type="button" onClick={deleteUserInfo && onLogout}>
           <NavLink to="/">{t('회원탈퇴하기')}</NavLink>
           {/* 탈퇴하기 누르면 메인페이지로 이동(기능 아직 X) */}
         </MidButton>

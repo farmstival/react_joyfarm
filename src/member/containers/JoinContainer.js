@@ -219,7 +219,7 @@ const JoinContainer = () => {
 
   const fileDeleteCallback = useCallback(
     (seq) => {
-      if (!window.confirm(t('정말_삭제하시겠습니까?'))) {
+      if (!window.confirm(t('정말_삭제_하시겠습니까'))) {
         return;
       }
 
