@@ -5,6 +5,7 @@ import TabMenus from '../../commons/components/TabMenus';
 import { apiWishlist as getFestivalList } from '../../recommend/Festival/apis/apiInfo';
 import { apiWishlist as getTourList } from '../../recommend/tour/apis/apiInfo';
 import { apiWishlist as getReservation } from '../../reservation/apis/apiInfo';
+import { apiWishlist as getBoardList } from '../../board/apis/apiInfo';
 import WishListItem from '../components/WishListItem';
 import { WishListBox } from '../../commons/components/ImageListBox';
 import Pagination from '../../commons/components/Pagination';
@@ -47,6 +48,10 @@ const WishListContainer = () => {
       case 'festival':
         apiList = getFestivalList;
         setRootUrl(`/recommend/festival`);
+        break;
+      case 'board':
+        apiList = getBoardList;
+        setRootUrl(`/board`);
         break;
       default:
         apiList = getReservation;

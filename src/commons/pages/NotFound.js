@@ -11,10 +11,10 @@ const { big, medium } = fontSize;
 
 const Wrapper = styled.div`
   position: fixed;
-  top: 116px;
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 116px);
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ const NotFound = () => {
     <Wrapper>
       <div className="inner">
         <img src={image} alt="loading" />
-        <div>페이지가 없습니다..</div>
+        <div>{t('페이지가_없습니다')}</div>
         <MidButton color="midGreen" className="back_main">
           <Link to="/">{t('메인페이지로_돌아가기')}</Link>
         </MidButton>
