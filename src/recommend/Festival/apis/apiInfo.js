@@ -1,4 +1,4 @@
-import requestData from "../../../commons/libs/requestData";
+import requestData from '../../../commons/libs/requestData';
 
 // 목록 조회
 export const apiList = (search) => {
@@ -17,4 +17,7 @@ export const apiList = (search) => {
 // 상세 조회
 export const apiGet = (seq) => requestData(`/festival/info/${seq}`);
 
-export const apiWishlist = () => requestData(`/festival/wish`);
+// 찜한 목록 조회
+export const apiWishlist = (page = 1, limit = 8) => {
+  return requestData(`/festival/wish?page=${page}&limit=${limit}`);
+};

@@ -8,7 +8,7 @@ import InputBox from '../../commons/components/InputBox';
 import fontSize from '../../styles/fontSize';
 import { ButtonGroup, MidButton } from '../../commons/components/Buttons';
 import { color } from '../../styles/color';
-import { apiUpdate } from '../apis/apiMyPage';
+import { apiPatch, apiUpdate } from '../apis/apiMyPage';
 const { small, big, medium } = fontSize;
 const { midGreen, whiteGray } = color;
 
@@ -71,33 +71,35 @@ const MyPageView = () => {
   const navigate = useNavigate();
 
   const updateUserInfo = () => {
+    if(window.confirm(t('회원정보를_수정하시겠습니까'))){
     apiUpdate(form)
       .then(() => {
         setUserInfo(form);
-        alert(t('회원정보가_수정되었습니다.'));
-        navigate('/', { replace: true });
+        alert(t('회원정보가_수정되었습니다'));
+        navigate('/mypage', { replace: false });
       })
       .catch((error) => {
         console.error(error);
-        alert(t('회원정보 수정 중 오류가 발생했습니다.'));
+        alert(t('회원정보_수정_중_오류가_발생했습니다'));
       });
+    }
   };
 
-  const deleteUserInfo = () => {
-    const updatedForm = { ...form, password: '' }; // 예를 들어 비밀번호를 빈 문자열로 초기화
-
-    apiUpdate(updatedForm)
-      .then(() => {
-        setUserInfo(updatedForm); // 업데이트된 정보를 Context에 반영
-        alert(t('회원_탈퇴가_완료되었습니다.'));
-        navigate('/', { replace: true });
-        
-      })
-      .catch((error) => {
-        console.error(error);
-        alert(t('회원_탈퇴_중_오류가_발생했습니다.'));
-      });
+const deleteUserInfo = () => {
+  if(window.confirm(t('회원탈퇴를_진행하시겠습니까'))) {
+    apiPatch(form)
+    .then(() => {
+      setUserInfo(null);
+      alert(t('회원탈퇴완료'));
+      navigate('/', {replace: true});
+      onLogout();
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(t('회원탈퇴실패'));
+    });
   }
+};
 
   return (
     <FormBox>
@@ -163,9 +165,8 @@ const MyPageView = () => {
         <MidButton type="button" onClick={updateUserInfo}>
           {t('회원정보_수정하기')}
         </MidButton>
-        <MidButton type="button" onClick={deleteUserInfo && onLogout}>
-          <NavLink to="/">{t('회원탈퇴하기')}</NavLink>
-          {/* 탈퇴하기 누르면 메인페이지로 이동(기능 아직 X) */}
+        <MidButton type="button" onClick={deleteUserInfo}>
+          {t('회원탈퇴하기')}
         </MidButton>
       </ButtonGroup>
     </FormBox>
@@ -173,3 +174,4 @@ const MyPageView = () => {
 };
 
 export default React.memo(MyPageView);
+

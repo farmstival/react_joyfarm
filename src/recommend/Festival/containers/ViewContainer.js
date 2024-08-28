@@ -7,6 +7,7 @@ import Loading from '../../../commons/components/Loading';
 import KakaoMap from '../../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
+import ListButton from '../../../commons/components/ListButton';
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,14 +54,15 @@ const ViewContainer = ({ setSubPageTitle }) => {
 
   return (
     <>
-        <Wrapper>
-          {item.photoUrl1 && (
-            <ItemImage images={item.photoUrl1} onClick={onShowImage} />
-          )}
-          <ItemDescription item={item} />
-        </Wrapper>
-        <h1>{t('길찾기')}</h1>
-        <KakaoMap {...mapOptions} />
+      <Wrapper>
+        {item.photoUrl1 && (
+          <ItemImage images={item.photoUrl1} onClick={onShowImage} />
+        )}
+        <ItemDescription item={item} />
+      </Wrapper>
+      <h1>{t('길찾기')}</h1>
+      <KakaoMap {...mapOptions} />
+      <ListButton />
     </>
   );
 };

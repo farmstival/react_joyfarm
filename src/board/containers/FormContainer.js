@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
 import { produce } from 'immer';
@@ -61,6 +61,10 @@ const FormContainer = ({ setPageTitle }) => {
         res.mode = 'update';
         delete res.guestPw;
 
+        if (!res.editable) {
+          navigate(-1);
+          return;
+        }
         setForm(res);
         setBoard(res.board);
         setPageTitle(`${res.subject}`);
@@ -69,7 +73,7 @@ const FormContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, setPageTitle]);
+  }, [seq, setPageTitle, navigate]);
 
   useEffect(() => {
     if (board || !bid) {
