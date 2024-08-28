@@ -66,7 +66,7 @@ const CancelForm = ({ data }) => {
       <h2>예약 취소가 완료되었습니다.</h2>
 
       <div className="btn_group">
-        <Link to={`/myservation/list`}>
+        <Link to={`/myreservation/list`}>
           <MidButton className="myrsv_button" color="midGreen">
             {t('나의_예약_현황')}
           </MidButton>

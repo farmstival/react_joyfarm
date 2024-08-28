@@ -24,6 +24,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     mobile: userInfo?.mobile,
     persons: 1, //기본값 1명
   });
+  const [times, setTimes] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -79,11 +80,11 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
 
       /* 필수 항목 검증 S */
       const requiredFields = {
-        rDate: t('예약일을_선택하세요.'),
-        ampm: t('시간대를_선택하세요.'),
-        name: t('예약자명을_입력하세요.'),
-        email: t('예약자_이메일을_입력하세요.'),
-        mobile: t('예약자_휴대전화번호를_입력하세요.'),
+        rDate: t('예약일을_선택하세요'),
+        ampm: t('시간대를_선택하세요'),
+        name: t('예약자명을_입력하세요'),
+        email: t('예약자_이메일을_입력하세요'),
+        mobile: t('예약자_전화번호를_입력하세요'),
         persons: t('예약인원을_선택하세요'),
       };
 

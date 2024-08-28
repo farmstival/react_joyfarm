@@ -16,7 +16,8 @@ export const color = {
   mid_gray: '#767676',
   line_gray: '#D5D5D5',
   whiteGreen: '#EEFBEB',
-  whiteGray: '#E2E2E2'
+  whiteGray: '#E2E2E2',
+  gray: '#ccc',
 };
 
 export const buttonColor = {

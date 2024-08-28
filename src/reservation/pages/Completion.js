@@ -6,12 +6,14 @@ import {
   PageNav,
   PageNavWrap,
   PageTitle,
-  ContentBox,
+  ContentBox2,
 } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import Header from '../../layouts/Header';
+import SubTitleLink from '../../commons/SubTitleLink';
 
 const Completion = () => {
   const { t } = useTranslation();
@@ -21,6 +23,7 @@ const Completion = () => {
 
   return (
     <MemberOnlyContainer>
+      <SubTitleLink text={t('예약_완료')} href="/reservation/complete" />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
@@ -41,12 +44,12 @@ const Completion = () => {
             <MainTitle>{mainTitle}</MainTitle>
           </PageTitle>
         </PageNavWrap>
-        <ContentBox>
+        <ContentBox2>
           <ReserveCompletionContainer
             setPageTitle={setPageTitle}
             setMainTitle={setMainTitle}
           />
-        </ContentBox>
+        </ContentBox2>
       </OuterBox>
     </MemberOnlyContainer>
   );

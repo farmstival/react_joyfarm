@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -7,23 +7,24 @@ import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import img from '../../images/ReviewImage1.jpg';
+import farmImg from '../../images/farm.jpg';
 import apiCancel from '../apis/apiCancel';
 
 const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e6e6eb;
+  padding-bottom: 20px;
 
   .img {
-    width: 100px;
+    width: 100%;
   }
 `;
 
 const MyReserveViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [mapOptions, setMapOptions] = useState({ height: '400px', zoom: 3 });
+  const [mapOptions, setMapOptions] = useState({ height: '600px', zoom: 3 });
 
   const { seq } = useParams();
 
@@ -55,22 +56,24 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     console.log('이미지 주소', imageUrl);
   }, []);
 
-  const onSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
-
-      try {
-        const res = await apiCancel(item.seq);
-        // 예약 취소 성공시 예약 취소 페이지로 이동
-        navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
-      } catch (err) {
-        console.error(err);
-      }
+  const onClick = useCallback(
+    (seq) => {
+      /* 예약 취소 처리 S */
+      (async () => {
+        try {
+          const res = await apiCancel(seq);
+          // 예약 취소 성공시 예약 취소 페이지 이동
+          navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+      /* 예약 취소 처리 E */
     },
-    [item, navigate],
+    [navigate],
   );
 
-  if (loading || !item) {
+  if (!item) {
     return <Loading />;
   }
 
@@ -81,10 +84,11 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
           <ItemImage images={item.townImage} onClick={onShowImage} />
         ) : (
           //이미지 없는 경우 대체
-          <ItemImage className="img" images={img} onClick={onShowImage} />
+          <ItemImage className="img" images={farmImg} onClick={onShowImage} />
         )}
-        <ItemDescription item={item} onSubmit={onSubmit} />
+        <ItemDescription item={item} onClick={onClick} />
       </Wrapper>
+      <h1>{t('길찾기')}</h1>
       <KakaoMap {...mapOptions} />
     </>
   );

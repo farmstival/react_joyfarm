@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { myApiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고옴
+import { apiGet } from '../apis/apiInfo'; // 예약된 상세조회로 끌고옴
 import Loading from '../../commons/components/Loading';
 import { useTranslation } from 'react-i18next';
 import CancelForm from '../components/CancelForm';
@@ -13,14 +13,14 @@ const ReserveCanCelContainer = ({ setPageTitle }) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await myApiGet(seq);
+        const res = await apiGet(seq);
         setData(res);
         setPageTitle(`${res.townName} ${t('예약_취소')}`);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, [seq, setPageTitle, t, data]); //변화감지 값 넣어주기
+  }, [seq, setPageTitle, t]); //변화감지 값 넣어주기
 
   if (!data) {
     return <Loading />;

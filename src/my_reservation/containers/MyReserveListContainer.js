@@ -7,7 +7,7 @@ import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 
 function getQueryString(searchParams) {
-  const qs = { limit: 3 };
+  const qs = { limit: 6 };
   if (searchParams.size > 0) {
     for (const [k, v] of searchParams.entries()) {
       qs[k] = v;

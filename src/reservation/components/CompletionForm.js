@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal } = fontSize;
+const { normal, medium } = fontSize;
 
 const Wrapper = styled.div`
   width: 400px;
@@ -140,7 +140,7 @@ const CompletionForm = ({ data }) => {
         </Link>
         <Link to={`/reservation/list`}>
           <MidButton className="list_button" color="midGreen">
-            {t('체험_마을_리스트')}
+            {t('농촌체험_예약')}
           </MidButton>
         </Link>
       </div>

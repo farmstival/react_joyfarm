@@ -2,7 +2,6 @@
 import requestData from '../../commons/libs/requestData';
 
 export const apiList = (search) => {
-  // status
   search = search ?? {};
 
   const qs = [];
@@ -21,4 +20,4 @@ export const apiList = (search) => {
 export const apiGet = (seq) => requestData(`/myreservation/info/${seq}`);
 
 // 예약된 상세조회
-export const myApiGet = (seq) => requestData(`/myreservation/cancel/${seq}`);
+//export const myApiGet = (seq) => requestData(`/myreservation/info/${seq}`);

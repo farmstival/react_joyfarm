@@ -4,19 +4,29 @@ import styled from 'styled-components';
 import WishButton from '../../commons/components/WishButton';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 import { useTranslation } from 'react-i18next';
-import banner from '../../images/ReviewImage1.jpg';
+import farmImg from '../../images/farm.jpg';
 import fontSize from '../../styles/fontSize';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
 import { FcLandscape } from 'react-icons/fc';
+import { IoTicketOutline } from 'react-icons/io5';
 
-const { midGreen, white } = color;
-const { medium, big, normal } = fontSize;
+const { line_gray, darkGreen, primary } = color;
+const { medium, normedium, normal, extraBig } = fontSize;
 
 //농활 체험 목록 조회
 const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
-  const { seq, townImage, townName, activityName, doroAddress } = item;
+  const {
+    seq,
+    townImage,
+    townName,
+    activityName,
+    doroAddress,
+    rdate,
+    ampm,
+    persons,
+  } = item;
   const url = `/myreservation/info/${seq}`;
   return (
     <li className={className}>
@@ -25,7 +35,7 @@ const ItemBox = ({ item, className }) => {
           <ImageBgBox
             className="townImg"
             url={townImage}
-            width="30%"
+            width="25%"
             height="250px"
             alt={t('마을사진')}
           />
@@ -33,19 +43,38 @@ const ItemBox = ({ item, className }) => {
           //이미지 없는 경우 대체
           <ImageBgBox
             className="img"
-            url={banner}
-            width="30%"
+            url={farmImg}
+            width="25%"
             height="250px"
             alt={t('마을사진')}
           />
         )}
         <div className="item-content">
           <div className="townName">{townName}</div>
-          <div className="actNameTitle">
-            <FcLandscape className="t_icon" />
-            <p className="act_title">{t('체험_프로그램_소개')}</p>
+          <div className="act_content">
+            <div className="actNameTitle">
+              <FcLandscape className="t_icon" />
+              <p className="act_title">{t('체험_프로그램_소개')}</p>
+            </div>
+            <div className="activityName">{activityName}</div>
           </div>
-          <div className="activityName">{activityName}</div>
+          <div className="rsvInfo">
+            <div className="rsvTitle">
+              <IoTicketOutline className="icon" />
+              <p className="rsv_title">{t('예약정보')}</p>
+            </div>
+            <div className="rsvContent">
+              <div className="rsvDate">
+                {t('예약일')}: {rdate}
+              </div>
+              <div className="rsvTime">
+                {t('예약_시간')}: {ampm}
+              </div>
+              <div className="rsvPersons">
+                {t('인원수')}: {persons}
+              </div>
+            </div>
+          </div>
           <div className="doroAddress">
             <FaMapMarkerAlt className="icon" />
             <p className="addr">{doroAddress}</p>
@@ -63,41 +92,34 @@ const ItemStyledBox = styled(ItemBox)`
   border: 1px solid #ada493;
   width: 100%;
 
-  &:hover .townName {
-    background: ${midGreen};
-    color: ${white};
-    transition: 0.3s;
-  }
-
   a {
-    height: 450px;
+    height: 250px;
     display: flex;
     flex-direction: column;
 
     .townImg,
     .img {
-      width: 100%;
-      height: 250px;
+      width: 40%;
+      height: 100%;
       border-radius: 5px 5px 0px 0px;
     }
 
     .item-content {
       width: 100%;
       word-break: break-all;
-      padding: 15px 20px 5px;
-      height: 200px;
+      padding: 5px 20px 5px 30px;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       font-size: ${normal};
 
       .townName {
-        font-size: ${big};
+        font-size: ${extraBig};
         font-weight: bold;
         text-align: center;
-        line-height: 20%;
-        height: 20%;
-        margin-bottom: 20px;
+        line-height: 1;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,11 +142,43 @@ const ItemStyledBox = styled(ItemBox)`
         }
       }
 
+      .rsvTitle {
+        font-size: ${medium};
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .rsv_title {
+          margin: 0;
+        }
+
+        .icon {
+          margin-right: 10px;
+          color: ${primary};
+        }
+      }
+
+      .rsvContent {
+        display: flex;
+        padding: 5px 0;
+        position: relative;
+
+        > div {
+          margin-right: 15px;
+          font-size: ${normedium};
+        }
+      }
+
+      .act_content {
+        height: 35%;
+        margin-bottom: 20px;
+      }
+
       .activityName {
         font-size: ${medium};
         line-height: 170%;
         width: 100%;
-        margin-bottom: 10px;
         overflow: hidden; //글자 넘치는 부분 감추기
         text-overflow: ellipsis; //숨겨지는 영역 끝에 말줄임표 생성
         white-space: normal; //줄바꿈
@@ -137,19 +191,20 @@ const ItemStyledBox = styled(ItemBox)`
 
       .doroAddress {
         font-size: ${medium};
-        color: #767676;
+        color: ${darkGreen};
         height: 15%;
         margin-top: 10px;
+        padding-top: 5px;
         display: flex;
         align-items: center;
+        border-top: 1px solid ${line_gray};
 
         .addr {
           margin: 0;
         }
 
         .icon {
-          color: #ff5e00;
-          top: 3px;
+          color: ${darkGreen};
           margin-right: 10px;
         }
       }
