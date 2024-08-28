@@ -13,6 +13,7 @@ import 'react-calendar/dist/Calendar.css'; //calendar 기본 스타일 시트 �
 import 'react-datepicker/dist/react-datepicker.css'; //datepicker 스타일 시트
 
 import './i18n';
+import ScrollTop from './commons/components/ScrollTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,7 +24,9 @@ root.render(
           <ErrorPage>
             <HelmetProvider>
               <BrowserRouter>
-                <App />
+                <ScrollTop>
+                  <App />
+                </ScrollTop>
               </BrowserRouter>
             </HelmetProvider>
           </ErrorPage>

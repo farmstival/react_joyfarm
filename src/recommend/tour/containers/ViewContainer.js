@@ -7,6 +7,7 @@ import KakaoMap from '../../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import styled from 'styled-components';
+import ListButton from '../../../commons/components/ListButton';
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,6 +62,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
       </Wrapper>
       <h1>{t('길찾기')}</h1>
       <KakaoMap {...mapOptions} />
+      <ListButton />
     </>
   );
 };
