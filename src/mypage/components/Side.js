@@ -41,11 +41,10 @@ const Wrapper = styled.aside`
     border-top-right-radius: 15px; /* 우측 상단 모서리 반경 */
   }
 
-    a:last-of-type {
+  a:last-of-type {
     border-bottom-left-radius: 15px; /* 좌측 상단 모서리 반경 */
     border-bottom-right-radius: 15px; /* 우측 상단 모서리 반경 */
   }
-
 `;
 
 const Side = () => {

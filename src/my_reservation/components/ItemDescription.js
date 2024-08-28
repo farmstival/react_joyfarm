@@ -7,7 +7,7 @@ import { BsPersonLinesFill } from 'react-icons/bs';
 import { IoTicketOutline } from 'react-icons/io5';
 import { color } from '../../styles/color';
 
-const { medium, normedium, big } = fontSize;
+const { normedium, big } = fontSize;
 const { primary } = color;
 
 const Wrapper = styled.div`

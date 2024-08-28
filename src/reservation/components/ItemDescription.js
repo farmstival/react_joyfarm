@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { BigButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium, normedium } = fontSize;
+const { normedium } = fontSize;
 
 const Wrapper = styled.div`
   width: 45%;
