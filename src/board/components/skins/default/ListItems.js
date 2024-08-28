@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { t } from 'i18next';
+import BoardListTitle from '../../../../commons/components/BoardListTitle';
 
 const Wrapper = styled.ul``;
 
@@ -19,44 +20,75 @@ const ListItem = ({ item, className }) => {
   } = item;
 
   return (
-    <li className={className}>
+    <div className="board-list">
       <Link to={'/board/view/' + seq} className="subject">
-        {notice && `[${t('공지')}]`}
-        {subject}
-        {commentCount > 0 && `(${commentCount.toLocaleString()})`}
+        <li className={className}>
+          <div className="seq">{seq}</div>
+          <div className="title">
+            {notice && `[${t('공지')}]`}
+            {subject}
+            {commentCount > 0 && `(${commentCount.toLocaleString()})`}
+          </div>
+          <div className="post-info">
+            <div className="poster">
+              {poster}
+              {/* {member !== null && `(${member.email})`} */}
+            </div>
+            <div className="view">
+              {viewCount > 0 && (
+                <span className="view-count">
+                  {t('조회수')}: {viewCount.toLocaleString()}
+                </span>
+              )}
+            </div>
+            <span className="datetime">{createdAt}</span>
+          </div>
+        </li>
       </Link>
-      <div className="post-info">
-        <span className="poster">
-          {poster}
-          {member !== null && `(${member.email})`}
-        </span>
-        {viewCount > 0 && (
-          <span className="view-count">
-            {t('조회수')}: {viewCount.toLocaleString()}
-          </span>
-        )}
-        <span className="datetime">{createdAt}</span>
-      </div>
-    </li>
+    </div>
   );
 };
 
 const StyledListItem = styled(ListItem)`
   display: flex;
   border-bottom: 1px solid #ccc;
-  padding: 0 10px;
-  height: 45px;
+  height: 50px;
   align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  text-align: center;
 
-  .subject {
-    flex-grow: 1;
-    height: 44px;
-    line-height: 44px;
+  .seq {
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+  }
+
+  .title {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .post-info {
-    width: 300px;
-    text-align: right;
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .poster{
+    width: 25%;
+    padding-right: 40px;
+    }
+    .view {
+    width: 25%;
+    }
+    .datetime{
+    width: 50%;
+    }
   }
 `;
 
@@ -67,6 +99,7 @@ const ListItems = ({ items }) => {
 
   return (
     <Wrapper>
+      <BoardListTitle />
       {items && items.length > 0 ? (
         items.map((item) => <StyledListItem key={item.seq} item={item} />)
       ) : (
