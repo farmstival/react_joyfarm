@@ -75,7 +75,7 @@ const MyPageView = () => {
       .then(() => {
         setUserInfo(form);
         alert(t('회원정보가_수정되었습니다'));
-        navigate('/', { replace: true });
+        navigate('/mypage', { replace: true });
       })
       .catch((error) => {
         console.error(error);
