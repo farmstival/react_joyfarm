@@ -11,7 +11,7 @@ overflow: hidden;
 
 const ImageBox = styled.div`
   background:url('${({image}) => image}') no-repeat center center;
-  background-color: cover;
+  background-size: contain;
   width: 100%;
   height: 500px;
   cursor: pointer;

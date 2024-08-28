@@ -79,16 +79,16 @@ const StyledListItem = styled(ListItem)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .poster {
-      width: 25%;
-      padding-right: 40px;
+    
+    .poster{
+    width: 25%;
+    padding-right: 40px;
     }
     .view {
-      width: 25%;
+    width: 25%;
     }
-    .datetime {
-      width: 50%;
+    .datetime{
+    width: 50%;
     }
   }
 `;
@@ -110,7 +110,7 @@ const ListItems = ({ items }) => {
       {items && items.length > 0 ? (
         items.map((item) => <StyledListItem key={item.seq} item={item} />)
       ) : (
-        <NoData>{t('조회된_게시글이_없습니다')}<FcInspection /></NoData>
+<NoData>{t('조회된_게시글이_없습니다')}<FcInspection /></NoData>
       )}
     </Wrapper>
   );
