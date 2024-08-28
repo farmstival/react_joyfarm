@@ -10,6 +10,7 @@ import { UserInfoProvider } from './member/modules/UserInfoContext';
 import { RecommendProvider } from './commons/modules/RecommendContext';
 import { WishListProvider } from './commons/contexts/WishListContext';
 import 'react-calendar/dist/Calendar.css'; //calendar 기본 스타일 시트 전역 적용
+import 'react-datepicker/dist/react-datepicker.css'; //datepicker 스타일 시트
 
 import './i18n';
 
@@ -29,7 +30,7 @@ root.render(
         </RecommendProvider>
       </UserInfoProvider>
     </WishListProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

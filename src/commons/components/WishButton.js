@@ -7,11 +7,12 @@ import WishListContext from '../contexts/WishListContext';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
 
-const { mid_gray } = color;
+const { mid_gray, white } = color;
 
 const Icon = styled.div`
   cursor: pointer;
   color: ${(props) => (props.active ? '#ff6a39' : mid_gray)};
+  // background-color: ${white};
   transition: color 0.3s;
   font-size: 40px;
 `;

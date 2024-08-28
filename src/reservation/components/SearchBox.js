@@ -2,16 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
-import { ImSearch } from "react-icons/im";
+import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 
-const { white } = color;
+const { white, gray } = color;
 
 const FormBox = styled.form`
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
+  padding: 5px 20px 20px;
+  border-bottom: 1px solid #ccc;
 
   .select_box,
   .input_part {
@@ -23,12 +25,18 @@ const FormBox = styled.form`
   }
 
   input {
-    width: 430px;
+    width: 300px;
+    height: 45px;
+    border: 1px solid ${gray};
+    padding: 0 10px;
   }
 
   select {
     width: 130px;
-    margin-right:3px;
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid ${gray};
+    margin-right: 3px;
   }
 
   .rsv_searchBar {
@@ -71,12 +79,20 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="DIVISION">{t('프로그램구분')}</option>
           <option value="ACTIVITY">{t('체험프로그램명')}</option>
           <option value="FACILITYINFO">{t('보유시설정보')}</option>
-          <option value="ADDRESS">{t('여행지_주소')}</option>
+          <option value="ADDRESS">{t('체험_마을_주소')}</option>
         </select>
-        <input type="text" name="skey" value={form.skey} onChange={onChange} placeholder="검색어를 입력하세요" />
+        <input
+          type="text"
+          name="skey"
+          value={form.skey}
+          onChange={onChange}
+          placeholder="검색어를 입력하세요"
+        />
       </div>
       <div className="rsv_searchBar">
-      <Button><ImSearch /></Button>
+        <Button>
+          <ImSearch />
+        </Button>
       </div>
     </FormBox>
   );
