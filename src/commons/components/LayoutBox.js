@@ -16,12 +16,11 @@ export const PageNavWrap = styled.div`
 
   //이 부분은 정렬을 위해 추가
   box-sizing: border-box;
-  padding: 48px 20px 20px ;
+  padding: 48px 20px 20px;
   border-bottom: solid 1.5px rgb(221, 221, 221);
   max-width: 1300px;
   position: relative;
   margin: 0 auto 20px;
-
 `;
 
 export const PageNav = styled.div`
@@ -50,5 +49,13 @@ export const ContentBox2 = styled.div`
   width: 1300px;
   min-height: 700px;
   padding: 0 0 50px 0;
+  margin: 0 auto;
+`;
+
+export const ContentBox3 = styled.div`
+  box-sizing: border-box;
+  width: 800px;
+  min-height: 700px;
+  padding: 10px 0 30px 0;
   margin: 0 auto;
 `;

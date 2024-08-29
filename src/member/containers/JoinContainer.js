@@ -32,7 +32,7 @@ const JoinContainer = () => {
     if (!form?.email?.trim()) {
       setErrors((errors) => ({
         ...errors,
-        email: [t('이메일을_입력하세요.')],
+        email: [t('이메일을_입력하세요')],
       }));
       return;
     } else {
@@ -77,7 +77,7 @@ const JoinContainer = () => {
     if (!form.authNum?.trim()) {
       setErrors((errors) => ({
         ...errors,
-        email: [t('인증코드를_입력하세요.')],
+        email: [t('인증코드를_입력하세요')],
       }));
       return;
     }
@@ -124,11 +124,11 @@ const JoinContainer = () => {
 
       /* 데이터 검증 - 필수 항목 체크 S */
       const requiredFields = {
-        email: t('이메일을_입력하세요.'),
-        password: t('비밀번호를_입력하세요.'),
-        confirmPassword: t('비밀번호를_확인하세요.'),
-        userName: t('회원명을_입력하세요.'),
-        agree: t('회원가입_약관에_동의하세요.'),
+        email: t('이메일을_입력하세요'),
+        password: t('비밀번호를_입력하세요'),
+        confirmPassword: t('비밀번호를_확인하세요'),
+        userName: t('회원명을_입력하세요'),
+        agree: t('회원가입_약관에_동의하세요'),
       };
 
       for (const [field, msg] of Object.entries(requiredFields)) {
@@ -152,30 +152,17 @@ const JoinContainer = () => {
         form.password !== form.confirmPassword
       ) {
         _errors.confirmPassword = _errors.confirmPassword || [];
-        _errors.confirmPassword.push(t('비밀번호가_정확하지_않습니다.'));
+        _errors.confirmPassword.push(t('비밀번호가_정확하지_않습니다'));
         hasErrors = true;
       }
 
       /* 이메일 인증 여부 체크 S */
       if (!form.emailVerified) {
         _errors.email = _errors.email ?? [];
-        _errors.email.push(t('이메일을_인증하세요.'));
+        _errors.email.push(t('이메일을_인증하세요'));
         hasErrors = true;
       }
 
-      /* 이메일 인증 여부 체크 E */
-
-      if (hasErrors) {
-        setErrors(_errors);
-        return;
-      }
-
-      /* 이메일 인증 여부 체크 S */
-      if (!form.emailVerified) {
-        _errors.email = _errors.email ?? [];
-        _errors.email.push(t('이메일을_인증하세요.'));
-        hasErrors = true;
-      }
       /* 이메일 인증 여부 체크 E */
 
       if (hasErrors) {
