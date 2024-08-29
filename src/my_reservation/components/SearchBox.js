@@ -6,25 +6,25 @@ import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 import DatePicker from 'react-datepicker';
 import fontSize from '../../styles/fontSize';
+import { format } from 'date-fns';
+import { registerLocale, setDefaultLocale } from 'react-datepicker';
+import { ko } from 'date-fns/locale/ko';
+registerLocale('ko', ko);
 
-const { white, lightGreen, gray } = color;
+const { white, midGreen, gray, lightGreen, black, dark, darkGreen } = color;
 const { medium, normal, normedium } = fontSize;
 
 const FormBox = styled.form`
   display: flex;
+  border-bottom: 1px solid #ccc;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
   padding: 5px 20px 20px;
-  border-bottom: 1px solid #ccc;
 
-  .select_box,
   .search_box {
     height: 45px;
-    items-align: center;
-    justify-content: center;
     display: flex;
-    margin: 0 20px 0 10px;
 
     .pick_sdate,
     .pick_edate {
@@ -39,69 +39,110 @@ const FormBox = styled.form`
       font-size: ${normal};
       padding: 8px 20px;
       border-radius: 4px;
-
-      &:focus {
-        border: 2px solid #000;
-      }
     }
-  }
 
-  .react-datepicker {
-    border-radius: 10px;
-    border: 1px solid ${gray};
+    input {
+      width: 430px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid ${gray};
+    }
 
-    .react-calendar {
+    select {
+      width: 130px;
+      margin-right: 3px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid ${gray};
+    }
+
+    .rsv_searchBar {
+      justify-content: center;
+      align-content: center;
+      display: flex;
+    }
+
+    .rsv_btn {
+      width: 180px;
+    }
+
+    .react-datepicker {
       border-radius: 10px;
-      border: 1px solid #c8c8c8; // 전체 틀: border, border-radius 조정
+      border: 1px solid ${gray};
+      width: 250px;
+      height: 240px;
     }
 
-    .react-calendar__navigation__label > span {
-      // 달력 상단 년/월 글씨 커스텀
-      color: #3a3a3a;
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 140%;
+    .react-datepicker__month-container {
+      width: 100%;
+      height: 100%;
     }
 
-    .react-calendar__tile:enabled:hover,
-    .react-calendar__tile:enabled:focus {
-      background: #ff7a00; //hover 했을 때 색상 변경
+    .react-datepicker__header {
+      background-color: #ccff66;
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    //요일
+    .react-datepicker__day-names {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 10px;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .react-datepicker__week {
+      justify-content: space-between;
+      display: flex;
+      padding: 5px 15px;
+    }
+
+    //날짜
+    .react-datepicker__month {
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0 0 0;
+    }
+
+    .react-datepicker__day {
+      color: ${dark};
+      margin: 0;
+    }
+
+    .react-datepicker__current-month {
+      font-size: ${normal};
+      margin-top: 3px;
     }
 
     .react-datepicker__day--today {
       // 오늘 날짜 하이라이트 커스텀
-      background: white;
-      color: #3a3a3a;
+      color: ${darkGreen};
+      border: 1px solid ${dark};
+      border-radius: 50%;
     }
     .react-datepicker__day--selected {
-      background: #ff7a00;
-      color: white;
+      background: ${midGreen};
+      color: ${white};
+      border-radius: 50%;
     }
-  }
+    .react-datepicker__day:hover {
+      background-color: ${lightGreen}; /* 마우스 오버 시 배경색 변경 */
+      color: ${dark}; /* 마우스 오버 시 텍스트 색상 변경 */
+      border-radius: 50%; /* 원형 테두리 적용 */
+    }
 
-  input {
-    width: 430px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid ${gray};
-  }
+    .react-datepicker__day--outside-month {
+      color: ${gray};
+    }
 
-  select {
-    width: 130px;
-    margin-right: 3px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid ${gray};
-  }
-
-  .rsv_searchBar {
-    justify-content: center;
-    align-content: center;
-    display: flex;
-  }
-
-  .rsv_btn {
-    width: 180px;
+    .react-datepicker__day--keyboard-selected {
+      border-radius: 50%;
+      background-color: ${midGreen};
+    }
   }
 `;
 
@@ -119,8 +160,6 @@ const Button = styled.button`
 
 const SearchBox = ({ form, onChange, onSubmit }) => {
   const { t } = useTranslation();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
@@ -128,20 +167,28 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
         <div className="sdate">
           <DatePicker
             className="pick_sdate"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            locale="ko"
+            selected={form?.sDate ? new Date(form.sDate) : new Date()}
+            onChange={(date) =>
+              onChange({
+                target: { name: 'sDate', value: format(date, 'yyyy-MM-dd') },
+              })
+            }
+            dateFormat="yyyy-MM-dd" // 날짜 포맷 설정
             placeholderText={t('예약시작일')}
           />
         </div>
         <div className="edate">
           <DatePicker
             className="pick_edate"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            dateFormat="yyyy/MM/dd" // 날짜 포맷 설정
-            shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+            locale="ko"
+            selected={form?.eDate ? new Date(form.eDate) : new Date()}
+            onChange={(date) =>
+              onChange({
+                target: { name: 'eDate', value: format(date, 'yyyy-MM-dd') },
+              })
+            }
+            dateFormat="yyyy-MM-dd" // 날짜 포맷 설정
             placeholderText={t('예약종료일')}
           />
         </div>
@@ -150,7 +197,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="DIVISION">{t('프로그램구분')}</option>
           <option value="ACTIVITY">{t('체험프로그램명')}</option>
           <option value="FACILITYINFO">{t('보유시설정보')}</option>
-          <option value="ADDRESS">{t('여행지_주소')}</option>
+          <option value="ADDRESS">{t('체험_마을_주소')}</option>
         </select>
         <input
           type="text"
