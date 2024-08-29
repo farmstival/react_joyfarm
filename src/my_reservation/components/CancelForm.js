@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium } = fontSize;
+const { normal } = fontSize;
 
 const Wrapper = styled.div`
   width: 400px;
@@ -45,10 +45,7 @@ const Wrapper = styled.div`
 const CancelForm = ({ data }) => {
   const { t } = useTranslation();
 
-  const {
-    name,
-    townName,
-  } = data;
+  const { name, townName } = data;
 
   return (
     <Wrapper className="wrap_box">
@@ -57,7 +54,7 @@ const CancelForm = ({ data }) => {
           <dt>{t('예약자명')}</dt>
           <dd>{name}</dd>
         </dl>
-        </div>
+      </div>
 
       <div className="rsv_info">
         <div>{t('예약 취소한_체험_마을')}</div>

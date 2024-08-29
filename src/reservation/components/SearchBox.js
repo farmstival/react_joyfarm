@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
 import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 
-const { white, gray } = color;
+const { gray } = color;
 
 const FormBox = styled.form`
   display: flex;
@@ -52,7 +51,7 @@ const FormBox = styled.form`
 
 const Button = styled.button`
   font-size: 1.3em;
-  color: ${white};
+  color: pink;
   width: 80px;
   height: 45px;
   background: #384863;

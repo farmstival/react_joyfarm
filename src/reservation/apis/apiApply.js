@@ -8,7 +8,7 @@ export default function apiApply(form) {
         if (res.status === 201) {
           resolve(res.data.data);
           return;
-        } 
+        }
 
         reject(res.data);
       } catch (err) {

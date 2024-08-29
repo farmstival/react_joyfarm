@@ -50,7 +50,7 @@ const ItemsList = ({ items }) => {
           <Link to={`/recommend/tour/${item.seq}`}>
             <div className="title">{item.title}</div>
             <div className="address">
-              <FaMapMarkerAlt className='icon' /> {item.address}
+              <FaMapMarkerAlt className="icon" /> {item.address}
             </div>
           </Link>
         </div>

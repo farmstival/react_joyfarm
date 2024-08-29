@@ -5,7 +5,7 @@ import JoinContainer from '../containers/JoinContainer';
 import { OuterBox, PageTitle, ContentBox, PageNavWrap } from '../../commons/components/LayoutBox';
 import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
-
+import { RiPlantLine } from "react-icons/ri";
 const Join = () => {
   const { t } = useTranslation();
 
@@ -16,11 +16,20 @@ const Join = () => {
       </Helmet>
       <OuterBox>
         <ContentBox>
-        <PageNavWrap>
-        <PageTitle>
-          <MainTitle>{t('회원가입')}</MainTitle>
-        </PageTitle>
-        </PageNavWrap>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '20px',
+            position: 'relative',
+          }}
+        >
+         <RiPlantLine size={35} color="#428C4C" />
+          <MainTitle style={{ marginLeft: '-8px', marginBottom: '-20px' }}>
+            {t('회원가입')}
+          </MainTitle>
+        </div>
         <JoinContainer />
         </ContentBox>
       </OuterBox>

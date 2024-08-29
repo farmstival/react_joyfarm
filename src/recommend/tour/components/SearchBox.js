@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { color } from '../../../styles/color';
-import { ImSearch } from "react-icons/im";
+import { ImSearch } from 'react-icons/im';
 
 const { white } = color;
 
@@ -22,17 +22,17 @@ const FormBox = styled.form`
     margin-top: 20px;
 
     select {
-    width: 120px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
+      width: 120px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid #ccc;
     }
 
     input {
-    width: 250px;
-    height: 45px;
-    border: 1px solid #ccc;
-    padding: 0 10px;
+      width: 250px;
+      height: 45px;
+      border: 1px solid #ccc;
+      padding: 0 10px;
     }
   }
 `;
@@ -97,9 +97,17 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <option value="ADDRESS">{t('여행장소')}</option>
           <option value="DESCRIPTION">{t('여행지_설명')}</option>
         </select>
-        <input type="text" name="skey" value={form.skey} onChange={onChange} placeholder="검색어를 입력하세요"/>
-        <Button><ImSearch /></Button>
-        </div>
+        <input
+          type="text"
+          name="skey"
+          value={form.skey}
+          onChange={onChange}
+          placeholder="검색어를 입력하세요"
+        />
+        <Button>
+          <ImSearch />
+        </Button>
+      </div>
     </FormBox>
   );
 };

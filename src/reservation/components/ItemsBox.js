@@ -10,7 +10,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { color } from '../../styles/color';
 import { FcLandscape } from 'react-icons/fc';
 
-const { midGreen, lightGreen, darkGreen } = color;
+const { darkGreen } = color;
 const { medium, big, normal } = fontSize;
 
 //농활 체험 목록 조회
@@ -75,7 +75,7 @@ const ItemStyledBox = styled(ItemBox)`
     right: 20px;
     z-index: 10;
   }
-    
+
   a {
     height: 450px;
     display: flex;
