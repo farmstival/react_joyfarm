@@ -7,9 +7,9 @@ import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 
 function getQueryString(searchParams) {
-  const qs = { limit: 6 };
+  const qs = { limit: 3 };
   if (searchParams.size > 0) {
-    for (const [k, v] of searchParams) {
+    for (const [k, v] of searchParams.entries()) {
       qs[k] = v;
     }
   }
@@ -51,6 +51,10 @@ const MyReserveListContainer = () => {
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
+
+    // 페이지 변경을 통해 새로운 데이터 로드할떄마다 페이지 위치를 이동 시킴
+    // 없으면 새 데이터가 들어와도 위치 고정
+    // window.location.hash = '#root';
   }, []);
 
   /* 로딩 처리 */

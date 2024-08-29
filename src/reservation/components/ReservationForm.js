@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { useTranslation } from 'react-i18next';
@@ -354,6 +354,7 @@ const ReservationForm = ({
                 </option>
               ))}
             </select>
+            {/* // 드롭 다운 E */}
             {errors?.persons && (
               <MessageBox color="danger" messages={errors.persons} />
             )}

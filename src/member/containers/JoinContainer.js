@@ -5,18 +5,19 @@ import { apiJoin, apiEmailAuth, apiEmailAuthCheck } from '../apis/apiJoin';
 import JoinForm from '../components/JoinForm';
 import apiRequest from '../../commons/libs/apiRequest';
 
+const basicForm = {
+  gid: '' + Date.now(),
+  agree: false,
+  authNum: '',
+  emailVerified: false,
+  authCount: 180,
+  authCountMin: '03:00',
+};
 const JoinContainer = () => {
   const authCountInterval = useRef();
 
   // 양식 데이터
-  const [form, setForm] = useState({
-    gid: '' + Date.now(),
-    agree: false,
-    authNum: '',
-    emailVerified: false,
-    authCount: 180,
-    authCountMin: '03:00',
-  });
+  const [form, setForm] = useState(basicForm);
 
   // 양식 항목별 에러 메세지
   const [errors, setErrors] = useState({});
@@ -96,6 +97,7 @@ const JoinContainer = () => {
         setErrors((errors) => ({
           ...errors,
           email: [t('이메일_인증에_실패하였습니다.')],
+          
         }));
       }
     })();
@@ -154,6 +156,15 @@ const JoinContainer = () => {
         hasErrors = true;
       }
 
+      /* 이메일 인증 여부 체크 S */
+      if (!form.emailVerified) {
+        _errors.email = _errors.email ?? [];
+        _errors.email.push(t('이메일을_인증하세요.'));
+        hasErrors = true;
+      }
+
+      /* 이메일 인증 여부 체크 E */
+
       if (hasErrors) {
         setErrors(_errors);
         return;
@@ -208,9 +219,9 @@ const JoinContainer = () => {
     setForm((form) => ({ ...form, agree: !form.agree }));
   }, []);
 
-  const onReset = useCallback(() => setForm({ agree: false }), []);
+  const onReset = useCallback(() => setForm({ ...basicForm }), []);
 
-  // 파일 업로드 콜백 처리
+  //파일 업로드 콜백 처리
   const fileUploadCallback = useCallback((files) => {
     // 프로필 파일 정보 업데이트
     if (files.length === 0) return;

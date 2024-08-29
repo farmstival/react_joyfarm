@@ -5,7 +5,6 @@ import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../../commons/components/Pagination';
 import Loading from '../../../commons/components/Loading';
-import KakaoMap from '../../../map/KakaoMap';
 import TagBox from '../components/TagBox';
 import { ImageListBox } from '../../../commons/components/ImageListBox';
 
@@ -18,6 +17,7 @@ function getQueryString(searchParams) {
   }
   return qs;
 }
+
 
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
@@ -59,7 +59,7 @@ const ListContainer = () => {
     window.location.hash = '#root';
   }, []);
 
-  // 로딩 처리
+  /* 로딩 처리 */
   if (loading) {
     return <Loading />;
   }

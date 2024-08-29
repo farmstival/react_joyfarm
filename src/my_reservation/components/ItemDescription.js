@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
@@ -9,7 +8,7 @@ import { IoTicketOutline } from 'react-icons/io5';
 import { color } from '../../styles/color';
 import { format } from 'date-fns';
 
-const { medium, normedium, big } = fontSize;
+const { normedium, big } = fontSize;
 const { primary } = color;
 
 const Wrapper = styled.div`
