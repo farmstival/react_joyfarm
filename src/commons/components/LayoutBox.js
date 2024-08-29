@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { color } from '../../styles/color';
-const { dark } = color;
-
 export const OuterBox = styled.div`
   margin-bottom: 150px;
 `;
