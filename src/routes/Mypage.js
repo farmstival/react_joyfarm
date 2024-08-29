@@ -18,7 +18,7 @@ const Mypage = () => {
         <Route index element={<MypageMain />} />
         <Route path="info" element={<InfoPage />} />
         <Route path="reservation" element={<ReservationPage />} />
-        <Route path="board" element={<BoardPage />} />
+        <Route path="board/wish" element={<BoardPage />} />
         <Route path="wishlist/:tab" element={<WishListPage />} />
       </Route>
     </Routes>
