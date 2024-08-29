@@ -108,7 +108,7 @@ const Form = ({
     states: { isLogin, isAdmin },
   } = useContext(UserInfoContext);
 
-  useEffect(() => {
+  useEffect(() => {    
     setMounted(true);
 
     return () => {
@@ -160,7 +160,7 @@ const Form = ({
             )}
           </dd>
         </dl>
-      )}
+        )}
       {isAdmin && (
         <dl>
           <dt>{t('공지글')}</dt>
