@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { BigButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 
-const { normal, medium, normedium } = fontSize;
+const { normedium } = fontSize;
 
 const Wrapper = styled.div`
   width: 45%;
@@ -84,7 +84,11 @@ const ItemDescription = ({ item }) => {
         {wwwAddress && (
           <dl>
             <dt>{t('홈페이지_주소')}</dt>
-            <dd><a href={wwwAddress} target="_blank" rel="noopener noreferrer">{wwwAddress}</a></dd>
+            <dd>
+              <a href={wwwAddress} target="_blank" rel="noopener noreferrer">
+                {wwwAddress}
+              </a>
+            </dd>
             {/* 외부 링크 사용 시 a 태그 */}
           </dl>
         )}

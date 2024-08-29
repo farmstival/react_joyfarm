@@ -1,4 +1,5 @@
 export const color = {
+  blue: '#6CC0FF',
   primary: '#007bff',
   secondary: '#6c757d',
   success: '#28a745',
