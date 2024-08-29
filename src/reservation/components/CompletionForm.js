@@ -3,15 +3,43 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
+import { format } from 'date-fns';
+import fontSize from '../../styles/fontSize';
+
+const { large } = fontSize;
 
 const FlatWrapper = styled.div`
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 20px;
-  background: #ffffff;
-  color: #333;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 20px;
+
+  // background: pink;
+  // color: pink;
+
+  .completion_message {
+    font-size: ${large};
+    color: #4caf50;
+    margin-bottom: 20px;
+  }
+  .btn_group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+    .rsv_but {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      width: 30%;
+    }
+  }
 
   h2 {
     color: #4caf50;
@@ -22,6 +50,7 @@ const FlatWrapper = styled.div`
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
+    font-weight: bolder;
   }
 
   .toggle_btn button {
@@ -29,12 +58,6 @@ const FlatWrapper = styled.div`
     border: 1px solid #ccc;
     padding: 5px 10px;
     cursor: pointer;
-  }
-
-  .btn_group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
   }
 `;
 
@@ -60,33 +83,38 @@ const CompletionForm = ({ data }) => {
     ownerTel,
   } = data;
 
+  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+
   return (
     <FlatWrapper>
+      <div className="completion_message">
+        {t('예약이 성공적으로 완료되었습니다!')}
+      </div>
       <h2>{t('예약 완료')}</h2>
       <div className="info_section">
         <p>
-          {t('예약자명')}: {name}
+          {t('예약자명')} : {name}
         </p>
         <p>
-          {t('이메일')}: {email}
+          {t('이메일')} : {email}
         </p>
         <p>
-          {t('전화번호')}: {mobile}
+          {t('전화번호')} : {mobile}
         </p>
       </div>
 
       <div className="info_section">
         <p>
-          {t('예약일')}: {rdate}
+          {t('예약일')} : {formatDate}
         </p>
         <p>
-          {t('시간대')}: {ampm}
+          {t('예약시간')} : {ampm === 'AM' ? t('오전') : t('오후')}
         </p>
         <p>
-          {t('인원수')}: {persons}
+          {t('인원수')} : {persons} {t('명')}
         </p>
         <p>
-          {t('체험 마을')}: {townName}
+          {t('체험 마을')} : {townName}
         </p>
       </div>
 
@@ -115,12 +143,21 @@ const CompletionForm = ({ data }) => {
           </div>
         )}
       </div>
-
       <div className="btn_group">
-        <MidButton color="midGreen" as={Link} to="/myreservation/list">
+        <MidButton
+          className="rsv_but"
+          color="primary"
+          as={Link}
+          to="/myreservation/list"
+        >
           {t('나의 예약 현황')}
         </MidButton>
-        <MidButton color="midGreen" as={Link} to="/reservation/list">
+        <MidButton
+          className="rsv_but"
+          color="midGreen"
+          as={Link}
+          to="/reservation/list"
+        >
           {t('농촌체험 예약')}
         </MidButton>
       </div>
