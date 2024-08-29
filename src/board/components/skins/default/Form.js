@@ -18,10 +18,15 @@ import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import { MidButton } from '../../../../commons/components/Buttons';
 import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
+import { IoIosCheckbox,IoIosCheckboxOutline } from "react-icons/io";
 
 import 'ckeditor5/ckeditor5.css';
 
 const Wrapper = styled.form`
+
+    .checkbox-icon {
+      font-size: 50px; /* 원하는 크기로 조절 */
+    }
 
   flex-direction: column;
   align-items: center;
@@ -163,10 +168,10 @@ const Form = ({
         )}
       {isAdmin && (
         <dl>
-          <dt>{t('공지글')}</dt>
+          <dt className='sub'>{t('공지글')}</dt>
           <dd>
-            <label onClick={onToggleNotice}>
-              {form?.notice ? <FaCheckSquare /> : <FaSquare />}
+            <label onClick={onToggleNotice} className='sub2'>
+              {form?.notice ? <IoIosCheckbox /> : <IoIosCheckboxOutline />}
               {t('공지글로_등록하기')}
             </label>
           </dd>
