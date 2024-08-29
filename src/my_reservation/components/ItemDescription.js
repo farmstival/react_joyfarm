@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import fontSize from '../../styles/fontSize';
 import { BsPersonLinesFill } from 'react-icons/bs';
 import { IoTicketOutline } from 'react-icons/io5';
 import { color } from '../../styles/color';
+import { format } from 'date-fns';
 
-const { medium, normedium, big } = fontSize;
+const { normedium, big } = fontSize;
 const { primary } = color;
 
 const Wrapper = styled.div`
@@ -77,7 +77,8 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
-  const { name, email, mobile, rdate, ampm, townName, persons } = item;
+  const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
+  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
 
   return (
     <Wrapper>
@@ -108,7 +109,7 @@ const ItemDescription = ({ item, onClick }) => {
           </div>
           <dl>
             <dt>{t('예약일')}</dt>
-            <dd>{rdate}</dd>
+            <dd>{formatDate}</dd>
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
@@ -125,13 +126,15 @@ const ItemDescription = ({ item, onClick }) => {
         </div>
       </div>
 
-      <MidButton
-        className="cancel_button"
-        onClick={() => onClick(item.seq)}
-        color="midGreen"
-      >
-        {t('예약_취소')}
-      </MidButton>
+      {status !== 'CANCEL' && (
+        <MidButton
+          className="cancel_button"
+          onClick={() => onClick(item.seq)}
+          color="midGreen"
+        >
+          {t('예약_취소')}
+        </MidButton>
+      )}
     </Wrapper>
   );
 };

@@ -11,7 +11,7 @@ export const apiList = (search) => {
   }
 
   let url = '/myreservation/list';
-  if (qs.length > 0) url += `?${qs}`; //검색 조건이 있을 때
+  if (qs.length > 0) url += `?${qs.join('&')}`; //검색 조건이 있을 때
 
   return requestData(url);
 };

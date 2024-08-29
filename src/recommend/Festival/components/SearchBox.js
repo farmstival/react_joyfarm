@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { ImSearch } from "react-icons/im";
+import { ImSearch } from 'react-icons/im';
 import { color } from '../../../styles/color';
-const {white, midGreen} = color;
+const { white } = color;
 
 const FormBox = styled.form`
   width: 1300px;
@@ -19,17 +19,17 @@ const FormBox = styled.form`
     padding: 5px 20px;
 
     select {
-    width: 120px;
-    height: 45px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
+      width: 120px;
+      height: 45px;
+      padding: 0 10px;
+      border: 1px solid #ccc;
     }
 
     input {
-    width: 250px;
-    height: 45px;
-    border: 1px solid #ccc;
-    padding: 0 10px;
+      width: 250px;
+      height: 45px;
+      border: 1px solid #ccc;
+      padding: 0 10px;
     }
   }
 `;
@@ -66,7 +66,9 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           onChange={onChange}
           placeholder={t('검색어를_입력하세요')}
         />
-      <Button><ImSearch /></Button>
+        <Button>
+          <ImSearch />
+        </Button>
       </div>
     </FormBox>
   );

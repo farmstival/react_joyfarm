@@ -11,7 +11,7 @@ const commonStyle = css`
   cursor: pointer;
 `;
 
-const { midGreen, white, lightGreen, line_gray, whiteGray } = color;
+const { midGreen, white } = color;
 
 export const SmallButton = styled.button`
   font-size: ${normal};

@@ -80,7 +80,7 @@ const ViewContainer = ({ setPageTitle }) => {
 
   const onDelete = useCallback(
     (seq) => {
-      if (!window.confirm(t('정말_삭제_하겠습니까'))) {
+      if (!window.confirm(t('정말_삭제_하시겠습니까'))) {
         return;
       }
 
