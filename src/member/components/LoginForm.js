@@ -64,7 +64,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   return (
     <>
       <StyleText>
-        <p><PiFarm/> {t('ENJOY_YOUR_LIFE_ENJOY_YOUR_FARM')}</p>
+        <p><PiFarm/> {t('조이팜과_함께_즐거운_농촌체험')}</p>
       </StyleText>
       <FormBox onSubmit={onSubmit} autoComplete="off">
         <h1>{t('로그인')}</h1>

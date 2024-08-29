@@ -144,6 +144,7 @@ const StyledButtons = styled.div`
 
   button {
     font-size: 1.25rem;
+    border-radius: 5px;
     width: 150px;
     height: 40px;
     border: none;
@@ -211,6 +212,7 @@ const JoinForm = ({
                   <InputBox
                     type="text"
                     name="authNum"
+                    className="auCode"
                     placeholder={t('인증코드_입력')}
                     onChange={onChange}
                   />

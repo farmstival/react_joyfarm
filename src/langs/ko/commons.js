@@ -71,6 +71,7 @@ const commons = {
   회원정보가_수정되었습니다: '회원정보가 수정되었습니다.',
   아직_회원이_아니십니까: '아직 회원이 아니십니까?',
   ENJOY_YOUR_LIFE_ENJOY_YOUR_FARM: 'ENJOY YOUR LIFE, ENJOY YOUR FARM',
+  조이팜과_함께_즐거운_농촌체험: '조이팜과 함께 즐거운 농촌체험!',
   로그인: '로그인',
   JOYFARM_로그인: 'JOYFARM 로그인',
   //마이페이지
