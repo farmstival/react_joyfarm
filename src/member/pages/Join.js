@@ -2,10 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import JoinContainer from '../containers/JoinContainer';
-import { OuterBox, PageTitle, ContentBox, PageNavWrap } from '../../commons/components/LayoutBox';
-import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
+import { ContentBox3 } from '../../commons/components/LayoutBox';
+import { MainTitle2 } from '../../commons/components/TitleBox';
+import { color } from '../../styles/color';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
-import { RiPlantLine } from "react-icons/ri";
+import { RiPlantLine } from 'react-icons/ri';
+
+const { whiteGray } = color;
+
 const Join = () => {
   const { t } = useTranslation();
 
@@ -14,25 +18,16 @@ const Join = () => {
       <Helmet>
         <title>{t('회원가입')}</title>
       </Helmet>
-      <OuterBox>
-        <ContentBox>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: '20px',
-            position: 'relative',
-          }}
-        >
-         <RiPlantLine size={35} color="#428C4C" />
-          <MainTitle style={{ marginLeft: '-8px', marginBottom: '-20px' }}>
-            {t('회원가입')}
-          </MainTitle>
-        </div>
+      <MainTitle2 style={{ borderBottom: `1px solid ${whiteGray}` }}>
+        <h1><RiPlantLine />
+        &nbsp;
+        {t('회원가입')}
+        &nbsp;
+        <RiPlantLine /></h1>
+      </MainTitle2>
+      <ContentBox3>
         <JoinContainer />
-        </ContentBox>
-      </OuterBox>
+      </ContentBox3>
     </GuestOnlyContainer>
   );
 };

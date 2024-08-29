@@ -38,8 +38,8 @@ const LoginContainer = () => {
 
       /* 데이터 검증 - 필수 항목 체크 S */
       const requiredFields = {
-        email: t('이메일을_입력_하세요.'),
-        password: t('비밀번호를_입력_하세요.'),
+        email: t('이메일을_입력하세요'),
+        password: t('비밀번호를_입력하세요'),
       };
 
       for (const [field, msg] of Object.entries(requiredFields)) {
