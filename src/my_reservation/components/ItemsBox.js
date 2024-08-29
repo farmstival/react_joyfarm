@@ -69,18 +69,18 @@ const ItemBox = ({ item, className }) => {
             </div>
             <div className="rsvContent">
               <div className="rsvDate">
-                {t('예약일')}: {formatDate}
+                {t('예약일')} : {formatDate}
               </div>
               <div className="rsvTime">
-                {t('예약시간')}: {ampm === 'AM' ? t('오전') : t('오후')}
+                {t('예약시간')} : {ampm === 'AM' ? t('오전') : t('오후')}
               </div>
               <div className="rsvPersons">
-                {t('인원수')}: {persons}
+                {t('인원수')} : {persons}
                 {t('명')}
               </div>
               <div className='"rsvStatus'>
                 {t('예약상태')} :
-                {status === 'CANCEL' ? t('취소완료') : t('예약확정')}
+                {status === 'CANCEL' ? t(' 취소완료') : t(' 예약확정')}
               </div>
             </div>
           </div>

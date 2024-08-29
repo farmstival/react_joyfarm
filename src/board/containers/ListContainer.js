@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Loading from '../../commons/components/Loading';
 import apiConfig from '../apis/apiConfig';
 import { getList } from '../apis/apiBoard';
