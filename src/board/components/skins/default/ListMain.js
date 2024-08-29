@@ -40,7 +40,6 @@ const ListMain = (props) => {
 
   return (
     <Wrapper>
-      {/* <VisitorInfo/> */}
       <Button onClick={handleButtonClick}>글쓰기</Button>
     </Wrapper>
   );

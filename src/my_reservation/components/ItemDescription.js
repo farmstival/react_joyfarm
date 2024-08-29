@@ -77,7 +77,8 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
-  const { name, email, mobile, rdate, ampm, townName, persons } = item;
+  const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
+  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
 
   const formatDate = format(
     Date(rdate), 'yyyy-MM-dd');
@@ -128,13 +129,15 @@ const ItemDescription = ({ item, onClick }) => {
         </div>
       </div>
 
-      <MidButton
-        className="cancel_button"
-        onClick={() => onClick(item.seq)}
-        color="midGreen"
-      >
-        {t('예약_취소')}
-      </MidButton>
+      {status !== 'CANCEL' && (
+        <MidButton
+          className="cancel_button"
+          onClick={() => onClick(item.seq)}
+          color="midGreen"
+        >
+          {t('예약_취소')}
+        </MidButton>
+      )}
     </Wrapper>
   );
 };

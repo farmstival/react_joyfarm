@@ -33,7 +33,7 @@ const ImageUpload = ({ children, gid, color }) => {
       {open && (
         <Modal isOpen={open} style={customStyles}>
 
-          <h1>🤑노출🤑</h1>
+          <h1>오류발생!</h1>
 
           <button type="button" onClick={() => setOpen(false)}>
             닫기
