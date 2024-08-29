@@ -5,26 +5,15 @@ import styled from 'styled-components';
 import LoginContainer from '../containers/LoginContainer';
 import fontSize from '../../styles/fontSize';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
-
+import { MainTitle3 } from '../../commons/components/TitleBox';
+import { ContentBox3, OuterBox } from '../../commons/components/LayoutBox';
 const { medium, big } = fontSize;
+import logo from '../../images/logo3.png';
 
-const OuterBox = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  h1 {
-    text-align: center;
-    font-size: ${big};
-    margin: 0 0 20px;
-    padding: 0;
-    line-height: 1;
+const StyledBox = styled.div`
+  .logo {
+    width: 300px;
+    height: 150px;
   }
 `;
 
@@ -36,8 +25,16 @@ const Login = () => {
         <title>{t('로그인')}</title>
       </Helmet>
       <OuterBox>
-        <h1>{t('로그인')}</h1>
-        <LoginContainer />
+        <ContentBox3>
+          <StyledBox>
+            <MainTitle3 style={{ border: 'none' }}>
+              <h2>
+                <img src={logo} className="logo" alt="로고" />
+              </h2>
+            </MainTitle3>
+            <LoginContainer />
+          </StyledBox>
+        </ContentBox3>
       </OuterBox>
     </GuestOnlyContainer>
   );

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PageNavWrap, PageTitle } from '../commons/components/LayoutBox';
 import { IoMdHome } from 'react-icons/io';
-import RecommendContext from '../commons/modules/RecommendContext';
+import RecommendContext from '../commons/modules/CommonContext';
 
 const HeaderBox = styled.header`
   /* 헤더 스타일 */

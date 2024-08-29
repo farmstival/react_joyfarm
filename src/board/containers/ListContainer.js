@@ -3,11 +3,21 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import Loading from '../../commons/components/Loading';
 import apiConfig from '../apis/apiConfig';
 import { getList } from '../apis/apiBoard';
-import getQueryString from '../../commons/libs/getQueryString';
 import Pagination from '../../commons/components/Pagination';
 import DefaultList from '../components/skins/default/List'; // 기본 스킨
 import GalleryList from '../components/skins/gallery/List'; // 갤러리 스킨
 import ListMain from '../components/skins/default/ListMain';
+
+function getQueryString(searchParams) {
+  const qs = { limit: 10 };
+  if (searchParams.size > 0) {
+    for (const [k, v] of searchParams) {
+      qs[k] = v;
+    }
+  }
+  return qs;
+
+}
 
 function skinRoute(skin) {
   switch (skin) {
@@ -40,6 +50,7 @@ const ListContainer = ({ setPageTitle, bid }) => {
 
         // 게시글 목록
         const { items, pagination } = await getList(bid, search);
+        console.log('Pagination Data:', pagination);
         setItems(items);
         setPagination(pagination);
       } catch (err) {
@@ -48,15 +59,22 @@ const ListContainer = ({ setPageTitle, bid }) => {
     })();
   }, [bid, search, setPageTitle]);
 
-  const onPageClick = useCallback((page) => {
-    setSearch((search) => ({ ...search, page }));
+  const onChange = useCallback((e) => {
+    setSearch((search) => ({ ...search, [e.target.name]: [e.target.value] }));
   }, []);
 
-  const onChange = useCallback((e) => {
-    setSearch((search) => ({
-      ...search,
-      [e.target.name]: e.target.value,
-    }));
+  const onSubmitSearch = useCallback(
+    (e) => {
+      e.preventDefault();
+      setSearch({ ...search, page: 1 });
+    },
+    [search],
+  );
+
+  const onChangePage = useCallback((p) => {
+    setSearch((search) => ({ ...search, page: p })); //상태 업데이트
+    window.location.hash = '#root'; //페이지 스크롤 이동 처리
+    console.log(`Page Changed to ${p}`); //페이지 번호 확인
   }, []);
 
   if (!board || !items) {
@@ -68,9 +86,9 @@ const ListContainer = ({ setPageTitle, bid }) => {
 
   return (
     <>
-      <List items={items} search={search} onChange={onChange} />
+      <List items={items} search={search} onChange={onChange} onSubmit={onSubmitSearch} />
       {mode === 'list' && <ListMain />}
-      <Pagination pagination={pagination} onClick={onPageClick} />
+      <Pagination pagination={pagination} onClick={onChangePage} />
     </>
   );
 };

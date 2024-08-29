@@ -17,4 +17,7 @@ export const apiList = (search) => {
 // 상세 조회
 export const apiGet = (seq) => requestData(`/tour/info/${seq}`);
 
-export const apiWishlist = () => requestData(`/tour/wish`);
+// 찜한 목록 조회
+export const apiWishlist = (page = 1, limit = 8) => {
+  return requestData(`/tour/wish?page=${page}&limit=${limit}`);
+};

@@ -49,3 +49,11 @@ export const ContentBox2 = styled.div`
   padding: 0 0 50px 0;
   margin: 0 auto;
 `;
+
+export const ContentBox3 = styled.div`
+  box-sizing: border-box;
+  width: 800px;
+  min-height: 700px;
+  padding: 10px 0 30px 0;
+  margin: 0 auto;
+`;

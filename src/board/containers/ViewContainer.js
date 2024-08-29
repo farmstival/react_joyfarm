@@ -5,6 +5,7 @@ import { produce } from 'immer';
 import { getInfo, deleteData } from '../apis/apiBoard';
 import { write as writeComment } from '../apis/apiComment';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import CommonContext from '../../commons/modules/CommonContext';
 
 import Loading from '../../commons/components/Loading';
 import MessageBox from '../../commons/components/MessageBox';
@@ -36,6 +37,10 @@ const ViewContainer = ({ setPageTitle }) => {
     states: { userInfo, isLogin },
   } = useContext(UserInfoContext);
 
+  const {
+    actions: { setLinkText, setLinkHref },
+  } = useContext(CommonContext);
+
   useEffect(() => {
     (async () => {
       try {
@@ -43,6 +48,8 @@ const ViewContainer = ({ setPageTitle }) => {
         setData(res);
         setBoard(res.board);
         setPageTitle(res.subject);
+        setLinkText(res.board.bname);
+        setLinkHref(`/board/list/${res.board.bid}`);
 
         /* 댓글 기본 양식 */
         setCommentForm({
@@ -61,11 +68,19 @@ const ViewContainer = ({ setPageTitle }) => {
         }, 3000);
       }
     })();
-  }, [seq, setPageTitle, navigate, message, userInfo]);
+  }, [
+    seq,
+    setPageTitle,
+    navigate,
+    message,
+    userInfo,
+    setLinkHref,
+    setLinkText,
+  ]);
 
   const onDelete = useCallback(
     (seq) => {
-      if (!window.confirm(t('정말_삭제_하겠습니까'))) {
+      if (!window.confirm(t('정말_삭제_하시겠습니까'))) {
         return;
       }
 
