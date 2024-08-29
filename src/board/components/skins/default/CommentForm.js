@@ -8,8 +8,6 @@ import { color } from '../../../../styles/color';
 const { medium, big } = fontSize;
 const { darkGreen, midGreen, white } = color;
 
-
-
 //댓글 목록
 const FormBox = styled.form`
   display: block;
@@ -22,6 +20,10 @@ const FormBox = styled.form`
     .field {
       overflow: hidden;
       margin-bottom: -1px;
+
+      .idpwFied {
+        display: flex;
+      }
 
       input {
         float: left;
@@ -41,7 +43,6 @@ const FormBox = styled.form`
         display: block;
         width: 100%;
         height: 100px;
-        margin-bottom: 5px;
         padding: 12px 16px;
         border: 1px solid #cccccc;
         color: #777;
@@ -81,29 +82,31 @@ const CommentForm = ({ form, onChange, onSubmit, errors }) => {
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="comment-form">
         <div className="field">
-          <input
-            type="text"
-            name="commenter"
-            placeholder={t('작성자')}
-            value={form?.commenter}
-            onChange={onChange}
-          />
-          {!isLogin && (
+          <div className="idpwFied">
             <input
-              type="password"
-              name="guestPw"
-              className="guest"
-              placeholder={t('비밀번호')}
-              value={form?.guestPw}
+              type="text"
+              name="commenter"
+              placeholder={t('작성자')}
+              value={form?.commenter}
               onChange={onChange}
             />
-          )}
-          {errors?.commenter && (
-            <MessageBox color="danger" messages={errors.commenter} />
-          )}
-          {errors?.guestPw && (
-            <MessageBox color="danger" messages={errors.guestPw} />
-          )}
+            {!isLogin && (
+              <input
+                type="password"
+                name="guestPw"
+                className="guest"
+                placeholder={t('비밀번호')}
+                value={form?.guestPw}
+                onChange={onChange}
+              />
+            )}
+            {errors?.commenter && (
+              <MessageBox color="danger" messages={errors.commenter} />
+            )}
+            {errors?.guestPw && (
+              <MessageBox color="danger" messages={errors.guestPw} />
+            )}
+          </div>
           <textarea
             name="content"
             placeholder={t('여러분의_소중한_의견을_남겨주세요')}

@@ -22,7 +22,7 @@ const ListMain = (props) => {
   const Button = styled.button`
     font-size: 1.3em;
     width: 110px;
-    height: 40px;
+    height: 35px;
     background-color: ${midGreen};
     color: ${white};
     border-radius: 5px;

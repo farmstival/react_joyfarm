@@ -18,8 +18,10 @@ import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import { MidButton } from '../../../../commons/components/Buttons';
 import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
-
+import { color } from '../../../../styles/color';
 import 'ckeditor5/ckeditor5.css';
+
+const { midGreen, darkGreen } = color;
 
 const Wrapper = styled.form`
 
@@ -32,10 +34,14 @@ const Wrapper = styled.form`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 
+  .nmpw {
+  display: flex;
+  gap: 20px;
+  }
+
   .ck-editor__editable {
     height: 350px;
     width: 100%;
-    margin-bottom:15px;
   }
 
   textarea {
@@ -48,13 +54,12 @@ const Wrapper = styled.form`
   }
 
   .input-box {
-    width: 180px;
+    width: 300px;
     padding: 10px;
-    margin-bottom: 15px;
     border-radius: 5px;
   }
 
-  .sub{
+  .sub {
     font-size: 20px;
     font-weight: bold;
     padding-top: 10px;
@@ -63,7 +68,7 @@ const Wrapper = styled.form`
   }
 
   .sub2{
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
     text-align: left;
     width: 100%;
@@ -74,10 +79,10 @@ const Wrapper = styled.form`
   }
 
   .submitButton {
-    width: 100%;
+    width: 50%;
     padding: 12px;
     margin-top: 20px;
-    background-color: #2d8f2d;
+    background-color: ${midGreen};
     color: white;
     border: none;
     border-radius: 5px;
@@ -86,7 +91,7 @@ const Wrapper = styled.form`
     transition: background-color 0.3s ease;
     
     &:hover {
-      background-color: #276d27;
+      background-color: ${darkGreen};
     }
 `;
 
@@ -108,7 +113,7 @@ const Form = ({
     states: { isLogin, isAdmin },
   } = useContext(UserInfoContext);
 
-  useEffect(() => {    
+  useEffect(() => {
     setMounted(true);
 
     return () => {
@@ -126,41 +131,45 @@ const Form = ({
 
   return (
     <Wrapper onSubmit={onSubmit} autoComplete="off">
-      <dl>
-        <dt className="sub">{t('작성자')}</dt>
-        <dd>
-          <InputBox
-            type="text"
-            name="poster"
-            value={form?.poster}
-            onChange={onChange}
-            className="input-box"
-            placeholder="이름을 입력하세요."
-          />
-          {errors?.poster && (
-            <MessageBox color="danger" messages={errors.poster} />
-          )}
-        </dd>
-      </dl>
-      {((form.mode === 'write' && !isLogin) ||
-        (form.mode === 'update' && !form?.member)) && (
+      <div className="nmpw">
         <dl>
-          <dt className="sub">{t('비밀번호')}</dt>
+          <dt className="sub">{t('작성자')}</dt>
           <dd>
             <InputBox
-              type="password"
-              name="guestPw"
-              value={form?.guestPw}
+              type="text"
+              name="poster"
+              value={form?.poster}
               onChange={onChange}
               className="input-box"
-              placeholder="비회원 비밀번호"
+              placeholder="이름을 입력하세요"
             />
-            {errors?.guestPw && (
-              <MessageBox color="danger" messages={errors.guestPw} />
+            {errors?.poster && (
+              <MessageBox color="danger" messages={errors.poster} />
             )}
           </dd>
         </dl>
+
+        {((form.mode === 'write' && !isLogin) ||
+          (form.mode === 'update' && !form?.member)) && (
+          <dl>
+            <dt className="sub">{t('비밀번호')}</dt>
+            <dd>
+              <InputBox
+                type="password"
+                name="guestPw"
+                value={form?.guestPw}
+                onChange={onChange}
+                className="input-box"
+                placeholder="비회원 비밀번호"
+              />
+              {errors?.guestPw && (
+                <MessageBox color="danger" messages={errors.guestPw} />
+              )}
+            </dd>
+          </dl>
         )}
+      </div>
+
       {isAdmin && (
         <dl>
           <dt>{t('공지글')}</dt>
@@ -172,6 +181,7 @@ const Form = ({
           </dd>
         </dl>
       )}
+
       <dl>
         <dt className="sub">{t('제목')}</dt>
         <dd>
@@ -180,7 +190,7 @@ const Form = ({
             name="subject"
             value={form?.subject}
             onChange={onChange}
-            placeholder="제목을 입력하세요."
+            placeholder="제목을 입력하세요"
           />
           {errors?.subject && (
             <MessageBox color="danger" messages={errors.subject} />
@@ -188,7 +198,6 @@ const Form = ({
         </dd>
       </dl>
       <dl>
-        <dt className="sub">{t('내용')}</dt>
         <dd>
           {useEditor ? (
             mounted && (
@@ -214,30 +223,6 @@ const Form = ({
                     });
                   }}
                 />
-                {editor && useUploadImage && (
-                  <dl>
-                    <dt className="sub2">{t('이미지 첨부')}</dt>
-                    <div className="uploadButton">
-                      <FileUpload
-                        gid={form.gid}
-                        location="editor"
-                        imageOnly
-                        color="dark"
-                        width="120"
-                        callback={(files) => fileUploadCallback(files, editor)}
-                      >
-                        {t('이미지_업로드')}
-                      </FileUpload>
-                    </div>
-
-                    <FileItems
-                      files={form?.editorImages}
-                      mode="editor"
-                      insertImageCallback={insertImageCallback}
-                      fileDeleteCallback={fileDeleteCallback}
-                    />
-                  </dl>
-                )}
               </>
             )
           ) : (
@@ -252,6 +237,32 @@ const Form = ({
           )}
         </dd>
       </dl>
+
+      {useUploadImage && editor && (
+        <dl>
+          <dt className="sub2">{t('이미지 첨부')}</dt>
+          <div className="uploadButton">
+            <FileUpload
+              gid={form.gid}
+              location="editor"
+              imageOnly
+              color="dark"
+              width="120"
+              callback={(files) => fileUploadCallback(files, editor)}
+            >
+              {t('이미지_업로드')}
+            </FileUpload>
+          </div>
+
+          <FileItems
+            files={form?.editorImages}
+            mode="editor"
+            insertImageCallback={insertImageCallback}
+            fileDeleteCallback={fileDeleteCallback}
+          />
+        </dl>
+      )}
+
       {useUploadFile && (
         <dl>
           <dt className="sub2">{t('파일첨부')}</dt>
@@ -273,6 +284,7 @@ const Form = ({
           </dd>
         </dl>
       )}
+
       <MidButton type="submit" color="darkGreen" className="submitButton">
         {t(form.mode === 'update' ? '수정하기' : '작성하기')}
       </MidButton>
