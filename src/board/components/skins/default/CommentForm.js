@@ -8,6 +8,8 @@ import { color } from '../../../../styles/color';
 const { medium, big } = fontSize;
 const { darkGreen, midGreen, white } = color;
 
+
+
 //댓글 목록
 const FormBox = styled.form`
   display: block;
