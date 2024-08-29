@@ -35,7 +35,6 @@ export const MainTitle3 = styled.h1`
   justify-content: center;
   text-align: center;
   border-bottom: 2px solid #000;
-  margin-top: 85px;
   margin-bottom: -10px;
   line-height: 1;
 

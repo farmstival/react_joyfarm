@@ -7,14 +7,13 @@ import fontSize from '../../styles/fontSize';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
 import { MainTitle3 } from '../../commons/components/TitleBox';
 import { ContentBox3, OuterBox } from '../../commons/components/LayoutBox';
-//import {img} from '../images/logo.png';
-
 const { medium, big } = fontSize;
+import logo from '../../images/logo3.png';
 
-const Form = styled.form`
-  .logo{
-    width: 30px;
-    height: 50px;
+const StyledBox = styled.div`
+  .logo {
+    width: 300px;
+    height: 150px;
   }
 `;
 
@@ -27,13 +26,14 @@ const Login = () => {
       </Helmet>
       <OuterBox>
         <ContentBox3>
-          <Form>{/*<img src="img" className="logo" />*/}
-          <MainTitle3 style={{ border: 'none' }}>
-            <h2>&nbsp;
-            {t('로그인')}</h2>           
-          </MainTitle3>
-          <LoginContainer />
-          </Form>
+          <StyledBox>
+            <MainTitle3 style={{ border: 'none' }}>
+              <h2>
+                <img src={logo} className="logo" alt="로고" />
+              </h2>
+            </MainTitle3>
+            <LoginContainer />
+          </StyledBox>
         </ContentBox3>
       </OuterBox>
     </GuestOnlyContainer>

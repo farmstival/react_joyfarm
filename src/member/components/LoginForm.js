@@ -9,6 +9,7 @@ import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
 import { PiFarm } from "react-icons/pi";
 
+
 const { small, big, medium } = fontSize;
 const { midGreen, white, lightGreen, whiteGreen, whiteGray, primary } = color;
 
@@ -39,6 +40,11 @@ const FormBox = styled.form`
   margin: 0 auto;
   margin-top: -15px;
   font-size: ${big};
+  text-align: center;
+
+  h1{
+    margin-top: 0;
+  }
 `;
 
 const JoinPrompt = styled.div`
@@ -61,6 +67,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
         <p><PiFarm/> {t('ENJOY_YOUR_LIFE_ENJOY_YOUR_FARM')}</p>
       </StyleText>
       <FormBox onSubmit={onSubmit} autoComplete="off">
+        <h1>{t('로그인')}</h1>
         <InputBox
           type="text"
           name="email"
