@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 import { AiFillCloseSquare } from 'react-icons/ai';
 import apiRequest from '../../commons/libs/apiRequest';
 
+
+
 const ImageBox = styled.div`
   width: ${({ width }) => width ?? '100%'};
   height: ${({ height }) => height ?? '300px'};
