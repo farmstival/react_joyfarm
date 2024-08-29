@@ -72,8 +72,10 @@ const Wrapper = styled.form`
     flex-direction: column;
   }
 
-  .notice {
-    height: 80px;
+  .notice2 {
+    position: relative;
+    top: -30px;
+    left: 70px;
   }
 
   dl {
@@ -158,6 +160,12 @@ const Wrapper = styled.form`
     position: relative;
     top: 3px;
     margin-right: 3px;
+  }
+
+  .icon2 {
+    position: relative;
+    top: 3px;
+    margin-left: 3px;
   }
 `;
 
@@ -258,14 +266,16 @@ const Form = ({
               {t('공지글')}
             </dt>
             <dd className="sub4">
-              <label onClick={onToggleNotice}>
-                {form?.notice ? (
-                  <FaCheckSquare className="icon" />
-                ) : (
-                  <FaSquare className="icon" />
-                )}
-                {t('공지글로_등록하기')}
-              </label>
+              <div className="notice2">
+                <label onClick={onToggleNotice}>
+                  {t('공지글로_등록하기')}
+                  {form?.notice ? (
+                    <FaCheckSquare className="icon2" />
+                  ) : (
+                    <FaSquare className="icon2" />
+                  )}
+                </label>
+              </div>
             </dd>
           </dl>
         )}
