@@ -8,13 +8,13 @@ import logo from '../../../images/logo.png';
 import { useTranslation } from 'react-i18next';
 import { color } from '../../../styles/color';
 
-const { midGreen, lightGreen, white, whiteGreen } = color;
+const { midGreen, whiteGreen } = color;
 
 const ItemBox = ({ item, className }) => {
   const { t } = useTranslation();
   const { seq, title, photoUrl1, address, tel, startDate, endDate } = item;
   const url = `/recommend/festival/${seq}`;
-  
+
   const startformattedDate = moment(startDate).format('YYYY/MM/DD');
   const endformattedDate = moment(endDate).format('YYYY/MM/DD');
   return (
@@ -105,7 +105,6 @@ const ItemStyledBox = styled(ItemBox)`
         color: #767676;
         height: 30%;
         padding-top: 20px;
-
 
         .icon {
           color: #ff5e00;

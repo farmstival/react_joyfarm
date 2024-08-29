@@ -24,9 +24,11 @@ const ReservationView = () => {
       <OuterBox>
         <PageNavWrap>
           <PageNav>
-            <NavLink Link to='/reservation/list'>체험활동 조회</NavLink>
+            <NavLink Link to="/reservation/list">
+              체험활동 조회
+            </NavLink>
             <span> | </span>
-            <Link to=''>상세보기</Link>
+            <Link to="">상세보기</Link>
           </PageNav>
           <PageTitle>
             <MainTitle>{t('체험활동_상세_정보')}</MainTitle>

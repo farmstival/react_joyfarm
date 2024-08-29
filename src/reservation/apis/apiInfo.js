@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import requestData from '../../commons/libs/requestData';
 
 //목록 조회

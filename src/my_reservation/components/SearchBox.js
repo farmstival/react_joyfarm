@@ -87,7 +87,6 @@ const FormBox = styled.form`
   }
 
   select {
-  
     width: 130px;
     margin-right: 3px;
     height: 45px;
