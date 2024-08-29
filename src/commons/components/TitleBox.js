@@ -13,14 +13,30 @@ export const MainTitle = styled.h1`
 `;
 
 export const MainTitle2 = styled.h1`
-  font-size: ${extraBig};
+  font-size: ${big};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border-bottom: 2px solid #000;
   padding: 0 15px 15px;
-  margin: 0 0 20px;
+  margin: 30px 0 20px;
+  line-height: 1;
+
+  svg{
+    color: green;
+  }
+`;
+
+export const MainTitle3 = styled.h1`
+  font-size: ${extraBig};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 2px solid #000;
+  margin-top: 85px;
+  margin-bottom: -10px;
   line-height: 1;
 
   svg{

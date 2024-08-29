@@ -7,6 +7,7 @@ import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
+import { PiFarm } from "react-icons/pi";
 
 const { small, big, medium } = fontSize;
 const { midGreen, white, lightGreen, whiteGreen, whiteGray, primary } = color;
@@ -19,10 +20,19 @@ const StyledMidButton = styled(MidButton)`
   font-size: ${big};
 `;
 
+const StyleText = styled.div`
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: ${big};
+
+  svg {
+    color: ${midGreen};
+  }
+`;
+
 const FormBox = styled.form`
   max-width: 550px;
   border: 1px solid ${whiteGray};
-  background: ${whiteGreen};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 50px 80px;
@@ -47,6 +57,9 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
 
   return (
     <>
+      <StyleText>
+        <p><PiFarm/> {t('ENJOY_YOUR_LIFE_ENJOY_YOUR_FARM')}</p>
+      </StyleText>
       <FormBox onSubmit={onSubmit} autoComplete="off">
         <InputBox
           type="text"

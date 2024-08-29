@@ -7,7 +7,6 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import FileUpload from '../../commons/components/FileUpload';
 import ProfileImage from './ProfileImage';
-import ImageUpload from '../../commons/components/ImageUpload';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 
@@ -18,6 +17,7 @@ const FormBox = styled.form`
 //background-color: ${whiteGreen}; /* 부드러운 배경색 추가 */
 padding: 30px;
 border-radius: 30px;
+margin: 30px;
 border: 2px solid ${lightGreen};
 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
 max-width: 1000px; /* 최대 너비 설정 */
@@ -110,18 +110,17 @@ const EmailVerificationBox = styled.div`
       height: 40px;
       border-radius: 5px;
       margin-left: 10px;
-      padding: 0 10px 0 10px;
-      font-size: 1rem;
+      padding: 0 10px;
       border: 1px solid ${whiteGray};
       background: ${whiteGreen};
       color: black;
       cursor: pointer;
-      transition: all 0.3s ease;
       font-size: ${medium};
     }
 
-    .authCount{
+    .authCount {
       margin-left: 10px;
+      font-size: ${medium};
     }
   }
 `;
@@ -152,6 +151,7 @@ const StyledButtons = styled.div`
     color: ${white};
     font-size: ${medium};
     margin: 0 3px 0 3px;
+    cursor: pointer;
   }
 `;
 
