@@ -87,7 +87,7 @@ const LeftSection = styled.div`
   text-align: center;
   background: ${white};
   border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   padding-bottom: 30px;
   margin-left: 150px;
 `;
@@ -145,7 +145,7 @@ const RightSection = styled.div`
   background: ${white};
   padding-top: 40px;
   border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 `;
 
 const NoticeHeader = styled.div`
