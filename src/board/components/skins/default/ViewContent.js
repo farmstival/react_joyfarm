@@ -6,6 +6,7 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { BoardButton } from '../../../../commons/components/Buttons';
 import { color } from '../../../../styles/color';
 import fontSize from '../../../../styles/fontSize';
+import WishButton from '../../../../commons/components/WishButton';
 
 const { medium, extraBig } = fontSize;
 const { whiteGray, mid_gray } = color;
@@ -26,6 +27,16 @@ const Wrapper = styled.div`
     border-bottom: 2px solid ${whiteGray};
     line-height: 30px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 15px;
+      color: ${mid_gray};
+    }
   }
 
   .post-info {
@@ -90,7 +101,13 @@ const ViewContent = ({ data, onDelete }) => {
 
   return (
     <Wrapper>
-      <div className="subject">{data.subject}</div>
+      <div className="subject">
+        {data.subject}
+        <div className="button">
+        {t('찜하기')}
+          <WishButton seq={data.seq} type={'BOARD'}></WishButton>
+        </div>
+      </div>
       <div className="post-info">
         <div className="items left">
           작성자 | {data.poster}

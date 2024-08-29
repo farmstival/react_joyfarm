@@ -66,6 +66,7 @@ const FormBox = styled.form`
         margin-left: auto;
         cursor: pointer;
         border-radius: 5px;
+        margin-top: 10px;
       }
     }
   }

@@ -12,7 +12,7 @@ import {
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import MessageBox from '../../../../commons/components/MessageBox';
-import InputBox from '../../../../commons/components/InputBox';
+import InputBox2 from '../../../../commons/components/InputBox2';
 import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import { MidButton } from '../../../../commons/components/Buttons';
@@ -31,7 +31,7 @@ const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   padding: 2em;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 2em auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -104,7 +104,6 @@ const Wrapper = styled.form`
     padding: 0.75em;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    font-size: 1.2em;
     box-sizing: border-box;
   }
 
@@ -216,7 +215,7 @@ const Form = ({
             {t('작성자')}
           </dt>
           <dd>
-            <InputBox
+            <InputBox2
               type="text"
               name="poster"
               value={form?.poster}
@@ -240,7 +239,7 @@ const Form = ({
               {t('비밀번호')}
             </dt>
             <dd>
-              <InputBox
+              <InputBox2
                 type="password"
                 name="guestPw"
                 value={form?.guestPw}
@@ -287,7 +286,7 @@ const Form = ({
           {t('제목')}
         </dt>
         <dd>
-          <InputBox
+          <InputBox2
             type="text"
             name="subject"
             value={form?.subject}
