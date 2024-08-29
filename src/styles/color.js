@@ -17,7 +17,7 @@ export const color = {
   mid_gray: '#767676',
   line_gray: '#D5D5D5',
   whiteGreen: '#FFFFDE',
-  whiteGray: '#E2E2E2',
+  whiteGray: '#cccccc',
   gray: '#ccc',
 };
 
