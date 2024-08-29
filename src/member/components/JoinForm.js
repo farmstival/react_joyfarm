@@ -200,7 +200,7 @@ const JoinForm = ({
                     onClick={onSendAuthCode}
                     disabled={form.authCount < 180 && form.authCount > 0}
                   >
-                    {t('인증코드전송')}
+                    {t('인증코드_전송')}
                   </button>
                 )}
               </div>
@@ -209,7 +209,7 @@ const JoinForm = ({
 
           {form.emailVerified ? (
             <MessageBox color="primary">
-              {t('확인된_이메일_입니다.')}
+              {t('확인된_이메일_입니다')}
             </MessageBox>
           ) : (
             <dl>
@@ -219,7 +219,7 @@ const JoinForm = ({
                   <InputBox
                     type="text"
                     name="authNum"
-                    placeholder={t('인증코드 입력')}
+                    placeholder={t('인증코드_입력')}
                     onChange={onChange}
                   />
                 )}
@@ -250,7 +250,7 @@ const JoinForm = ({
           </dd>
         </dl>
         <dl>
-          <dt>{t('비밀번호 확인')}</dt>
+          <dt>{t('비밀번호_확인')}</dt>
           <dd>
             <InputBox
               type="password"
@@ -288,7 +288,7 @@ const JoinForm = ({
         </dl>
 
         <dl>
-          <dt>{t('프로필 이미지')}</dt>
+          <dt>{t('프로필_이미지')}</dt>
           <dd>
             {form.profile && (
               <ProfileImage
@@ -306,7 +306,7 @@ const JoinForm = ({
               imageOnly={true}
               callback={fileUploadCallback}
             >
-              {t('🖼️업로드')}
+              {t('업로드')}
             </FileUpload>
           </dd>
         </dl>
@@ -489,7 +489,7 @@ const JoinForm = ({
 
         <div className="terms-agree" onClick={onToggle}>
           {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
-          {t('회원가입_약관에_동의합니다.')}
+          {t('회원가입_약관에_동의합니다')}
 
           <MessageBox messages={errors.agree} color="darkGreen" />
         </div>
