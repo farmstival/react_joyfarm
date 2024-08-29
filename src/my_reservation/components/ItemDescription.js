@@ -80,9 +80,6 @@ const ItemDescription = ({ item, onClick }) => {
   const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
 
-  const formatDate = format(
-    Date(rdate), 'yyyy-MM-dd');
-
   return (
     <Wrapper>
       <div className="dscp_box">
