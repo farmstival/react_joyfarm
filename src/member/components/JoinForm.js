@@ -146,7 +146,7 @@ const StyledButtons = styled.div`
   button {
     font-size: 1.25rem;
     width: 150px;
-    height: 35px;
+    height: 40px;
     border: none;
     background: ${midGreen};
     color: ${white};
