@@ -178,7 +178,6 @@ const FormBox = styled.form`
   }
 
   .select {
-    // appearance: none;
     width: 230px;
 
     height: 40px;
@@ -190,16 +189,11 @@ const FormBox = styled.form`
     line-height: 170%;
     margin-left: 10px;
 
+    //Option 태그에 대한 스타일은 직접적으로 적용할 수 없다.(os 영역)
     .options {
       font-size: ${medium};
       margin-bottom: 5px;
-      background-color: ${white};
-      color: ${darkGreen};
-    }
-
-    .options:hover,
-    .option:checked {
-      background-color: ${lightGreen};
+      background: ${white};
     }
   }
 

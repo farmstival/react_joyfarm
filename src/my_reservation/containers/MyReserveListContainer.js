@@ -27,14 +27,13 @@ const MyReserveListContainer = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log(search);
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);
       setLoading(false);
     });
   }, [search]);
-
-  console.log(search);
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
