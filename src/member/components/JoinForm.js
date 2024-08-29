@@ -9,15 +9,20 @@ import FileUpload from '../../commons/components/FileUpload';
 import ProfileImage from './ProfileImage';
 import ImageUpload from '../../commons/components/ImageUpload';
 import { color } from '../../styles/color';
+import fontSize from '../../styles/fontSize';
+
+const { whiteGray, white, whiteGreen, lightGreen, midGreen, mid_gray } = color;
+const { medium } = fontSize;
 
 const FormBox = styled.form`
-background-color: #E2E2E2; /* 부드러운 배경색 추가 */
-padding: 25px;
-border-radius: 40px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
-max-width: 580px; /* 최대 너비 설정 */
-margin: 20px auto 0 auto; /* 중앙 정렬 및 상단에 20px의 여백 추가 */
+//background-color: ${whiteGreen}; /* 부드러운 배경색 추가 */
+padding: 30px;
+border-radius: 30px;
+border: 2px solid ${lightGreen};
+box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+max-width: 1000px; /* 최대 너비 설정 */
 transition: all 0.3s ease;
+font-size: ${medium};
 
  textarea {
     display: block;
@@ -32,63 +37,58 @@ transition: all 0.3s ease;
     background-color: #f9f9f9; /* 배경 색상 추가 */
   }
 
-
   dl {
+  
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin: 5px 0;
 
     dt {
+    
       width: 120px;
-      font-weight: bold; /* 폰트 굵게 */
-      color: #333; /* 텍스트 색상 변경 */
-      font-size: 1.1rem;
+      font-weight: bold;
     }
-
     
     dd {
       flex-grow: 1;
+      
       input {
+        font-size: ${medium};
         width: 100%;
-        padding: 15px;
+        height: 40px;
         border: 1px solid #ccc;
-        border-radius: 20px;
-        font-size: 1rem;
+        border-radius: 7px;
         margin-top: 12px;
+        margin-left: 3px;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-        &:focus {
-          border-color: #007bff; /* 포커스 시 색상 변경 */
-          box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
-        }
       }
     }
   }
 
   dl + dl {
-    margin-top: 18px;
+    border-bottom: 1px solid ${whiteGray};
+  }
+
+  .password{
+    border-bottom: 1px solid ${whiteGray};
+  }
+
+  .profile{
+    padding: 10px 0 15px 0;
+    
   }
 
   .terms-agree {
     text-align: center;
-    margin: 30px 0;
-    font-size: 1rem;
-    color: #555;
+    margin-bottom: 20px;
     cursor: pointer;
     transition: color 0.3s ease;
 
     svg {
       font-size: 1.5rem;
+      margin-right: 2px;
       vertical-align: middle;
       color: #007bff; /* 아이콘 색상 변경 */
-      transition: color 0.3s ease;
-    }
-
-    &:hover {
-      color: #007bff;
-      svg {
-        color: #0056b3;
-      }
     }
   }
     
@@ -98,67 +98,60 @@ transition: all 0.3s ease;
 const EmailVerificationBox = styled.div`
   .rows {
     display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    
+    flex-direction: row;
+    margin-bottom: -25px;
+
+    input {
+      margin-top: 0;
+    }
 
     button {
-      width: 80px;
-      border-radius: 20px;
-      margin-left: 5px;
-      margin-top: -3px;
-      border: 2px solid #a2a2a2a2;
-      padding: 8px;
-      margin-bottom: 0px;
-      cursor: pointer;
+      width: 150px;
+      height: 40px;
+      border-radius: 5px;
+      margin-left: 10px;
+      padding: 0 10px 0 10px;
+      font-size: 1rem;
+      border: 1px solid ${whiteGray};
+      background: ${whiteGreen};
       color: black;
+      cursor: pointer;
       transition: all 0.3s ease;
+      font-size: ${medium};
+    }
 
-    
-      &:hover {
-      background-color: #39AE48;
-      border-color: #39AE48;
-      color: white;
-      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-      }
-      &:disabled {
-     background-color: #a2a2a2;
-     border-color: #a2a2a2;
-     cursor: not-allowed;
-     box-shadow: none;
-       }
+    .authCount{
+      margin-left: 10px;
     }
   }
-
-  .rows:last-of-type {
-    margin-bottom: -10px;
-
 `;
 
 const StyledButton = styled.button`
   width: 100px;
-  border-radius: 25px;
-  margin-left: 10px;
-  padding: 10px;
+  height: 40px;
+  border-radius: 5px;
+  margin-left: 5px;
   font-size: 1rem;
-  border: 2px solid #a2a2a2a2;
-  background-color: #a2a2a2a2a2;
+  border: 1px solid ${whiteGray};
+  background: ${whiteGreen};
   color: black;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: ${medium};
+`;
 
-  &:hover {
-    background-color: #39AE48;
-    border-color: #39AE48;
-    color: white;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-  }
+const StyledButtons = styled.div`
+  display: flex;
+  justify-content: center;
 
-  &:disabled {
-    background-color: #a2a2a2;
-    border-color: #a2a2a2;
-    cursor: not-allowed;
-    box-shadow: none;
+  button {
+    font-size: 1.25rem;
+    width: 150px;
+    height: 35px;
+    border: none;
+    background: ${midGreen};
+    color: ${white};
+    font-size: ${medium};
+    margin: 0 3px 0 3px;
   }
 `;
 
@@ -187,6 +180,7 @@ const JoinForm = ({
                 <InputBox
                   type="text"
                   name="email"
+                  placeholder={t('이메일을_입력하세요')}
                   value={form.email ?? ''}
                   onChange={onChange}
                   readOnly={
@@ -208,9 +202,7 @@ const JoinForm = ({
           </dl>
 
           {form.emailVerified ? (
-            <MessageBox color="primary">
-              {t('확인된_이메일_입니다')}
-            </MessageBox>
+            <MessageBox>{t('확인된_이메일_입니다')}</MessageBox>
           ) : (
             <dl>
               <dt>{t('인증코드')}</dt>
@@ -223,30 +215,34 @@ const JoinForm = ({
                     onChange={onChange}
                   />
                 )}
-
-                <span>{form.authCountMin}</span>
-                <StyledButton type="button" onClick={onVerifyAuthCode}>
-                  {t('확인')}
-                </StyledButton>
-                <StyledButton type="button" onClick={onReSendAuthCode}>
-                  {t('재전송')}
-                </StyledButton>
               </dd>
+              <span className="authCount">{form.authCountMin}</span>
+              <StyledButton type="button" onClick={onReSendAuthCode}>
+                {t('재전송')}
+              </StyledButton>
+              <StyledButton
+                type="button"
+                className="btn2"
+                onClick={onVerifyAuthCode}
+              >
+                {t('확인')}
+              </StyledButton>
             </dl>
           )}
 
-          <MessageBox messages={errors.email} color="darkGreen" />
+          <MessageBox messages={errors.email} />
         </EmailVerificationBox>
-        <dl>
+        <dl className="password">
           <dt>{t('비밀번호')}</dt>
           <dd>
             <InputBox
               type="password"
               name="password"
+              placeholder={t('비밀번호를_입력하세요')}
               value={form.password ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.password} color="darkGreen" />
+            <MessageBox messages={errors.password} />
           </dd>
         </dl>
         <dl>
@@ -255,10 +251,11 @@ const JoinForm = ({
             <InputBox
               type="password"
               name="confirmPassword"
+              placeholder={t('비밀번호를_확인하세요')}
               value={form.confirmPassword ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.confirmPassword} color="darkGreen" />
+            <MessageBox messages={errors.confirmPassword} />
           </dd>
         </dl>
         <dl>
@@ -267,10 +264,11 @@ const JoinForm = ({
             <InputBox
               type="text"
               name="userName"
+              placeholder={t('회원명을_입력하세요')}
               value={form.userName ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.userName} color="darkGreen" />
+            <MessageBox messages={errors.userName} />
           </dd>
         </dl>
         <dl>
@@ -279,15 +277,15 @@ const JoinForm = ({
             <InputBox
               type="text"
               name="mobile"
+              placeholder={t('전화번호를_입력하세요')}
               value={form.mobile ?? ''}
               onChange={onChange}
             />
 
-            <MessageBox messages={errors.mobile} color="darkGreen" />
+            <MessageBox messages={errors.mobile} />
           </dd>
         </dl>
-
-        <dl>
+        <dl className="profile">
           <dt>{t('프로필_이미지')}</dt>
           <dd>
             {form.profile && (
@@ -310,10 +308,10 @@ const JoinForm = ({
             </FileUpload>
           </dd>
         </dl>
-
-        <dd>
+        {/* 변경하기 기능 안되므로, 프로필 이미지의 X 클릭하고 다시 업로드버튼 클릭!
+        <dd className='uploadImg'>
           <ImageUpload gid="testgid">{t('변경하기')}</ImageUpload>
-        </dd>
+        </dd>*/}
 
         <textarea readOnly="">
           01.고객의 개인정보 보호 ㈜🍀JOY_FARM (이하 "회사"라고 함)는 고객의
@@ -491,22 +489,15 @@ const JoinForm = ({
           {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
           {t('회원가입_약관에_동의합니다')}
 
-          <MessageBox messages={errors.agree} color="darkGreen" />
+          <MessageBox messages={errors.agree} />
         </div>
 
-        <ButtonGroup width={450}>
-          <BigButton
-            type="button"
-            color="midGreen"
-            onClick={onReset}
-            gid={form.gid}
-          >
+        <StyledButtons>
+          <button type="button" onClick={onReset} gid={form.gid}>
             {t('다시입력')}
-          </BigButton>
-          <BigButton type="submit" color="darkGreen">
-            {t('가입하기')}
-          </BigButton>
-        </ButtonGroup>
+          </button>
+          <button type="submit">{t('가입하기')}</button>
+        </StyledButtons>
       </div>
     </FormBox>
   );
