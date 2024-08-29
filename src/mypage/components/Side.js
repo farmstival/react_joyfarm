@@ -28,7 +28,6 @@ const Wrapper = styled.aside`
     &.on {
       background: ${midGreen};
       color: white;
-      text-decoration: underline;
     }
   }
   a:hover {

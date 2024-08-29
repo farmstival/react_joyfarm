@@ -18,7 +18,7 @@ import WishButton from '../../../commons/components/WishButton';
 const { mid_gray } = color;
 
 const Wrapper = styled.div`
-  position: relative;
+  display: flex;
   flex: 1;
   padding-left: 20px;
   margin: auto;
@@ -56,11 +56,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 13px;
+    font-size: 15px;
     color: ${mid_gray};
-    position: relative;
-    left: 250px;
-    bottom: -35px;
+    position: absolute;
+    right: 20px;
+    top: -40px;
   }
 `;
 
@@ -77,88 +77,90 @@ const ItemDescription = ({ item }) => {
     tel,
     pageLink,
     content,
-    seq
+    seq,
   } = item;
-  const startformattedDate = moment( startDate ).format('YYYY년 MM월 DD일');
-  const endformattedDate = moment( endDate ).format('YYYY년 MM월 DD일');
+  const startformattedDate = moment(startDate).format('YYYY년 MM월 DD일');
+  const endformattedDate = moment(endDate).format('YYYY년 MM월 DD일');
   return (
     <Wrapper>
-      {startDate && endDate && (
-        <dl>
-          <dt>
-            <FcCalendar />
-            {t('행사기간 ')}
-          </dt>
-          <dd>
-            {startformattedDate}~{endformattedDate}
-          </dd>
-        </dl>
-      )}
-      <dl>
-        <dt>
-          <FcAbout />
-          {t('행사명')}
-        </dt>
-        <dd>{title}</dd>
-      </dl>
-      {address && (
-        <dl>
-          <dt>
-            <FcElectricity />
-            {t('주소')}
-          </dt>
-          <dd>{address}</dd>
-        </dl>
-      )}
-      {location && (
-        <dl>
-          <dt>
-            <FcBookmark />
-            {t('행사장소')}
-          </dt>
-          <dd>{location}</dd>
-        </dl>
-      )}
-      {hostMain && (
-        <dl>
-          <dt>
-            <FcLibrary />
-            {t('주최기관')}
-          </dt>
-          <dd>{hostMain}</dd>
-        </dl>
-      )}
-      <dl>
-        <dt>
-          <FcLibrary />
-          {t('주관기관')}
-        </dt>
-        <dd>{hostSub}</dd>
-      </dl>
-      <dl>
-        <dt>
-          <FcContacts />
-          {t('문의처')}
-        </dt>
-        <dd>{tel}</dd>
-      </dl>
-      <dl>
-        <dt>
-          <FcHome />
-          {t('홈페이지_주소')}
-        </dt>
-        <dd>{pageLink}</dd>
-      </dl>
-      <dl>
-        <dt>
-          <FcPlus />
-          {t('행사내용')}
-        </dt>
-        <dd>{content}</dd>
-      </dl>
       <div className="button">
         <WishButton seq={seq} type={'FESTIVAL'}></WishButton>
         {t('찜하기')}
+      </div>
+      <div className="description">
+        {startDate && endDate && (
+          <dl>
+            <dt>
+              <FcCalendar />
+              {t('행사기간 ')}
+            </dt>
+            <dd>
+              {startformattedDate}~{endformattedDate}
+            </dd>
+          </dl>
+        )}
+        <dl>
+          <dt>
+            <FcAbout />
+            {t('행사명')}
+          </dt>
+          <dd>{title}</dd>
+        </dl>
+        {address && (
+          <dl>
+            <dt>
+              <FcElectricity />
+              {t('주소')}
+            </dt>
+            <dd>{address}</dd>
+          </dl>
+        )}
+        {location && (
+          <dl>
+            <dt>
+              <FcBookmark />
+              {t('행사장소')}
+            </dt>
+            <dd>{location}</dd>
+          </dl>
+        )}
+        {hostMain && (
+          <dl>
+            <dt>
+              <FcLibrary />
+              {t('주최기관')}
+            </dt>
+            <dd>{hostMain}</dd>
+          </dl>
+        )}
+        <dl>
+          <dt>
+            <FcLibrary />
+            {t('주관기관')}
+          </dt>
+          <dd>{hostSub}</dd>
+        </dl>
+        <dl>
+          <dt>
+            <FcContacts />
+            {t('문의처')}
+          </dt>
+          <dd>{tel}</dd>
+        </dl>
+        <dl>
+          <dt>
+            <FcHome />
+            {t('홈페이지_주소')}
+          </dt>
+          <dd>{pageLink}</dd>
+        </dl>
+        <dl>
+          <dt>
+            <FcPlus />
+            {t('행사내용')}
+          </dt>
+          <dd>{content}</dd>
+        </dl>
       </div>
     </Wrapper>
   );
