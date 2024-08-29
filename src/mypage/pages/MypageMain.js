@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
 import jprofile from '../../images/jprofile.png';
-const {whiteGreen, whiteGray, mid_gray} = color;
+const { whiteGreen, mid_gray } = color;
 
 const StyledMain = styled.div`
   width: 700px;
@@ -20,12 +20,12 @@ const StyledMain = styled.div`
   border-radius: 5px;
   box-shadow: 2px 2px 2px 3px #d6d6d6;
 
-  .icon{
+  .icon {
     margin-top: 20px;
     font-size: 5rem;
   }
 
-  .proimg{
+  .proimg {
     width: 200px;
     margin-top: 20px;
   }
@@ -35,16 +35,17 @@ const MyPageMain = () => {
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <MemberOnlyContainer>
       <Helmet>
         <title>{t('마이페이지')}</title>
       </Helmet>
       <StyledMain>
-      <h1>{t('마이페이지')}</h1>
-      {userInfo?.userName}({userInfo?.email}) 님 환영합니다.<br/>
-      <img src={jprofile} className="proimg"/>
+        <h1>{t('마이페이지')}</h1>
+        {userInfo?.userName}({userInfo?.email}) 님 환영합니다.
+        <br />
+        <img src={jprofile} className="proimg" />
       </StyledMain>
     </MemberOnlyContainer>
   );

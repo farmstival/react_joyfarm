@@ -12,7 +12,6 @@ import { MainTitle } from '../../commons/components/TitleBox';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import Header from '../../layouts/Header';
 import SubTitleLink from '../../commons/SubTitleLink';
 
 const Completion = () => {

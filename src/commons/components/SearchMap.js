@@ -46,7 +46,7 @@ const SearchMap = () => {
   const [searchParams] = useSearchParams();
   const address = searchParams.get('address');
   const [image, setImage] = useState(() => getImage(address));
-  
+
   const onChange = useCallback((location) => {
     setImage(() => getImage(location));
   }, []);

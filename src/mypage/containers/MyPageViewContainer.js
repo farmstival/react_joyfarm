@@ -174,4 +174,3 @@ const deleteUserInfo = () => {
 };
 
 export default React.memo(MyPageView);
-

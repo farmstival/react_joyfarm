@@ -24,7 +24,6 @@ const Reservation = loadable(() => import('./routes/Reservation'));
 //예약현황 페이지
 const MyReservation = loadable(() => import('./routes/MyReservation'));
 
-
 const routeUrlPaths = [
   'member',
   'mypage',
@@ -48,7 +47,14 @@ const App = () => {
     </>
   ) : (
     <Routes>
-      <Route path="/" element={<><MainLayout /></>}>
+      <Route
+        path="/"
+        element={
+          <>
+            <MainLayout />
+          </>
+        }
+      >
         <Route index element={<Main />} /> {/* 메인 페이지 */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
