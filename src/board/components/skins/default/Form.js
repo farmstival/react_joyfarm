@@ -20,79 +20,149 @@ import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
 import { color } from '../../../../styles/color';
 import 'ckeditor5/ckeditor5.css';
+import { IoPerson } from 'react-icons/io5';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { PiChatTeardropTextFill } from 'react-icons/pi';
+import { RiMegaphoneFill } from 'react-icons/ri';
 
 const { midGreen, darkGreen } = color;
 
 const Wrapper = styled.form`
-
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
-  .nmpw {
   display: flex;
-  gap: 20px;
-  }
+  flex-direction: column;
+  padding: 2em;
+  max-width: 900px;
+  margin: 2em auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 
   .ck-editor__editable {
     height: 350px;
     width: 100%;
   }
 
+  .sub {
+    font-size: 18px;
+    color: ${darkGreen};
+  }
+
+  .sub3 {
+    font-size: 17px;
+    color: ${darkGreen};
+  }
+
+  .sub4 {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+
+  .imageandfile {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .writerpw {
+    margin-bottom: 2em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+  }
+
+  .notice {
+    height: 80px;
+  }
+
+  dl {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    dt {
+      font-weight: bold;
+      margin-left: 5px;
+      margin-bottom: 0.5em;
+      color: ${darkGreen};
+    }
+
+    dd {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .input-box,
   textarea {
     width: 100%;
-    height: 200px;
-    border: 1px solid #d5d5d5;
-    resize: none;
-    padding: 15px;
+    padding: 0.75em;
+    border: 1px solid #cccccc;
     border-radius: 5px;
+    font-size: 1.2em;
+    box-sizing: border-box;
   }
 
-  .input-box {
-    width: 300px;
-    padding: 10px;
-    border-radius: 5px;
+  .textarea {
+    height: 700px;
+    resize: vertical;
+    font-size: 1.2em;
   }
 
-  .sub {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    text-align: left;
-  }
-
-  .sub2{
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-align: left;
-    width: 100%;
-  }
-
-  .uploadButton{
-    padding-bottom: 10px;
+  .uploadButton {
+    height: 35px;
   }
 
   .submitButton {
-    width: 50%;
-    padding: 12px;
-    margin-top: 20px;
+    margin-top: 1em;
+    align-self: center;
     background-color: ${midGreen};
     color: white;
     border: none;
+    padding: 0.75em 1.5em;
     border-radius: 5px;
-    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    
+    font-size: 1em;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+    width: 250px;
+
     &:hover {
       background-color: ${darkGreen};
     }
+  }
+
+  .nmpw {
+    margin-bottom: 1em;
+  }
+
+  .message-box {
+    font-size: 1.2em;
+    color: red;
+  }
+
+  .imagefile {
+    display: flex;
+    margin-top: 15px;
+    gap: 10px;
+  }
+
+  .ihlDcF {
+    font-size: 1.2em;
+  }
+
+  .icon {
+    position: relative;
+    top: 3px;
+    margin-right: 3px;
+  }
+`;
+
+const FileUploadContainer = styled.div`
+  display: flex;
 `;
 
 const Form = ({
@@ -131,9 +201,12 @@ const Form = ({
 
   return (
     <Wrapper onSubmit={onSubmit} autoComplete="off">
-      <div className="nmpw">
+      <div className="writerpw">
         <dl>
-          <dt className="sub">{t('작성자')}</dt>
+          <dt className="sub">
+            <IoPerson className="icon" />
+            {t('작성자')}
+          </dt>
           <dd>
             <InputBox
               type="text"
@@ -144,7 +217,9 @@ const Form = ({
               placeholder="이름을 입력하세요"
             />
             {errors?.poster && (
-              <MessageBox color="danger" messages={errors.poster} />
+              <div className="message-box">
+                <MessageBox color="danger" messages={errors.poster} />
+              </div>
             )}
           </dd>
         </dl>
@@ -152,7 +227,10 @@ const Form = ({
         {((form.mode === 'write' && !isLogin) ||
           (form.mode === 'update' && !form?.member)) && (
           <dl>
-            <dt className="sub">{t('비밀번호')}</dt>
+            <dt className="sub">
+              <RiLockPasswordFill className="icon" />
+              {t('비밀번호')}
+            </dt>
             <dd>
               <InputBox
                 type="password"
@@ -163,27 +241,41 @@ const Form = ({
                 placeholder="비회원 비밀번호"
               />
               {errors?.guestPw && (
-                <MessageBox color="danger" messages={errors.guestPw} />
+                <div className="message-box">
+                  <MessageBox color="danger" messages={errors.guestPw} />
+                </div>
               )}
             </dd>
           </dl>
         )}
       </div>
 
-      {isAdmin && (
-        <dl>
-          <dt>{t('공지글')}</dt>
-          <dd>
-            <label onClick={onToggleNotice}>
-              {form?.notice ? <FaCheckSquare /> : <FaSquare />}
-              {t('공지글로_등록하기')}
-            </label>
-          </dd>
-        </dl>
-      )}
+      <div className="notice">
+        {isAdmin && (
+          <dl>
+            <dt className="sub3">
+              <RiMegaphoneFill className="icon" />
+              {t('공지글')}
+            </dt>
+            <dd className="sub4">
+              <label onClick={onToggleNotice}>
+                {form?.notice ? (
+                  <FaCheckSquare className="icon" />
+                ) : (
+                  <FaSquare className="icon" />
+                )}
+                {t('공지글로_등록하기')}
+              </label>
+            </dd>
+          </dl>
+        )}
+      </div>
 
       <dl>
-        <dt className="sub">{t('제목')}</dt>
+        <dt className="sub">
+          <PiChatTeardropTextFill className="icon" />
+          {t('제목')}
+        </dt>
         <dd>
           <InputBox
             type="text"
@@ -193,7 +285,9 @@ const Form = ({
             placeholder="제목을 입력하세요"
           />
           {errors?.subject && (
-            <MessageBox color="danger" messages={errors.subject} />
+            <div className="message-box">
+              <MessageBox color="danger" messages={errors.subject} />
+            </div>
           )}
         </dd>
       </dl>
@@ -201,91 +295,99 @@ const Form = ({
         <dd>
           {useEditor ? (
             mounted && (
-              <>
-                <CKEditor
-                  editor={ClassicEditor}
-                  config={{
-                    plugins: [
-                      Bold,
-                      Essentials,
-                      Italic,
-                      Paragraph,
-                      Image,
-                      ImageInsert,
-                    ],
-                    toolbar: ['undo', 'redo', 'bold', 'italic'],
-                  }}
-                  data={form?.content}
-                  onReady={(editor) => setEditor(editor)}
-                  onChange={(_, editor) => {
-                    onChange({
-                      target: { name: 'content', value: editor.getData() },
-                    });
-                  }}
-                />
-              </>
+              <CKEditor
+                editor={ClassicEditor}
+                config={{
+                  plugins: [
+                    Bold,
+                    Essentials,
+                    Italic,
+                    Paragraph,
+                    Image,
+                    ImageInsert,
+                  ],
+                  toolbar: ['undo', 'redo', 'bold', 'italic'],
+                }}
+                data={form?.content}
+                onReady={(editor) => setEditor(editor)}
+                onChange={(_, editor) => {
+                  onChange({
+                    target: { name: 'content', value: editor.getData() },
+                  });
+                }}
+              />
             )
           ) : (
             <textarea
               name="content"
               value={form?.content}
               onChange={onChange}
+              className="textarea"
             ></textarea>
           )}
           {errors?.content && (
-            <MessageBox color="danger" messages={errors.content} />
+            <div className="message-box">
+              <MessageBox color="danger" messages={errors.content} />
+            </div>
           )}
         </dd>
       </dl>
 
-      {useUploadImage && editor && (
-        <dl>
-          <dt className="sub2">{t('이미지 첨부')}</dt>
-          <div className="uploadButton">
-            <FileUpload
-              gid={form.gid}
-              location="editor"
-              imageOnly
-              color="dark"
-              width="120"
-              callback={(files) => fileUploadCallback(files, editor)}
-            >
-              {t('이미지_업로드')}
-            </FileUpload>
-          </div>
+      <FileUploadContainer>
+        <div className="imagefile">
+          {useUploadImage && editor && (
+            <div className="image">
+              <dl>
+                <dt className="sub2">{t('이미지 첨부')}</dt>
+                <dd className="uploadButton">
+                  <FileUpload
+                    gid={form.gid}
+                    location="editor"
+                    imageOnly
+                    color="dark"
+                    width="120"
+                    callback={(files) => fileUploadCallback(files, editor)}
+                  >
+                    {t('이미지_업로드')}
+                  </FileUpload>
+                  <FileItems
+                    files={form?.editorImages}
+                    mode="editor"
+                    insertImageCallback={insertImageCallback}
+                    fileDeleteCallback={fileDeleteCallback}
+                  />
+                </dd>
+              </dl>
+            </div>
+          )}
 
-          <FileItems
-            files={form?.editorImages}
-            mode="editor"
-            insertImageCallback={insertImageCallback}
-            fileDeleteCallback={fileDeleteCallback}
-          />
-        </dl>
-      )}
+          {useUploadFile && (
+            <div className="image">
+              <dl>
+                <dt className="sub2">{t('파일첨부')}</dt>
+                <dd className="uploadButton">
+                  <FileUpload
+                    gid={form.gid}
+                    location="attach"
+                    width="120"
+                    color="dark"
+                    callback={fileUploadCallback}
+                  >
+                    {t('파일선택')}
+                  </FileUpload>
+                  <FileItems
+                    files={form?.attachFiles}
+                    mode="attach"
+                    fileDeleteCallback={fileDeleteCallback}
+                  />
+                </dd>
+              </dl>
+            </div>
+          )}
+        </div>
+      </FileUploadContainer>
 
-      {useUploadFile && (
-        <dl>
-          <dt className="sub2">{t('파일첨부')}</dt>
-          <dd>
-            <FileUpload
-              gid={form.gid}
-              location="attach"
-              width="120"
-              color="dark"
-              callback={fileUploadCallback}
-            >
-              {t('파일선택')}
-            </FileUpload>
-            <FileItems
-              files={form?.attachFiles}
-              mode="attach"
-              fileDeleteCallback={fileDeleteCallback}
-            />
-          </dd>
-        </dl>
-      )}
-
-      <MidButton type="submit" color="darkGreen" className="submitButton">
+      <MidButton type="submit" className="submitButton">
         {t(form.mode === 'update' ? '수정하기' : '작성하기')}
       </MidButton>
     </Wrapper>
