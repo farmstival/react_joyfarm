@@ -24,6 +24,10 @@ const WishListItems = ({ item, className }) => {
     doroAddress,
     tel,
     ownerTel,
+    bid,
+    subject,
+    poster,
+    createdAt,
   } = item;
   const displayImageUrl = photoUrl1 ?? photoUrl ?? townImage ?? NoImage;
   console.log(displayImageUrl);
@@ -42,9 +46,9 @@ const WishListItems = ({ item, className }) => {
       : '#';
 
   return (
-    <li className={className}>
+    <li className={`${className} ${tab === 'board' ? 'board' : ''}`}>
       <Link to={url}>
-        {displayImageUrl && (
+        {tab !== 'board' && displayImageUrl && (
           <ImageBgBox
             className="photo"
             url={displayImageUrl}
@@ -53,15 +57,26 @@ const WishListItems = ({ item, className }) => {
           />
         )}
         <div className="item-content">
-          <div className="title">{displaytitle}</div>
-          <div className="tel">
-            <FcPhone className="tel_icon" />
-            {displaytel}
-          </div>
-          <div className="address">
-            <FaMapMarkerAlt className="icon" />
-            {displayaddress}
-          </div>
+          {tab === 'board' ? (
+            <>
+              <div className="boardBid">{bid}</div>
+              <div className="boardSubject">{subject}</div>
+              <div className="boardPoster">{poster}</div>
+              <div className="boardCreated">{createdAt}</div>
+            </>
+          ) : (
+            <>
+              <div className="title">{displaytitle}</div>
+              <div className="tel">
+                <FcPhone className="tel_icon" />
+                {displaytel}
+              </div>
+              <div className="address">
+                <FaMapMarkerAlt className="icon" />
+                {displayaddress}
+              </div>
+            </>
+          )}
         </div>
       </Link>
     </li>
