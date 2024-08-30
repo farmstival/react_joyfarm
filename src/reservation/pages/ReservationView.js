@@ -3,14 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import {
   OuterBox,
-  PageNav,
-  PageNavWrap,
-  PageTitle,
   ContentBox,
 } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import ReserveViewContainer from '../containers/ReserveViewContainer';
-import { Link, NavLink } from 'react-router-dom';
+import Header from '../../layouts/Header';
+import SubTitleLink from '../../commons/SubTitleLink';
 
 const ReservationView = () => {
   const { t } = useTranslation();
@@ -18,23 +16,14 @@ const ReservationView = () => {
 
   return (
     <>
+      <SubTitleLink text={t('체험활동_상세_정보')} href="" />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <PageNavWrap>
-          <PageNav>
-            <NavLink Link to="/reservation/list">
-              체험활동 조회
-            </NavLink>
-            <span> | </span>
-            <Link to="">상세보기</Link>
-          </PageNav>
-          <PageTitle>
-            <MainTitle>{t('체험활동_상세_정보')}</MainTitle>
-          </PageTitle>
-        </PageNavWrap>
+        <Header />
         <ContentBox>
+          <MainTitle>{t('체험활동_상세_정보')}</MainTitle>
           <ReserveViewContainer setPageTitle={setPageTitle} />
         </ContentBox>
       </OuterBox>

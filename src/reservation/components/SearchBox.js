@@ -51,7 +51,7 @@ const FormBox = styled.form`
 
 const Button = styled.button`
   font-size: 1.3em;
-  color: pink;
+  color: white;
   width: 80px;
   height: 45px;
   background: #384863;

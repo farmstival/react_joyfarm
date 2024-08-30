@@ -8,6 +8,7 @@ import ReservationForm from '../components/ReservationForm';
 import Loading from '../../commons/components/Loading';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiApply from '../apis/apiApply';
+import { select } from 'react-cookies';
 
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
@@ -68,6 +69,15 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }),
     );
   }, []);
+
+  
+  const selectChange = useCallback((selectedOption) => {
+    setForm(
+      produce((draft) => {
+        draft.persons = selectedOption ? selectedOption.value : null;
+      })
+    );
+  }, [setForm]);
 
   const onSubmit = useCallback(
     //Submit = 검증
@@ -135,6 +145,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       onTimeChange={onTimeChange}
       onSubmit={onSubmit}
       onChange={onChange}
+      selectChange={selectChange}
     />
   );
 };
