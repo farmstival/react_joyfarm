@@ -113,7 +113,7 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
-            <dd>{ampm}</dd>
+            <dd>{ampm === 'AM' ? '오전' : '오후'}</dd>
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
@@ -126,13 +126,17 @@ const ItemDescription = ({ item, onClick }) => {
         </div>
       </div>
 
-      {status !== 'CANCEL' && (
+      {status !== 'CANCEL' ? (
         <MidButton
           className="cancel_button"
           onClick={() => onClick(item.seq)}
           color="midGreen"
         >
           {t('예약_취소')}
+        </MidButton>
+      ) : (
+        <MidButton className="cancel_button2" color="warning">
+          {t('취소된 예약입니다.')}
         </MidButton>
       )}
     </Wrapper>

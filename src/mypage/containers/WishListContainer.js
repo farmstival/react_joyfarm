@@ -103,8 +103,8 @@ const NoData = styled.div`
   left: 250px;
 
   .icon {
-  position: absolute;
-  top: 1px;
+    position: absolute;
+    top: 1px;
   }
 `;
 

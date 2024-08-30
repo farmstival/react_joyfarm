@@ -108,7 +108,7 @@ const CompletionForm = ({ data }) => {
           {t('예약일')} : {formatDate}
         </p>
         <p>
-          {t('예약시간')} : {ampm === 'AM' ? t('오전') : t('오후')}
+          {t('예약시간')} : {ampm === 'AM' ? '오전' : '오후'}
         </p>
         <p>
           {t('인원수')} : {persons} {t('명')}
