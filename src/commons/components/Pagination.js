@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
+import { color } from '../../styles/color';
 
 import {
   MdFirstPage,
@@ -8,6 +9,8 @@ import {
   MdNavigateNext,
   MdNavigateBefore,
 } from 'react-icons/md';
+
+const { darkGreen } = color;
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,7 +37,7 @@ const Wrapper = styled.div`
   }
 
   .page.on {
-    background: #8d90a1;
+    background: ${darkGreen};
     color: #fff;
     border: none;
   }

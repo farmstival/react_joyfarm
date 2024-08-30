@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,8 @@ import MessageBox from '../../commons/components/MessageBox';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 import moment from 'moment/moment';
+import Select from 'react-select';
+import { produce } from 'immer';
 import { FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 
@@ -18,7 +20,7 @@ const { normal, medium, normedium, big, extraBig } = fontSize;
 const FormBox = styled.form`
   .infoBox {
     display: flex;
-    height: 740px;
+    height: 780px;
   }
 
   .box {
@@ -232,11 +234,18 @@ const FormBox = styled.form`
     font-size: ${medium};
   }
 
-  .people > select,
-  .time_box > ul {
-    margin: 10px 15px;
+  .select {
+    height: 50px;
+    width: 300px;
+    padding: 0;
     font-size: ${medium};
-    line-height: 170%;
+
+    .css-13cymwt-control {
+      height: 50px;
+    }
+
+    .css-1nmdiq5-menu {
+    }
   }
 
   .people {
@@ -255,6 +264,11 @@ const FormBox = styled.form`
   }
 `;
 
+const options = [...new Array(30).keys()].map((i) => ({
+  value: i + 1,
+  label: `${i + 1}명`,
+}));
+
 const ReservationForm = ({
   data,
   form,
@@ -263,6 +277,7 @@ const ReservationForm = ({
   onTimeChange,
   onChange,
   errors,
+  selectChange,
 }) => {
   const { t } = useTranslation();
   const { minDate, maxDate, times } = data;
@@ -341,20 +356,13 @@ const ReservationForm = ({
               <FcConferenceCall />
               <h2>{t('인원수_선택')}</h2>
             </div>
-            <select
-              name="persons"
-              value={form?.persons}
-              onChange={onChange}
+            <Select
+              value={options.find((option) => option.value === form?.persons)}
+              onChange={selectChange}
               className="select"
-            >
-              {[...new Array(30).keys()].map((i) => (
-                <option key={`persons_${i}`} value={i + 1} className="options">
-                  {i + 1}
-                  {t('명')}
-                </option>
-              ))}
-            </select>
-            {/* // 드롭 다운 E */}
+              options={options}
+            />
+            {/* // 드롭 다운 */}
             {errors?.persons && (
               <MessageBox color="danger" messages={errors.persons} />
             )}
