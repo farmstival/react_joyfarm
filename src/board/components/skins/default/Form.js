@@ -25,18 +25,16 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { PiChatTeardropTextFill } from 'react-icons/pi';
 import { RiMegaphoneFill } from 'react-icons/ri';
 
-const { midGreen, darkGreen } = color;
+const { midGreen, darkGreen, whiteGray } = color;
 
 const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   padding: 2em;
-  max-width: 1100px;
-  margin: 2em auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  max-width: 1200px;
+  margin: auto;
+  border: 1px solid ${whiteGray};
+  border-radius: 0 0 5px 5px;
 
   .ck-editor__editable {
     height: 350px;
@@ -102,7 +100,7 @@ const Wrapper = styled.form`
   textarea {
     width: 100%;
     padding: 0.75em;
-    border: 1px solid #cccccc;
+    border: 1px solid ${whiteGray};
     border-radius: 5px;
     box-sizing: border-box;
   }
