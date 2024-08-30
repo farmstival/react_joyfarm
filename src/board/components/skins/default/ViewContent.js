@@ -6,16 +6,15 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { BoardButton } from '../../../../commons/components/Buttons';
 import { color } from '../../../../styles/color';
 import fontSize from '../../../../styles/fontSize';
+import WishButton from '../../../../commons/components/WishButton';
 
-const { medium, big, extraBig } = fontSize;
-const { whiteGreen, midGreen, lightGreen, whiteGray, mid_gray, dark_gray } =
-  color;
+const { medium, extraBig } = fontSize;
+const { whiteGray, mid_gray } = color;
 
 // 게시글 제목 부분(제목, 작성자, ...)
 const Wrapper = styled.div`
   font-size: ${medium};
   margin: 5px;
-  border-bottom: 1px solid ${whiteGray};
   border-top: 2.5px solid ${whiteGray};
 
   .subject {
@@ -24,15 +23,25 @@ const Wrapper = styled.div`
     text-align: left;
     vertical-align: middle;
     padding: 18px 30px;
-    background: #d2f1ca;
+    background: #e2f7dd;
     border-bottom: 2px solid ${whiteGray};
     line-height: 30px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 15px;
+      color: ${mid_gray};
+    }
   }
 
   .post-info {
     color: ${mid_gray};
     border-collapse: collapse;
-    //border-bottom: 1px solid ${whiteGray};
     display: flex;
     justify-content: space-between;
 
@@ -48,8 +57,10 @@ const StyledContents = styled.div`
   padding-top: 5px;
 
   .contents {
-    padding-left: 5px;
+    padding-left: 15px;
     border: 1px solid ${whiteGray};
+    border-radius: 5px;
+    font-size: ${medium};
     min-height: 500px;
     max-height: 700px;
     overflow-y: auto;
@@ -69,7 +80,8 @@ const StyledContents = styled.div`
     vertical-align: middle;
     padding: 5px 5px 5px 15px;
     border: 1px solid ${whiteGray};
-    border-top: none;
+    border-radius: 5px;
+    margin-top: 5px;
   }
 `;
 
@@ -89,7 +101,13 @@ const ViewContent = ({ data, onDelete }) => {
 
   return (
     <Wrapper>
-      <div className="subject">{data.subject}</div>
+      <div className="subject">
+        {data.subject}
+        <div className="button">
+        {t('찜하기')}
+          <WishButton seq={data.seq} type={'BOARD'}></WishButton>
+        </div>
+      </div>
       <div className="post-info">
         <div className="items left">
           작성자 | {data.poster}

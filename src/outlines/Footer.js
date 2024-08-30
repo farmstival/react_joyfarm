@@ -26,6 +26,7 @@ const Address = styled.div`
   font-size: 16px;
   margin-left: 100px;
   margin-bottom: 30px;
+  margin-top: 10px;
   color: ${mid_gray};
   font-weight: bold;
 `;
@@ -56,7 +57,7 @@ const FooterImageBox = styled.div`
   justify-content: center;
   gap: 20px;
   margin-left: 500px;
-  margin-top: 100px;
+  margin-top: 180px;
 `;
 
 const Image = styled.img`
@@ -70,19 +71,21 @@ const Footer = () => {
     <FooterBox>
       <FooterWrap>
         <FooterContentBox>
-          <Address>서울특별시 송파구 올림픽로 300 | 대표자 : 김이름</Address>
+          <Address>서울 마포구 신촌로 176 중앙빌딩 | 502호 3조</Address>
           <Information>
-            명예라는 건 허무한 군더더기다.
+            현재 농촌 지역은 인구 감소와 고령화, 사회적 단절, 기반 시설 부족
+            등으로 많은 어려움을 겪고 있습니다.
             <br />
-            공로가 없어도 때로는 수중에 들어오지만, 죄를 안져도 없어질 때가
-            있다.
           </Information>
           <Information2>
-            가난해도 족함을 알면 백만장자가 부럽지 않지만,
+            농촌 문제의 해결을 위해 변화하는 여행 트렌드와 접목하여 농촌 체험과
+            관련된 다양한 정보를 제공하고, 농촌 체험 및 여행의 수요를 확대하여
+            지역 활성화를 도모하고자 본 프로젝트를 진행하게 되었습니다.
             <br />
-            아무리 부자라 한들 가난뱅이가 되면 어떡하나 하고
             <br />
-            걱정만 한다면, 엄동설한 같이 쓸쓸하기 그지없다.
+            중앙정보기술인재개발원 3조 이소은 서정현 강태현 양예지
+            <br />
+            이진표 유준범 최시원 지도강사 이용교 강사님
           </Information2>
         </FooterContentBox>
         <FooterImageBox>

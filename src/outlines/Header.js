@@ -15,6 +15,10 @@ import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
 const { midGreen } = color;
 
 const HeaderBox = styled.header`
+  .icon {
+    position: relative;
+    top: 3px;
+  }
   .site-top {
     background: #fff;
     height: 35px;
@@ -83,7 +87,7 @@ const Header = () => {
               </span> */}
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
-                  <GrUserManager />
+                  <GrUserManager className="icon" />
                   {t('사이트_관리')}
                 </a>
                 //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
@@ -92,11 +96,11 @@ const Header = () => {
                 to="/mypage"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <BiWinkSmile />
+                <BiWinkSmile className="icon" />
                 {t('마이페이지')}
               </NavLink>
               <NavLink onClick={onLogout}>
-                <BiLockOpen />
+                <BiLockOpen className="icon" />
                 {t('로그아웃')}
               </NavLink>
               {/*
@@ -114,14 +118,14 @@ const Header = () => {
                 to="/member/join"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <BiUserPlus />
+                <BiUserPlus className="icon" />
                 {t('회원가입')}
               </NavLink>
               <NavLink
                 to="/member/login"
                 className={({ isActive }) => classNames({ on: isActive })}
               >
-                <BiLock />
+                <BiLock className="icon" />
                 {t('로그인')}
               </NavLink>
             </>

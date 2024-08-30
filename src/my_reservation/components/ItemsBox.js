@@ -79,7 +79,7 @@ const ItemBox = ({ item, className }) => {
                 {t('명')}
               </div>
               <div className='"rsvStatus'>
-                {t('예약상태')}: 
+                {t('예약상태')} :{' '}
                 {status === 'CANCEL' ? t('취소완료') : t('예약확정')}
               </div>
             </div>

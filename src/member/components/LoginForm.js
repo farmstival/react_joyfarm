@@ -75,7 +75,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           placeholder={t('이메일')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.email} color="darkGreen" />
+        <MessageBox messages={errors.email} />
 
         <InputBox
           type="password"
@@ -84,7 +84,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           placeholder={t('비밀번호')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.password} color="darkGreen" />
+        <MessageBox messages={errors.password} />
 
         <StyledMidButton
           type="submit"
@@ -97,7 +97,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           {t('로그인')}
         </StyledMidButton>
 
-        <MessageBox messages={errors.global} color="darkGreen" />
+        <MessageBox messages={errors.global} />
       </FormBox>
       <JoinPrompt>
         {t('아직_회원이_아니십니까')}&nbsp;
