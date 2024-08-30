@@ -13,26 +13,25 @@ const { primary } = color;
 
 const Wrapper = styled.div`
   width: 45%;
-  height: 500px;
+  height: 550px;
   word-break: break-all;
 
   .dscp_box {
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 450px;
-    margin-bottom: 10px;
+    height: 500px;
 
     .cancel_button {
       position: absolute;
     }
 
     .person_info {
-      height: 210px;
+      height: 50%;
     }
 
     .rsv_info {
-      height: 240px;
+      height: 50%;
     }
 
     .title {
@@ -77,11 +76,18 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
-  const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
+  const {
+    name,
+    email,
+    mobile,
+    rdate,
+    ampm,
+    townName,
+    persons,
+    status,
+    deletedAt,
+  } = item;
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
-
-  const formatDate = format(
-    Date(rdate), 'yyyy-MM-dd');
 
   return (
     <Wrapper>
@@ -103,6 +109,12 @@ const ItemDescription = ({ item, onClick }) => {
             <dt>{t('예약자_전화번호')}</dt>
             <dd>{mobile}</dd>
           </dl>
+          {deletedAt ? (
+            <dl>
+              <dt>{t('취소일')}</dt>
+              <dd>{deletedAt}</dd>
+            </dl>
+          ) : null}
         </div>
 
         <div className="rsv_info">
@@ -116,11 +128,14 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
-            <dd>{ampm === 'AM' ? t('오전'): t('오후')}</dd>
+            <dd>{ampm === 'AM' ? t('오전') : t('오후')}</dd>
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
-            <dd>{persons}{t('명')}</dd>
+            <dd>
+              {persons}
+              {t('명')}
+            </dd>
           </dl>
           <dl>
             <dt>{t('체험_마을명')}</dt>

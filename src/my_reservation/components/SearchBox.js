@@ -168,7 +168,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <DatePicker
             className="pick_sdate"
             locale="ko"
-            selected={form?.sDate ? new Date(form.sDate) : new Date()}
+            selected={form?.sDate ? new Date(form.sDate) : null}
             onChange={(date) =>
               onChange({
                 target: { name: 'sDate', value: format(date, 'yyyy-MM-dd') },
@@ -182,7 +182,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           <DatePicker
             className="pick_edate"
             locale="ko"
-            selected={form?.eDate ? new Date(form.eDate) : new Date()}
+            selected={form?.eDate ? new Date(form.eDate) : null}
             onChange={(date) =>
               onChange({
                 target: { name: 'eDate', value: format(date, 'yyyy-MM-dd') },
@@ -194,9 +194,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
         </div>
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
-          <option value="DIVISION">{t('프로그램구분')}</option>
           <option value="ACTIVITY">{t('체험프로그램명')}</option>
-          <option value="FACILITYINFO">{t('보유시설정보')}</option>
           <option value="ADDRESS">{t('체험_마을_주소')}</option>
         </select>
         <input

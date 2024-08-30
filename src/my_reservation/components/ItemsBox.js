@@ -11,7 +11,7 @@ import { FcLandscape } from 'react-icons/fc';
 import { IoTicketOutline } from 'react-icons/io5';
 import { format } from 'date-fns';
 
-const { line_gray, darkGreen, primary } = color;
+const { line_gray, darkGreen, primary, midGreen, danger } = color;
 const { medium, normedium, normal, extraBig } = fontSize;
 
 //농활 체험 목록 조회
@@ -79,8 +79,12 @@ const ItemBox = ({ item, className }) => {
                 {t('명')}
               </div>
               <div className='"rsvStatus'>
-                {t('예약상태')}: 
-                {status === 'CANCEL' ? t('취소완료') : t('예약확정')}
+                {t('예약상태')} :{' '}
+                {status === 'CANCEL' ? (
+                  <span className="sCancel">{t('취소완료')}</span>
+                ) : (
+                  <span className="sReserve">{t('예약확정')}</span>
+                )}
               </div>
             </div>
           </div>
@@ -176,6 +180,18 @@ const ItemStyledBox = styled(ItemBox)`
           margin-right: 15px;
           font-size: ${normedium};
         }
+      }
+
+      .rsvStatus {
+        display: flex;
+        align-items: center;
+      }
+
+      .sCancel {
+        color: ${danger};
+      }
+      .sReserve {
+        color: ${midGreen};
       }
 
       .act_content {

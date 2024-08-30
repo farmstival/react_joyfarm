@@ -18,7 +18,7 @@ const { normal, medium, normedium, big, extraBig } = fontSize;
 const FormBox = styled.form`
   .infoBox {
     display: flex;
-    height: 740px;
+    height: 780px;
   }
 
   .box {
