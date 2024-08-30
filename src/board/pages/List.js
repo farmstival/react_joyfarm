@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { OuterBox } from '../../commons/components/LayoutBox';
-import { MainTitle } from '../../commons/components/TitleBox';
 import ListContainer from '../containers/ListContainer';
 import { ContentBox } from '../../commons/components/LayoutBox';
 import SubTitleLink from '../../commons/SubTitleLink';
