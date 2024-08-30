@@ -11,7 +11,7 @@ import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ko } from 'date-fns/locale/ko';
 registerLocale('ko', ko);
 
-const { white, midGreen, gray, lightGreen, black, dark, darkGreen } = color;
+const { white, midGreen, gray, lightGreen, dark, darkGreen } = color;
 const { medium, normal, normedium } = fontSize;
 
 const FormBox = styled.form`
@@ -79,7 +79,7 @@ const FormBox = styled.form`
     }
 
     .react-datepicker__header {
-      background-color: #ccff66;
+      background-color: #e2f7dd;
       width: 100%;
       padding: 10px;
       border-radius: 10px 10px 0 0;

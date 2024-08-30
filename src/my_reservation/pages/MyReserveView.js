@@ -11,6 +11,8 @@ import {
 import { MainTitle } from '../../commons/components/TitleBox';
 import MyReserveViewContainer from '../containers/MyReserveViewContainer';
 import { Link, NavLink } from 'react-router-dom';
+import Header from '../../layouts/Header';
+import SubTitleLink from '../../commons/SubTitleLink';
 
 const MyReserveView = () => {
   const { t } = useTranslation();
@@ -18,23 +20,14 @@ const MyReserveView = () => {
 
   return (
     <>
+      <SubTitleLink text={t('예약내역_상세')} href="" />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
-        <PageNavWrap>
-          <PageNav>
-            <NavLink Link to="/myreservation/list">
-              예약 현황 조회
-            </NavLink>
-            <span> | </span>
-            <Link to="">상세보기</Link>
-          </PageNav>
-          <PageTitle>
-            <MainTitle>{t('예약내역_상세')}</MainTitle>
-          </PageTitle>
-        </PageNavWrap>
+      <Header />
         <ContentBox>
+          <MainTitle>{t('예약내역_상세')}</MainTitle>
           <MyReserveViewContainer setPageTitle={setPageTitle} />
         </ContentBox>
       </OuterBox>

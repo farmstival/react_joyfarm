@@ -9,10 +9,10 @@ import { color } from '../../styles/color';
 import { format } from 'date-fns';
 
 const { normedium, big } = fontSize;
-const { primary } = color;
+const { primary, danger } = color;
 
 const Wrapper = styled.div`
-  width: 45%;
+  width: 40%;
   height: 550px;
   word-break: break-all;
 
@@ -51,6 +51,14 @@ const Wrapper = styled.div`
         margin: 5px 0;
       }
     }
+  }
+  .cancelment {
+    text-align: center;
+    font-size: ${big};
+    color: ${danger};
+    height: 40px;
+    line-height: 40px;
+    border: solid 1px 
   }
 
   dl {
@@ -159,9 +167,7 @@ const ItemDescription = ({ item, onClick }) => {
           {t('예약_취소')}
         </MidButton>
       ) : (
-        <MidButton className="cancel_button2" color="warning">
-          {t('취소된 예약입니다.')}
-        </MidButton>
+        <div className="cancelment">{t('취소된 예약입니다.')}</div>
       )}
     </Wrapper>
   );
