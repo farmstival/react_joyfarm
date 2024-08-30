@@ -14,6 +14,7 @@ const commons = {
   여행지: 'TourPlace',
   통합검색: 'Search',
   행사기간: 'Period',
+  조이팜과_함께_즐거운_농촌체험: 'ENJOY YOUR LIFE, ENJOY YOUR FARM',
 };
 
 export default commons;

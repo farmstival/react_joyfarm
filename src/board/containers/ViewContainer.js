@@ -113,12 +113,12 @@ const ViewContainer = ({ setPageTitle }) => {
 
       /* 필수 항목 검증 S */
       const requiredFields = {
-        commenter: t('작성자를_입력하세요.'),
-        content: t('댓글을_입력하세요.'),
+        commenter: t('작성자를_입력하세요'),
+        content: t('댓글을_입력하세요'),
       };
       if (!isLogin) {
         // 로그인 상태가 아닌 경우
-        requiredFields.guestPw = t('비밀번호를_입력하세요.');
+        requiredFields.guestPw = t('비밀번호를_입력하세요');
       }
 
       for (const [field, message] of Object.entries(requiredFields)) {

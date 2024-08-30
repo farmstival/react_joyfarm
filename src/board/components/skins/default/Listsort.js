@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   padding-top: 10px;
   padding-left: 10px;
+  font-weight: bold;
 
   .sort-item {
     margin-right: 10px;
