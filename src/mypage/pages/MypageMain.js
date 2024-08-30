@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { color } from '../../styles/color';
 import jprofile from '../../images/jprofile.png';
 const { whiteGreen, mid_gray } = color;
+import ProfileImage from '../components/ProfileImage';
 
 const StyledMain = styled.div`
   width: 700px;
@@ -31,11 +32,18 @@ const StyledMain = styled.div`
   }
 `;
 
+const StyledProfileImage = styled(ProfileImage)`
+  margin-top: 20px;
+  pointer-events: none;
+`;
+
 const MyPageMain = () => {
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
   const { t } = useTranslation();
+  const profileImageUrl = userInfo?.profileImage?.fileUrl;
+
   return (
     <MemberOnlyContainer>
       <Helmet>
@@ -44,8 +52,11 @@ const MyPageMain = () => {
       <StyledMain>
         <h1>{t('마이페이지')}</h1>
         {userInfo?.userName}({userInfo?.email}) 님 환영합니다.
-        <br />
-        <img src={jprofile} className="proimg" />
+        <StyledProfileImage
+          gid={userInfo?.gid}
+          profileImage={profileImageUrl}
+          fileUploadCallback={null}
+        />
       </StyledMain>
     </MemberOnlyContainer>
   );
