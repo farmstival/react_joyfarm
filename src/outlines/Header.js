@@ -23,8 +23,8 @@ const HeaderBox = styled.header`
     background: #fff;
     height: 45px;
     display: flex;
-    align-items: center; // 수직 중앙 정렬
-    justify-content: space-between; // 좌우 간격 조정
+    align-items: center;
+    justify-content: space-between; 
 
     div {
       text-align: right;
