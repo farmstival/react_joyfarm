@@ -15,7 +15,6 @@ const { whiteGray, mid_gray } = color;
 const Wrapper = styled.div`
   font-size: ${medium};
   margin: 5px;
-  border-top: 2.5px solid ${whiteGray};
 
   .subject {
     font-size: ${extraBig};
@@ -23,8 +22,9 @@ const Wrapper = styled.div`
     text-align: left;
     padding: 18px 30px;
     background: #e2f7dd;
-    border-bottom: 2px solid ${whiteGray};
-    margin-bottom: 5px;
+    border: 2px solid ${whiteGray};
+    border-top: 3px solid ${whiteGray};
+    border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,22 +43,23 @@ const Wrapper = styled.div`
     border-collapse: collapse;
     display: flex;
     justify-content: space-between;
+    border-left: 2px solid ${whiteGray};
+    border-right: 2px solid ${whiteGray};
 
     .items {
       vertical-align: middle;
-      padding: 10px 15px;
+      padding: 15px 15px;
     }
   }
 `;
 
 // 게시글 내용 부분
 const StyledContents = styled.div`
-  padding-top: 5px;
 
   .contents {
     padding-left: 15px;
     border: 1px solid ${whiteGray};
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     font-size: ${medium};
     min-height: 500px;
     max-height: 700px;
