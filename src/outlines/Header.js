@@ -11,7 +11,6 @@ import UserInfoContext from '../member/modules/UserInfoContext';
 import WishListContext from '../commons/contexts/WishListContext';
 import { GrUserManager } from 'react-icons/gr';
 import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
-import { Link } from 'ckeditor5';
 
 const { midGreen } = color;
 
@@ -25,7 +24,7 @@ const HeaderBox = styled.header`
     height: 45px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
 
     div {
       text-align: right;
@@ -86,19 +85,9 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-              {userInfo?.profileImage?.fileUrl && (
-                <Link to="/mypage">
-                  <img
-                    src={userInfo.profileImage.fileUrl}
-                    alt="profile"
-                    widt={40}
-                  />
-                </Link>
-              )}
-              <span>
+              {/* <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span>{' '}
-              */}
+              </span> */}
               {userInfo?.profileImage?.fileUrl && (
                 <Link to="/mypage">
                   <img
