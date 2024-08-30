@@ -160,6 +160,10 @@ const commons = {
   // 마이 페이지
   찜하기_리스트: 'Favorites List',
   조회된_게시물이_없습니다: 'No posts found',
+  여행지: 'TourPlace',
+  통합검색: 'Search',
+  행사기간: 'Period',
+  조이팜과_함께_즐거운_농촌체험: 'ENJOY YOUR LIFE, ENJOY YOUR FARM',
 };
 
 export default commons;

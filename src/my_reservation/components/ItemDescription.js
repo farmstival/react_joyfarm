@@ -117,7 +117,10 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
-            <dd>{persons}</dd>
+            <dd>
+              {persons}
+              {t('명')}
+            </dd>
           </dl>
           <dl>
             <dt>{t('체험_마을명')}</dt>

@@ -14,34 +14,42 @@ const FormBox = styled.form`
 
   .comment-form {
     font-size: ${medium};
-    margin: 20px 15px 0px 15px;
+    margin: 5px;
     position: relative;
 
     .field {
       overflow: hidden;
       margin-bottom: -1px;
 
+      .idpwFied {
+        display: flex;
+      }
+
       input {
         float: left;
-        width: 50%;
+        width: 20%;
         padding: 12px 16px;
-        border: 1px solid #eee;
-        border-bottom: none;
+        border: 1px solid #cccccc;
         color: #777;
         box-sizing: border-box;
-        border-right: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
       }
 
       textarea {
         padding-right: 32px;
         display: block;
         width: 100%;
-        margin-bottom: 5px;
-        padding-bottom: 100px;
-        border: 1px solid #eee;
+        height: 100px;
+        padding: 12px 16px;
+        border: 1px solid #cccccc;
         color: #777;
         box-sizing: border-box;
         resize: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
       }
 
       button {
@@ -52,13 +60,13 @@ const FormBox = styled.form`
         font-size: ${medium};
         font-weight: 600px;
         width: 100px;
-        height: 30px;
+        height: 35px;
         background-color: ${midGreen};
         border: none;
-        align-items: flex-end;
-        padding: 7px 5px;
         margin-left: auto;
         cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
       }
     }
   }
@@ -75,29 +83,31 @@ const CommentForm = ({ form, onChange, onSubmit, errors }) => {
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="comment-form">
         <div className="field">
-          <input
-            type="text"
-            name="commenter"
-            placeholder={t('작성자')}
-            value={form?.commenter}
-            onChange={onChange}
-          />
-          {!isLogin && (
+          <div className="idpwFied">
             <input
-              type="password"
-              name="guestPw"
-              className="guest"
-              placeholder={t('비밀번호')}
-              value={form?.guestPw}
+              type="text"
+              name="commenter"
+              placeholder={t('작성자')}
+              value={form?.commenter}
               onChange={onChange}
             />
-          )}
-          {errors?.commenter && (
-            <MessageBox color="danger" messages={errors.commenter} />
-          )}
-          {errors?.guestPw && (
-            <MessageBox color="danger" messages={errors.guestPw} />
-          )}
+            {!isLogin && (
+              <input
+                type="password"
+                name="guestPw"
+                className="guest"
+                placeholder={t('비밀번호')}
+                value={form?.guestPw}
+                onChange={onChange}
+              />
+            )}
+            {errors?.commenter && (
+              <MessageBox color="danger" messages={errors.commenter} />
+            )}
+            {errors?.guestPw && (
+              <MessageBox color="danger" messages={errors.guestPw} />
+            )}
+          </div>
           <textarea
             name="content"
             placeholder={t('여러분의_소중한_의견을_남겨주세요')}

@@ -27,6 +27,7 @@ const MyReserveListContainer = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log(search);
     apiList(search).then((res) => {
       setItems(res.items);
       setPagination(res.pagination);

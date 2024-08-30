@@ -175,14 +175,14 @@ const FormContainer = ({ setPageTitle }) => {
 
       /* 유효성 검사 - 필수 항목 검증 S */
       const requiredFields = {
-        poster: t('작성자를_입력하세요.'),
-        subject: t('제목을_입력하세요.'),
-        content: t('내용을_입력하세요.'),
+        poster: t('작성자를_입력하세요'),
+        subject: t('제목을_입력하세요'),
+        content: t('내용을_입력하세요'),
       };
 
       if (!isLogin) {
         // 비회원인 경우
-        requiredFields.guestPw = t('비밀번호를_입력하세요.');
+        requiredFields.guestPw = t('비밀번호를_입력하세요');
       }
 
       if (!isAdmin) {
