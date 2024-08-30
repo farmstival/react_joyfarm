@@ -7,8 +7,11 @@ import { color } from '../../styles/color';
 import { useParams } from 'react-router-dom';
 import NoImage from '../../images/farm.jpg';
 import { FcPhone } from 'react-icons/fc';
+import fontSize from '../../styles/fontSize';
 
-const { midGreen } = color;
+const { midGreen, darkGreen } = color;
+
+const { medium } = fontSize;
 
 const WishListItems = ({ item, className }) => {
   const { tab } = useParams();
@@ -24,6 +27,9 @@ const WishListItems = ({ item, className }) => {
     doroAddress,
     tel,
     ownerTel,
+    subject,
+    poster,
+    createdAt,
   } = item;
   const displayImageUrl = photoUrl1 ?? photoUrl ?? townImage ?? NoImage;
   console.log(displayImageUrl);
@@ -42,9 +48,9 @@ const WishListItems = ({ item, className }) => {
       : '#';
 
   return (
-    <li className={className}>
+    <li className={`${className} ${tab === 'board' ? 'board' : ''}`}>
       <Link to={url}>
-        {displayImageUrl && (
+        {tab !== 'board' && displayImageUrl && (
           <ImageBgBox
             className="photo"
             url={displayImageUrl}
@@ -53,15 +59,25 @@ const WishListItems = ({ item, className }) => {
           />
         )}
         <div className="item-content">
-          <div className="title">{displaytitle}</div>
-          <div className="tel">
-            <FcPhone className="tel_icon" />
-            {displaytel}
-          </div>
-          <div className="address">
-            <FaMapMarkerAlt className="icon" />
-            {displayaddress}
-          </div>
+          {tab === 'board' ? (
+            <div className="board-content">
+              <div className="boardSubject">{subject}</div>
+              <div className="boardPoster">{poster}</div>
+              <div className="boardCreated">{createdAt}</div>
+            </div>
+          ) : (
+            <>
+              <div className="title">{displaytitle}</div>
+              <div className="tel">
+                <FcPhone className="tel_icon" />
+                {displaytel}
+              </div>
+              <div className="address">
+                <FaMapMarkerAlt className="icon" />
+                {displayaddress}
+              </div>
+            </>
+          )}
         </div>
       </Link>
     </li>
@@ -70,7 +86,7 @@ const WishListItems = ({ item, className }) => {
 
 const ItemStyledBox = styled(WishListItems)`
   padding: 15px;
-  border: 1px solid #ada493;
+  border: 2px solid ${midGreen};
   border-radius: 5px;
   width: 450px;
   height: 200px;
@@ -78,7 +94,7 @@ const ItemStyledBox = styled(WishListItems)`
   margin-bottom: 20px;
 
   &:hover {
-    border: 3px solid ${midGreen};
+    font-weight: bold;
   }
 
   a {
@@ -126,6 +142,49 @@ const ItemStyledBox = styled(WishListItems)`
           top: 3px;
           margin-right: 5px;
         }
+      }
+    }
+  }
+  &.board {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    font-size: ${medium};
+    padding: 10px;
+    padding-right: 20px;
+    &:hover {
+      font-weight: bold;
+    }
+
+    .board-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+
+      .boardCreated {
+        width: 120px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .boardSubject {
+        width: 150px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+        background: #e2f7dd;
+        border-radius: 20px;
+      }
+
+      .boardPoster {
+        width: 120px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

@@ -1,62 +1,27 @@
-import React, { useCallback, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { AiFillCloseSquare } from 'react-icons/ai';
-import apiRequest from '../../commons/libs/apiRequest';
+import React from 'react';
+import styled from 'styled-components';
+import FileUpload from '../../commons/components/FileUpload';
+import NoProfile from '../../images/myprofile.png';
 
-
-
-const ImageBox = styled.div`
-  width: ${({ width }) => width ?? '100%'};
-  height: ${({ height }) => height ?? '300px'};
-  ${({ radius }) => css`
-    border-radius: ${radius};
-  `}
-  overflow: hidden;
-  margin-bottom: 10px;
-  position: relative;
-
-  .image {
-    width: 100%;
-    height: 100%;
-    background: url('${({ url }) => url}') no-repeat center center;
-    background-size: cover;
-
-    cursor: pointer;
-  }
-
-  .icon {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    font-size: 2.5rem;
-    color: #fff;
-    cursor: pointer;
-  }
+const Wrapper = styled.div`
+  width: 200px;
+  height: 200px;
+  margin: auto;
 `;
 
-const ProfileImage = ({ items, width, height, radius, onDelete }) => {
-  items = Array.isArray(items) ? items : [items];
-  
+const ProfileImage = ({ gid, profileImage, fileUploadCallback, className }) => {
   return (
-    <>
-      {items?.length > 0 &&
-        items.map((item) => (
-          <ImageBox
-            key={item.seq}
-            className="inner"
-            url={item.fileUrl}
-            width={width}
-            height={height}
-            radius={radius}
-          >
-            <AiFillCloseSquare
-              className="icon"
-              onClick={() => onDelete(item.seq)}
-            />
-            <div className="image"></div>
-          </ImageBox>
-        ))}
-    </>
+    <Wrapper className={className}>
+      <FileUpload
+        width={200}
+        imageUrl={profileImage ?? NoProfile}
+        gid={gid}
+        imageOnly={true}
+        single={true}
+        done={true} // false 로 바꾸면 수정하기 눌러야 프로필이미지 수정됨!
+        callback={fileUploadCallback}
+      />
+    </Wrapper>
   );
 };
 

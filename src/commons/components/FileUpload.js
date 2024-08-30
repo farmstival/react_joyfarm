@@ -98,11 +98,11 @@ const FileUpload = ({
     <>
       {imageUrl ? (
         <img
-        src={imageUrl}
-        width={width}
-        alt="profile"
-        onClick={onButtonClick}
-      />
+          src={imageUrl}
+          width={width}
+          alt="profile"
+          onClick={onButtonClick}
+        />
       ) : (
         <SmallButton
           width={width}

@@ -1,7 +1,7 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
@@ -22,7 +22,10 @@ const HeaderBox = styled.header`
   }
   .site-top {
     background: #fff;
-    height: 35px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     div {
       text-align: right;
@@ -83,19 +86,28 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-               {userInfo?.profileImage?.fileUrl && (
+              {userInfo?.profileImage?.fileUrl && (
                 <Link to="/mypage">
-               <img 
-               src={userInfo.profileImage.fileUrl}
-               alt="profile"
-               widt={40}
-               />
-               </Link>
+                  <img
+                    src={userInfo.profileImage.fileUrl}
+                    alt="profile"
+                    widt={40}
+                  />
+                </Link>
               )}
-
-               <span>
+              <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span> 
+              </span>{' '}
+              */}
+              {userInfo?.profileImage?.fileUrl && (
+                <Link to="/mypage">
+                  <img
+                    src={userInfo.profileImage.fileUrl}
+                    alt="profile"
+                    width={40}
+                  />
+                </Link>
+              )}
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
                   <GrUserManager className="icon" />
