@@ -155,7 +155,7 @@ const CancelForm = ({ data }) => {
     ownerTel,
   } = data;
 
-  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatDate = format(new Date(rdate), 'yyyy-MM-dd');
 
   return (
     <FlatWrapper>

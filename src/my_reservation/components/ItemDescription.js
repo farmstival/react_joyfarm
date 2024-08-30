@@ -95,7 +95,7 @@ const ItemDescription = ({ item, onClick }) => {
     status,
     deletedAt,
   } = item;
-  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatDate = format(new Date(rdate), 'yyyy-MM-dd');
   const formatMobile = (mobile) => {
     if (mobile.length === 11) {
       return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
