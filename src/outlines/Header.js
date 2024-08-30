@@ -11,6 +11,7 @@ import UserInfoContext from '../member/modules/UserInfoContext';
 import WishListContext from '../commons/contexts/WishListContext';
 import { GrUserManager } from 'react-icons/gr';
 import { BiLock, BiLockOpen, BiUserPlus, BiWinkSmile } from 'react-icons/bi';
+import { Link } from 'ckeditor5';
 
 const { midGreen } = color;
 
@@ -82,9 +83,19 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-              {/* <span>
+               {userInfo?.profileImage?.fileUrl && (
+                <Link to="/mypage">
+               <img 
+               src={userInfo.profileImage.fileUrl}
+               alt="profile"
+               widt={40}
+               />
+               </Link>
+              )}
+
+               <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span> */}
+              </span> 
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
                   <GrUserManager className="icon" />
