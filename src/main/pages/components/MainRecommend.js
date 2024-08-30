@@ -11,7 +11,6 @@ const { darkGreen, white, dark, mid_gray, midGreen, lightGreen } = color;
 const MainRecommendWrapper = styled.div`
   padding: 100px 20px;
   background: ${white};
-  margin-bottom: 100px;
   display: flex;
   justify-content: center;
 `;
