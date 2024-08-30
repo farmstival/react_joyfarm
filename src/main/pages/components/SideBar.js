@@ -13,7 +13,7 @@ const SidebarContainer = styled.div`
   width: 130px;
   background: ${white};
   padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   text-align: center;
   border-radius: 20px;

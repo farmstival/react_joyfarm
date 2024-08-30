@@ -79,6 +79,7 @@ const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
   const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+
   return (
     <Wrapper>
       <div className="dscp_box">
@@ -112,11 +113,14 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
-            <dd>{ampm === 'AM' ? t('오전'): t('오후')}</dd>
+            <dd>{ampm === 'AM' ? t('오전') : t('오후')}</dd>
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
-            <dd>{persons}{t('명')}</dd>
+            <dd>
+              {persons}
+              {t('명')}
+            </dd>
           </dl>
           <dl>
             <dt>{t('체험_마을명')}</dt>
