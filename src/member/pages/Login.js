@@ -8,6 +8,7 @@ import GuestOnlyContainer from '../containers/GuestOnlyContainer';
 import { MainTitle3 } from '../../commons/components/TitleBox';
 import { ContentBox3, OuterBox } from '../../commons/components/LayoutBox';
 import logo from '../../images/logo3.png';
+
 const { medium, big } = fontSize;
 
 const StyledBox = styled.div`
@@ -28,7 +29,7 @@ const Login = () => {
         <ContentBox3>
           <StyledBox>
             <MainTitle3 style={{ border: 'none' }}>
-              <h2>
+             <h2>
                 <img src={logo} className="logo" alt="로고" />
               </h2>
             </MainTitle3>

@@ -8,7 +8,7 @@ import fontSize from '../../styles/fontSize';
 const { normedium } = fontSize;
 
 const Wrapper = styled.div`
-  width: 45%;
+  width: 40%;
   height: 500px;
   word-break: break-all;
 

@@ -10,7 +10,7 @@ import ProfileImage from './ProfileImage';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 
-const { whiteGray, white, whiteGreen, lightGreen, midGreen, mid_gray } = color;
+const { whiteGray, white, whiteGreen, lightGreen, midGreen, danger } = color;
 const { medium } = fontSize;
 
 const FormBox = styled.form`
@@ -18,11 +18,14 @@ const FormBox = styled.form`
 padding: 30px;
 border-radius: 30px;
 margin: 30px;
-border: 2px solid ${lightGreen};
+border: 1px solid ${whiteGray};
 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
 max-width: 1000px; /* 최대 너비 설정 */
 transition: all 0.3s ease;
 font-size: ${medium};
+.oMZKK {
+color: ${danger};
+}
 
  textarea {
     display: block;
@@ -76,6 +79,10 @@ font-size: ${medium};
   .profile{
     padding: 10px 0 15px 0;
     
+  }
+
+  .auCode {
+  width: 300px;
   }
 
   .terms-agree {
@@ -244,7 +251,7 @@ const JoinForm = ({
               value={form.password ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.password} />
+            <MessageBox color="danger" messages={errors.password} />
           </dd>
         </dl>
         <dl>
@@ -257,7 +264,7 @@ const JoinForm = ({
               value={form.confirmPassword ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.confirmPassword} />
+            <MessageBox color="danger" messages={errors.confirmPassword} />
           </dd>
         </dl>
         <dl>
@@ -270,7 +277,7 @@ const JoinForm = ({
               value={form.userName ?? ''}
               onChange={onChange}
             />
-            <MessageBox messages={errors.userName} />
+            <MessageBox color="danger" messages={errors.userName} />
           </dd>
         </dl>
         <dl>
@@ -284,7 +291,7 @@ const JoinForm = ({
               onChange={onChange}
             />
 
-            <MessageBox messages={errors.mobile} />
+            <MessageBox color="danger" messages={errors.mobile} />
           </dd>
         </dl>
         <dl className="profile">
@@ -491,7 +498,7 @@ const JoinForm = ({
           {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
           {t('회원가입_약관에_동의합니다')}
 
-          <MessageBox messages={errors.agree} />
+          <MessageBox color="danger" messages={errors.agree} />
         </div>
 
         <StyledButtons>

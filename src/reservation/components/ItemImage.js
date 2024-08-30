@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   flex-grow: 1;
-  margin-right: 10px;
+  margin-right: 30px;
   border-radius: 5px;
   height: 500px;
   overflow: hidden;
