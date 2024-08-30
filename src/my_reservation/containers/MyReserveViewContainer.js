@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -34,8 +34,8 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
-        setPageTitle(`${res.townName} ${t('예약정보')}`);
+        // ReserveView 변경하면서 필요없어짐(setPageTitle)
+        // setPageTitle(`${res.townName} ${t('예약정보')}`);
         setItem(res);
 
         const position = { lat: res.latitude, lng: res.longitude };
@@ -50,7 +50,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, t, setPageTitle]);
+  }, [seq, t]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);

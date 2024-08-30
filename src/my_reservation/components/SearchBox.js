@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
 import { ImSearch } from 'react-icons/im';
 import { color } from '../../styles/color';
 import DatePicker from 'react-datepicker';
 import fontSize from '../../styles/fontSize';
 import { format } from 'date-fns';
-import { registerLocale, setDefaultLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
 import { ko } from 'date-fns/locale/ko';
 registerLocale('ko', ko);
 
-const { white, midGreen, gray, lightGreen, black, dark, darkGreen } = color;
-const { medium, normal, normedium } = fontSize;
+const { white, midGreen, gray, lightGreen, dark, darkGreen } = color;
+const { normal } = fontSize;
 
 const FormBox = styled.form`
   display: flex;

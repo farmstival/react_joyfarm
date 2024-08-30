@@ -1,16 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { MainTitle, SubTitle } from '../../commons/components/TitleBox';
+import { SubTitle } from '../../commons/components/TitleBox';
 import {
   OuterBox,
-  PageNav,
-  PageNavWrap,
   PageTitle,
   ContentBox,
 } from '../../commons/components/LayoutBox';
 import MyReserveListContainer from '../containers/MyReserveListContainer';
-import { Link } from 'react-router-dom';
 import MemberOnlyContainer from '../../member/containers/MemberOnlyContainer';
 import Header from '../../layouts/Header';
 import SubTitleLink from '../../commons/SubTitleLink';

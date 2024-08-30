@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
+import {
+  SmallButton,
+  MidButton,
+  BigButton,
+} from '../../commons/components/Buttons';
 import { format } from 'date-fns';
 import fontSize from '../../styles/fontSize';
+import { color } from '../../styles/color';
 
 const { large } = fontSize;
 
@@ -16,32 +21,46 @@ const FlatWrapper = styled.div`
   padding: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 20px;
-
-  // background: pink;
-  // color: pink;
+  font-weight: bolder;
 
   .completion_message {
     font-size: ${large};
+    // color: ${color.danger};
     color: #4caf50;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .btn_group {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
 
     .rsv_but {
       display: flex;
+      margin: 0 20px;
       justify-content: center;
       align-items: center;
       border: 1px solid #e0e0e0;
       border-radius: 6px;
       width: 30%;
     }
+    .btn_right {
+      display: flex;
+      margin-left: 50px;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      width: 20%;
+    }
   }
 
   h2 {
+    // color: ${color.danger};
     color: #4caf50;
     margin-bottom: 20px;
   }
@@ -50,20 +69,41 @@ const FlatWrapper = styled.div`
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
-    font-weight: bolder;
+
+    dl {
+      margin-top: 20px;
+      dt {
+        color: ${color.success};
+      }
+      dd {
+        margin-top: 3px;
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: keep-all;
+        line-height: 20px;
+        font-weight: lighter;
+      }
+    }
   }
 
   .toggle_btn button {
-    background: #f0f0f0;
+    background: #e2f7dd;
     border: 1px solid #ccc;
     padding: 5px 10px;
     cursor: pointer;
+    font-weight: bolder;
   }
 `;
 
-const CompletionForm = ({ data }) => {
+const CancelForm = ({ data }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const formatMobile = (mobile) => {
+    if (mobile.length === 11) {
+      return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+    return mobile; // 만약 전화번호가 11자리가 아닌 경우, 원래 문자열을 그대로 반환
+  };
 
   const toggleInfo = () => {
     setIsOpen(!isOpen);
@@ -84,12 +124,6 @@ const CompletionForm = ({ data }) => {
   } = data;
 
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
-  const formatMobile = (mobile) => {
-    if (mobile.length === 11) {
-      return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
-    }
-    return mobile; // 만약 전화번호가 11자리가 아닌 경우, 원래 문자열을 그대로 반환
-  };
 
   return (
     <FlatWrapper>
@@ -114,7 +148,7 @@ const CompletionForm = ({ data }) => {
           {t('예약일')} : {formatDate}
         </p>
         <p>
-          {t('예약시간')} : {ampm === 'AM' ? '오전' : '오후'}
+          {t('예약시간')} : {ampm === 'AM' ? t('오전') : t('오후')}
         </p>
         <p>
           {t('인원수')} : {persons} {t('명')}
@@ -125,26 +159,26 @@ const CompletionForm = ({ data }) => {
       </div>
 
       <div className="toggle_btn">
-        <button onClick={toggleInfo}>
+        <SmallButton onClick={toggleInfo}>
           {isOpen ? t('체험_마을_세부정보_닫기') : t('체험_마을_세부정보_열기')}
-        </button>
+        </SmallButton>
         {isOpen && (
           <div className="info_section">
             <dl>
               <dt>{t('체험_활동_소개')}</dt>
-              <dd>{activityName}</dd>
+              <dd>: {activityName}</dd>
             </dl>
             <dl>
               <dt>{t('체험_마을_대표자명')}</dt>
-              <dd>{ownerName}</dd>
+              <dd>: {ownerName}</dd>
             </dl>
             <dl>
               <dt>{t('체험_마을_주소')}</dt>
-              <dd>{doroAddress}</dd>
+              <dd>: {doroAddress}</dd>
             </dl>
             <dl>
               <dt>{t('체험_마을_전화번호')}</dt>
-              <dd>{ownerTel}</dd>
+              <dd>: {ownerTel}</dd>
             </dl>
           </div>
         )}
@@ -152,7 +186,7 @@ const CompletionForm = ({ data }) => {
       <div className="btn_group">
         <MidButton
           className="rsv_but"
-          color="primary"
+          color="midGreen"
           as={Link}
           to="/myreservation/list"
         >
@@ -171,4 +205,4 @@ const CompletionForm = ({ data }) => {
   );
 };
 
-export default React.memo(CompletionForm);
+export default React.memo(CancelForm);

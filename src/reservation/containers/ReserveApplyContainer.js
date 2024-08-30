@@ -70,6 +70,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
   }, []);
 
   const onSubmit = useCallback(
+    //Submit = 검증
     (e) => {
       e.preventDefault();
 
