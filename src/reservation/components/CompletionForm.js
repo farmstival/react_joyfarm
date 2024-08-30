@@ -84,6 +84,12 @@ const CompletionForm = ({ data }) => {
   } = data;
 
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatMobile = (mobile) => {
+    if (mobile.length === 11) {
+      return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+    return mobile; // 만약 전화번호가 11자리가 아닌 경우, 원래 문자열을 그대로 반환
+  };
 
   return (
     <FlatWrapper>
@@ -99,7 +105,7 @@ const CompletionForm = ({ data }) => {
           {t('이메일')} : {email}
         </p>
         <p>
-          {t('전화번호')} : {mobile}
+          {t('전화번호')} : {formatMobile(mobile)}
         </p>
       </div>
 
@@ -108,7 +114,7 @@ const CompletionForm = ({ data }) => {
           {t('예약일')} : {formatDate}
         </p>
         <p>
-          {t('예약시간')} : {ampm === 'AM' ? t('오전') : t('오후')}
+          {t('예약시간')} : {ampm === 'AM' ? '오전' : '오후'}
         </p>
         <p>
           {t('인원수')} : {persons} {t('명')}
