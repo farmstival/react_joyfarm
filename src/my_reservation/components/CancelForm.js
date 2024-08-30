@@ -72,6 +72,12 @@ const FlatWrapper = styled.div`
 const CancelForm = ({ data }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const formatMobile = (mobile) => {
+    if (mobile.length === 11) {
+      return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+    return mobile; // 만약 전화번호가 11자리가 아닌 경우, 원래 문자열을 그대로 반환
+  };
 
   const toggleInfo = () => {
     setIsOpen(!isOpen);
@@ -107,7 +113,7 @@ const CancelForm = ({ data }) => {
           {t('이메일')} : {email}
         </p>
         <p>
-          {t('전화번호')} : {mobile}
+          {t('전화번호')} : {formatMobile(mobile)}
         </p>
       </div>
 
