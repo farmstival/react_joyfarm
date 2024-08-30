@@ -27,6 +27,7 @@ const FlatWrapper = styled.div`
     font-size: ${large};
     // color: ${color.danger};
     color: #4caf50;
+    font-weight: lighter;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -89,7 +90,8 @@ const FlatWrapper = styled.div`
   .toggle_btn button {
     background: #e2f7dd;
     border: 1px solid #ccc;
-    padding: 5px 10px;
+    border-radius: 2000px;
+    padding: 75px;
     cursor: pointer;
     font-weight: bolder;
   }
