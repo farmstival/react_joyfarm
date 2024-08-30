@@ -21,14 +21,13 @@ const Wrapper = styled.div`
     font-size: ${extraBig};
     font-weight: bold;
     text-align: left;
-    vertical-align: middle;
     padding: 18px 30px;
     background: #e2f7dd;
     border-bottom: 2px solid ${whiteGray};
-    line-height: 30px;
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .button {
       display: flex;
@@ -104,7 +103,7 @@ const ViewContent = ({ data, onDelete }) => {
       <div className="subject">
         {data.subject}
         <div className="button">
-        {t('찜하기')}
+          {t('찜하기')}
           <WishButton seq={data.seq} type={'BOARD'}></WishButton>
         </div>
       </div>
