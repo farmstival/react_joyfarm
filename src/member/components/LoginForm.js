@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import InputBox from '../../commons/components/InputBox';
+import InputBox2 from '../../commons/components/InputBox2';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
-import { PiFarm } from "react-icons/pi";
-
+import { PiFarm } from 'react-icons/pi';
 
 const { small, big, medium } = fontSize;
 const { midGreen, white, lightGreen, whiteGreen, whiteGray, primary } = color;
@@ -35,14 +34,18 @@ const FormBox = styled.form`
   max-width: 550px;
   border: 1px solid ${whiteGray};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 30px;
   padding: 50px 80px;
   margin: 0 auto;
-  margin-top: -15px;
+  margin-top: -10px;
   font-size: ${big};
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  
+  gap: 5px;
 
-  h1{
+  h2 {
     margin-top: 0;
   }
 `;
@@ -64,27 +67,33 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   return (
     <>
       <StyleText>
-        <p><PiFarm/> {t('조이팜과_함께_즐거운_농촌체험')}</p>
+        <p>
+          <PiFarm /> {t('조이팜과_함께_즐거운_농촌체험')}
+        </p>
       </StyleText>
       <FormBox onSubmit={onSubmit} autoComplete="off">
-        <h1>{t('로그인')}</h1>
-        <InputBox
+        <h2>{t('로그인')}</h2>
+        <InputBox2
           type="text"
           name="email"
           value={form.email ?? ''}
           placeholder={t('이메일')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.email} />
+        <MessageBox color="danger" messages={errors.email} />
 
-        <InputBox
+        <InputBox2
           type="password"
           name="password"
           value={form.password ?? ''}
           placeholder={t('비밀번호')}
           onChange={onChange}
         />
-        <MessageBox messages={errors.password} />
+        <MessageBox
+          color="danger"
+          messages={errors.password}
+          className="errors"
+        />
 
         <StyledMidButton
           type="submit"
@@ -97,7 +106,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
           {t('로그인')}
         </StyledMidButton>
 
-        <MessageBox messages={errors.global} />
+        <MessageBox color="danger" messages={errors.global} />
       </FormBox>
       <JoinPrompt>
         {t('아직_회원이_아니십니까')}&nbsp;
