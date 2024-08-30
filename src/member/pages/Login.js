@@ -29,7 +29,7 @@ const Login = () => {
         <ContentBox3>
           <StyledBox>
             <MainTitle3 style={{ border: 'none' }}>
-              <h2>
+             <h2>
                 <img src={logo} className="logo" alt="로고" />
               </h2>
             </MainTitle3>

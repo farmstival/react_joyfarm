@@ -9,30 +9,29 @@ import { color } from '../../styles/color';
 import { format } from 'date-fns';
 
 const { normedium, big } = fontSize;
-const { primary } = color;
+const { primary, danger } = color;
 
 const Wrapper = styled.div`
-  width: 45%;
-  height: 500px;
+  width: 40%;
+  height: 550px;
   word-break: break-all;
 
   .dscp_box {
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 450px;
-    margin-bottom: 10px;
+    height: 500px;
 
     .cancel_button {
       position: absolute;
     }
 
     .person_info {
-      height: 210px;
+      height: 50%;
     }
 
     .rsv_info {
-      height: 240px;
+      height: 50%;
     }
 
     .title {
@@ -52,6 +51,14 @@ const Wrapper = styled.div`
         margin: 5px 0;
       }
     }
+  }
+  .cancelment {
+    text-align: center;
+    font-size: ${big};
+    color: ${danger};
+    height: 40px;
+    line-height: 40px;
+    border: solid 1px 
   }
 
   dl {
@@ -77,7 +84,17 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item, onClick }) => {
   const { t } = useTranslation();
-  const { name, email, mobile, rdate, ampm, townName, persons, status } = item;
+  const {
+    name,
+    email,
+    mobile,
+    rdate,
+    ampm,
+    townName,
+    persons,
+    status,
+    deletedAt,
+  } = item;
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
   const formatMobile = (mobile) => {
     if (mobile.length === 11) {
@@ -106,6 +123,12 @@ const ItemDescription = ({ item, onClick }) => {
             <dt>{t('예약자_전화번호')}</dt>
             <dd>{formatMobile(mobile)}</dd>
           </dl>
+          {deletedAt ? (
+            <dl>
+              <dt>{t('취소일')}</dt>
+              <dd>{deletedAt}</dd>
+            </dl>
+          ) : null}
         </div>
 
         <div className="rsv_info">
@@ -144,9 +167,7 @@ const ItemDescription = ({ item, onClick }) => {
           {t('예약_취소')}
         </MidButton>
       ) : (
-        <MidButton className="cancel_button2" color="warning">
-          {t('취소된 예약입니다.')}
-        </MidButton>
+        <div className="cancelment">{t('취소된 예약입니다.')}</div>
       )}
     </Wrapper>
   );
