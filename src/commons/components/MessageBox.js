@@ -16,7 +16,7 @@ const Box = styled.div`
   ${({ color: c }) =>
     c &&
     css`
-      color: ${color[c] || danger};
+      color: ${danger};
     `}
 `;
 
