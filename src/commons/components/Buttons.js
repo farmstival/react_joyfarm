@@ -96,14 +96,15 @@ export const ZzimButton = styled.div`
 
 export const BoardButton = styled.div`
   display: flex;
-  padding-top: 3px;
   justify-content: center;
+  align-items: center;
   font-size: ${medium};
   font-weight: 600px;
   cursor: pointer;
   width: 100px;
-  height: 30px;
+  height: 35px;
   background-color: ${midGreen};
+  border-radius: 5px;
   color: white;
   a {
     color: white;

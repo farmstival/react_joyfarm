@@ -13,7 +13,7 @@ const ReservationList = () => {
   return (
     <>
       <SubTitleLink text={t('체험활동_조회')} href="/reservation/list" />
-     <Helmet>
+      <Helmet>
         <title>{t('농촌체험_예약')}</title>
       </Helmet>
       <OuterBox>

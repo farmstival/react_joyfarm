@@ -18,11 +18,11 @@ const { darkGreen, white, dark, midGreen, whiteGreen, lightGreen,mid_gray } = co
 const LogoImage = styled.img`
   width: 900px;
   height: auto;
-  opacity: 0.1;
+  opacity: 0.3;
   position: absolute;
   top: 655px; 
   left: 1200px;
-  transform: translateX(-50%);
+  transform: translateX(-25%);
 `;
 
 const MainReviewWrapper = styled.div`

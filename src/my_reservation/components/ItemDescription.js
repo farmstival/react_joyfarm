@@ -88,6 +88,12 @@ const ItemDescription = ({ item, onClick }) => {
     deletedAt,
   } = item;
   const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatMobile = (mobile) => {
+    if (mobile.length === 11) {
+      return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+    return mobile; // 만약 전화번호가 11자리가 아닌 경우, 원래 문자열을 그대로 반환
+  };
 
   return (
     <Wrapper>
@@ -107,7 +113,7 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약자_전화번호')}</dt>
-            <dd>{mobile}</dd>
+            <dd>{formatMobile(mobile)}</dd>
           </dl>
           {deletedAt ? (
             <dl>
@@ -128,7 +134,7 @@ const ItemDescription = ({ item, onClick }) => {
           </dl>
           <dl>
             <dt>{t('예약시간')}</dt>
-            <dd>{ampm === 'AM' ? t('오전') : t('오후')}</dd>
+            <dd>{ampm === 'AM' ? '오전' : '오후'}</dd>
           </dl>
           <dl>
             <dt>{t('예약인원')}</dt>
@@ -144,13 +150,17 @@ const ItemDescription = ({ item, onClick }) => {
         </div>
       </div>
 
-      {status !== 'CANCEL' && (
+      {status !== 'CANCEL' ? (
         <MidButton
           className="cancel_button"
           onClick={() => onClick(item.seq)}
           color="midGreen"
         >
           {t('예약_취소')}
+        </MidButton>
+      ) : (
+        <MidButton className="cancel_button2" color="warning">
+          {t('취소된 예약입니다.')}
         </MidButton>
       )}
     </Wrapper>

@@ -7,9 +7,8 @@ import fontSize from '../../styles/fontSize';
 import GuestOnlyContainer from '../containers/GuestOnlyContainer';
 import { MainTitle3 } from '../../commons/components/TitleBox';
 import { ContentBox3, OuterBox } from '../../commons/components/LayoutBox';
+import logo from '../../images/logo3.png';
 const { medium, big } = fontSize;
-// import logo from '../../images/logo3.png';
-//import 오류로 잠시 주석 처리
 
 const StyledBox = styled.div`
   .logo {
