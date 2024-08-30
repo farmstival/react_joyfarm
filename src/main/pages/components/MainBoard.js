@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'; 
+import axios from 'axios';
 import { color } from '../../../styles/color';
 import MainReviewImage from '../../../images/QnAImage.png';
 import ListItems from '../../../board/components/skins/default/ListItems';
 import { getList } from '../../../board/apis/apiBoard';
 import moment from 'moment';
 
-
-const { darkGreen, white, dark, midGreen, lightGreen, mid_gray, line_gray } = color;
+const { darkGreen, white, dark, midGreen, lightGreen, mid_gray, line_gray } =
+  color;
 
 const MainBoardWrapper = styled.div`
   padding: 50px 20px;
   background: ${white};
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 `;
 
 const InnerContentWrapper = styled.div`
-  max-width: 1440px; 
-  width: 100%; 
+  max-width: 1440px;
+  width: 100%;
   margin-bottom: 50px;
 `;
 
@@ -32,7 +32,7 @@ const Header = styled.div`
 
 const TitleWrapper = styled.div`
   display: flex;
-  align-items: center; 
+  align-items: center;
 `;
 
 const QnATitle = styled.h2`
@@ -53,7 +53,7 @@ const NoticeTitle = styled.h2`
 
 const Underline = styled.span`
   display: block;
-  width: 150px; 
+  width: 150px;
   height: 10px;
   background-color: ${lightGreen};
   margin: 0 auto;
@@ -64,7 +64,7 @@ const MoreLink = styled.a`
   font-size: 1.5em;
   color: ${darkGreen};
   font-weight: bold;
-  margin-right:170px;
+  margin-right: 170px;
   margin-top: 70px;
   cursor: pointer;
   &:hover {
@@ -83,23 +83,23 @@ const ContentWrapper = styled.div`
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  text-align: center; 
+  align-items: center;
+  text-align: center;
   background: ${white};
   border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   padding-bottom: 30px;
   margin-left: 150px;
 `;
 
 const ImageBox = styled.div`
-  width: 100%; 
+  width: 100%;
   max-width: 450px;
-  height: 230px; 
+  height: 230px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background: ${dark};
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,14 +113,14 @@ const Image = styled.img`
 `;
 
 const TextContainer = styled.div`
-  width: 100%; 
+  width: 100%;
   color: ${dark};
-  cursor: pointer; 
+  cursor: pointer;
 `;
 
 const DateText = styled.p`
   font-size: 1.5em;
-  font-weight:bold;
+  font-weight: bold;
   color: ${midGreen};
   font-weight: bold;
   margin-bottom: 20px;
@@ -128,7 +128,7 @@ const DateText = styled.p`
 
 const NoticeText = styled.p`
   font-size: 1.2em;
-  line-height:1.5;
+  line-height: 1.5;
   color: ${dark};
   margin: 0;
   white-space: nowrap;
@@ -141,11 +141,11 @@ const RightSection = styled.div`
   width: 700px;
   display: flex;
   flex-direction: column;
-  text-align: center; 
+  text-align: center;
   background: ${white};
-  padding-top: 40px; 
+  padding-top: 40px;
   border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 `;
 
 const NoticeHeader = styled.div`
@@ -156,6 +156,7 @@ const NoticeHeader = styled.div`
   width: 70%;
   margin-left: 80px;
   text-align: left;
+  cursor: pointer;
 `;
 
 const NoticeItem = styled.div`
@@ -191,9 +192,7 @@ const NoticeSubject = styled.p`
   max-width: 70%;
 `;
 
-
-
-const MainBoard = ({ onButtonClick, bid='notice' }) => {
+const MainBoard = ({ onButtonClick, bid = 'notice' }) => {
   const [notices, setNotices] = useState([]); // 상태 추가
 
   useEffect(() => {
@@ -209,7 +208,11 @@ const MainBoard = ({ onButtonClick, bid='notice' }) => {
   }, [bid]);
 
   const handleNoticeClick = (seq) => {
-    window.location.href = `/board/view/${seq}`; //클릭시 해당 게시글로 이동 
+    window.location.href = `/board/view/${seq}`; //클릭시 해당 게시글로 이동
+  };
+
+  const qnaClick = () => {
+    window.location.href = '/board/list/qna';
   };
 
   return (
@@ -231,35 +234,36 @@ const MainBoard = ({ onButtonClick, bid='notice' }) => {
         <ContentWrapper>
           <LeftSection>
             <ImageBox>
-              <Image src={MainReviewImage} alt="QnA" />
+              <Image src={MainReviewImage} alt="QnA" onClick={qnaClick} />
             </ImageBox>
-            <TextContainer onClick={() => handleNoticeClick('/board/list/qna')}>
+            <TextContainer onClick={qnaClick}>
               <DateText>문의 사항이 있으시다면 알려주세요!</DateText>
-              <NoticeText>당신의 소중한 의견을 받아,< br/>
-               더 나은 서비스가 되도록 노력하겠습니다.</NoticeText>
+              <NoticeText onClick={qnaClick}>
+                당신의 소중한 의견을 받아,
+                <br />더 나은 서비스가 되도록 노력하겠습니다.
+              </NoticeText>
             </TextContainer>
           </LeftSection>
-          
+
           <RightSection>
-            <NoticeHeader>공지사항</NoticeHeader>
-            <div className='noticeParent'>
-              {
-                notices && notices.length > 0 ? (
-                  notices.map((notice) => (
-                    <NoticeItem key={notice.seq} onClick={() => handleNoticeClick(notice.seq)}>
-                      <NoticeSubject>
-                      {notice.subject}
-                      </NoticeSubject>
-                      <NoticeItems>
-                        {notice.poster}
-                      </NoticeItems>
-                      <NoticeItems>
-                        {moment(notice.createdAt).format('YYYY/MM/DD')}
-                      </NoticeItems>
-                    </NoticeItem>
-                  )
-                  )
-                ) : (<p>공지사항이 없습니다.</p>)}
+            <NoticeHeader onClick={onButtonClick}>공지사항</NoticeHeader>
+            <div className="noticeParent">
+              {notices && notices.length > 0 ? (
+                notices.map((notice) => (
+                  <NoticeItem
+                    key={notice.seq}
+                    onClick={() => handleNoticeClick(notice.seq)}
+                  >
+                    <NoticeSubject>{notice.subject}</NoticeSubject>
+                    <NoticeItems>{notice.poster}</NoticeItems>
+                    <NoticeItems>
+                      {moment(notice.createdAt).format('YYYY/MM/DD')}
+                    </NoticeItems>
+                  </NoticeItem>
+                ))
+              ) : (
+                <p>공지사항이 없습니다.</p>
+              )}
             </div>
           </RightSection>
         </ContentWrapper>

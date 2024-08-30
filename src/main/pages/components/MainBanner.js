@@ -151,7 +151,7 @@ const MainBanner = ({ onButtonClick }) => {
       <InfoBar>
         <Button onClick={onButtonClick}>지금 바로 예약하기</Button>
         <InfoBox>
-          <InfoText isHeader>조이팜과 함께 떠나는 즐거운 농촌체험!</InfoText>
+          <InfoText isHeader>조이팜과 함께 떠나는 즐거운 농촌체험</InfoText>
           <InfoText>
             전국에 있는 체험가능한 농촌들을 방문하여, 좋은 경험과 추억을 쌓아보세요!
           </InfoText>
