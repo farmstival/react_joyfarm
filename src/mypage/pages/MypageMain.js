@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
-import jprofile from '../../images/jprofile.png';
+import ProfileImage from '../../commons/components/ProfileImage';
+
 const { whiteGreen, mid_gray } = color;
-import ProfileImage from '../components/ProfileImage';
 
 const StyledMain = styled.div`
   width: 700px;
