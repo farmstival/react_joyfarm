@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ContentBox, OuterBox } from '../../commons/components/LayoutBox';
-import SubTitleLink from '../../commons/SubTitleLink';
 import Header from '../../layouts/Header';
 import ViewContainer from '../containers/ViewContainer';
-import { useParams } from 'react-router-dom';
 import { DetailImgBox } from '../../commons/components/DetailBox';
 import { DetailTitle } from '../../commons/components/DetailBox';
 import { IoMdPricetags } from "react-icons/io";
