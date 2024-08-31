@@ -8,6 +8,7 @@ import ReservationForm from '../components/ReservationForm';
 import Loading from '../../commons/components/Loading';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiApply from '../apis/apiApply';
+import _useConfirm from '../../commons/hooks/useConfirm';
 
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
@@ -118,16 +119,18 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }
 
       /* 예약 접수 처리 S */
-      (async () => {
-        try {
-          const res = await apiApply(form);
-          // 예약 접수 성공시 예약 완료 페이지 이동
-          navigate(`/reservation/complete/${res.seq}`, { replace: true });
-        } catch (err) {
-          console.error(err);
-          setErrors({ global: [err.message] });
-        }
-      })();
+      _useConfirm(t('정말_접수_하겠습니까?'), () => {
+        (async () => {
+          try {
+            const res = await apiApply(form);
+            // 예약 접수 성공시 예약 완료 페이지 이동
+            navigate(`/reservation/complete/${res.seq}`, { replace: true });
+          } catch (err) {
+            console.error(err);
+            setErrors({ global: [err.message] });
+          }
+        })();
+      });
       /* 예약 접수 처리 E */
     },
     [t, form, navigate],
