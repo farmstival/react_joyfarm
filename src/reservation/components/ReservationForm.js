@@ -10,7 +10,6 @@ import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 import { format } from 'date-fns';
 import moment from 'moment/moment';
-import { format } from 'date-fns';
 import Select from 'react-select';
 import { FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
 import { BsFillPersonLinesFill } from 'react-icons/bs';

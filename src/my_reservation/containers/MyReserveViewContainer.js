@@ -64,7 +64,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
   const onClick = useCallback(
     (seq) => {
       /* 예약 취소 처리 S */
-      _useConfirm(t('정말_취소하시겠습니까?'), () => {
+      _useConfirm(t('정말_취소하시겠습니까'), () => {
         (async () => {
           try {
             const res = await apiCancel(seq);

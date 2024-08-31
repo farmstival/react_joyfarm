@@ -9,7 +9,6 @@ import Loading from '../../commons/components/Loading';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiApply from '../apis/apiApply';
 import _useConfirm from '../../commons/hooks/useConfirm';
-import _useConfirm from '../../commons/hooks/useConfirm';
 
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
@@ -82,16 +81,6 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     },
     [setForm],
   );
-  const selectChange = useCallback(
-    (selectedOption) => {
-      setForm(
-        produce((draft) => {
-          draft.persons = selectedOption ? selectedOption.value : null;
-        }),
-      );
-    },
-    [setForm],
-  );
 
   const onSubmit = useCallback(
     //Submit = 검증
@@ -132,7 +121,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }
 
       /* 예약 접수 처리 S */
-      _useConfirm(t('정말_예약하시겠습니까?'), () => {
+      _useConfirm(t('정말_예약하시겠습니까'), () => {
         (async () => {
           try {
             const res = await apiApply(form);
