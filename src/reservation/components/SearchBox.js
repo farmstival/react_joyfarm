@@ -71,12 +71,10 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
     },
     [onChange],
   );
-
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="input_part">
-      <SelectLocation selected={form} callback={onSelectedLocation} />
-
+        <SelectLocation selected={form} callback={onSelectedLocation} />
         <select name="sopt" onChange={onChange} defaultValue={form.sopt}>
           <option value="ALL">{t('통합검색')}</option>
           <option value="DIVISION">{t('프로그램구분')}</option>

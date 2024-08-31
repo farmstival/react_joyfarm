@@ -58,7 +58,7 @@ const Wrapper = styled.div`
     color: ${danger};
     height: 40px;
     line-height: 40px;
-    border: solid 1px 
+    border: solid 1px;
   }
 
   dl {

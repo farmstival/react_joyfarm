@@ -9,6 +9,7 @@ import Loading from '../../commons/components/Loading';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiApply from '../apis/apiApply';
 import _useConfirm from '../../commons/hooks/useConfirm';
+import _useConfirm from '../../commons/hooks/useConfirm';
 
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
@@ -39,6 +40,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
         const availableDates = Object.keys(res.availableDates).sort();
         res.minDate = new Date(availableDates[0]);
         res.maxDate = new Date(availableDates.pop());
+        res._availableDates = availableDates;
         res._availableDates = availableDates;
 
         setData(res);
@@ -80,8 +82,19 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     },
     [setForm],
   );
+  const selectChange = useCallback(
+    (selectedOption) => {
+      setForm(
+        produce((draft) => {
+          draft.persons = selectedOption ? selectedOption.value : null;
+        }),
+      );
+    },
+    [setForm],
+  );
 
   const onSubmit = useCallback(
+    //Submit = 검증
     //Submit = 검증
     (e) => {
       e.preventDefault();

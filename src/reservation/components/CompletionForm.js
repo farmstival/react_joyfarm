@@ -10,7 +10,7 @@ import {
 import { format } from 'date-fns';
 import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
-import { TiInfoLarge } from "react-icons/ti";
+import { TiInfoLarge } from 'react-icons/ti';
 
 const { large } = fontSize;
 
@@ -28,6 +28,7 @@ const FlatWrapper = styled.div`
     font-size: ${large};
     // color: ${color.danger};
     color: #4caf50;
+    font-weight: lighter;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -35,7 +36,6 @@ const FlatWrapper = styled.div`
   }
   .btn_group {
     display: flex;
-    // justify-content: space-around;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -90,7 +90,6 @@ const FlatWrapper = styled.div`
       }
     }
   }
-
 
   .toggle_btn {
     display: flex;
@@ -189,6 +188,7 @@ const CancelForm = ({ data }) => {
           {t('체험 마을')} : {townName}
         </p>
       </div>
+
       <div className="toggle">
         <div className="toggle_btn">
           <SmallButton onClick={toggleInfo}>
@@ -196,7 +196,7 @@ const CancelForm = ({ data }) => {
               ? t('체험_마을_세부정보_닫기')
               : t('체험_마을_세부정보_열기')}
             <div className="arrow">
-            <TiInfoLarge />
+              <TiInfoLarge />
             </div>
           </SmallButton>
           {isOpen && (

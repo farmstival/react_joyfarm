@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import farmImg from '../../images/farm.jpg';
 import apiCancel from '../apis/apiCancel';
+import _useConfirm from '../../commons/hooks/useConfirm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -54,7 +55,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, t, setPageTitle]);
+  }, [seq, t]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
@@ -63,15 +64,17 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
   const onClick = useCallback(
     (seq) => {
       /* 예약 취소 처리 S */
-      (async () => {
-        try {
-          const res = await apiCancel(seq);
-          // 예약 취소 성공시 예약 취소 페이지 이동
-          navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
-        } catch (err) {
-          console.error(err);
-        }
-      })();
+      _useConfirm(t('정말_취소하시겠습니까?'), () => {
+        (async () => {
+          try {
+            const res = await apiCancel(seq);
+            // 예약 취소 성공시 예약 취소 페이지 이동
+            navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
+          } catch (err) {
+            console.error(err);
+          }
+        })();
+      });
       /* 예약 취소 처리 E */
     },
     [navigate],

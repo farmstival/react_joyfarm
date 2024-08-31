@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 import { format } from 'date-fns';
 import moment from 'moment/moment';
+import { format } from 'date-fns';
 import Select from 'react-select';
 import { FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
@@ -295,7 +296,9 @@ const ReservationForm = ({
             minDate={minDate}
             maxDate={maxDate}
             onChange={onDateChange}
-            tileDisabled={({_, date}) => !_availableDates.some((d)=>format(date, 'yyyy-MM-dd') === d)}
+            tileDisabled={({ _, date }) =>
+              !_availableDates.some((d) => format(date, 'yyyy-MM-dd') === d)
+            }
             formatDay={(locale, date) => moment(date).format('DD')}
             calendarType="gregory" //일요일부터 시작
           />
