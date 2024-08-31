@@ -236,7 +236,7 @@ const CancelForm = ({ data }) => {
           as={Link}
           to="/reservation/list"
         >
-          {t('농촌체험 예약')}
+          {t('농촌체험_예약')}
         </MidButton>
       </div>
     </FlatWrapper>

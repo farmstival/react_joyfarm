@@ -36,8 +36,7 @@ const Festival = () => {
         <ContentBox>
           <Wrapper>
             <h2>
-              <PiLeafDuotone className="icon" /> 지도를 클릭하면 지역별 축제를
-              검색합니다.
+              <PiLeafDuotone className="icon" /> {t('지도를_클릭하면_지역별_축제를_검색합니다')}
             </h2>
           </Wrapper>
           <ListContainer />

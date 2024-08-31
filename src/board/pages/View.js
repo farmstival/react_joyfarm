@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ContentBox, OuterBox } from '../../commons/components/LayoutBox';
-import SubTitleLink from '../../commons/SubTitleLink';
 import Header from '../../layouts/Header';
 import ViewContainer from '../containers/ViewContainer';
-import { useParams } from 'react-router-dom';
+import { DetailImgBox } from '../../commons/components/DetailBox';
+import { DetailTitle } from '../../commons/components/DetailBox';
+import { IoMdPricetags } from "react-icons/io";
 
 const View = (bid) => {
-  const [SubPageTitle, setSubPageTitle] = useState('');
   const [pageTitle, setPageTitle] = useState('');
 
   return (
     <>
       <Helmet>
-        <title>{SubPageTitle}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
         <Header />
         <ContentBox>
-          <ViewContainer setPageTitle={setPageTitle} />
+          <DetailImgBox>
+            <DetailTitle>
+              <h1>
+                <IoMdPricetags className="icon" /> {pageTitle}
+              </h1>
+            </DetailTitle>
+            <ViewContainer setPageTitle={setPageTitle} />
+          </DetailImgBox>
         </ContentBox>
       </OuterBox>
     </>
   );
-}
+};
 export default React.memo(View);
