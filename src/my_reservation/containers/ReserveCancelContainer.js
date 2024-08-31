@@ -20,7 +20,8 @@ const ReserveCanCelContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, setPageTitle, t]); //변화감지 값 넣어주기
+  }, [seq, setPageTitle, t]);
+  //변화감지 값, 값이 변하면 메서드가 재실행
 
   if (!data) {
     return <Loading />;
