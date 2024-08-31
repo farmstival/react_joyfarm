@@ -27,7 +27,6 @@ const ViewContainer = ({ setSubPageTitle }) => {
 
   useEffect(() => {
     setLoading(true);
-
     apiGet(seq).then((item) => {
       setSubPageTitle(item.title);
       setItem(item);
