@@ -8,7 +8,7 @@ import ReservationForm from '../components/ReservationForm';
 import Loading from '../../commons/components/Loading';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import apiApply from '../apis/apiApply';
-import { select } from 'react-cookies';
+import _useConfirm from '../../commons/hooks/useConfirm';
 
 const ReservationApplyContainer = ({ setPageTitle }) => {
   const { seq } = useParams();
@@ -25,7 +25,6 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     mobile: userInfo?.mobile,
     persons: 1, //기본값 1명
   });
-  const [times, setTimes] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -40,6 +39,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
         const availableDates = Object.keys(res.availableDates).sort();
         res.minDate = new Date(availableDates[0]);
         res.maxDate = new Date(availableDates.pop());
+        res._availableDates = availableDates;
 
         setData(res);
       } catch (err) {
@@ -70,16 +70,19 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
     );
   }, []);
 
-  
-  const selectChange = useCallback((selectedOption) => {
-    setForm(
-      produce((draft) => {
-        draft.persons = selectedOption ? selectedOption.value : null;
-      })
-    );
-  }, [setForm]);
+  const selectChange = useCallback(
+    (selectedOption) => {
+      setForm(
+        produce((draft) => {
+          draft.persons = selectedOption ? selectedOption.value : null;
+        }),
+      );
+    },
+    [setForm],
+  );
 
   const onSubmit = useCallback(
+    //Submit = 검증
     (e) => {
       e.preventDefault();
 
@@ -116,16 +119,18 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }
 
       /* 예약 접수 처리 S */
-      (async () => {
-        try {
-          const res = await apiApply(form);
-          // 예약 접수 성공시 예약 완료 페이지 이동
-          navigate(`/reservation/complete/${res.seq}`, { replace: true });
-        } catch (err) {
-          console.error(err);
-          setErrors({ global: [err.message] });
-        }
-      })();
+      _useConfirm(t('정말_예약하시겠습니까?'), () => {
+        (async () => {
+          try {
+            const res = await apiApply(form);
+            // 예약 접수 성공시 예약 완료 페이지 이동
+            navigate(`/reservation/complete/${res.seq}`, { replace: true });
+          } catch (err) {
+            console.error(err);
+            setErrors({ global: [err.message] });
+          }
+        })();
+      });
       /* 예약 접수 처리 E */
     },
     [t, form, navigate],

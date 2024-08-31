@@ -35,14 +35,18 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
       try {
         const res = await apiGet(seq);
         console.log('Fetched data:', res); // 데이터 확인용 로그 추가
-        setPageTitle(`${res.townName} ${t('예약정보')}`);
-        setItem(res);
+        // ReserveView 변경하면서 필요없어짐(setPageTitle)
+        // setPageTitle(`${res.townName} ${t('예약정보')}`);
+        setItem(res); 
 
-        const position = { lat: res.latitude, lng: res.longitude };
+        const {
+          activity: { latitude, longitude, doroAddress },
+        } = res;
+        const position = { lat: latitude, lng: longitude };
         setMapOptions((opt) => {
-          const options = res.latitude
+          const options = latitude
             ? { ...opt, center: position, marker: position }
-            : { ...opt, doroAddress: res.doroAddress };
+            : { ...opt, doroAddress: doroAddress };
 
           return options;
         });
