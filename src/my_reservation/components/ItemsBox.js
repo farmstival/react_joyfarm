@@ -30,7 +30,7 @@ const ItemBox = ({ item, className }) => {
   } = item;
 
   const url = `/myreservation/info/${seq}`;
-  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatDate = format(new Date(rdate), 'yyyy-MM-dd');
 
   return (
     <li className={className}>

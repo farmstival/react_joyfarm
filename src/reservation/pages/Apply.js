@@ -15,14 +15,14 @@ const Apply = () => {
 
   return (
     <MemberOnlyContainer>
-      <SubTitleLink text={t('농촌체험_예약')} href="/reservation/apply" />
+      <SubTitleLink text={t('농촌체험_예약')} href="" />
       <Helmet>
         <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
         <Header />
         <ContentBox2>
-          <MainTitle>{pageTitle}</MainTitle>
+          {/* <MainTitle>{pageTitle}</MainTitle> */}
           <ReservationApplyContainer setPageTitle={setPageTitle} />
         </ContentBox2>
       </OuterBox>

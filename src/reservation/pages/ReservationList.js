@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { SubTitle } from '../../commons/components/TitleBox';
 import { OuterBox, ContentBox } from '../../commons/components/LayoutBox';
 import ReserveListContainer from '../containers/ReserveListContainer';
 import Header from '../../layouts/Header';
@@ -19,7 +18,7 @@ const ReservationList = () => {
       <OuterBox>
         <Header />
         <ContentBox>
-          <SubTitle>{t('체험활동_리스트')}</SubTitle>
+          {/* <SubTitle>{t('체험활동_리스트')}</SubTitle> */}
           <ReserveListContainer />
         </ContentBox>
       </OuterBox>
