@@ -58,7 +58,7 @@ const Wrapper = styled.div`
     color: ${danger};
     height: 40px;
     line-height: 40px;
-    border: solid 1px 
+    border: solid 1px;
   }
 
   dl {
@@ -95,7 +95,7 @@ const ItemDescription = ({ item, onClick }) => {
     status,
     deletedAt,
   } = item;
-  const formatDate = format(Date(rdate), 'yyyy-MM-dd');
+  const formatDate = format(new Date(rdate), 'yyyy-MM-dd');
   const formatMobile = (mobile) => {
     if (mobile.length === 11) {
       return mobile.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
