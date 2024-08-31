@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
-import jprofile from '../../images/jprofile.png';
+import ProfileImage from '../../commons/components/ProfileImage';
+
 const { whiteGreen, mid_gray } = color;
 
 const StyledMain = styled.div`
@@ -28,7 +29,23 @@ const StyledMain = styled.div`
   .proimg {
     width: 200px;
     margin-top: 20px;
+    
   }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // cover: 이미지를 컴포넌트에 맞게 잘라냄
+                       // contain: 이미지를 컴포넌트 크기에 맞춰 축소
+    border-radius: 20%; // 동그란 프사를 원하면 추가
+  }
+
+`;
+
+const StyledProfileImage = styled(ProfileImage)`
+  margin-top: 20px;
+  pointer-events: none;
+  
 `;
 
 const MyPageMain = () => {
@@ -36,6 +53,8 @@ const MyPageMain = () => {
     states: { userInfo },
   } = useContext(UserInfoContext);
   const { t } = useTranslation();
+  const profileImageUrl = userInfo?.profileImage?.fileUrl;
+
   return (
     <MemberOnlyContainer>
       <Helmet>
@@ -44,8 +63,11 @@ const MyPageMain = () => {
       <StyledMain>
         <h1>{t('마이페이지')}</h1>
         {userInfo?.userName}({userInfo?.email}) 님 환영합니다.
-        <br />
-        <img src={jprofile} className="proimg" />
+        <StyledProfileImage
+          gid={userInfo?.gid}
+          profileImage={profileImageUrl}
+          fileUploadCallback={null}
+        />
       </StyledMain>
     </MemberOnlyContainer>
   );

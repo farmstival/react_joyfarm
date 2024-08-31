@@ -8,6 +8,7 @@ import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import { write, update, getInfo } from '../apis/apiBoard';
+import WriteHeader from '../../commons/components/WriteHeader';
 
 const DefaultForm = loadable(() => import('../components/skins/default/Form'));
 const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
@@ -238,6 +239,8 @@ const FormContainer = ({ setPageTitle }) => {
   const { skin } = board;
   const Form = skinRoute(skin);
   return (
+    <>
+    < WriteHeader></ WriteHeader>
     <Form
       board={board}
       form={form}
@@ -248,6 +251,7 @@ const FormContainer = ({ setPageTitle }) => {
       fileUploadCallback={fileUploadCallback}
       fileDeleteCallback={fileDeleteCallback}
     />
+    </>
   );
   /*
   return skinRoute(skin, {
