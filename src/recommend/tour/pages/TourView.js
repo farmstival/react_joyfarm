@@ -10,11 +10,11 @@ import ViewContainer from '../containers/ViewContainer';
 import { IoMdPricetags } from 'react-icons/io';
 
 const TourView = () => {
-  const [SubPageTitle, setSubPageTitle] = useState('');
+  const [pageTitle, setPageTitle] = useState('');
   return (
     <>
       <Helmet>
-        <title>{SubPageTitle}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
         <Header />
@@ -22,10 +22,10 @@ const TourView = () => {
           <DetailImgBox>
             <DetailTitle>
               <h1>
-                <IoMdPricetags className="icon" /> {SubPageTitle}
+                <IoMdPricetags className="icon" /> {pageTitle}
               </h1>
             </DetailTitle>
-            <ViewContainer setSubPageTitle={setSubPageTitle} />
+            <ViewContainer setPageTitle={setPageTitle} />
           </DetailImgBox>
         </ContentBox>
       </OuterBox>

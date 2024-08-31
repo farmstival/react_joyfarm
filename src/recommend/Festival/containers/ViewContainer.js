@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,6 +8,7 @@ import KakaoMap from '../../../map/KakaoMap';
 import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 import ListButton from '../../../commons/components/ListButton';
+import CommonContext from '../../../commons/modules/CommonContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
   border-bottom: solid 1px #e6e6eb;
 `;
 
-const ViewContainer = ({ setSubPageTitle }) => {
+const ViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,11 +26,17 @@ const ViewContainer = ({ setSubPageTitle }) => {
 
   const { seq } = useParams();
 
+  const {
+    actions: { setLinkText, setLinkHref },
+  } = useContext(CommonContext);
+
   useEffect(() => {
     setLoading(true);
 
     apiGet(seq).then((item) => {
-      setSubPageTitle(item.title);
+      setPageTitle(item.title);
+      setLinkText(t('지역별_축제정보'));
+      setLinkHref(`/recommend/festival`);
       setItem(item);
 
       const position = { lat: item.latitude, lng: item.longitude };
@@ -42,7 +49,7 @@ const ViewContainer = ({ setSubPageTitle }) => {
     });
 
     setLoading(false);
-  }, [seq, setSubPageTitle]);
+  }, [seq, setPageTitle]);
 
   const onShowImage = useCallback((imageUrl1) => {
     console.log('이미지 주소', imageUrl1);

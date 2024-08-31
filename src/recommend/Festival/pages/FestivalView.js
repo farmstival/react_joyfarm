@@ -11,11 +11,11 @@ import ViewContainer from '../containers/ViewContainer';
 import Header from '../../../layouts/Header';
 
 const FestivalView = () => {
-  const [SubPageTitle, setSubPageTitle] = useState('');
+  const [pageTitle, setPageTitle] = useState('');
   return (
     <>
       <Helmet>
-        <title>{SubPageTitle}</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <OuterBox>
         <Header />
@@ -23,9 +23,9 @@ const FestivalView = () => {
           <DetailImgBox>
             <DetailTitle>
               <h1>
-              <IoMdPricetags  className='icon' /> {SubPageTitle}</h1>
+              <IoMdPricetags  className='icon' /> {pageTitle}</h1>
             </DetailTitle>
-            <ViewContainer setSubPageTitle={setSubPageTitle} />
+            <ViewContainer setPageTitle={setPageTitle} />
           </DetailImgBox>
         </ContentBox>
       </OuterBox>
