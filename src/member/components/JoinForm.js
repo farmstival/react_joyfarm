@@ -300,9 +300,9 @@ const JoinForm = ({
             {form.profile && (
               <ProfileImage
                 items={form.profile}
-                width="250px"
-                height="250px"
-                radius="5px"
+                width="135px"
+                height="135px"
+                radius="10px"
                 onDelete={fileDeleteCallback}
               />
             )}
@@ -311,6 +311,8 @@ const JoinForm = ({
               color="primary"
               gid={form.gid}
               imageOnly={true}
+              single={true}
+              done={true}
               callback={fileUploadCallback}
             >
               {t('업로드')}
