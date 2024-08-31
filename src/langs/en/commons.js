@@ -13,22 +13,24 @@ const commons = {
   이미지_업로드: 'Image Upload',
   제목을_입력하세요: 'Please enter a title',
   내용을_입력하세요: 'Please enter content',
-  글_번호: 'Post Number',
+  글_번호: 'Post No',
 
   // Main Menu
   지역별_축제정보: 'Festival Information by Region',
-  농촌체험_예약: 'Rural Experience Reservation',
-  나의_예약현황: 'My Reservation Status',
-  조이팜의_추천: 'JOYFARM’s Recommendation',
-  지역별_축제_정보: 'Festival Information by Region',
-  내_위치_주변_여행지: 'Tourist Spots Around My Location',
+  농촌체험_예약: 'Reservation',
+  나의_예약현황: 'My Reservation',
+  조이팜의_추천: 'Recommendation',
+  지역별_축제_정보: 'Festival',
+  내_위치_주변_여행지: 'Tourist Spots',
   주변_여행지_리스트: 'Nearby Tourist Spots List',
   커뮤니티: 'Community',
-  체험_여행후기: 'Experience & Travel Reviews',
+  체험_여행후기: 'Reviews',
   공지사항: 'Notices',
   QnA: 'Q&A',
   공지글로_등록하기: 'Register as Notice',
   사이트_관리: 'Site Management',
+  마이페이지: 'MyPage',
+  로그아웃: 'LogOut',
 
   // User
   아이디: 'Username',
@@ -89,9 +91,16 @@ const commons = {
   댓글_목록: 'Comments List',
   여러분의_소중한_의견을_남겨주세요: 'Please leave your valuable opinion',
   댓글을_입력하세요: 'Please enter a comment',
+  인기순: 'Starred',
+  최신순: 'Recent',
+  오래된순: 'Oldest',
+  제목:'Title',
+  작성자:'Poster',
+  조회수:'Views',
+  작성일:'Date',
 
   // Recommended Tour Places
-  추천_여행지: 'Recommended Tour Places',
+  추천_여행지: 'Tour Places',
   추천_여행기간: 'Recommended Travel Period',
   여행지_설명: 'Tour Place Description',
   여행지_찜하기: 'Favorite Tour Place',
@@ -121,6 +130,7 @@ const commons = {
   행사내용: 'Event Details',
   길찾기: 'Find Directions',
   주소: 'Address',
+  지도를_클릭하면_지역별_축제를_검색합니다: 'Click on the Map to Search for Festvials',
 
   // Experience Reservation
   예약하기: 'Make a Reservation',
@@ -150,7 +160,7 @@ const commons = {
     'Reservations are only available within one month from today',
 
   // Reservation Status
-  나의_예약_현황: 'My Reservation Status',
+  나의_예약_현황: 'My Reservation',
   예약_현황_리스트: 'Reservation Status List',
   예약내역_상세: 'Reservation Details',
   예약_취소: 'Cancel Reservation',
