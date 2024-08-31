@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   margin-bottom: 20px;
   border-bottom: solid 1px #e6e6eb;
   padding-bottom: 20px;
+  align-items: center;
 
   img {
     width: 100%;
@@ -34,7 +35,7 @@ const ReserveViewContainer = ({ setPageTitle }) => {
     apiGet(seq).then((item) => {
       setPageTitle(item.title);
       setItem(item);
-      console.log('아이템', item); // 데이터 확인용
+      console.log('item', item); // 데이터 확인용
 
       const position = { lat: item.latitude, lng: item.longitude };
       setMapOptions((opt) => {

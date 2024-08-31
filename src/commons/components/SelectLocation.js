@@ -1,19 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import areas from '../libs/areas';
 const { sido, sigungu } = areas;
 
+//콜백 함수가 후속처리, 매개변수로 선택된 값 유입
 const SelectLocation = ({ selected, callback }) => {
   const { t } = useTranslation();
-  const [sigunguArea, setSigunguArea] = useState(
-    selected?.sido ? sigungu[sido] : [],
-  );
+  const [sigunguArea, setSigunguArea] = useState([]);
   const [_selected, setSelected] = useState({
     sido: selected?.sido ?? '',
     sigungu: selected?.sigungu ?? '',
   });
 
+  useEffect(() => {
+    setSigunguArea(() => (selected?.sido ? sigungu[selected?.sido] : []));
+  }, [selected]);
+
+  //onChange는 name값으로 구분
   const onChange = useCallback(
     (e) => {
       const name = e.target.name;

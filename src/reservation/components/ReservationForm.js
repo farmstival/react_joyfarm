@@ -8,10 +8,10 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
-import moment from 'moment/moment';
 import { format } from 'date-fns';
+import moment from 'moment/moment';
 import Select from 'react-select';
-import { FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
+import { FcCloseUpMode , FcConferenceCall, FcAlarmClock, FcCalendar } from 'react-icons/fc';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 
 const { gray, primary, lightGreen, darkGreen, white, midGreen, dark } = color;
@@ -228,6 +228,12 @@ const FormBox = styled.form`
   .select_date {
     padding-left: 50px;
     height: 100%;
+
+    .townNm {
+      font-size: ${big};
+      margin: 0 0 20px 40px;
+      font-weight: bold;
+    }
   }
 
   input {
@@ -286,6 +292,11 @@ const ReservationForm = ({
     <FormBox onSubmit={onSubmit} autoComplete="off">
       <div className="infoBox">
         <div className="select_date box">
+          <div className="title">
+          <FcCloseUpMode />
+            <h2>{t('예약하는_체험마을')}</h2>
+          </div>
+          <p className="townNm">{data.townName}</p>
           <div className="title">
             <FcCalendar />
             <h2>{t('예약일_선택')}</h2>
