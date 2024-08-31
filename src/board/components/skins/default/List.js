@@ -9,7 +9,7 @@ import Listsort from './Listsort';
 
 const List = ({items, search, onChange, onSubmitSearch, onSubmit }) => {
   const { t } = useTranslation();
-  // 검색 항목 제출
+  // 검색항목 제출
   return (
     <>
       <ListSearchForm search={search} onChange={onChange} onSubmit={onSubmitSearch} />

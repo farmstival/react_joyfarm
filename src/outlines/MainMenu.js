@@ -95,7 +95,7 @@ const MainMenu = () => {
       <MenuWrap>
         <MenuItem>
           <NavLink to="/reservation/list" className={({ isActive }) => isActive ? 'on' : ''}>
-            {t('농촌체험 예약')}
+            {t('농촌체험_예약')}
           </NavLink>
         </MenuItem>
         <MenuItem>

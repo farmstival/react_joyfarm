@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { apiGet } from '../apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import farmImg from '../../images/farm.jpg';
 import apiCancel from '../apis/apiCancel';
+import _useConfirm from '../../commons/hooks/useConfirm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,15 +35,17 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
-        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
-        setPageTitle(`${res.townName} ${t('예약정보')}`);
+        // ReserveView 변경하면서 필요없어짐(setPageTitle)
+        // setPageTitle(`${res.townName} ${t('예약정보')}`);
         setItem(res);
-
-        const position = { lat: res.latitude, lng: res.longitude };
+        const {
+          activity: { latitude, longitude, doroAddress },
+        } = res;
+        const position = { lat: latitude, lng: longitude };
         setMapOptions((opt) => {
-          const options = res.latitude
+          const options = latitude
             ? { ...opt, center: position, marker: position }
-            : { ...opt, doroAddress: res.doroAddress };
+            : { ...opt, doroAddress: doroAddress };
 
           return options;
         });
@@ -50,7 +53,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [seq, t, setPageTitle]);
+  }, [seq, t]);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
@@ -59,15 +62,17 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
   const onClick = useCallback(
     (seq) => {
       /* 예약 취소 처리 S */
-      (async () => {
-        try {
-          const res = await apiCancel(seq);
-          // 예약 취소 성공시 예약 취소 페이지 이동
-          navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
-        } catch (err) {
-          console.error(err);
-        }
-      })();
+      _useConfirm(t('정말_취소_하겠습니까'), () => {
+        (async () => {
+          try {
+            const res = await apiCancel(seq);
+            // 예약 취소 성공시 예약 취소 페이지 이동
+            navigate(`/myreservation/cancel/${res.seq}`, { replace: true });
+          } catch (err) {
+            console.error(err);
+          }
+        })();
+      });
       /* 예약 취소 처리 E */
     },
     [navigate],

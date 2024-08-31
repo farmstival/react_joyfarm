@@ -34,6 +34,7 @@ const ReserveViewContainer = ({ setPageTitle }) => {
     apiGet(seq).then((item) => {
       setPageTitle(item.title);
       setItem(item);
+      console.log('아이템', item); // 데이터 확인용
 
       const position = { lat: item.latitude, lng: item.longitude };
       setMapOptions((opt) => {
