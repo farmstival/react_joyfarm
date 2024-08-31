@@ -10,6 +10,7 @@ import {
 import { format } from 'date-fns';
 import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
+import { TiInfoLarge } from 'react-icons/ti';
 
 const { large } = fontSize;
 
@@ -27,6 +28,7 @@ const FlatWrapper = styled.div`
     font-size: ${large};
     // color: ${color.danger};
     color: #4caf50;
+    font-weight: lighter;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -34,7 +36,6 @@ const FlatWrapper = styled.div`
   }
   .btn_group {
     display: flex;
-    // justify-content: space-around;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -61,7 +62,6 @@ const FlatWrapper = styled.div`
 
   h2 {
     color: ${color.danger};
-    // color: #4caf50;
     margin-bottom: 20px;
   }
 
@@ -69,6 +69,10 @@ const FlatWrapper = styled.div`
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
     dl {
       margin-top: 20px;
@@ -81,15 +85,43 @@ const FlatWrapper = styled.div`
         word-wrap: break-word;
         word-break: keep-all;
         line-height: 20px;
+        font-weight: lighter;
       }
     }
   }
 
+  .toggle_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .toggle_btn button {
     background: #e2f7dd;
     border: 1px solid #ccc;
+    border-radius: 100px;
+    width: 300px;
     padding: 5px 10px;
     cursor: pointer;
+    font-weight: bolder;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .arrow {
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    align-content: center;
+    position: absolute;
+    right: 5px;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
   }
 `;
 
@@ -156,30 +188,37 @@ const CancelForm = ({ data }) => {
         </p>
       </div>
 
-      <div className="toggle_btn">
-        <SmallButton onClick={toggleInfo}>
-          {isOpen ? t('체험_마을_세부정보_닫기') : t('체험_마을_세부정보_열기')}
-        </SmallButton>
-        {isOpen && (
-          <div className="info_section">
-            <dl>
-              <dt>{t('체험_활동_소개')}</dt>
-              <dd>: {activityName}</dd>
-            </dl>
-            <dl>
-              <dt>{t('체험_마을_대표자명')}</dt>
-              <dd>: {ownerName}</dd>
-            </dl>
-            <dl>
-              <dt>{t('체험_마을_주소')}</dt>
-              <dd>: {doroAddress}</dd>
-            </dl>
-            <dl>
-              <dt>{t('체험_마을_전화번호')}</dt>
-              <dd>: {ownerTel}</dd>
-            </dl>
-          </div>
-        )}
+      <div className="toggle">
+        <div className="toggle_btn">
+          <SmallButton onClick={toggleInfo}>
+            {isOpen
+              ? t('체험_마을_세부정보_닫기')
+              : t('체험_마을_세부정보_열기')}
+            <div className="arrow">
+              <TiInfoLarge />
+            </div>
+          </SmallButton>
+          {isOpen && (
+            <div className="info_section">
+              <dl>
+                <dt>{t('체험_활동_소개')}</dt>
+                <dd>: {activityName}</dd>
+              </dl>
+              <dl>
+                <dt>{t('체험_마을_대표자명')}</dt>
+                <dd>: {ownerName}</dd>
+              </dl>
+              <dl>
+                <dt>{t('체험_마을_주소')}</dt>
+                <dd>: {doroAddress}</dd>
+              </dl>
+              <dl>
+                <dt>{t('체험_마을_전화번호')}</dt>
+                <dd>: {ownerTel}</dd>
+              </dl>
+            </div>
+          )}
+        </div>
       </div>
       <div className="btn_group">
         <MidButton
