@@ -24,7 +24,7 @@ const HeaderBox = styled.header`
     height: 45px;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
 
     div {
       text-align: right;
@@ -93,7 +93,13 @@ const Header = () => {
                   <img
                     src={userInfo.profileImage.fileUrl}
                     alt="profile"
-                    width={40}
+                    width={32}
+                    style={{
+                      marginTop: '20px',
+                      marginBottom: '-10px',
+                      marginRight: '-3px',
+                      borderRadius: '25%',            
+                    }}
                   />
                 </Link>
               )}
@@ -104,17 +110,20 @@ const Header = () => {
                 </a>
                 //컴포넌트를 교체하는 방식인데 a태그로 새 창 이동해서 페이지 교체
               )}
+
               <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
+                to="/mypage">
                 <BiWinkSmile className="icon" />
                 {t('마이페이지')}
               </NavLink>
-              <NavLink onClick={onLogout}>
+
+              <NavLink 
+              onClick={onLogout}
+              style={{ marginLeft: '10px' }}>
                 <BiLockOpen className="icon" />
                 {t('로그아웃')}
               </NavLink>
+
               {/*
               <NavLink
                 to="/member/logout"

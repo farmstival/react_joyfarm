@@ -29,12 +29,23 @@ const StyledMain = styled.div`
   .proimg {
     width: 200px;
     margin-top: 20px;
+    
   }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // cover: 이미지를 컴포넌트에 맞게 잘라냄
+                       // contain: 이미지를 컴포넌트 크기에 맞춰 축소
+    border-radius: 20%; // 동그란 프사를 원하면 추가
+  }
+
 `;
 
 const StyledProfileImage = styled(ProfileImage)`
   margin-top: 20px;
   pointer-events: none;
+  
 `;
 
 const MyPageMain = () => {
