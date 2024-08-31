@@ -192,7 +192,7 @@ const SearchBox = ({ form, onChange, onSubmit }) => {
           />
         </div>
         <select name="status" onChange={onChange} value={form?.status ?? 'ALL'}>
-          <option value="ALL">{t('전체')}</option>
+          <option value="ALL">{t('예약상태')}</option>
           <option value="APPLY">{t('예약확정')}</option>
           <option value="CANCEL">{t('예약취소')}</option>
         </select>

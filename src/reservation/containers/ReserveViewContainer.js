@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   margin-bottom: 20px;
   border-bottom: solid 1px #e6e6eb;
   padding-bottom: 20px;
+  align-items: center;
 
   img {
     width: 100%;
