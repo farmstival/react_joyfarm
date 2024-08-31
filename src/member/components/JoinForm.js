@@ -14,20 +14,20 @@ const { whiteGray, white, whiteGreen, lightGreen, midGreen, danger } = color;
 const { medium } = fontSize;
 
 const FormBox = styled.form`
-//background-color: ${whiteGreen}; /* 부드러운 배경색 추가 */
-padding: 30px;
-border-radius: 30px;
-margin: 30px;
-border: 1px solid ${whiteGray};
-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
-max-width: 1000px; /* 최대 너비 설정 */
-transition: all 0.3s ease;
-font-size: ${medium};
-.oMZKK {
-color: ${danger};
-}
+  //background-color: ${whiteGreen}; /* 부드러운 배경색 추가 */
+  padding: 30px;
+  border-radius: 30px;
+  margin: 30px;
+  border: 1px solid ${whiteGray};
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+  max-width: 1000px; /* 최대 너비 설정 */
+  transition: all 0.3s ease;
+  font-size: ${medium};
+  .oMZKK {
+    color: ${danger};
+  }
 
- textarea {
+  textarea {
     display: block;
     width: 100%;
     height: 150px; /* 원하는 높이 설정 */
@@ -41,20 +41,18 @@ color: ${danger};
   }
 
   dl {
-  
     display: flex;
     align-items: center;
     margin: 5px 0;
 
     dt {
-    
       width: 120px;
       font-weight: bold;
     }
-    
+
     dd {
       flex-grow: 1;
-      
+
       input {
         font-size: ${medium};
         width: 100%;
@@ -72,17 +70,16 @@ color: ${danger};
     border-bottom: 1px solid ${whiteGray};
   }
 
-  .password{
+  .password {
     border-bottom: 1px solid ${whiteGray};
   }
 
-  .profile{
+  .profile {
     padding: 10px 0 15px 0;
-    
   }
 
   .auCode {
-  width: 300px;
+    width: 300px;
   }
 
   .terms-agree {
@@ -91,6 +88,10 @@ color: ${danger};
     cursor: pointer;
     transition: color 0.3s ease;
 
+    .msgbx {
+      padding-left: 250px;
+    }
+
     svg {
       font-size: 1.5rem;
       margin-right: 2px;
@@ -98,15 +99,13 @@ color: ${danger};
       color: #007bff; /* 아이콘 색상 변경 */
     }
   }
-    
-  }
 `;
 
 const EmailVerificationBox = styled.div`
   .rows {
     display: flex;
     flex-direction: row;
-    margin-bottom: -25px;
+    margin-bottom: -10px;
 
     input {
       margin-top: 0;
@@ -206,6 +205,7 @@ const JoinForm = ({
                   </button>
                 )}
               </div>
+              <MessageBox color="danger" messages={errors.email} index={0} />
             </dd>
           </dl>
 
@@ -224,6 +224,8 @@ const JoinForm = ({
                     onChange={onChange}
                   />
                 )}
+
+                <MessageBox color="danger" messages={errors.email} index={1} />
               </dd>
               <span className="authCount">{form.authCountMin}</span>
               <StyledButton type="button" onClick={onReSendAuthCode}>
@@ -238,8 +240,6 @@ const JoinForm = ({
               </StyledButton>
             </dl>
           )}
-
-          <MessageBox messages={errors.email} />
         </EmailVerificationBox>
         <dl className="password">
           <dt>{t('비밀번호')}</dt>
@@ -286,6 +286,7 @@ const JoinForm = ({
             <InputBox
               type="text"
               name="mobile"
+              className="inMob"
               placeholder={t('전화번호를_입력하세요')}
               value={form.mobile ?? ''}
               onChange={onChange}
@@ -499,8 +500,9 @@ const JoinForm = ({
         <div className="terms-agree" onClick={onToggle}>
           {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
           {t('회원가입_약관에_동의합니다')}
-
-          <MessageBox color="danger" messages={errors.agree} />
+          <div className="msgbx">
+            <MessageBox color="danger" messages={errors.agree} />
+          </div>
         </div>
 
         <StyledButtons>
