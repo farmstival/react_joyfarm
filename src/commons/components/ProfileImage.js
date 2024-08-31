@@ -13,7 +13,7 @@ const ProfileImage = ({ gid, profileImage, fileUploadCallback, className }) => {
   return (
     <Wrapper className={className}>
       <FileUpload
-        width={200}
+        width={150}
         imageUrl={profileImage ?? NoProfile}
         gid={gid}
         imageOnly={true}
