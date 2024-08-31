@@ -23,9 +23,9 @@ const MyReserveView = () => {
       <OuterBox>
         <Header />
         <ContentBox>
-          <PageTitle>
-            {/* <SubTitle>{t('예약_현황_리스트')}</SubTitle> */}
-          </PageTitle>
+          {/* <PageTitle>
+            <SubTitle>{t('예약_현황_리스트')}</SubTitle>
+          </PageTitle> */}
           <MyReserveViewContainer />
         </ContentBox>
       </OuterBox>

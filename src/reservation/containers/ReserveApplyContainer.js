@@ -119,7 +119,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }
 
       /* 예약 접수 처리 S */
-      _useConfirm(t('정말_접수_하겠습니까?'), () => {
+      _useConfirm(t('정말_접수_하겠습니까'), () => {
         (async () => {
           try {
             const res = await apiApply(form);

@@ -24,9 +24,9 @@ const MyReservList = () => {
       <OuterBox>
         <Header />
         <ContentBox>
-          <PageTitle>
+          {/* <PageTitle>
             <SubTitle>{t('예약_현황_리스트')}</SubTitle>
-          </PageTitle>
+          </PageTitle> */}
           <MyReserveListContainer />
         </ContentBox>
       </OuterBox>
