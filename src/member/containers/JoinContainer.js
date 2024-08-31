@@ -44,7 +44,7 @@ const JoinContainer = () => {
     // 인증 이메일 보내기
     apiEmailAuth(form.email, form.gid).then((res) => {
       if (!res.success) {
-        setErrors({ email: [t('이메일_전송에_실패하였습니다.')] });
+        setErrors({ email: [t('이메일_전송에_실패하였습니다')] });
         return;
       }
 
