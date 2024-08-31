@@ -55,6 +55,7 @@ const commons = {
   이메일을_입력하세요: 'Please enter your email',
   이메일을_인증하세요: 'Please verify your email',
   인증코드를_입력하세요: 'Please enter the verification code',
+  이메일_전송에_실패하였습니다:'Failed send Email',
   비밀번호를_입력하세요: 'Please enter your password',
   비밀번호가_정확하지_않습니다: 'Password is incorrect',
   비밀번호를_확인하세요: 'Please confirm your password',

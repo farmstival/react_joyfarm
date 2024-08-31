@@ -41,30 +41,37 @@ const JoinContainer = () => {
       setErrors(_errors);
     }
 
-    form.authCount = 180;
-    // 3분 카운트 시작
-    authCountInterval.current = setInterval(() => {
-      form.authCount--;
-      const minutes = Math.floor(form.authCount / 60);
-      const seconds = form.authCount - minutes * 60;
-
-      const authCountMin =
-        ('' + minutes).padStart(2, '0') + ':' + ('' + seconds).padStart(2, '0');
-
-      if (form.authCount < 0) {
-        form.authCount = 0;
-        clearInterval(authCountInterval.current);
+    // 인증 이메일 보내기
+    apiEmailAuth(form.email, form.gid).then((res) => {
+      if (!res.success) {
+        setErrors({ email: [t('이메일_전송에_실패하였습니다.')] });
+        return;
       }
 
-      setForm((form) => ({
-        ...form,
-        authCount: form.authCount,
-        authCountMin,
-      }));
-    }, 1000);
+      form.authCount = 180;
+      // 3분 카운트 시작
+      authCountInterval.current = setInterval(() => {
+        form.authCount--;
+        const minutes = Math.floor(form.authCount / 60);
+        const seconds = form.authCount - minutes * 60;
 
-    // 인증 이메일 보내기
-    apiEmailAuth(form.email, form.gid);
+        const authCountMin =
+          ('' + minutes).padStart(2, '0') +
+          ':' +
+          ('' + seconds).padStart(2, '0');
+
+        if (form.authCount < 0) {
+          form.authCount = 0;
+          clearInterval(authCountInterval.current);
+        }
+
+        setForm((form) => ({
+          ...form,
+          authCount: form.authCount,
+          authCountMin,
+        }));
+      }, 1000);
+    });
   }, [form, errors, t]);
 
   // 인증 코드 재전송
@@ -84,7 +91,7 @@ const JoinContainer = () => {
 
     (async () => {
       try {
-        await apiEmailAuthCheck(form.authNum, form.gid);
+        const res = await apiEmailAuthCheck(form.authNum, form.gid);
 
         setForm((form) => ({ ...form, emailVerified: true })); // 이메일 인증 처리
 
@@ -97,7 +104,6 @@ const JoinContainer = () => {
         setErrors((errors) => ({
           ...errors,
           email: [t('이메일_인증에_실패하였습니다.')],
-          
         }));
       }
     })();
