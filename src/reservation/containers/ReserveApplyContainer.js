@@ -40,6 +40,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
         res.minDate = new Date(availableDates[0]);
         res.maxDate = new Date(availableDates.pop());
         res._availableDates = availableDates;
+        res._availableDates = availableDates;
 
         setData(res);
       } catch (err) {
@@ -83,6 +84,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
 
   const onSubmit = useCallback(
     //Submit = 검증
+    //Submit = 검증
     (e) => {
       e.preventDefault();
 
@@ -119,7 +121,7 @@ const ReservationApplyContainer = ({ setPageTitle }) => {
       }
 
       /* 예약 접수 처리 S */
-      _useConfirm(t('정말_접수_하겠습니까'), () => {
+      _useConfirm(t('정말_예약하시겠습니까'), () => {
         (async () => {
           try {
             const res = await apiApply(form);

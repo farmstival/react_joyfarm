@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   margin-bottom: 20px;
   border-bottom: solid 1px #e6e6eb;
   padding-bottom: 20px;
+  align-items: center;
 
   .img {
     width: 100%;
@@ -35,9 +36,11 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(seq);
+        console.log('Fetched data:', res); // 데이터 확인용 로그 추가
         // ReserveView 변경하면서 필요없어짐(setPageTitle)
         // setPageTitle(`${res.townName} ${t('예약정보')}`);
         setItem(res);
+
         const {
           activity: { latitude, longitude, doroAddress },
         } = res;
@@ -62,7 +65,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
   const onClick = useCallback(
     (seq) => {
       /* 예약 취소 처리 S */
-      _useConfirm(t('정말_취소_하겠습니까'), () => {
+      _useConfirm(t('정말_취소하시겠습니까'), () => {
         (async () => {
           try {
             const res = await apiCancel(seq);
@@ -75,7 +78,7 @@ const MyReserveViewContainer = ({ setPageTitle }) => {
       });
       /* 예약 취소 처리 E */
     },
-    [navigate],
+    [navigate, t],
   );
 
   if (!item) {
