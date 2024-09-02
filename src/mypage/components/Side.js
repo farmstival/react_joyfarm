@@ -65,13 +65,13 @@ const Side = () => {
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('예약관리')}
-      </NavLink>*/}
+      </NavLink>
       <NavLink
         to="/mypage/board"
         className={({ isActive }) => classNames({ on: isActive })}
       >
         {t('게시글_관리')}
-      </NavLink>
+      </NavLink>*/}
       <NavLink
         to={`/mypage/wishlist/${wishlistTab}`}
         className={({ isActive }) => classNames({ on: isActive })}

@@ -34,6 +34,7 @@ const MyprofileContainer = () => {
 
   const initialForm = userInfo;
   delete initialForm.password;
+  delete initialForm.confirmPassword;
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
