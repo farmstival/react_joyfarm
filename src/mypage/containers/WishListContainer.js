@@ -27,7 +27,7 @@ const WishListContainer = () => {
 
   useEffect(() => {
     setMenus(() => [
-      { name: t('예약'), link: '/mypage/wishlist/reservation' },
+      { name: t('농촌체험'), link: '/mypage/wishlist/reservation' },
       { name: t('여행지'), link: '/mypage/wishlist/tour' },
       { name: t('축제'), link: '/mypage/wishlist/festival' },
       { name: t('게시글'), link: '/mypage/wishlist/board' },
